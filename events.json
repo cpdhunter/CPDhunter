@@ -1,1 +1,232 @@
-{"updated": null, "status": [], "events": []}
+{
+ "updated": "2026-10-29T14:51+08:00",
+ "status": [
+  {
+   "source": "OSHC 職安局 研討會",
+   "ok": false,
+   "n": 0,
+   "err": "Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+   "source": "OSHC Seminars & Conferences",
+   "ok": false,
+   "n": 0,
+   "err": "Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+   "source": "勞工處 職業健康公開講座",
+   "ok": false,
+   "n": 0,
+   "err": "Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+   "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
+   "ok": false,
+   "n": 0,
+   "err": "Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+   "source": "CIC 建造業議會 Events",
+   "ok": false,
+   "n": 0,
+   "err": "Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+   "source": "CIC BIM Events",
+   "ok": false,
+   "n": 0,
+   "err": "Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+   "source": "CIC CITAC Upcoming Events",
+   "ok": false,
+   "n": 0,
+   "err": "Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+   "source": "CIC RSTCS 工作坊",
+   "ok": false,
+   "n": 0,
+   "err": "Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+   "source": "HKIE CPD Calendar",
+   "ok": false,
+   "n": 0,
+   "err": "Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+   "source": "HKIE Events",
+   "ok": false,
+   "n": 0,
+   "err": "Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+   "source": "HKIE Building Division",
+   "ok": false,
+   "n": 0,
+   "err": "Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+   "source": "HKIE Structural Division",
+   "ok": false,
+   "n": 0,
+   "err": "Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+   "source": "HKIE Fire Division",
+   "ok": false,
+   "n": 0,
+   "err": "Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+   "source": "HKIS CPD",
+   "ok": false,
+   "n": 0,
+   "err": "403 Client Error: Forbidden for url: https://www.hkis.org.hk/en/professional_cpd.html"
+  },
+  {
+   "source": "HKGBC 綠建環評",
+   "ok": false,
+   "n": 0,
+   "err": "Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+   "source": "IET Hong Kong",
+   "ok": true,
+   "n": 5
+  },
+  {
+   "source": "ICE Upcoming Events",
+   "ok": false,
+   "n": 0,
+   "err": "Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+   "source": "ICE Lectures",
+   "ok": false,
+   "n": 0,
+   "err": "Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+   "source": "IStructE Events",
+   "ok": false,
+   "n": 0,
+   "err": "Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+   "source": "IET Online Events",
+   "ok": false,
+   "n": 0,
+   "err": "Expecting value: line 1 column 1 (char 0)"
+  },
+  {
+   "source": "CIC (UK) Events",
+   "ok": false,
+   "n": 0,
+   "err": "Expecting value: line 1 column 1 (char 0)"
+  }
+ ],
+ "events": [
+  {
+   "id": "aabfdebe195c8",
+   "name": "IET PRESTIGE LECTURE AWARD DINNER 2026 (PLAD 2026)",
+   "org": "IET Malaysia",
+   "date": "2026-10-31",
+   "time": "18:00-23:00",
+   "hrs": 5.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://localevents.theiet.org/network/hongkong",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "IET Hong Kong",
+   "group": "IET",
+   "auto": true
+  },
+  {
+   "id": "abc9d56d8bfe2",
+   "name": "IET PRESTIGE LECTURE AWARD DINNER 2026 (PLAD 2026)(For Public registration)",
+   "org": "IET Malaysia",
+   "date": "2026-10-31",
+   "time": "18:00-23:00",
+   "hrs": 5.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://localevents.theiet.org/network/hongkong",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "IET Hong Kong",
+   "group": "IET",
+   "auto": true
+  },
+  {
+   "id": "aa847036940ad",
+   "name": "Esports- What is it and why should we care? (Online)",
+   "org": "IET Anglian Coastal",
+   "date": "2026-11-05",
+   "time": "03:00-04:15",
+   "hrs": 1.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://localevents.theiet.org/network/hongkong",
+   "region": "HK",
+   "online": true,
+   "free": true,
+   "source": "IET Hong Kong",
+   "group": "IET",
+   "auto": true
+  },
+  {
+   "id": "a2ca2dd338911",
+   "name": "Technical Visit to Shenzhen: BYD Headquarters, Battery-powered SkyShuttle APM System, and the New MTR Shenzhen Joint Ven",
+   "org": "IET Hong Kong",
+   "date": "2026-11-06",
+   "time": "09:00-17:30",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://localevents.theiet.org/network/hongkong",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "IET Hong Kong",
+   "group": "IET",
+   "auto": true
+  },
+  {
+   "id": "a0488518a8f48",
+   "name": "IET Hong Kong Younger Members Section - Overseas Delegation to Hyogo, Japan",
+   "org": "IET Hong Kong",
+   "date": "2026-11-11",
+   "time": "06:45-17:00",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://localevents.theiet.org/network/hongkong",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "IET Hong Kong",
+   "group": "IET",
+   "auto": true
+  }
+ ]
+}
