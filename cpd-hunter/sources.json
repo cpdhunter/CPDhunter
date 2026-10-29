@@ -1,0 +1,23 @@
+[
+ {"name": "OSHC 職安局 研討會", "group": "OSHC", "region": "HK", "type": "H&S", "url": "https://sms.oshc.hk/online/activitiesE.aspx"},
+ {"name": "OSHC Seminars & Conferences", "group": "OSHC", "region": "HK", "type": "H&S", "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/"},
+ {"name": "勞工處 職業健康公開講座", "group": "Labour Dept", "region": "HK", "type": "H&S", "free": true, "url": "https://www1.oshsreg.gov.hk/ocrs/talk/search.xhtml?regType=Individual"},
+ {"name": "公務員事務局 職安健活動 (勞工處/OSHC)", "group": "Labour Dept", "region": "HK", "type": "H&S", "url": "https://www.csb.gov.hk/english/oshcs/events/coming-events.html"},
+ {"name": "CIC 建造業議會 Events", "group": "CIC", "region": "HK", "url": "https://www.cic.hk/en/events"},
+ {"name": "CIC BIM Events", "group": "CIC", "region": "HK", "url": "https://www.bim.cic.hk/en/events/list"},
+ {"name": "CIC CITAC Upcoming Events", "group": "CIC", "region": "HK", "url": "https://citac.cic.hk/en-hk/news-and-events/events/upcoming-events"},
+ {"name": "CIC RSTCS 工作坊", "group": "CIC", "region": "HK", "free": true, "url": "https://rstc.cic.hk/en/events.aspx"},
+ {"name": "HKIE CPD Calendar", "group": "HKIE", "region": "HK", "url": "https://hkie.org.hk/professional-development/continuing-professional-development/cpd-calendar/"},
+ {"name": "HKIE Events", "group": "HKIE", "region": "HK", "url": "https://hkie.org.hk/events/"},
+ {"name": "HKIE Building Division", "group": "HKIE", "region": "HK", "url": "https://bd.hkie.org.hk/category/events-activities/"},
+ {"name": "HKIE Structural Division", "group": "HKIE", "region": "HK", "url": "https://www.hkie-st.org/events-and-activities/"},
+ {"name": "HKIE Fire Division", "group": "HKIE", "region": "HK", "url": "https://www.hkie-fe.org/course-event/"},
+ {"name": "HKIS CPD", "group": "HKIS", "region": "HK", "url": "https://www.hkis.org.hk/en/professional_cpd.html"},
+ {"name": "HKGBC 綠建環評", "group": "HKGBC", "region": "HK", "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events"},
+ {"name": "IET Hong Kong", "group": "IET", "region": "HK", "url": "https://localevents.theiet.org/network/hongkong"},
+ {"name": "ICE Upcoming Events", "group": "ICE", "region": "Overseas", "url": "https://www.ice.org.uk/events/upcoming-events"},
+ {"name": "ICE Lectures", "group": "ICE", "region": "Overseas", "url": "https://www.ice.org.uk/events/lectures"},
+ {"name": "IStructE Events", "group": "IStructE", "region": "Overseas", "url": "https://www.istructe.org/events/"},
+ {"name": "IET Online Events", "group": "IET", "region": "Overseas", "url": "https://events.theiet.org/search/"},
+ {"name": "CIC (UK) Events", "group": "CIC UK", "region": "Overseas", "url": "https://www.cic.org.uk/events"}
+]
