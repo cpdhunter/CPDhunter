@@ -1,0 +1,54 @@
+name: Daily CPD update
+
+on:
+  schedule:
+    - cron: "0 22 * * *"   # 每日香港時間朝早 6:00
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  models: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: cpd-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Scrape CPD events
+        if: github.event_name != 'push'
+        run: |
+          pip install -r scraper/requirements.txt
+          python scraper/fetch.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit events.json
+        if: github.event_name != 'push'
+        run: |
+          git config user.name "cpd-hunter-bot"
+          git config user.email "cpd-hunter-bot@users.noreply.github.com"
+          git add events.json
+          git diff --staged --quiet || (git commit -m "Daily CPD update" && git push)
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deploy
+        uses: actions/deploy-pages@v4
