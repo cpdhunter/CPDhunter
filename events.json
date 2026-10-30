@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-30T06:37+08:00",
+ "updated": "2026-10-31T06:35+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -89,12 +89,13 @@
    "source": "HKGBC 綠建環評",
    "ok": false,
    "n": 0,
-   "err": "Expecting value: line 1 column 1 (char 0)"
+   "err": "HTTPSConnectionPool(host='www.hkgbc.org.hk', port=443): Read timed out. (read timeout=30)"
   },
   {
    "source": "IET Hong Kong",
-   "ok": true,
-   "n": 5
+   "ok": false,
+   "n": 0,
+   "err": "Expecting value: line 1 column 1 (char 0)"
   },
   {
    "source": "ICE Upcoming Events",
