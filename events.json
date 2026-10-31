@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-31T06:35+08:00",
+ "updated": "2026-11-01T06:31+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -89,13 +89,12 @@
    "source": "HKGBC 綠建環評",
    "ok": false,
    "n": 0,
-   "err": "HTTPSConnectionPool(host='www.hkgbc.org.hk', port=443): Read timed out. (read timeout=30)"
+   "err": "Expecting value: line 1 column 1 (char 0)"
   },
   {
    "source": "IET Hong Kong",
-   "ok": false,
-   "n": 0,
-   "err": "Expecting value: line 1 column 1 (char 0)"
+   "ok": true,
+   "n": 5
   },
   {
    "source": "ICE Upcoming Events",
@@ -217,6 +216,46 @@
    "time": "06:45-17:00",
    "hrs": null,
    "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://localevents.theiet.org/network/hongkong",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "IET Hong Kong",
+   "group": "IET",
+   "auto": true
+  },
+  {
+   "id": "a5fe6f51406cf",
+   "name": "IET Queensland Annual General Meeting 2026 and Technical Talk",
+   "org": "Australasia zone",
+   "date": "2026-11-26",
+   "time": "10:00-17:30",
+   "hrs": 7.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://localevents.theiet.org/network/hongkong",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "IET Hong Kong",
+   "group": "IET",
+   "auto": true
+  },
+  {
+   "id": "abca57a6e638a",
+   "name": "SPACE BIC by ERATOSTHENES",
+   "org": "IET Cyprus",
+   "date": "2026-12-03",
+   "time": "22:45-01:00",
+   "hrs": 2.0,
+   "hrs_est": true,
    "type": "Technical",
    "disc": [
     "General"
