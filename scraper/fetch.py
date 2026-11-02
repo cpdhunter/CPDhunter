@@ -1,9 +1,8 @@
 """
-CPD Hunter - 每日自動搵免費 CPD 活動
+CPD Hunter - 每日自動搵免費 CPD 活動（v1.1：錯誤訊息更清楚、減少被封鎖）
 流程：讀 sources.json -> 逐個網站攞 HTML（遵守 robots.txt）
      -> 先試 schema.org Event (JSON-LD)，冇就用 AI 抽取活動資料
-     -> 過濾（未過期、唔係明確收費、海外只要網上、剔走社交活動）
-     -> 合併 -> 寫 events.json
+     -> 過濾 -> 合併 -> 寫 events.json
 """
 import json, os, re, sys, time, hashlib, datetime as dt
 import urllib.robotparser
@@ -17,25 +16,35 @@ OUT = os.path.join(ROOT, "events.json")
 SOURCES = os.path.join(ROOT, "sources.json")
 MANUAL = os.path.join(ROOT, "manual.json")
 
-UA = "CPDHunterBot/1.0 (free CPD calendar for engineers; respects robots.txt)"
+BOT = "CPDHunterBot"
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
+                  "Chrome/130.0 Safari/537.36 (compatible; CPDHunterBot/1.1; free CPD calendar)",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+    "Accept-Language": "en-GB,en;q=0.9,zh-HK;q=0.8",
+}
 HKT = dt.timezone(dt.timedelta(hours=8))
 TODAY = dt.datetime.now(HKT).date()
 KEEP_DAYS_AHEAD = 180
-KEEP_DAYS_PAST = 31          # 月曆保留上個月嘅活動
-MAX_TEXT = 12000             # GitHub Models 免費額度每次輸入有上限
+KEEP_DAYS_PAST = 31
+MAX_TEXT = 6000              # GitHub Models 免費版每次輸入上限約 8000 tokens，中文字耗 token 多
 
 API = os.getenv("LLM_API", "https://models.github.ai/inference/chat/completions")
 MODEL = os.getenv("LLM_MODEL", "openai/gpt-4o-mini")
 TOKEN = os.getenv("LLM_TOKEN") or os.getenv("GITHUB_TOKEN")
 
 TYPES = ["Technical", "GPM", "H&S"]
-# HKIE 22 個專業界別 + General
 DISCS = ["Aircraft", "Biomedical", "Building", "Building Services", "Chemical", "Civil",
          "Control, Automation & Instrumentation", "Electrical", "Electronics", "Energy",
          "Environmental", "Fire", "Gas", "Geotechnical", "Information", "Logistics & Transportation",
          "Manufacturing, Industrial & Systems", "Marine & Naval Architecture", "Materials",
          "Mechanical", "Nuclear", "Structural", "General"]
 _robots = {}
+AI_DEAD = None   # AI 一出現權限錯誤就唔再試，避免浪費時間
+
+
+class StepError(Exception):
+    """帶埋出錯步驟嘅錯誤，方便睇 log"""
 
 
 def log(*a):
@@ -49,21 +58,39 @@ def allowed(url):
     if base not in _robots:
         rp = urllib.robotparser.RobotFileParser()
         try:
-            r = requests.get(base + "/robots.txt", headers={"User-Agent": UA}, timeout=15)
-            rp.parse(r.text.splitlines() if r.ok else [])
+            r = requests.get(base + "/robots.txt", headers=HEADERS, timeout=15)
+            rp.parse(r.text.splitlines() if r.status_code == 200 else [])
         except Exception:
             rp.parse([])
         _robots[base] = rp
-    return _robots[base].can_fetch(UA, url)
+    return _robots[base].can_fetch(BOT, url)
 
 
 def fetch(url):
     if not allowed(url):
-        log("  robots.txt 唔俾，跳過", url)
-        return None
-    r = requests.get(url, headers={"User-Agent": UA}, timeout=30)
-    r.raise_for_status()
-    return r.text
+        raise StepError("robots.txt 唔准讀取")
+    last = None
+    for attempt in range(2):
+        try:
+            r = requests.get(url, headers=HEADERS, timeout=40)
+        except requests.exceptions.SSLError:
+            raise StepError("讀取網頁失敗：SSL 憑證問題")
+        except requests.exceptions.Timeout:
+            last = "讀取網頁失敗：逾時"
+            time.sleep(5)
+            continue
+        except Exception as ex:
+            last = f"讀取網頁失敗：{type(ex).__name__}"
+            time.sleep(5)
+            continue
+        if r.status_code == 200:
+            r.encoding = r.apparent_encoding or r.encoding
+            return r.text
+        last = f"讀取網頁失敗：HTTP {r.status_code}" + ("（網站封鎖咗雲端伺服器）" if r.status_code in (401, 403, 429) else "")
+        if r.status_code in (401, 403, 404):
+            break
+        time.sleep(5)
+    raise StepError(last)
 
 
 # ---------- 方法 1：JSON-LD ----------
@@ -123,7 +150,7 @@ def jsonld_events(soup, base):
 
 # ---------- 方法 2：AI 抽取 ----------
 def page_text(soup, base):
-    for t in soup(["script", "style", "noscript", "svg", "header", "footer", "nav", "form"]):
+    for t in soup(["script", "style", "noscript", "svg", "header", "footer", "nav", "form", "iframe"]):
         t.decompose()
     for a in soup.find_all("a", href=True):
         txt = a.get_text(" ", strip=True)
@@ -144,19 +171,24 @@ Return JSON: {{"events":[...]}}. Each event:
 - is_online (true/false/null)
 - is_free (true if page says free/no charge, false if a price is shown, null if not stated)
 - cpd_hours (number or null; only if CPD hours/points are stated on the page)
-- type: one of "Technical" (engineering/technical content), "GPM" (general professional matters: management, law, contracts, ethics, integrity, communication, ESG policy, AI/IT skills for professionals), "H&S" (health & safety incl. occupational safety and health)
-- disciplines: list of engineering disciplines the content mainly concerns, choose from {discs}; use ["General"] if not discipline specific
-- is_social: true if it is mainly a dinner, AGM, party, tour, sport or networking with no technical content
-Only include events dated today or later. Do not invent anything not on the page. If none, return {{"events":[]}}.
+- type: one of "Technical", "GPM" (management, law, contracts, ethics, communication, ESG policy, AI/IT skills), "H&S" (health & safety)
+- disciplines: list chosen from {discs}; use ["General"] if not discipline specific
+- is_social: true if mainly a dinner, AGM, party, tour, sport or networking
+Only include events dated today or later. Do not invent anything. If none, return {{"events":[]}}.
 
 PAGE:
 {text}"""
 
 
 def llm_extract(text, src):
+    global AI_DEAD
+    if AI_DEAD:
+        raise StepError(AI_DEAD)
     if not TOKEN:
-        log("  冇 LLM token，跳過 AI 抽取")
-        return []
+        AI_DEAD = "AI 抽取失敗：冇 token"
+        raise StepError(AI_DEAD)
+    if len(text) < 80:
+        raise StepError("網頁冇內容（可能用 JavaScript 載入）")
     body = {
         "model": MODEL, "temperature": 0,
         "response_format": {"type": "json_object"},
@@ -164,15 +196,25 @@ def llm_extract(text, src):
             today=TODAY.isoformat(), name=src["name"], region=src["region"], discs=DISCS, text=text)}],
     }
     for attempt in range(3):
-        r = requests.post(API, json=body, timeout=90, headers={
-            "Authorization": f"Bearer {TOKEN}", "Content-Type": "application/json"})
+        try:
+            r = requests.post(API, json=body, timeout=90, headers={
+                "Authorization": f"Bearer {TOKEN}", "Content-Type": "application/json"})
+        except Exception as ex:
+            raise StepError(f"AI 抽取失敗：{type(ex).__name__}")
         if r.status_code == 429:
-            time.sleep(30 * (attempt + 1))
+            time.sleep(40 * (attempt + 1))
             continue
-        r.raise_for_status()
-        return json.loads(r.json()["choices"][0]["message"]["content"]).get("events", [])
-    log("  AI 額度用晒 (429)")
-    return []
+        if r.status_code in (401, 403):
+            AI_DEAD = f"AI 抽取失敗：HTTP {r.status_code}（GitHub Models 權限問題）{r.text[:120]}"
+            raise StepError(AI_DEAD)
+        if r.status_code != 200:
+            raise StepError(f"AI 抽取失敗：HTTP {r.status_code} {r.text[:150]}")
+        try:
+            content = r.json()["choices"][0]["message"]["content"]
+            return json.loads(content).get("events", [])
+        except Exception:
+            raise StepError("AI 回覆格式錯誤")
+    raise StepError("AI 抽取失敗：免費額度用晒 (429)")
 
 
 # ---------- 整理 ----------
@@ -181,10 +223,9 @@ def norm_title(t):
 
 
 def to_hkt(e):
-    """將當地時間轉做香港時間"""
     if not (e.get("start_time") and e.get("utc_offset")):
         return e["date"], e.get("start_time"), e.get("end_time")
-    m = re.match(r"([+-])(\d{2}):?(\d{2})", e["utc_offset"])
+    m = re.match(r"([+-])(\d{2}):?(\d{2})", str(e["utc_offset"]))
     if not m:
         return e["date"], e.get("start_time"), e.get("end_time")
     sign = 1 if m.group(1) == "+" else -1
@@ -199,7 +240,6 @@ def to_hkt(e):
 
 
 def est_hours(s, e):
-    """冇註明 CPD 時數時，按活動時長估算（四捨五入至 0.5 小時）"""
     try:
         mins = (dt.datetime.strptime(e, "%H:%M") - dt.datetime.strptime(s, "%H:%M")).seconds / 60
         if 20 <= mins <= 8 * 60:
@@ -214,7 +254,7 @@ def clean(e, src):
         title = (e.get("title") or "").strip()
         e["date"] = dt.date.fromisoformat(str(e.get("date"))[:10]).isoformat()
         url = e.get("url") or src["url"]
-        if not title or not url.startswith("http"):
+        if not title or not str(url).startswith("http"):
             return None
         for k in ("start_time", "end_time"):
             if e.get(k) and not re.fullmatch(r"\d{2}:\d{2}", str(e[k])):
@@ -225,13 +265,13 @@ def clean(e, src):
     d = dt.date.fromisoformat(d_hkt)
     if d < TODAY or d > TODAY + dt.timedelta(days=KEEP_DAYS_AHEAD):
         return None
-    if e.get("is_free") is False:                                   # 明確收費唔要
+    if e.get("is_free") is False:
         return None
-    if src["region"] != "HK" and e.get("is_online") is False:       # 海外實體活動唔要
+    if src["region"] != "HK" and e.get("is_online") is False:
         return None
-    if e.get("is_social"):                                          # 晚宴、AGM 等唔要
+    if e.get("is_social"):
         return None
-    if e.get("is_free") is None and src.get("free"):                # 來源講明全部免費
+    if e.get("is_free") is None and src.get("free"):
         e["is_free"] = True
     typ = e.get("type") if e.get("type") in TYPES else (src.get("type") or "Technical")
     discs = [x for x in (e.get("disciplines") or []) if x in DISCS] or ["General"]
@@ -269,15 +309,13 @@ def main():
     old = load(OUT, {}).get("events", [])
     found, status = {}, []
 
+    log(f"AI token: {'有' if TOKEN else '冇'}；model: {MODEL}")
     for src in sources:
         if src.get("disabled"):
             continue
         log(f"▶ {src['name']}")
         try:
             html = fetch(src["url"])
-            if not html:
-                status.append({"source": src["name"], "ok": False, "n": 0, "err": "robots"})
-                continue
             soup = BeautifulSoup(html, "html.parser")
             raw, method = jsonld_events(soup, src["url"]), "jsonld"
             if not raw:
@@ -288,19 +326,20 @@ def main():
                 if c:
                     found[c["id"]] = c
                     n += 1
-            log(f"  {method}: 抽到 {len(raw)}，保留 {n}")
+            log(f"  ✔ {method}: 抽到 {len(raw)}，保留 {n}")
             status.append({"source": src["name"], "ok": True, "n": n})
+        except StepError as ex:
+            log(f"  ✕ {ex}")
+            status.append({"source": src["name"], "ok": False, "n": 0, "err": str(ex)[:200]})
         except Exception as ex:
-            log("  失敗:", ex)
-            status.append({"source": src["name"], "ok": False, "n": 0, "err": str(ex)[:120]})
-        time.sleep(3)  # 對網站有禮貌
+            log(f"  ✕ 未知錯誤：{type(ex).__name__}: {ex}")
+            status.append({"source": src["name"], "ok": False, "n": 0, "err": f"{type(ex).__name__}: {str(ex)[:150]}"})
+        time.sleep(4)
 
-    # 保留舊活動：未來嘅（網站可能分頁）同上個月嘅（月曆參考）
     cutoff = (TODAY - dt.timedelta(days=KEEP_DAYS_PAST)).isoformat()
     for e in old:
         if e.get("auto") and e["date"] >= cutoff and e["id"] not in found:
             found[e["id"]] = e
-    # 人手加嘅活動
     for e in load(MANUAL, []):
         if e.get("date", "") >= cutoff:
             e.setdefault("id", "m" + hashlib.sha1((e["url"] + e["date"]).encode()).hexdigest()[:12])
@@ -311,7 +350,11 @@ def main():
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump({"updated": dt.datetime.now(HKT).isoformat(timespec="minutes"),
                    "status": status, "events": events}, f, ensure_ascii=False, indent=1)
-    log(f"完成：共 {len(events)} 個活動")
+
+    log("\n========== 總結 ==========")
+    for s in status:
+        log(("✔ " if s["ok"] else "✕ ") + s["source"] + (f"：{s['n']} 個" if s["ok"] else f"：{s.get('err')}"))
+    log(f"共 {len(events)} 個活動")
 
 
 if __name__ == "__main__":
