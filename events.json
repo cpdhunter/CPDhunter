@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-04T18:21+08:00",
+ "updated": "2026-11-05T06:44+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -93,8 +93,9 @@
   },
   {
    "source": "IET Hong Kong",
-   "ok": true,
-   "n": 5
+   "ok": false,
+   "n": 0,
+   "err": "讀取網頁失敗：SSL 憑證問題"
   },
   {
    "source": "ICE Upcoming Events",
