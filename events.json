@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-04T06:39+08:00",
+ "updated": "2026-11-04T18:21+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -11,73 +11,73 @@
    "source": "OSHC Seminars & Conferences",
    "ok": false,
    "n": 0,
-   "err": "AI 回覆格式錯誤"
+   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
   },
   {
    "source": "勞工處 職業健康公開講座",
    "ok": false,
    "n": 0,
-   "err": "AI 回覆格式錯誤"
+   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
   },
   {
    "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
    "ok": false,
    "n": 0,
-   "err": "AI 回覆格式錯誤"
+   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
   },
   {
    "source": "CIC 建造業議會 Events",
    "ok": false,
    "n": 0,
-   "err": "AI 回覆格式錯誤"
+   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
   },
   {
    "source": "CIC BIM Events",
    "ok": false,
    "n": 0,
-   "err": "AI 回覆格式錯誤"
+   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
   },
   {
    "source": "CIC CITAC Upcoming Events",
    "ok": false,
    "n": 0,
-   "err": "AI 回覆格式錯誤"
+   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
   },
   {
    "source": "CIC RSTCS 工作坊",
    "ok": false,
    "n": 0,
-   "err": "AI 回覆格式錯誤"
+   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
   },
   {
    "source": "HKIE CPD Calendar",
    "ok": false,
    "n": 0,
-   "err": "AI 回覆格式錯誤"
+   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
   },
   {
    "source": "HKIE Events",
    "ok": false,
    "n": 0,
-   "err": "AI 回覆格式錯誤"
+   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
   },
   {
    "source": "HKIE Building Division",
    "ok": false,
    "n": 0,
-   "err": "AI 回覆格式錯誤"
+   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
   },
   {
    "source": "HKIE Structural Division",
    "ok": false,
    "n": 0,
-   "err": "AI 回覆格式錯誤"
+   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
   },
   {
    "source": "HKIE Fire Division",
    "ok": false,
    "n": 0,
-   "err": "AI 回覆格式錯誤"
+   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
   },
   {
    "source": "HKIS CPD",
@@ -89,7 +89,7 @@
    "source": "HKGBC 綠建環評",
    "ok": false,
    "n": 0,
-   "err": "AI 回覆格式錯誤"
+   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
   },
   {
    "source": "IET Hong Kong",
@@ -100,13 +100,13 @@
    "source": "ICE Upcoming Events",
    "ok": false,
    "n": 0,
-   "err": "AI 回覆格式錯誤"
+   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
   },
   {
    "source": "ICE Lectures",
    "ok": false,
    "n": 0,
-   "err": "AI 回覆格式錯誤"
+   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
   },
   {
    "source": "IStructE Events",
@@ -118,13 +118,13 @@
    "source": "IET Online Events",
    "ok": false,
    "n": 0,
-   "err": "AI 回覆格式錯誤"
+   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
   },
   {
    "source": "CIC (UK) Events",
    "ok": false,
    "n": 0,
-   "err": "AI 回覆格式錯誤"
+   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
   }
  ],
  "events": [
