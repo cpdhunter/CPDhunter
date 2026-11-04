@@ -179,7 +179,65 @@ Only include events dated today or later. Do not invent anything. If none, retur
 PAGE:
 {text}"""
 
+def parse_ai_json(content):
+    """容許 AI 回傳純 JSON、markdown code block、前後解釋文字或直接 array。"""
+    if isinstance(content, dict):
+        data = content
+    elif isinstance(content, list):
+        data = {"events": content}
+    else:
+        text = str(content or "").strip()
 
+        # 移除 ```json ... ``` 或 ``` ... ```
+        text = re.sub(r"^```(?:json)?\s*", "", text, flags=re.I)
+        text = re.sub(r"\s*```$", "", text).strip()
+
+        attempts = [text]
+
+        # 嘗試抽出最外層 object
+        obj_start = text.find("{")
+        obj_end = text.rfind("}")
+        if obj_start >= 0 and obj_end > obj_start:
+            attempts.append(text[obj_start:obj_end + 1])
+
+        # 有時 AI 直接回傳 event array
+        arr_start = text.find("[")
+        arr_end = text.rfind("]")
+        if arr_start >= 0 and arr_end > arr_start:
+            attempts.append(text[arr_start:arr_end + 1])
+
+        data = None
+        last_error = None
+
+        for candidate in attempts:
+            try:
+                parsed = json.loads(candidate)
+
+                if isinstance(parsed, list):
+                    data = {"events": parsed}
+                elif isinstance(parsed, dict):
+                    data = parsed
+                else:
+                    continue
+
+                break
+            except json.JSONDecodeError as ex:
+                last_error = ex
+
+        if data is None:
+            preview = text[:300].replace("\n", " ")
+            raise StepError(
+                f"AI JSON 解析失敗：{last_error}; 回覆開頭：{preview}"
+            )
+
+    events = data.get("events", [])
+
+    if not isinstance(events, list):
+        raise StepError(
+            f"AI JSON events 唔係 array，而係 {type(events).__name__}"
+        )
+
+    return events
 def llm_extract(text, src):
     global AI_DEAD
     if AI_DEAD:
@@ -210,11 +268,17 @@ def llm_extract(text, src):
         if r.status_code != 200:
             raise StepError(f"AI 抽取失敗：HTTP {r.status_code} {r.text[:150]}")
         try:
-            content = r.json()["choices"][0]["message"]["content"]
-            return json.loads(content).get("events", [])
-        except Exception:
-            raise StepError("AI 回覆格式錯誤")
-    raise StepError("AI 抽取失敗：免費額度用晒 (429)")
+            try:
+    payload = r.json()
+    content = payload["choices"][0]["message"]["content"]
+    return parse_ai_json(content)
+except StepError:
+    raise
+except Exception as ex:
+    preview = r.text[:300].replace("\n", " ")
+    raise StepError(
+        f"AI 回覆結構錯誤：{type(ex).__name__}: {ex}; API 回覆：{preview}"
+    )
 
 
 # ---------- 整理 ----------
