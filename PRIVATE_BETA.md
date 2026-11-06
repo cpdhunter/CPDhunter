@@ -23,13 +23,14 @@
 
 These helpers exist in the repository as an experimental Sprint 1 module. They are **not** loaded by the live frontend and must not be described as production features.
 
-- `registration.js` (unconnected; not referenced by `index.html`)
+- `registration.js` (unconnected; not referenced by `index.html`; hardened + covered by `registration.test.js`)
 - Browser-local registration profile helper (`localStorage` key `regProfile`, schema version `1`)
   - Allowed fields: `title`, `englishName`, `chineseName`, `email`, `phone`, `position`, `organisation`, `hkieNumber`, `primaryDiscipline`, `secondaryDiscipline`, `preferredLanguage`
-  - Required for a complete profile: `title`, `englishName`, `email`, `organisation`, `primaryDiscipline`
-  - Export / import / validation / delete helpers are present in the module
+  - Required for a complete profile: `englishName`, `email`, `organisation`, `position`, `primaryDiscipline` (`title` is optional)
+  - Export / import / validation / delete helpers enforce allowlist, conservative email checks, exact per-field length limits (import/save reject oversized or invalid-typed fields), and a 100 KB UTF-8 import cap
 - Browser-local registration-state helper (`localStorage` key `regState`)
-  - Documented state labels: `not_started` | `opened` | `registered_manual` | `cancelled`; the helper stores caller-provided state strings and does not enforce this list
+  - Enforced state labels only: `not_started` | `opened` | `registered_manual` | `cancelled` (any other value is rejected)
+  - Rejects non-plain objects/arrays and unsafe keys (`__proto__`, `constructor`, `prototype`); `deleteProfile` and `clearRegState` remain separate
   - Local notes only; does not modify `events.json` and does not contact organisers
 - Disabled adapter interface on `window.RegistrationAdapter`
   - Contract stubs: `canHandle`, `inspect`, `matchFields`, `fill`, `validate`, `getUnsupportedFields`
@@ -64,18 +65,16 @@ Private GitHub repository (future target only)
 
 GitHub remains the source of truth and scraper executor. Cloudflare Pages would be the intended private web deployment target. Cloudflare Access would be the intended access control (email OTP + owner-approved allowlist). No custom username/password system.
 
-## Planned ordered work
+## Future implementation plan
 
-Do this sequence only after production documentation and legal wording match reality:
+The disconnected-module hardening and regression tests are complete; this does not activate any frontend UI or deployment. Remaining ordered work:
 
-1. Review and harden `registration.js` (validation, export/import edge cases, adapter safety).
-2. Update `privacy.html` / `terms.html` **before** activating any registration-profile UI, so legal text matches actual collection behaviour.
-3. Safely integrate Registration Profile / Prepare Registration into the restored production frontend without regressing calendar, list, filters, My Progress, or Settings.
-4. Add automated tests covering profile completeness, import validation, registration-state transitions, and disabled adapter behaviour.
-5. Deploy Cloudflare Pages for a private beta host (free-tier target).
-6. Configure Cloudflare Access with email OTP and an owner-approved allowlist only.
-7. Verify the private deployment end-to-end (access gate, public Pages still healthy until cutover is intentional).
-8. Only then consider making the repository private and retiring public GitHub Pages.
+1. Update `privacy.html` / `terms.html` **before** activating any registration-profile UI, so legal text matches actual collection behaviour.
+2. In a separate authorised integration task, safely add Registration Profile / Prepare Registration to the restored production frontend without regressing calendar, list, filters, My Progress, or Settings.
+3. Deploy Cloudflare Pages for a private beta host (free-tier target).
+4. Configure Cloudflare Access with email OTP and an owner-approved allowlist only.
+5. Verify the private deployment end-to-end (access gate, public Pages still healthy until cutover is intentional).
+6. Only then consider making the repository private and retiring public GitHub Pages.
 
 ## Registration Profile (planned UI over existing helper)
 
