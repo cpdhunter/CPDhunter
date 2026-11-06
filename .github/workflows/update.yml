@@ -9,7 +9,6 @@ on:
 
 permissions:
   contents: write
-  models: read
   pages: write
   id-token: write
 
@@ -34,9 +33,11 @@ jobs:
         if: github.event_name != 'push'
         run: |
           pip install -r scraper/requirements.txt
+          python -m playwright install chromium --with-deps
           python scraper/fetch.py
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_AI_TOKEN: ${{ secrets.CLOUDFLARE_AI_TOKEN }}
 
       - name: Commit events.json
         if: github.event_name != 'push'
