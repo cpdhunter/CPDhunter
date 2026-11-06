@@ -1,83 +1,83 @@
 {
- "updated": "2026-11-06T06:45+08:00",
+ "updated": "2026-11-06T11:06+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
-   "ok": false,
+   "ok": true,
    "n": 0,
-   "err": "網頁冇內容（可能用 JavaScript 載入）"
+   "method": "playwright"
   },
   {
    "source": "OSHC Seminars & Conferences",
-   "ok": false,
-   "n": 0,
-   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
+   "ok": true,
+   "n": 13,
+   "method": "oshc-table"
   },
   {
    "source": "勞工處 職業健康公開講座",
-   "ok": false,
+   "ok": true,
    "n": 0,
-   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
+   "method": "generic"
   },
   {
    "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
-   "ok": false,
+   "ok": true,
    "n": 0,
-   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
+   "method": "oshc-table"
   },
   {
    "source": "CIC 建造業議會 Events",
-   "ok": false,
+   "ok": true,
    "n": 0,
-   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
+   "method": "cic-list"
   },
   {
    "source": "CIC BIM Events",
-   "ok": false,
+   "ok": true,
    "n": 0,
-   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
+   "method": "cic-list"
   },
   {
    "source": "CIC CITAC Upcoming Events",
-   "ok": false,
+   "ok": true,
    "n": 0,
-   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
+   "method": "cic-list"
   },
   {
    "source": "CIC RSTCS 工作坊",
-   "ok": false,
+   "ok": true,
    "n": 0,
-   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
+   "method": "cic-list"
   },
   {
    "source": "HKIE CPD Calendar",
-   "ok": false,
+   "ok": true,
    "n": 0,
-   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
+   "method": "generic"
   },
   {
    "source": "HKIE Events",
-   "ok": false,
+   "ok": true,
    "n": 0,
-   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
+   "method": "generic"
   },
   {
    "source": "HKIE Building Division",
-   "ok": false,
+   "ok": true,
    "n": 0,
-   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
+   "method": "generic"
   },
   {
    "source": "HKIE Structural Division",
-   "ok": false,
+   "ok": true,
    "n": 0,
-   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
+   "method": "generic"
   },
   {
    "source": "HKIE Fire Division",
-   "ok": false,
+   "ok": true,
    "n": 0,
-   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
+   "method": "generic"
   },
   {
    "source": "HKIS CPD",
@@ -87,9 +87,9 @@
   },
   {
    "source": "HKGBC 綠建環評",
-   "ok": false,
+   "ok": true,
    "n": 0,
-   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
+   "method": "generic"
   },
   {
    "source": "IET Hong Kong",
@@ -99,33 +99,33 @@
   },
   {
    "source": "ICE Upcoming Events",
-   "ok": false,
+   "ok": true,
    "n": 0,
-   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
+   "method": "generic"
   },
   {
    "source": "ICE Lectures",
-   "ok": false,
+   "ok": true,
    "n": 0,
-   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
+   "method": "generic"
   },
   {
    "source": "IStructE Events",
-   "ok": false,
+   "ok": true,
    "n": 0,
-   "err": "網頁冇內容（可能用 JavaScript 載入）"
+   "method": "playwright"
   },
   {
    "source": "IET Online Events",
-   "ok": false,
+   "ok": true,
    "n": 0,
-   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
+   "method": "generic"
   },
   {
    "source": "CIC (UK) Events",
-   "ok": false,
+   "ok": true,
    "n": 0,
-   "err": "AI 回覆結構錯誤：JSONDecodeError: Expecting value: line 1 column 1 (char 0); API 回覆：OK\r "
+   "method": "generic"
   }
  ],
  "events": [
@@ -190,6 +190,26 @@
    "auto": true
   },
   {
+   "id": "a8c5d5af1d1d3",
+   "name": "【Heart Caring Campaign/Joyful@Healthy Workplace】High Stress Actually “Breaks Your Heart”? The Relationship Between Mental Health and Cardiovascular Disease Webinar",
+   "org": "OSHC",
+   "date": "2026-11-06",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "OSHC Seminars & Conferences",
+   "group": "OSHC",
+   "auto": true
+  },
+  {
    "id": "a2ca2dd338911",
    "name": "Technical Visit to Shenzhen: BYD Headquarters, Battery-powered SkyShuttle APM System, and the New MTR Shenzhen Joint Ven",
    "org": "IET Hong Kong",
@@ -207,6 +227,46 @@
    "free": true,
    "source": "IET Hong Kong",
    "group": "IET",
+   "auto": true
+  },
+  {
+   "id": "a48157addf413",
+   "name": "Online Open Seminar on Professional Ethics and Conduct of Trainers of the Mandatory Safety Training Courses",
+   "org": "OSHC",
+   "date": "2026-11-10",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "region": "HK",
+   "online": true,
+   "free": null,
+   "source": "OSHC Seminars & Conferences",
+   "group": "OSHC",
+   "auto": true
+  },
+  {
+   "id": "a71da95a33d8a",
+   "name": "25th Hong Kong Occupational Safety and Health Award Forum and Award Presentation Ceremony",
+   "org": "OSHC",
+   "date": "2026-11-10",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "OSHC Seminars & Conferences",
+   "group": "OSHC",
    "auto": true
   },
   {
@@ -230,6 +290,106 @@
    "auto": true
   },
   {
+   "id": "af07b68ed3099",
+   "name": "Online Seminar on Electrical Work Safety and Introduction of Code of Practice for the Electricity (Wiring) Regulations",
+   "org": "OSHC",
+   "date": "2026-11-12",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "region": "HK",
+   "online": true,
+   "free": null,
+   "source": "OSHC Seminars & Conferences",
+   "group": "OSHC",
+   "auto": true
+  },
+  {
+   "id": "a198aecdfd797",
+   "name": "Online Seminar on “ Office Pracatitioners: Effective Strategies for Managing Workplace Verbal Abuse”",
+   "org": "OSHC",
+   "date": "2026-11-17",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "region": "HK",
+   "online": true,
+   "free": null,
+   "source": "OSHC Seminars & Conferences",
+   "group": "OSHC",
+   "auto": true
+  },
+  {
+   "id": "a119423674472",
+   "name": "Online Open Seminar on Exploring the Applications of Generative Artificial Intelligence (GenAI) in Occupational Health and Safety",
+   "org": "OSHC",
+   "date": "2026-11-17",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "region": "HK",
+   "online": true,
+   "free": null,
+   "source": "OSHC Seminars & Conferences",
+   "group": "OSHC",
+   "auto": true
+  },
+  {
+   "id": "abc6aee5bedb3",
+   "name": "Online Seminar on Mobile Elevating Work Platforms Safety and Working at Height Safety: Accident Cases Analysis, Testing Technique, Safety Practices, and Innovative Technology Applications",
+   "org": "OSHC",
+   "date": "2026-11-20",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "region": "HK",
+   "online": true,
+   "free": null,
+   "source": "OSHC Seminars & Conferences",
+   "group": "OSHC",
+   "auto": true
+  },
+  {
+   "id": "ae8d9b546d4a1",
+   "name": "Online Open Seminar on Code of Practice on Safety Management and the related Safety Regulations",
+   "org": "OSHC",
+   "date": "2026-11-24",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "region": "HK",
+   "online": true,
+   "free": null,
+   "source": "OSHC Seminars & Conferences",
+   "group": "OSHC",
+   "auto": true
+  },
+  {
    "id": "a5fe6f51406cf",
    "name": "IET Queensland Annual General Meeting 2026 and Technical Talk",
    "org": "Australasia zone",
@@ -250,6 +410,26 @@
    "auto": true
   },
   {
+   "id": "ac3346432202c",
+   "name": "Online Open Seminar on Safety and Health of Gas Welding and Flame Cutting Works",
+   "org": "OSHC",
+   "date": "2026-12-01",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "region": "HK",
+   "online": true,
+   "free": null,
+   "source": "OSHC Seminars & Conferences",
+   "group": "OSHC",
+   "auto": true
+  },
+  {
    "id": "abca57a6e638a",
    "name": "SPACE BIC by ERATOSTHENES",
    "org": "IET Cyprus",
@@ -267,6 +447,86 @@
    "free": true,
    "source": "IET Hong Kong",
    "group": "IET",
+   "auto": true
+  },
+  {
+   "id": "a0f3dbfa250f2",
+   "name": "Physical Seminar on Construction Lifting Safety",
+   "org": "OSHC",
+   "date": "2026-12-04",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "OSHC Seminars & Conferences",
+   "group": "OSHC",
+   "auto": true
+  },
+  {
+   "id": "affae5b554194",
+   "name": "OH Conference with Heart Caring Charter Signing Ceremony - “Caring Hearts at Work: Preventing Cardiovascular and Cerebrovascular Diseases” [Attend in person]",
+   "org": "OSHC",
+   "date": "2026-12-07",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "OSHC Seminars & Conferences",
+   "group": "OSHC",
+   "auto": true
+  },
+  {
+   "id": "a171d613d3cba",
+   "name": "Online Open Seminar on Professional Ethics and Integrity of Safety Officers",
+   "org": "OSHC",
+   "date": "2026-12-08",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "region": "HK",
+   "online": true,
+   "free": null,
+   "source": "OSHC Seminars & Conferences",
+   "group": "OSHC",
+   "auto": true
+  },
+  {
+   "id": "ad3a9fe5e7c86",
+   "name": "Online Open Seminar on Safety for Marine Industry and Coastal Land-based Construction Work",
+   "org": "OSHC",
+   "date": "2026-12-15",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "region": "HK",
+   "online": true,
+   "free": null,
+   "source": "OSHC Seminars & Conferences",
+   "group": "OSHC",
    "auto": true
   }
  ]
