@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-06T11:42+08:00",
+ "updated": "2026-11-06T12:10+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -25,12 +25,12 @@
   },
   {
    "source": "勞工處 職業健康公開講座",
-   "status": "EMPTY_UNVERIFIED",
-   "ok": false,
-   "n": 0,
-   "method": "generic",
+   "status": "OK_WITH_EVENTS",
+   "ok": true,
+   "n": 5,
+   "method": "labour-list",
    "page_title": "勞工處 - 職業健康公開講座網上報名",
-   "raw_candidates": 0,
+   "raw_candidates": 5,
    "rejects": {}
   },
   {
@@ -47,15 +47,13 @@
   },
   {
    "source": "CIC 建造業議會 Events",
-   "status": "OK_WITH_EVENTS",
-   "ok": true,
-   "n": 9,
-   "method": "playwright+cic-list",
+   "status": "EMPTY_UNVERIFIED",
+   "ok": false,
+   "n": 0,
+   "method": "cic-list",
    "page_title": "Events | Construction Industry Council",
-   "raw_candidates": 12,
-   "rejects": {
-    "date_range": 3
-   }
+   "raw_candidates": 0,
+   "rejects": {}
   },
   {
    "source": "CIC BIM Events",
@@ -89,12 +87,12 @@
   },
   {
    "source": "HKIE CPD Calendar",
-   "status": "EMPTY_UNVERIFIED",
-   "ok": false,
-   "n": 0,
+   "status": "OK_WITH_EVENTS",
+   "ok": true,
+   "n": 16,
    "method": "hkie-cpd",
    "page_title": "CPD Calendar - HKIE",
-   "raw_candidates": 0,
+   "raw_candidates": 16,
    "rejects": {}
   },
   {
@@ -325,26 +323,6 @@
    "auto": true
   },
   {
-   "id": "aa10a3736bf94",
-   "name": "Job Fair",
-   "org": "CIC",
-   "date": "2026-11-06",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true
-  },
-  {
    "id": "a8e751b4d04be",
    "name": "SCLHK One Day International Conference 2026",
    "org": "HKIE Events",
@@ -422,6 +400,26 @@
    "free": null,
    "source": "IStructE Events",
    "group": "IStructE",
+   "auto": true
+  },
+  {
+   "id": "aa10a3736bf94",
+   "name": "Job Fair",
+   "org": "CIC",
+   "date": "2026-11-06",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
    "auto": true
   },
   {
@@ -565,26 +563,6 @@
    "auto": true
   },
   {
-   "id": "ab10639aeb755",
-   "name": "Job Fair",
-   "org": "CIC",
-   "date": "2026-11-09",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true
-  },
-  {
    "id": "a1b7f9d1302d9",
    "name": "Launching PAS 4010 – the new standard for infrastructure productivity",
    "org": "ICE",
@@ -622,6 +600,26 @@
    "free": true,
    "source": "ICE Upcoming Events",
    "group": "ICE",
+   "auto": true
+  },
+  {
+   "id": "ab10639aeb755",
+   "name": "Job Fair",
+   "org": "CIC",
+   "date": "2026-11-09",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
    "auto": true
   },
   {
@@ -865,26 +863,6 @@
    "auto": true
   },
   {
-   "id": "ab1f7b6fd9b0f",
-   "name": "Conference／Seminar",
-   "org": "CIC",
-   "date": "2026-11-12",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true
-  },
-  {
    "id": "a4266066fdd4f",
    "name": "[HKIFM x CIHAPB x HKIE YMC] Running & Wellness Event (Facility x Housing x Engineering)",
    "org": "HKIE Events",
@@ -925,10 +903,10 @@
    "auto": true
   },
   {
-   "id": "aab4afadb8067",
-   "name": "Job Fair",
+   "id": "ab1f7b6fd9b0f",
+   "name": "Conference／Seminar",
    "org": "CIC",
-   "date": "2026-11-14",
+   "date": "2026-11-12",
    "time": "",
    "hrs": null,
    "hrs_est": false,
@@ -1022,6 +1000,26 @@
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "aab4afadb8067",
+   "name": "Job Fair",
+   "org": "CIC",
+   "date": "2026-11-14",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
    "auto": true
   },
   {
@@ -1125,6 +1123,26 @@
    "auto": true
   },
   {
+   "id": "a7bf2f3deba85",
+   "name": "15:30 - 17:00",
+   "org": "Labour Dept",
+   "date": "2026-11-19",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www1.oshsreg.gov.hk/ocrs/talk/search.xhtml?regType=Individual",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "勞工處 職業健康公開講座",
+   "group": "Labour Dept",
+   "auto": true
+  },
+  {
    "id": "a3d3ddcd83f77",
    "name": "Talk on \"Occupational Health of Office Workers Series (II) Prevention of Musculoskeletal Disorders for Office Workers\"",
    "org": "OSHC",
@@ -1185,6 +1203,26 @@
    "auto": true
   },
   {
+   "id": "a31579a69f015",
+   "name": "Webinar on The Emerging Space Economy: Opportunities and Challenges",
+   "org": "HKIE Events",
+   "date": "2026-11-20",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ad70fb75f713be015110308/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
    "id": "a03c082d94a54",
    "name": "Job Fair",
    "org": "CIC",
@@ -1225,10 +1263,10 @@
    "auto": true
   },
   {
-   "id": "a31579a69f015",
-   "name": "Webinar on The Emerging Space Economy: Opportunities and Challenges",
-   "org": "HKIE Events",
-   "date": "2026-11-20",
+   "id": "ade4f8038a5f3",
+   "name": "Supporting Event",
+   "org": "HKGBC",
+   "date": "2026-11-21",
    "time": "",
    "hrs": null,
    "hrs_est": false,
@@ -1236,19 +1274,19 @@
    "disc": [
     "General"
    ],
-   "url": "https://hkie.org.hk/events/event-detail/6ad70fb75f713be015110308/",
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
    "region": "HK",
    "online": null,
    "free": null,
-   "source": "HKIE Events",
-   "group": "HKIE",
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
    "auto": true
   },
   {
-   "id": "ade4f8038a5f3",
+   "id": "ac679b030a8ec",
    "name": "Supporting Event",
    "org": "HKGBC",
-   "date": "2026-11-21",
+   "date": "2026-11-23",
    "time": "",
    "hrs": null,
    "hrs_est": false,
@@ -1282,26 +1320,6 @@
    "free": null,
    "source": "CIC 建造業議會 Events",
    "group": "CIC",
-   "auto": true
-  },
-  {
-   "id": "ac679b030a8ec",
-   "name": "Supporting Event",
-   "org": "HKGBC",
-   "date": "2026-11-23",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
    "auto": true
   },
   {
@@ -1485,6 +1503,26 @@
    "auto": true
   },
   {
+   "id": "aafbc3f3de808",
+   "name": "Supporting Event",
+   "org": "HKGBC",
+   "date": "2026-11-29",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true
+  },
+  {
    "id": "a0a71566eb258",
    "name": "Festival",
    "org": "CIC",
@@ -1525,26 +1563,6 @@
    "auto": true
   },
   {
-   "id": "aafbc3f3de808",
-   "name": "Supporting Event",
-   "org": "HKGBC",
-   "date": "2026-11-29",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true
-  },
-  {
    "id": "a9951acb64987",
    "name": "Supporting Event",
    "org": "HKGBC",
@@ -1582,6 +1600,106 @@
    "free": null,
    "source": "OSHC Seminars & Conferences",
    "group": "OSHC",
+   "auto": true
+  },
+  {
+   "id": "a874a1e8c3d1d",
+   "name": "15:30 - 17:00",
+   "org": "Labour Dept",
+   "date": "2026-12-01",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www1.oshsreg.gov.hk/ocrs/talk/search.xhtml?regType=Individual",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "勞工處 職業健康公開講座",
+   "group": "Labour Dept",
+   "auto": true
+  },
+  {
+   "id": "ab88a531ffff7",
+   "name": "11 December 2026 (Fri)",
+   "org": "HKIE",
+   "date": "2026-12-01",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/professional-development/continuing-professional-development/cpd-calendar/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE CPD Calendar",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "a6b93008dcf84",
+   "name": "eLearning series: Mastering AI Tools for Professional Technical Writing",
+   "org": "HKIE",
+   "date": "2026-12-01",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/cpd-courses/elearning-series-mastering-ai-tools-for-professional-technical-writing-6/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE CPD Calendar",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "a1ecd972ef46e",
+   "name": "eLearning series: The financial side of project management",
+   "org": "HKIE",
+   "date": "2026-12-01",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "GPM",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/cpd-courses/elearning-series-the-financial-side-of-project-management-12/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE CPD Calendar",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "a11329f5a1fdc",
+   "name": "eLearning series: Mistakes to avoid in conversational English",
+   "org": "HKIE",
+   "date": "2026-12-01",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/cpd-courses/elearning-series-mistakes-to-avoid-in-conversational-english-12/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE CPD Calendar",
+   "group": "HKIE",
    "auto": true
   },
   {
@@ -1685,6 +1803,26 @@
    "auto": true
   },
   {
+   "id": "a5b2f2074e51b",
+   "name": "Global BIM Coordinator Professional Training Course",
+   "org": "HKIE",
+   "date": "2026-12-07",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/cpd-courses/global-bim-coordinator-professional-training-course-11/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE CPD Calendar",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
    "id": "a56211c3bee83",
    "name": "Supporting Event",
    "org": "HKGBC",
@@ -1745,6 +1883,26 @@
    "auto": true
   },
   {
+   "id": "a10273c20faeb",
+   "name": "Organizational Level Greenhouse Gas Accounting and Verification – ISO 14064 Introductory and Implementation Course",
+   "org": "HKIE",
+   "date": "2026-12-09",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/cpd-courses/organizational-level-greenhouse-gas-accounting-and-verification-iso-14064-introductory-and-implementation-course/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE CPD Calendar",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
    "id": "afcfe454fc163",
    "name": "HKGBC Event",
    "org": "HKGBC",
@@ -1762,6 +1920,126 @@
    "free": null,
    "source": "HKGBC 綠建環評",
    "group": "HKGBC",
+   "auto": true
+  },
+  {
+   "id": "a98726d728045",
+   "name": "18 December 2026 (Fri)",
+   "org": "HKIE",
+   "date": "2026-12-11",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/professional-development/continuing-professional-development/cpd-calendar/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE CPD Calendar",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "ada976c21a817",
+   "name": "Sustainable Development Planning and ESG for Engineers",
+   "org": "HKIE",
+   "date": "2026-12-11",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/cpd-courses/sustainable-development-planning-and-esg-for-engineers-6/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE CPD Calendar",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "a223d07054882",
+   "name": "28 & 29 December 2026 (Mon & Tue)",
+   "org": "HKIE",
+   "date": "2026-12-11",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/professional-development/continuing-professional-development/cpd-calendar/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE CPD Calendar",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "a634fdd0ebba2",
+   "name": "Essentials of NEC4 Engineering Construction Contract (ECC)",
+   "org": "HKIE",
+   "date": "2026-12-11",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "GPM",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/cpd-courses/essentials-of-nec4-engineering-construction-contract-ecc-4/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE CPD Calendar",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "a9f8b3162dc94",
+   "name": "9-11 Dec 2026 (Wed-Fri)",
+   "org": "HKIE",
+   "date": "2026-12-14",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/professional-development/continuing-professional-development/cpd-calendar/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE CPD Calendar",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "afeae72bf67f8",
+   "name": "Global BIM Manager Professional Training Course",
+   "org": "HKIE",
+   "date": "2026-12-14",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/cpd-courses/global-bim-manager-professional-training-course-11/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE CPD Calendar",
+   "group": "HKIE",
    "auto": true
   },
   {
@@ -1785,6 +2063,126 @@
    "auto": true
   },
   {
+   "id": "ad06b680556c6",
+   "name": "4 & 7-11 December 2026",
+   "org": "HKIE",
+   "date": "2026-12-18",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/professional-development/continuing-professional-development/cpd-calendar/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE CPD Calendar",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "aa1db7eb3df72",
+   "name": "Project Management and Impactful Communication",
+   "org": "HKIE",
+   "date": "2026-12-18",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "GPM",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/cpd-courses/project-management-and-impactful-communication-2/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE CPD Calendar",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "a5f71e0a80d3a",
+   "name": "15:30 - 16:45",
+   "org": "Labour Dept",
+   "date": "2026-12-21",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www1.oshsreg.gov.hk/ocrs/talk/search.xhtml?regType=Individual",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "勞工處 職業健康公開講座",
+   "group": "Labour Dept",
+   "auto": true
+  },
+  {
+   "id": "a844254617957",
+   "name": "11 December 2026 (Fri)",
+   "org": "HKIE",
+   "date": "2026-12-29",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/professional-development/continuing-professional-development/cpd-calendar/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE CPD Calendar",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "ab130258f34a5",
+   "name": "Integrated ASNT PT & MT NDT Level (1) ASNT Professional Course",
+   "org": "HKIE",
+   "date": "2026-12-29",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/cpd-courses/integrated-asnt-pt-mt-ndt-level-1-asnt-professional-course-2/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE CPD Calendar",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "adf90093a883c",
+   "name": "15:30 - 16:45",
+   "org": "Labour Dept",
+   "date": "2027-01-04",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www1.oshsreg.gov.hk/ocrs/talk/search.xhtml?regType=Individual",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "勞工處 職業健康公開講座",
+   "group": "Labour Dept",
+   "auto": true
+  },
+  {
    "id": "a741c878000de",
    "name": "Supporting Event",
    "org": "HKGBC",
@@ -1802,6 +2200,26 @@
    "free": null,
    "source": "HKGBC 綠建環評",
    "group": "HKGBC",
+   "auto": true
+  },
+  {
+   "id": "a5ed6ade1cd3e",
+   "name": "15:30 - 17:00",
+   "org": "Labour Dept",
+   "date": "2027-01-13",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www1.oshsreg.gov.hk/ocrs/talk/search.xhtml?regType=Individual",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "勞工處 職業健康公開講座",
+   "group": "Labour Dept",
    "auto": true
   }
  ]
