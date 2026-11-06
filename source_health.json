@@ -6,7 +6,7 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 2,
+  "consecutive_fail": 3,
   "last_success": null,
   "updated": "2026-11-06"
  },
@@ -48,13 +48,15 @@
   "updated": "2026-11-06"
  },
  "CIC 建造業議會 Events": {
-  "last_status": "EMPTY_UNVERIFIED",
-  "last_n": 0,
-  "last_method": "cic-list",
+  "last_status": "OK_WITH_EVENTS",
+  "last_n": 9,
+  "last_method": "playwright+cic-list",
   "last_error": null,
-  "raw_candidates": 0,
-  "rejects": {},
-  "consecutive_fail": 1,
+  "raw_candidates": 12,
+  "rejects": {
+   "date_range": 3
+  },
+  "consecutive_fail": 0,
   "last_success": "2026-11-06",
   "updated": "2026-11-06"
  },
@@ -65,7 +67,7 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 2,
+  "consecutive_fail": 3,
   "last_success": null,
   "updated": "2026-11-06"
  },
@@ -76,7 +78,7 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 2,
+  "consecutive_fail": 3,
   "last_success": null,
   "updated": "2026-11-06"
  },
@@ -87,7 +89,7 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 2,
+  "consecutive_fail": 3,
   "last_success": null,
   "updated": "2026-11-06"
  },
@@ -114,7 +116,7 @@
   "updated": "2026-11-06"
  },
  "HKIE Building Division": {
-  "last_status": "EMPTY_UNVERIFIED",
+  "last_status": "VERIFIED_EMPTY",
   "last_n": 0,
   "last_method": "hkie-div",
   "last_error": null,
@@ -122,7 +124,7 @@
   "rejects": {
    "date_range": 20
   },
-  "consecutive_fail": 2,
+  "consecutive_fail": 0,
   "last_success": null,
   "updated": "2026-11-06"
  },
@@ -133,7 +135,7 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 2,
+  "consecutive_fail": 3,
   "last_success": null,
   "updated": "2026-11-06"
  },
@@ -144,7 +146,7 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 2,
+  "consecutive_fail": 3,
   "last_success": null,
   "updated": "2026-11-06"
  },
@@ -155,7 +157,7 @@
   "last_error": "讀取網頁失敗：HTTP 403（網站封鎖咗雲端伺服器）",
   "raw_candidates": null,
   "rejects": null,
-  "consecutive_fail": 2,
+  "consecutive_fail": 3,
   "last_success": null,
   "updated": "2026-11-06"
  },
@@ -179,7 +181,7 @@
   "last_error": "Playwright 失敗：Error",
   "raw_candidates": null,
   "rejects": null,
-  "consecutive_fail": 2,
+  "consecutive_fail": 3,
   "last_success": null,
   "updated": "2026-11-06"
  },
@@ -197,7 +199,7 @@
   "updated": "2026-11-06"
  },
  "ICE Lectures": {
-  "last_status": "EMPTY_UNVERIFIED",
+  "last_status": "VERIFIED_EMPTY",
   "last_n": 0,
   "last_method": "ice-cards",
   "last_error": null,
@@ -206,7 +208,7 @@
    "date_range": 1,
    "overseas_physical": 11
   },
-  "consecutive_fail": 2,
+  "consecutive_fail": 0,
   "last_success": null,
   "updated": "2026-11-06"
  },
@@ -230,7 +232,7 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 2,
+  "consecutive_fail": 3,
   "last_success": null,
   "updated": "2026-11-06"
  },

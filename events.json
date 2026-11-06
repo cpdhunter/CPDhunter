@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-06T12:10+08:00",
+ "updated": "2026-11-06T13:34+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -47,13 +47,15 @@
   },
   {
    "source": "CIC 建造業議會 Events",
-   "status": "EMPTY_UNVERIFIED",
-   "ok": false,
-   "n": 0,
-   "method": "cic-list",
+   "status": "OK_WITH_EVENTS",
+   "ok": true,
+   "n": 9,
+   "method": "playwright+cic-list",
    "page_title": "Events | Construction Industry Council",
-   "raw_candidates": 0,
-   "rejects": {}
+   "raw_candidates": 12,
+   "rejects": {
+    "date_range": 3
+   }
   },
   {
    "source": "CIC BIM Events",
@@ -107,7 +109,7 @@
   },
   {
    "source": "HKIE Building Division",
-   "status": "EMPTY_UNVERIFIED",
+   "status": "VERIFIED_EMPTY",
    "ok": false,
    "n": 0,
    "method": "hkie-div",
@@ -177,7 +179,7 @@
   },
   {
    "source": "ICE Lectures",
-   "status": "EMPTY_UNVERIFIED",
+   "status": "VERIFIED_EMPTY",
    "ok": false,
    "n": 0,
    "method": "ice-cards",
@@ -323,6 +325,26 @@
    "auto": true
   },
   {
+   "id": "aa10a3736bf94",
+   "name": "Job Fair",
+   "org": "CIC",
+   "date": "2026-11-06",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true
+  },
+  {
    "id": "a8e751b4d04be",
    "name": "SCLHK One Day International Conference 2026",
    "org": "HKIE Events",
@@ -400,26 +422,6 @@
    "free": null,
    "source": "IStructE Events",
    "group": "IStructE",
-   "auto": true
-  },
-  {
-   "id": "aa10a3736bf94",
-   "name": "Job Fair",
-   "org": "CIC",
-   "date": "2026-11-06",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
    "auto": true
   },
   {
@@ -563,6 +565,26 @@
    "auto": true
   },
   {
+   "id": "ab10639aeb755",
+   "name": "Job Fair",
+   "org": "CIC",
+   "date": "2026-11-09",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true
+  },
+  {
    "id": "a1b7f9d1302d9",
    "name": "Launching PAS 4010 – the new standard for infrastructure productivity",
    "org": "ICE",
@@ -600,26 +622,6 @@
    "free": true,
    "source": "ICE Upcoming Events",
    "group": "ICE",
-   "auto": true
-  },
-  {
-   "id": "ab10639aeb755",
-   "name": "Job Fair",
-   "org": "CIC",
-   "date": "2026-11-09",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
    "auto": true
   },
   {
@@ -675,6 +677,26 @@
     "General"
    ],
    "url": "https://hkie.org.hk/events/event-detail/6abc6e995f713be015074aec/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "a850c53f57d33",
+   "name": "[MMNC SYEA] Certificate Course 2026/ 2027 – Topic 1: ESG & Green Finance",
+   "org": "HKIE Events",
+   "date": "2026-11-10",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6aaa9d76a5c8f81c9506c958/",
    "region": "HK",
    "online": null,
    "free": null,
@@ -863,6 +885,26 @@
    "auto": true
   },
   {
+   "id": "ab1f7b6fd9b0f",
+   "name": "Conference／Seminar",
+   "org": "CIC",
+   "date": "2026-11-12",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true
+  },
+  {
    "id": "a4266066fdd4f",
    "name": "[HKIFM x CIHAPB x HKIE YMC] Running & Wellness Event (Facility x Housing x Engineering)",
    "org": "HKIE Events",
@@ -903,10 +945,10 @@
    "auto": true
   },
   {
-   "id": "ab1f7b6fd9b0f",
-   "name": "Conference／Seminar",
+   "id": "aab4afadb8067",
+   "name": "Job Fair",
    "org": "CIC",
-   "date": "2026-11-12",
+   "date": "2026-11-14",
    "time": "",
    "hrs": null,
    "hrs_est": false,
@@ -1000,26 +1042,6 @@
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
-   "auto": true
-  },
-  {
-   "id": "aab4afadb8067",
-   "name": "Job Fair",
-   "org": "CIC",
-   "date": "2026-11-14",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
    "auto": true
   },
   {
@@ -1203,26 +1225,6 @@
    "auto": true
   },
   {
-   "id": "a31579a69f015",
-   "name": "Webinar on The Emerging Space Economy: Opportunities and Challenges",
-   "org": "HKIE Events",
-   "date": "2026-11-20",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://hkie.org.hk/events/event-detail/6ad70fb75f713be015110308/",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIE Events",
-   "group": "HKIE",
-   "auto": true
-  },
-  {
    "id": "a03c082d94a54",
    "name": "Job Fair",
    "org": "CIC",
@@ -1263,10 +1265,10 @@
    "auto": true
   },
   {
-   "id": "ade4f8038a5f3",
-   "name": "Supporting Event",
-   "org": "HKGBC",
-   "date": "2026-11-21",
+   "id": "a31579a69f015",
+   "name": "Webinar on The Emerging Space Economy: Opportunities and Challenges",
+   "org": "HKIE Events",
+   "date": "2026-11-20",
    "time": "",
    "hrs": null,
    "hrs_est": false,
@@ -1274,19 +1276,19 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
+   "url": "https://hkie.org.hk/events/event-detail/6ad70fb75f713be015110308/",
    "region": "HK",
    "online": null,
    "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
+   "source": "HKIE Events",
+   "group": "HKIE",
    "auto": true
   },
   {
-   "id": "ac679b030a8ec",
+   "id": "ade4f8038a5f3",
    "name": "Supporting Event",
    "org": "HKGBC",
-   "date": "2026-11-23",
+   "date": "2026-11-21",
    "time": "",
    "hrs": null,
    "hrs_est": false,
@@ -1320,6 +1322,26 @@
    "free": null,
    "source": "CIC 建造業議會 Events",
    "group": "CIC",
+   "auto": true
+  },
+  {
+   "id": "ac679b030a8ec",
+   "name": "Supporting Event",
+   "org": "HKGBC",
+   "date": "2026-11-23",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
    "auto": true
   },
   {
@@ -1503,26 +1525,6 @@
    "auto": true
   },
   {
-   "id": "aafbc3f3de808",
-   "name": "Supporting Event",
-   "org": "HKGBC",
-   "date": "2026-11-29",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true
-  },
-  {
    "id": "a0a71566eb258",
    "name": "Festival",
    "org": "CIC",
@@ -1560,6 +1562,26 @@
    "free": null,
    "source": "CIC 建造業議會 Events",
    "group": "CIC",
+   "auto": true
+  },
+  {
+   "id": "aafbc3f3de808",
+   "name": "Supporting Event",
+   "org": "HKGBC",
+   "date": "2026-11-29",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
    "auto": true
   },
   {
