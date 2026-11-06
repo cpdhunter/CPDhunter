@@ -1,131 +1,226 @@
 {
- "updated": "2026-11-06T11:06+08:00",
+ "updated": "2026-11-06T11:42+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
-   "ok": true,
+   "status": "EMPTY_UNVERIFIED",
+   "ok": false,
    "n": 0,
-   "method": "playwright"
+   "method": "generic",
+   "page_title": "OSHC",
+   "raw_candidates": 0,
+   "rejects": {}
   },
   {
    "source": "OSHC Seminars & Conferences",
+   "status": "OK_WITH_EVENTS",
    "ok": true,
    "n": 13,
-   "method": "oshc-table"
+   "method": "oshc-table",
+   "page_title": "Seminars & Conferences",
+   "raw_candidates": 583,
+   "rejects": {
+    "date_range": 570
+   }
   },
   {
    "source": "勞工處 職業健康公開講座",
-   "ok": true,
+   "status": "EMPTY_UNVERIFIED",
+   "ok": false,
    "n": 0,
-   "method": "generic"
+   "method": "generic",
+   "page_title": "勞工處 - 職業健康公開講座網上報名",
+   "raw_candidates": 0,
+   "rejects": {}
   },
   {
    "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
+   "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 0,
-   "method": "oshc-table"
+   "n": 12,
+   "method": "oshc-table",
+   "page_title": "Civil Service Bureau -  COMING EVENTS",
+   "raw_candidates": 14,
+   "rejects": {
+    "date_range": 2
+   }
   },
   {
    "source": "CIC 建造業議會 Events",
+   "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 0,
-   "method": "cic-list"
+   "n": 9,
+   "method": "playwright+cic-list",
+   "page_title": "Events | Construction Industry Council",
+   "raw_candidates": 12,
+   "rejects": {
+    "date_range": 3
+   }
   },
   {
    "source": "CIC BIM Events",
-   "ok": true,
+   "status": "EMPTY_UNVERIFIED",
+   "ok": false,
    "n": 0,
-   "method": "cic-list"
+   "method": "cic-list",
+   "page_title": "Event Calendar | Events | BIM",
+   "raw_candidates": 0,
+   "rejects": {}
   },
   {
    "source": "CIC CITAC Upcoming Events",
-   "ok": true,
+   "status": "EMPTY_UNVERIFIED",
+   "ok": false,
    "n": 0,
-   "method": "cic-list"
+   "method": "cic-list",
+   "page_title": "CITAC - Upcoming Events",
+   "raw_candidates": 0,
+   "rejects": {}
   },
   {
    "source": "CIC RSTCS 工作坊",
-   "ok": true,
+   "status": "EMPTY_UNVERIFIED",
+   "ok": false,
    "n": 0,
-   "method": "cic-list"
+   "method": "cic-list",
+   "page_title": "CIC",
+   "raw_candidates": 0,
+   "rejects": {}
   },
   {
    "source": "HKIE CPD Calendar",
-   "ok": true,
+   "status": "EMPTY_UNVERIFIED",
+   "ok": false,
    "n": 0,
-   "method": "generic"
+   "method": "hkie-cpd",
+   "page_title": "CPD Calendar - HKIE",
+   "raw_candidates": 0,
+   "rejects": {}
   },
   {
    "source": "HKIE Events",
+   "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 0,
-   "method": "generic"
+   "n": 20,
+   "method": "playwright+generic",
+   "page_title": "Events - HKIE",
+   "raw_candidates": 20,
+   "rejects": {}
   },
   {
    "source": "HKIE Building Division",
-   "ok": true,
+   "status": "EMPTY_UNVERIFIED",
+   "ok": false,
    "n": 0,
-   "method": "generic"
+   "method": "hkie-div",
+   "page_title": "Events / Activities - HKIE BD",
+   "raw_candidates": 20,
+   "rejects": {
+    "date_range": 20
+   }
   },
   {
    "source": "HKIE Structural Division",
-   "ok": true,
+   "status": "EMPTY_UNVERIFIED",
+   "ok": false,
    "n": 0,
-   "method": "generic"
+   "method": "hkie-div",
+   "page_title": "EVENTS AND ACTIVITIES – HKIE",
+   "raw_candidates": 0,
+   "rejects": {}
   },
   {
    "source": "HKIE Fire Division",
-   "ok": true,
+   "status": "EMPTY_UNVERIFIED",
+   "ok": false,
    "n": 0,
-   "method": "generic"
+   "method": "hkie-div",
+   "page_title": "Home - Fire Division",
+   "raw_candidates": 0,
+   "rejects": {}
   },
   {
    "source": "HKIS CPD",
+   "status": "FAIL",
    "ok": false,
    "n": 0,
    "err": "讀取網頁失敗：HTTP 403（網站封鎖咗雲端伺服器）"
   },
   {
    "source": "HKGBC 綠建環評",
+   "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 0,
-   "method": "generic"
+   "n": 17,
+   "method": "hkgbc",
+   "page_title": "Events & Trainings | HKGBC",
+   "raw_candidates": 30,
+   "rejects": {
+    "date_range": 13
+   }
   },
   {
    "source": "IET Hong Kong",
+   "status": "FAIL",
    "ok": false,
    "n": 0,
-   "err": "讀取網頁失敗：SSL 憑證問題"
+   "err": "Playwright 失敗：Error"
   },
   {
    "source": "ICE Upcoming Events",
+   "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 0,
-   "method": "generic"
+   "n": 6,
+   "method": "ice-cards",
+   "page_title": "Latest Events at ICE | Institution of Civil Engineers (ICE)",
+   "raw_candidates": 12,
+   "rejects": {
+    "overseas_physical": 6
+   }
   },
   {
    "source": "ICE Lectures",
-   "ok": true,
+   "status": "EMPTY_UNVERIFIED",
+   "ok": false,
    "n": 0,
-   "method": "generic"
+   "method": "ice-cards",
+   "page_title": "Lectures | Institution of Civil Engineers (ICE)",
+   "raw_candidates": 12,
+   "rejects": {
+    "date_range": 1,
+    "overseas_physical": 11
+   }
   },
   {
    "source": "IStructE Events",
+   "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 0,
-   "method": "playwright"
+   "n": 3,
+   "method": "generic",
+   "page_title": "Events - The Institution of Structural Engineers",
+   "raw_candidates": 4,
+   "rejects": {
+    "date_range": 1
+   }
   },
   {
    "source": "IET Online Events",
-   "ok": true,
+   "status": "EMPTY_UNVERIFIED",
+   "ok": false,
    "n": 0,
-   "method": "generic"
+   "method": "generic",
+   "page_title": "IET events and courses search",
+   "raw_candidates": 0,
+   "rejects": {}
   },
   {
    "source": "CIC (UK) Events",
+   "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 0,
-   "method": "generic"
+   "n": 1,
+   "method": "generic",
+   "page_title": "Events | Construction Industry Council",
+   "raw_candidates": 1,
+   "rejects": {}
   }
  ],
  "events": [
@@ -210,6 +305,126 @@
    "auto": true
   },
   {
+   "id": "ab73526882fb5",
+   "name": "【Heart Caring Campaign/Joyful@Healthy Workplace】Does High Stress \"Break Your Heart\"? The Relationship Between Mental Health and Cardiovascular Disease Webinar",
+   "org": "OSHC",
+   "date": "2026-11-06",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.csb.gov.hk/english/oshcs/events/coming-events.html",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
+   "group": "Labour Dept",
+   "auto": true
+  },
+  {
+   "id": "aa10a3736bf94",
+   "name": "Job Fair",
+   "org": "CIC",
+   "date": "2026-11-06",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true
+  },
+  {
+   "id": "a8e751b4d04be",
+   "name": "SCLHK One Day International Conference 2026",
+   "org": "HKIE Events",
+   "date": "2026-11-06",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6abf42ba5f713be015085b32/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "a9a2c5a657858",
+   "name": "From calculations to decisions: engineering judgement, confidence and influence",
+   "org": "ICE",
+   "date": "2026-11-06",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.ice.org.uk/events/upcoming-events/from-calculations-to-decisions-engineering-judgement-confidence-and-influence",
+   "region": "Overseas",
+   "online": true,
+   "free": true,
+   "source": "ICE Upcoming Events",
+   "group": "ICE",
+   "auto": true
+  },
+  {
+   "id": "a3ab020d7df52",
+   "name": "Ceremony",
+   "org": "IStructE Events",
+   "date": "2026-11-06",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.istructe.org/events/search/?c=ceremony",
+   "region": "Overseas",
+   "online": null,
+   "free": null,
+   "source": "IStructE Events",
+   "group": "IStructE",
+   "auto": true
+  },
+  {
+   "id": "a599edd1ecf94",
+   "name": "Structural Awards 2026 ceremony",
+   "org": "IStructE Events",
+   "date": "2026-11-06",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.istructe.org/events/hq/2026/structural-awards-2026-ceremony/",
+   "region": "Overseas",
+   "online": null,
+   "free": null,
+   "source": "IStructE Events",
+   "group": "IStructE",
+   "auto": true
+  },
+  {
    "id": "a2ca2dd338911",
    "name": "Technical Visit to Shenzhen: BYD Headquarters, Battery-powered SkyShuttle APM System, and the New MTR Shenzhen Joint Ven",
    "org": "IET Hong Kong",
@@ -230,8 +445,188 @@
    "auto": true
   },
   {
+   "id": "a027745149b1c",
+   "name": "The 4th Symposium on Latest Advances in Marine Land Development Technology & The 2nd Symposium on Ship and Ocean Engineering Equipment",
+   "org": "HKIE Events",
+   "date": "2026-11-07",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6a0171363aec4b08762606fa/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "a45a63d6efa69",
+   "name": "Technical Visit to Trunk Road T4 in Sha Tin (Contract No. ED/2022/02)",
+   "org": "HKIE Events",
+   "date": "2026-11-07",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "GPM",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ad9e4215f713be015124793/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "a4e3da61d33df",
+   "name": "Technical Visit to Yuen Long Barrage and Nullah Improvement Schemes",
+   "org": "HKIE Events",
+   "date": "2026-11-07",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6abce13c5f713be015078266/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "abaff7b4f6a4c",
+   "name": "Technical  Visit to HKUST Aerodynamics and Acoustics Facility",
+   "org": "HKIE Events",
+   "date": "2026-11-07",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ad706505f713be01510fb27/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "a6aa3a5abf83e",
+   "name": "Technical Visit to the Electric Vehicles Training Centre",
+   "org": "HKIE Events",
+   "date": "2026-11-07",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ace682f5f713be0150de637/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "a9c8065ecc521",
+   "name": "Helper Orientation Day",
+   "org": "HKIE Events",
+   "date": "2026-11-07",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ac4740f5f713be0150a3737/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "ab10639aeb755",
+   "name": "Job Fair",
+   "org": "CIC",
+   "date": "2026-11-09",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true
+  },
+  {
+   "id": "a1b7f9d1302d9",
+   "name": "Launching PAS 4010 – the new standard for infrastructure productivity",
+   "org": "ICE",
+   "date": "2026-11-09",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.ice.org.uk/events/upcoming-events/launching-pas-4010-the-new-standard-for-infrastructure-productivity-register-interest",
+   "region": "Overseas",
+   "online": true,
+   "free": null,
+   "source": "ICE Upcoming Events",
+   "group": "ICE",
+   "auto": true
+  },
+  {
+   "id": "aa4aaca86b58d",
+   "name": "Top tips for spending less online",
+   "org": "ICE",
+   "date": "2026-11-09",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.ice.org.uk/events/upcoming-events/ben-fund-top-tips-for-spending-less-online",
+   "region": "Overseas",
+   "online": true,
+   "free": true,
+   "source": "ICE Upcoming Events",
+   "group": "ICE",
+   "auto": true
+  },
+  {
    "id": "a48157addf413",
-   "name": "Online Open Seminar on Professional Ethics and Conduct of Trainers of the Mandatory Safety Training Courses",
+   "name": "Online Open Seminar on \"Professional Ethics and Conduct of Trainers of the Mandatory Safety Training Courses\"",
    "org": "OSHC",
    "date": "2026-11-10",
    "time": "",
@@ -241,12 +636,12 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "url": "https://www.csb.gov.hk/english/oshcs/events/coming-events.html",
    "region": "HK",
    "online": true,
    "free": null,
-   "source": "OSHC Seminars & Conferences",
-   "group": "OSHC",
+   "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
+   "group": "Labour Dept",
    "auto": true
   },
   {
@@ -261,12 +656,152 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "url": "https://www.csb.gov.hk/english/oshcs/events/coming-events.html",
    "region": "HK",
    "online": null,
    "free": null,
-   "source": "OSHC Seminars & Conferences",
-   "group": "OSHC",
+   "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
+   "group": "Labour Dept",
+   "auto": true
+  },
+  {
+   "id": "ac72c99bf464b",
+   "name": "[AESG] Automotive Engineering Technical Visit Series in Hubei Province",
+   "org": "HKIE Events",
+   "date": "2026-11-10",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6abc6e995f713be015074aec/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "ab901f90a8c43",
+   "name": "HKGBC Event",
+   "org": "HKGBC",
+   "date": "2026-11-10",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true
+  },
+  {
+   "id": "a2a2774b23755",
+   "name": "Experiential learning – start your journey",
+   "org": "ICE",
+   "date": "2026-11-10",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.ice.org.uk/events/professional-qualification-training/experiential-learning-start-your-journey-10-nov-26",
+   "region": "Overseas",
+   "online": true,
+   "free": true,
+   "source": "ICE Upcoming Events",
+   "group": "ICE",
+   "auto": true
+  },
+  {
+   "id": "a1e1f9ba818ad",
+   "name": "Resilience Community Forum: PAS 3090 – climate adaptation pathways for infrastructure systems",
+   "org": "ICE",
+   "date": "2026-11-10",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.ice.org.uk/events/upcoming-events/resilience-community-forum-pas-3090",
+   "region": "Overseas",
+   "online": true,
+   "free": true,
+   "source": "ICE Upcoming Events",
+   "group": "ICE",
+   "auto": true
+  },
+  {
+   "id": "a3aa161fe6426",
+   "name": "Technical Visit to Shenyang and Beijing: Advanced Civil Explosives, Smart Blasting Technology & Geotechnical Applications",
+   "org": "HKIE Events",
+   "date": "2026-11-11",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ab4aa52a5c8f81c950b4416/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "ac623c8f304ba",
+   "name": "SICHUAN TECHNICAL VISIT 2026",
+   "org": "HKIE Events",
+   "date": "2026-11-11",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6abe381e5f713be01507f75c/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "aed2675e91589",
+   "name": "Technical Seminar: Artificial Intelligence in Civil Engineering — Practical Applications from Design to Construction and Asset Management",
+   "org": "HKIE Events",
+   "date": "2026-11-11",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "GPM",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6acdeff95f713be0150dba54/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
    "auto": true
   },
   {
@@ -291,7 +826,7 @@
   },
   {
    "id": "af07b68ed3099",
-   "name": "Online Seminar on Electrical Work Safety and Introduction of Code of Practice for the Electricity (Wiring) Regulations",
+   "name": "Online Seminar on \"Electrical Work Safety and Introduction of Code of Practice for the Electricity (Wiring) Regulations\"",
    "org": "OSHC",
    "date": "2026-11-12",
    "time": "",
@@ -301,17 +836,237 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "url": "https://www.csb.gov.hk/english/oshcs/events/coming-events.html",
    "region": "HK",
    "online": true,
    "free": null,
-   "source": "OSHC Seminars & Conferences",
-   "group": "OSHC",
+   "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
+   "group": "Labour Dept",
+   "auto": true
+  },
+  {
+   "id": "ae5b5895e874d",
+   "name": "Seminar on \"Prevention of Slip, Trip or Fall Accidents\"",
+   "org": "OSHC",
+   "date": "2026-11-12",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.csb.gov.hk/english/oshcs/events/coming-events.html",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
+   "group": "Labour Dept",
+   "auto": true
+  },
+  {
+   "id": "ab1f7b6fd9b0f",
+   "name": "Conference／Seminar",
+   "org": "CIC",
+   "date": "2026-11-12",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true
+  },
+  {
+   "id": "a4266066fdd4f",
+   "name": "[HKIFM x CIHAPB x HKIE YMC] Running & Wellness Event (Facility x Housing x Engineering)",
+   "org": "HKIE Events",
+   "date": "2026-11-12",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ada20555f713be015125c92/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "ad2ba06a7361e",
+   "name": "HKIE YMC X ICE HKA G&S Seminar – Safety First: The Cornerstone of Construction Industry",
+   "org": "HKIE Events",
+   "date": "2026-11-12",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6acdfb1c5f713be0150dbf5d/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "aab4afadb8067",
+   "name": "Job Fair",
+   "org": "CIC",
+   "date": "2026-11-14",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true
+  },
+  {
+   "id": "a7f35abcd1fe7",
+   "name": "Technical Visit to MiMEP Design and Manufacturing Centre",
+   "org": "HKIE Events",
+   "date": "2026-11-14",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ae56d341f1d426669be1206/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "a66e2cb466e17",
+   "name": "HKIE GD x ICE HKA G&S: Local Geo-tour 2026 to Lai Chi Chong and Grass Island",
+   "org": "HKIE Events",
+   "date": "2026-11-14",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ac33eeb5f713be01509b894/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "a65214184522c",
+   "name": "Technical Visit: ATAL Tower – Smart & Sustainable Building Solutions",
+   "org": "HKIE Events",
+   "date": "2026-11-14",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ad22da05f713be0150f63c2/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "a554bfca904ad",
+   "name": "Technical Visit to NVC Factory",
+   "org": "HKIE Events",
+   "date": "2026-11-14",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ad850945f713be0151187e6/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "ade4c69a74c66",
+   "name": "Hong Kong Airworthiness Course",
+   "org": "HKIE Events",
+   "date": "2026-11-16",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ab0d3b8a5c8f81c9509596a/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "a724af91c5a13",
+   "name": "Supporting Event",
+   "org": "HKGBC",
+   "date": "2026-11-16",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
    "auto": true
   },
   {
    "id": "a198aecdfd797",
-   "name": "Online Seminar on “ Office Pracatitioners: Effective Strategies for Managing Workplace Verbal Abuse”",
+   "name": "Online Seminar on \"Office Pracatitioners: Effective Strategies for Managing Workplace Verbal Abuse\"",
    "org": "OSHC",
    "date": "2026-11-17",
    "time": "",
@@ -321,17 +1076,17 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "url": "https://www.csb.gov.hk/english/oshcs/events/coming-events.html",
    "region": "HK",
    "online": true,
    "free": null,
-   "source": "OSHC Seminars & Conferences",
-   "group": "OSHC",
+   "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
+   "group": "Labour Dept",
    "auto": true
   },
   {
    "id": "a119423674472",
-   "name": "Online Open Seminar on Exploring the Applications of Generative Artificial Intelligence (GenAI) in Occupational Health and Safety",
+   "name": "Online Open Seminar on \"Exploring the Applications of Generative Artificial Intelligence (GenAI) in Occupational Health and Safety\"",
    "org": "OSHC",
    "date": "2026-11-17",
    "time": "",
@@ -341,17 +1096,57 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "url": "https://www.csb.gov.hk/english/oshcs/events/coming-events.html",
    "region": "HK",
    "online": true,
    "free": null,
-   "source": "OSHC Seminars & Conferences",
-   "group": "OSHC",
+   "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
+   "group": "Labour Dept",
+   "auto": true
+  },
+  {
+   "id": "a720c80317b7e",
+   "name": "Joint Technical Seminar on Case Study Sharing: Active Chilled Beam and AI-Based Waterside & Airside Energy Optimization",
+   "org": "HKIE Events",
+   "date": "2026-11-18",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ae43982235f6d2201377cdb/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "a3d3ddcd83f77",
+   "name": "Talk on \"Occupational Health of Office Workers Series (II) Prevention of Musculoskeletal Disorders for Office Workers\"",
+   "org": "OSHC",
+   "date": "2026-11-19",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.csb.gov.hk/english/oshcs/events/coming-events.html",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
+   "group": "Labour Dept",
    "auto": true
   },
   {
    "id": "abc6aee5bedb3",
-   "name": "Online Seminar on Mobile Elevating Work Platforms Safety and Working at Height Safety: Accident Cases Analysis, Testing Technique, Safety Practices, and Innovative Technology Applications",
+   "name": "Online Seminar on \"Mobile Elevating Work Platforms Safety and Working at Height Safety: Accident Cases Analysis, Testing Technique, Safety Practices, and Innovative Technology Applications\"",
    "org": "OSHC",
    "date": "2026-11-20",
    "time": "",
@@ -361,17 +1156,157 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "url": "https://www.csb.gov.hk/english/oshcs/events/coming-events.html",
    "region": "HK",
    "online": true,
    "free": null,
-   "source": "OSHC Seminars & Conferences",
-   "group": "OSHC",
+   "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
+   "group": "Labour Dept",
+   "auto": true
+  },
+  {
+   "id": "a83dfa7413660",
+   "name": "Seminar on \"Indoor Air Quality and Occupational Health\"",
+   "org": "OSHC",
+   "date": "2026-11-20",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.csb.gov.hk/english/oshcs/events/coming-events.html",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
+   "group": "Labour Dept",
+   "auto": true
+  },
+  {
+   "id": "a03c082d94a54",
+   "name": "Job Fair",
+   "org": "CIC",
+   "date": "2026-11-20",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true
+  },
+  {
+   "id": "a067e6ae6ceda",
+   "name": "Conference／Seminar",
+   "org": "CIC",
+   "date": "2026-11-20",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true
+  },
+  {
+   "id": "a31579a69f015",
+   "name": "Webinar on The Emerging Space Economy: Opportunities and Challenges",
+   "org": "HKIE Events",
+   "date": "2026-11-20",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ad70fb75f713be015110308/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true
+  },
+  {
+   "id": "ade4f8038a5f3",
+   "name": "Supporting Event",
+   "org": "HKGBC",
+   "date": "2026-11-21",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true
+  },
+  {
+   "id": "a3169a4e32050",
+   "name": "Exhibition",
+   "org": "CIC",
+   "date": "2026-11-23",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true
+  },
+  {
+   "id": "ac679b030a8ec",
+   "name": "Supporting Event",
+   "org": "HKGBC",
+   "date": "2026-11-23",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
    "auto": true
   },
   {
    "id": "ae8d9b546d4a1",
-   "name": "Online Open Seminar on Code of Practice on Safety Management and the related Safety Regulations",
+   "name": "Online Open Seminar on \"Code of Practice on Safety Management and the related Safety Regulations\"",
    "org": "OSHC",
    "date": "2026-11-24",
    "time": "",
@@ -381,12 +1316,112 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "url": "https://www.csb.gov.hk/english/oshcs/events/coming-events.html",
    "region": "HK",
    "online": true,
    "free": null,
-   "source": "OSHC Seminars & Conferences",
-   "group": "OSHC",
+   "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
+   "group": "Labour Dept",
+   "auto": true
+  },
+  {
+   "id": "aabaa5bcbcf53",
+   "name": "Supporting Event",
+   "org": "HKGBC",
+   "date": "2026-11-24",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true
+  },
+  {
+   "id": "a7d0e5ed7232e",
+   "name": "HKGBC Event",
+   "org": "HKGBC",
+   "date": "2026-11-24",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true
+  },
+  {
+   "id": "a009f4fbb84d6",
+   "name": "Seminar on \"Understanding and Responding to Verbal Violence (Part I: for frontline staff)\"",
+   "org": "OSHC",
+   "date": "2026-11-25",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.csb.gov.hk/english/oshcs/events/coming-events.html",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
+   "group": "Labour Dept",
+   "auto": true
+  },
+  {
+   "id": "a47217062e3fb",
+   "name": "Supporting Event",
+   "org": "HKGBC",
+   "date": "2026-11-26",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true
+  },
+  {
+   "id": "aaef3155d0224",
+   "name": "Begins 11th November 2026 November 2026 Economic and Policy Briefing Begins 11th November 2026 11 November CIC webinar bringing together leaders in the construction industry Find out more",
+   "org": "CIC (UK) Events",
+   "date": "2026-11-26",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.org.uk/events/november-2026-economic-and-policy-briefing",
+   "region": "Overseas",
+   "online": null,
+   "free": null,
+   "source": "CIC (UK) Events",
+   "group": "CIC UK",
    "auto": true
   },
   {
@@ -410,6 +1445,126 @@
    "auto": true
   },
   {
+   "id": "a380e44ce787b",
+   "name": "Supporting Event",
+   "org": "HKGBC",
+   "date": "2026-11-27",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true
+  },
+  {
+   "id": "ac6876385b4da",
+   "name": "HKGBC Event",
+   "org": "HKGBC",
+   "date": "2026-11-28",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true
+  },
+  {
+   "id": "a0a71566eb258",
+   "name": "Festival",
+   "org": "CIC",
+   "date": "2026-11-29",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true
+  },
+  {
+   "id": "a3bae6a859f4b",
+   "name": "Others",
+   "org": "CIC",
+   "date": "2026-11-29",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true
+  },
+  {
+   "id": "aafbc3f3de808",
+   "name": "Supporting Event",
+   "org": "HKGBC",
+   "date": "2026-11-29",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true
+  },
+  {
+   "id": "a9951acb64987",
+   "name": "Supporting Event",
+   "org": "HKGBC",
+   "date": "2026-11-30",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true
+  },
+  {
    "id": "ac3346432202c",
    "name": "Online Open Seminar on Safety and Health of Gas Welding and Flame Cutting Works",
    "org": "OSHC",
@@ -427,6 +1582,46 @@
    "free": null,
    "source": "OSHC Seminars & Conferences",
    "group": "OSHC",
+   "auto": true
+  },
+  {
+   "id": "acf4c737b8df0",
+   "name": "Supporting Event",
+   "org": "HKGBC",
+   "date": "2026-12-01",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true
+  },
+  {
+   "id": "a950db50905f7",
+   "name": "Supporting Event",
+   "org": "HKGBC",
+   "date": "2026-12-02",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
    "auto": true
   },
   {
@@ -490,6 +1685,26 @@
    "auto": true
   },
   {
+   "id": "a56211c3bee83",
+   "name": "Supporting Event",
+   "org": "HKGBC",
+   "date": "2026-12-07",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true
+  },
+  {
    "id": "a171d613d3cba",
    "name": "Online Open Seminar on Professional Ethics and Integrity of Safety Officers",
    "org": "OSHC",
@@ -510,6 +1725,46 @@
    "auto": true
   },
   {
+   "id": "aebdcdd2c05ff",
+   "name": "5-week course: finance",
+   "org": "ICE",
+   "date": "2026-12-08",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.ice.org.uk/events/upcoming-events/5-week-course-finance-09-nov-26",
+   "region": "Overseas",
+   "online": true,
+   "free": null,
+   "source": "ICE Upcoming Events",
+   "group": "ICE",
+   "auto": true
+  },
+  {
+   "id": "afcfe454fc163",
+   "name": "HKGBC Event",
+   "org": "HKGBC",
+   "date": "2026-12-09",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true
+  },
+  {
    "id": "ad3a9fe5e7c86",
    "name": "Online Open Seminar on Safety for Marine Industry and Coastal Land-based Construction Work",
    "org": "OSHC",
@@ -527,6 +1782,26 @@
    "free": null,
    "source": "OSHC Seminars & Conferences",
    "group": "OSHC",
+   "auto": true
+  },
+  {
+   "id": "a741c878000de",
+   "name": "Supporting Event",
+   "org": "HKGBC",
+   "date": "2027-01-12",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
    "auto": true
   }
  ]
