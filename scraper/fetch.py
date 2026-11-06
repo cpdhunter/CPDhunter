@@ -1,9 +1,11 @@
 """
-CPD Hunter - daily CPD collector v2.0
-- Structured extraction first (JSON-LD, source-specific, generic)
-- Playwright fallback for JS-rendered pages
-- Rule-based classification; Cloudflare Workers AI only for ambiguous cases
-- Isolated source failures
+CPD Hunter - daily CPD collector v2.1
+- Source-family parsers (HKIE, CIC, ICE, HKGBC, CSB/Labour, OSHC)
+- Better date parsing for common formats
+- Status: OK (events or verified empty) / EMPTY_UNVERIFIED / FAIL
+- Per-source diagnostics
+- Cloudflare AI only for ambiguous classification
+- Playwright for JS/SSL cases
 """
 import json, os, re, sys, time, hashlib, datetime as dt
 from urllib.parse import urljoin, urlparse
@@ -25,7 +27,7 @@ MANUAL = os.path.join(ROOT, "manual.json")
 
 BOT = "CPDHunterBot"
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36 (compatible; CPDHunterBot/2.0; free CPD calendar)",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36 (compatible; CPDHunterBot/2.1; free CPD calendar)",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "Accept-Language": "en-GB,en;q=0.9,zh-HK;q=0.8",
 }
@@ -43,6 +45,9 @@ DISCS = ["Aircraft", "Biomedical", "Building", "Building Services", "Chemical", 
 
 HS_KW = re.compile(r"safety|health|hazard|accident|risk assessment|confined space|lifting|crane|scaffold|work at height|heat stress|職安|安全|健康|意外|吊運|棚架|高空工作", re.I)
 GPM_KW = re.compile(r"contract|NEC|management|law|legal|ethics|integrity|leadership|communication|dispute|arbitration|procurement|合約|管理|法律|道德|誠信|溝通|仲裁|採購", re.I)
+
+MONTHS = {"jan":1,"feb":2,"mar":3,"apr":4,"may":5,"jun":6,"jul":7,"aug":8,"sep":9,"oct":10,"nov":11,"dec":12,
+          "january":1,"february":2,"march":3,"april":4,"june":6,"july":7,"august":8,"september":9,"october":10,"november":11,"december":12}
 
 _robots = {}
 CF_ACCOUNT = os.getenv("CLOUDFLARE_ACCOUNT_ID")
@@ -77,7 +82,8 @@ def fetch_html(url, use_playwright=False):
                 browser = p.chromium.launch(headless=True)
                 page = browser.new_page()
                 page.set_extra_http_headers(HEADERS)
-                page.goto(url, timeout=45000, wait_until="networkidle")
+                page.goto(url, timeout=50000, wait_until="domcontentloaded")
+                page.wait_for_timeout(3000)
                 html = page.content()
                 browser.close()
                 return html
@@ -86,7 +92,7 @@ def fetch_html(url, use_playwright=False):
     last = None
     for attempt in range(2):
         try:
-            r = requests.get(url, headers=HEADERS, timeout=40)
+            r = requests.get(url, headers=HEADERS, timeout=40, verify=True)
         except requests.exceptions.SSLError:
             raise StepError("讀取網頁失敗：SSL 憑證問題")
         except requests.exceptions.Timeout:
@@ -101,57 +107,30 @@ def fetch_html(url, use_playwright=False):
         time.sleep(5)
     raise StepError(last or "讀取網頁失敗")
 
-def walk_jsonld(o):
-    if isinstance(o, list):
-        for x in o: yield from walk_jsonld(x)
-    elif isinstance(o, dict):
-        t = o.get("@type")
-        t = t if isinstance(t, list) else [t]
-        if any(str(x).endswith("Event") for x in t if x):
-            yield o
-        for k in ("@graph", "itemListElement", "item", "subEvent"):
-            if k in o: yield from walk_jsonld(o[k])
-
-def jsonld_events(soup, base):
-    out = []
-    for s in soup.find_all("script", type="application/ld+json"):
-        try:
-            data = json.loads(s.string or "")
-        except Exception:
-            continue
-        for e in walk_jsonld(data):
-            m = re.match(r"(\d{4}-\d{2}-\d{2})(?:T(\d{2}:\d{2}))?(?::\d{2})?(?:\.\d+)?(Z|[+-]\d{2}:?\d{2})?", str(e.get("startDate", "")))
-            if not m: continue
-            em = re.search(r"T(\d{2}:\d{2})", str(e.get("endDate", "")))
-            offers = e.get("offers") or {}
-            if isinstance(offers, list): offers = offers[0] if offers else {}
-            price = str(offers.get("price", "")) if isinstance(offers, dict) else ""
-            org = e.get("organizer") or {}
-            out.append({
-                "title": e.get("name"),
-                "organizer": org.get("name") if isinstance(org, dict) else str(org),
-                "date": m.group(1),
-                "start_time": m.group(2),
-                "end_time": em.group(1) if em else None,
-                "url": urljoin(base, e.get("url") or base),
-                "is_online": ("Online" in str(e.get("eventAttendanceMode", ""))) or None,
-                "is_free": (price in ("0", "0.0", "0.00")) if price else None,
-                "cpd_hours": None,
-            })
-    return out
-
 def parse_date(s):
     if not s: return None
-    s = re.sub(r"[^\d/-]", "", str(s).strip())
-    for fmt in ("%Y-%m-%d", "%d/%m/%Y", "%d-%m-%Y", "%m/%d/%Y"):
-        try:
-            return dt.datetime.strptime(s[:10], fmt).date().isoformat()
-        except Exception:
-            pass
+    s = str(s).strip()
+    m = re.search(r"(\d{1,2})[./-](\d{1,2})[./-](\d{4})", s)
+    if m:
+        d, mo, y = int(m.group(1)), int(m.group(2)), int(m.group(3))
+        try: return dt.date(y, mo, d).isoformat()
+        except: pass
     m = re.search(r"(\d{4})[-/](\d{1,2})[-/](\d{1,2})", s)
-    if m: return f"{m.group(1)}-{int(m.group(2)):02d}-{int(m.group(3)):02d}"
-    m = re.search(r"(\d{1,2})[-/](\d{1,2})[-/](\d{4})", s)
-    if m: return f"{m.group(3)}-{int(m.group(2)):02d}-{int(m.group(1)):02d}"
+    if m:
+        try: return dt.date(int(m.group(1)), int(m.group(2)), int(m.group(3))).isoformat()
+        except: pass
+    m = re.search(r"(\d{1,2})(?:[-\u2013]\d{1,2})?\s+([A-Za-z]+)\s+(\d{4})", s)
+    if m:
+        day, mon, year = int(m.group(1)), m.group(2).lower()[:3], int(m.group(3))
+        if mon in MONTHS:
+            try: return dt.date(year, MONTHS[mon], day).isoformat()
+            except: pass
+    m = re.search(r"(\d{1,2})\s+([A-Za-z]+),?\s+(\d{4})", s)
+    if m:
+        day, mon, year = int(m.group(1)), m.group(2).lower()[:3], int(m.group(3))
+        if mon in MONTHS:
+            try: return dt.date(year, MONTHS[mon], day).isoformat()
+            except: pass
     return None
 
 def extract_oshc(soup, base):
@@ -167,15 +146,100 @@ def extract_oshc(soup, base):
                 out.append({"title": title, "date": d, "url": base, "organizer": "OSHC", "is_online": "Online" in title or None})
     return out
 
+def extract_hkie_cpd(soup, base):
+    out = []
+    for h in soup.find_all(["h2", "h3"]):
+        title = h.get_text(strip=True)
+        if not title or len(title) < 10: continue
+        parent = h.find_parent(["div", "article", "li"]) or h.parent
+        text = parent.get_text(" ", strip=True) if parent else title
+        d = parse_date(text)
+        if d:
+            a = h.find("a") or (parent.find("a") if parent else None)
+            url = urljoin(base, a["href"]) if a and a.get("href") else base
+            out.append({"title": title, "date": d, "url": url, "organizer": "HKIE"})
+    return out
+
+def extract_ice(soup, base):
+    out = []
+    for art in soup.find_all(["article", "div", "li"]):
+        text = art.get_text("\n", strip=True)
+        if "Date" not in text and "date" not in text.lower(): continue
+        title_el = art.find(["h2", "h3", "h4", "a"])
+        title = title_el.get_text(strip=True) if title_el else ""
+        if len(title) < 10: continue
+        d = parse_date(text)
+        if d:
+            a = art.find("a", href=True)
+            url = urljoin(base, a["href"]) if a else base
+            online = "Online" in text or "Webinar" in text
+            free = "Free" in text and "From £" not in text and "$" not in text
+            out.append({"title": title, "date": d, "url": url, "organizer": "ICE", "is_online": online, "is_free": free or None})
+    seen = set()
+    uniq = []
+    for e in out:
+        k = e["title"][:80]
+        if k not in seen:
+            seen.add(k)
+            uniq.append(e)
+    return uniq[:40]
+
 def extract_cic(soup, base):
     out = []
     text = soup.get_text("\n", strip=True)
-    for m in re.finditer(r"(\d{2}\.\d{2}\.\d{4})\s+(.+?)(?:\n|$)", text):
-        d = parse_date(m.group(1).replace(".", "/"))
+    for m in re.finditer(r"(\d{2}\.\d{2}\.\d{4}(?:\s*-\s*\d{2}\.\d{2}\.\d{4})?)\s+(.+?)(?:\n|$)", text):
+        d = parse_date(m.group(1).split("-")[0].strip())
         title = m.group(2).strip()
         if d and title and len(title) > 5:
             out.append({"title": title, "date": d, "url": base, "organizer": "CIC"})
     return out
+
+def extract_csb(soup, base):
+    out = []
+    for table in soup.find_all("table"):
+        for tr in table.find_all("tr")[1:]:
+            tds = tr.find_all(["td", "th"])
+            if len(tds) < 2: continue
+            date_s = tds[0].get_text(strip=True)
+            title = tds[1].get_text(strip=True)
+            d = parse_date(date_s)
+            if d and title:
+                a = tds[1].find("a")
+                url = urljoin(base, a["href"]) if a and a.get("href") else base
+                out.append({"title": title, "date": d, "url": url, "organizer": tds[2].get_text(strip=True) if len(tds)>2 else "CSB/Labour"})
+    return out
+
+def extract_hkgbc(soup, base):
+    out = []
+    text = soup.get_text("\n", strip=True)
+    for m in re.finditer(r"(\d{1,2}\s+[A-Za-z]+\s+\d{4}|\d{4}年\d{1,2}月\d{1,2}日)\s*\|\s*(.+?)(?:\n|$)", text):
+        d = parse_date(m.group(1))
+        title = m.group(2).strip()
+        if d and title and len(title) > 8:
+            out.append({"title": title, "date": d, "url": base, "organizer": "HKGBC"})
+    if not out:
+        for a in soup.find_all("a", href=True):
+            parent = a.find_parent(["div", "li", "article"])
+            ctx = (parent.get_text(" ", strip=True) if parent else "") + " " + a.get_text()
+            d = parse_date(ctx)
+            if d and len(a.get_text(strip=True)) > 10:
+                out.append({"title": a.get_text(strip=True)[:200], "date": d, "url": urljoin(base, a["href"]), "organizer": "HKGBC"})
+    return out[:30]
+
+def extract_hkie_div(soup, base):
+    out = []
+    for art in soup.find_all(["article", "div", "li"]):
+        title_el = art.find(["h2", "h3", "a"])
+        if not title_el: continue
+        title = title_el.get_text(strip=True)
+        if len(title) < 15: continue
+        text = art.get_text(" ", strip=True)
+        d = parse_date(text)
+        if d:
+            a = art.find("a", href=True)
+            url = urljoin(base, a["href"]) if a else base
+            out.append({"title": title, "date": d, "url": url, "organizer": "HKIE Division"})
+    return out[:20]
 
 def generic_extract(soup, base):
     out = []
@@ -187,12 +251,11 @@ def generic_extract(soup, base):
         d = parse_date(ctx) or parse_date(txt)
         if d:
             out.append({"title": txt[:200], "date": d, "url": urljoin(base, a["href"]), "organizer": None})
-    return out[:30]  # limit
+    return out[:20]
 
-def classify_rule(title, desc=""):
-    text = f"{title} {desc}".lower()
-    if HS_KW.search(text): return "H&S"
-    if GPM_KW.search(text): return "GPM"
+def classify_rule(title):
+    if HS_KW.search(title): return "H&S"
+    if GPM_KW.search(title): return "GPM"
     return "Technical"
 
 def ai_classify(title, org):
@@ -200,7 +263,7 @@ def ai_classify(title, org):
     prompt = f'Return strict JSON only: {{"type":"Technical|GPM|H&S","disciplines":["one of {DISCS}"]}}. Event: {title} by {org}. No other text.'
     try:
         r = requests.post(CF_API, headers={"Authorization": f"Bearer {CF_TOKEN}", "Content-Type": "application/json"},
-                          json={"messages": [{"role": "user", "content": prompt}]}, timeout=30)
+                          json={"messages": [{"role": "user", "content": prompt}]}, timeout=25)
         if r.status_code != 200: return None
         content = r.json().get("result", {}).get("response", "") or r.text
         m = re.search(r"\{.*\}", content, re.S)
@@ -213,19 +276,31 @@ def ai_classify(title, org):
         pass
     return None
 
-def clean(e, src):
+def clean(e, src, rejects):
     try:
         title = (e.get("title") or "").strip()
         date = parse_date(e.get("date")) or e.get("date")
-        if not date: return None
+        if not date:
+            rejects["no_date"] = rejects.get("no_date", 0) + 1
+            return None
         e["date"] = dt.date.fromisoformat(str(date)[:10]).isoformat()
         url = e.get("url") or src["url"]
-        if not title or not str(url).startswith("http"): return None
+        if not title or not str(url).startswith("http"):
+            rejects["bad_title_url"] = rejects.get("bad_title_url", 0) + 1
+            return None
         d = dt.date.fromisoformat(e["date"])
-        if d < TODAY or d > TODAY + dt.timedelta(days=KEEP_DAYS_AHEAD): return None
-        if e.get("is_free") is False: return None
-        if src["region"] != "HK" and e.get("is_online") is False: return None
-        if any(x in title.lower() for x in ["dinner", "agm", "sport", "social", "gala", "banquet"]): return None
+        if d < TODAY or d > TODAY + dt.timedelta(days=KEEP_DAYS_AHEAD):
+            rejects["date_range"] = rejects.get("date_range", 0) + 1
+            return None
+        if e.get("is_free") is False:
+            rejects["paid"] = rejects.get("paid", 0) + 1
+            return None
+        if src["region"] != "HK" and e.get("is_online") is False:
+            rejects["overseas_physical"] = rejects.get("overseas_physical", 0) + 1
+            return None
+        if any(x in title.lower() for x in ["dinner", "agm", "sport", "social", "gala", "banquet"]):
+            rejects["social"] = rejects.get("social", 0) + 1
+            return None
         typ = e.get("type") or classify_rule(title)
         discs = e.get("disciplines") or ["General"]
         if typ not in TYPES or not any(x in DISCS for x in discs):
@@ -266,6 +341,7 @@ def clean(e, src):
             "auto": True,
         }
     except Exception:
+        rejects["exception"] = rejects.get("exception", 0) + 1
         return None
 
 def load(path, default):
@@ -277,29 +353,56 @@ def load(path, default):
 
 def process_source(src):
     url = src["url"]
-    html = fetch_html(url)
+    use_pw = False
+    if "localevents.theiet" in url or "istructe" in url or "sms.oshc" in url:
+        use_pw = True
+    html = fetch_html(url, use_playwright=use_pw)
     soup = BeautifulSoup(html, "html.parser")
-    raw = jsonld_events(soup, url)
-    method = "jsonld"
-    if not raw:
-        if "oshc" in url.lower() or "sms.oshc" in url:
+    title = soup.title.get_text(strip=True) if soup.title else ""
+    raw = []
+    method = "generic"
+    if "oshc.org.hk" in url or "csb.gov.hk" in url:
+        if "oshc" in url:
             raw = extract_oshc(soup, url)
             method = "oshc-table"
-        elif "cic.hk" in url or "bim.cic" in url or "citac" in url or "rstc.cic" in url:
-            raw = extract_cic(soup, url)
-            method = "cic-list"
         else:
-            raw = generic_extract(soup, url)
-            method = "generic"
-    if not raw and PLAYWRIGHT_OK and ("sms.oshc" in url or "istructe" in url or "localevents.theiet" in url):
+            raw = extract_csb(soup, url)
+            method = "csb-table"
+    elif "hkie.org.hk" in url and "cpd-calendar" in url:
+        raw = extract_hkie_cpd(soup, url)
+        method = "hkie-cpd"
+    elif "hkie" in url and ("bd.hkie" in url or "hkie-st" in url or "hkie-fe" in url):
+        raw = extract_hkie_div(soup, url)
+        method = "hkie-div"
+    elif "ice.org.uk" in url:
+        raw = extract_ice(soup, url)
+        method = "ice-cards"
+    elif "cic.hk" in url or "bim.cic" in url or "citac" in url or "rstc.cic" in url:
+        raw = extract_cic(soup, url)
+        method = "cic-list"
+    elif "hkgbc" in url:
+        raw = extract_hkgbc(soup, url)
+        method = "hkgbc"
+    else:
+        raw = generic_extract(soup, url)
+        method = "generic"
+    if not raw and PLAYWRIGHT_OK and not use_pw and ("hkie" in url or "ice" in url or "cic" in url):
         try:
-            html = fetch_html(url, use_playwright=True)
-            soup = BeautifulSoup(html, "html.parser")
-            raw = jsonld_events(soup, url) or generic_extract(soup, url)
-            method = "playwright"
-        except StepError:
+            html2 = fetch_html(url, use_playwright=True)
+            soup2 = BeautifulSoup(html2, "html.parser")
+            if "hkie.org.hk" in url and "cpd" in url:
+                raw = extract_hkie_cpd(soup2, url)
+            elif "ice" in url:
+                raw = extract_ice(soup2, url)
+            elif "cic" in url:
+                raw = extract_cic(soup2, url)
+            else:
+                raw = generic_extract(soup2, url)
+            if raw:
+                method = "playwright+" + method
+        except Exception:
             pass
-    return raw, method
+    return raw, method, title
 
 def main():
     sources = load(SOURCES, [])
@@ -311,22 +414,31 @@ def main():
         if src.get("disabled"): continue
         log(f"▶ {src['name']}")
         try:
-            raw, method = process_source(src)
+            raw, method, page_title = process_source(src)
+            rejects = {}
             n = 0
             for e in raw:
-                c = clean(e, src)
+                c = clean(e, src, rejects)
                 if c:
                     found[c["id"]] = c
                     n += 1
-            log(f"  OK {method}: extracted {len(raw)}, kept {n}")
-            status.append({"source": src["name"], "ok": True, "n": n, "method": method})
+            if n > 0:
+                st = "OK"
+            else:
+                st = "EMPTY_UNVERIFIED"
+            log(f"  {st} {method}: raw={len(raw)} kept={n} rejects={rejects} title={page_title[:60]}")
+            status.append({
+                "source": src["name"], "status": st, "ok": st == "OK", "n": n,
+                "method": method, "page_title": page_title[:80],
+                "raw_candidates": len(raw), "rejects": rejects
+            })
         except StepError as ex:
             log(f"  FAIL {ex}")
-            status.append({"source": src["name"], "ok": False, "n": 0, "err": str(ex)[:200]})
+            status.append({"source": src["name"], "status": "FAIL", "ok": False, "n": 0, "err": str(ex)[:200]})
         except Exception as ex:
             log(f"  FAIL {type(ex).__name__}: {ex}")
-            status.append({"source": src["name"], "ok": False, "n": 0, "err": f"{type(ex).__name__}: {str(ex)[:150]}"})
-        time.sleep(3)
+            status.append({"source": src["name"], "status": "FAIL", "ok": False, "n": 0, "err": f"{type(ex).__name__}: {str(ex)[:150]}"})
+        time.sleep(2)
     cutoff = (TODAY - dt.timedelta(days=KEEP_DAYS_PAST)).isoformat()
     for e in old:
         if e.get("auto") and e.get("date", "") >= cutoff and e.get("id") not in found:
@@ -340,10 +452,9 @@ def main():
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump({"updated": dt.datetime.now(HKT).isoformat(timespec="minutes"), "status": status, "events": events}, f, ensure_ascii=False, indent=1)
     log("\n========== SUMMARY ==========")
-    ok_count = sum(1 for s in status if s["ok"])
     for s in status:
-        log(("OK " if s["ok"] else "FAIL ") + s["source"] + (f": {s['n']} events via {s.get('method','')}" if s["ok"] else f": {s.get('err')}"))
-    log(f"Sources OK: {ok_count}/{len(status)}; Total {len(events)} events")
+        log(f"{s.get('status','?')} {s['source']}: n={s.get('n',0)} via {s.get('method','')} raw={s.get('raw_candidates','-')}")
+    log(f"Total events: {len(events)}")
 
 if __name__ == "__main__":
     main()
