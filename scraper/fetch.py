@@ -606,6 +606,12 @@ def main():
     raw_count = len(events)
     events = dedup_events(events)
     log(f"Dedup: {raw_count} -> {len(events)}")
+    try:
+        from gforms import enrich_google_forms_registration
+        gstats = enrich_google_forms_registration(events)
+        log(f"Google Forms enrichment: {gstats}")
+    except Exception as ex:
+        log(f"Google Forms enrichment skipped: {type(ex).__name__}: {ex}")
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump({"updated": dt.datetime.now(HKT).isoformat(timespec="minutes"), "status": status, "events": events}, f, ensure_ascii=False, indent=1)
     log("\n========== SUMMARY ==========")

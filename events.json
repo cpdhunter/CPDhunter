@@ -465,7 +465,100 @@
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLScJeypVUab0cGZUEWwXOrh3LpVRNb0xMnIQBt32GLgIVFpQ1A/viewform",
+    "formId": "1FAIpQLScJeypVUab0cGZUEWwXOrh3LpVRNb0xMnIQBt32GLgIVFpQ1A",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.475895186",
+      "profileField": null,
+      "label": "Any personal data provided in this registration form will be used for the purposes directly related to the processing of your registration and carrying out activities related to this event. You are required to supply the data in order to register for this event. The personal data provided may be transferred to other parties for purposes relating to this event where necessary. The HKIE intends to use the personal data you provided for the purpose of sending you information on other HKIE’s activities. You may request access to or correction of your personal data by addressing your request to the Event Secretariat.",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.286562577",
+      "profileField": null,
+      "label": "Surname (e.g. CHAN)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1477918872",
+      "profileField": null,
+      "label": "Given Name (e.g. Tai Man)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1692202978",
+      "profileField": "chineseName",
+      "label": "Chinese Name (e.g. 陳大文)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1328525008",
+      "profileField": "phone",
+      "label": "Contact Number (e.g. 98765432)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.890168226",
+      "profileField": "email",
+      "label": "Email",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.595469506",
+      "profileField": null,
+      "label": "Are you HKIE Member?",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1934100774",
+      "profileField": "hkieNumber",
+      "label": "HKIE Membership No.  (e.g. MW0000000)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1352188363",
+      "profileField": null,
+      "label": "HKIE Division (e.g. Civil)",
+      "type": "CHECKBOX",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1428781905",
+      "profileField": "organisation",
+      "label": "Company Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1505210233",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.2045136886",
+      "profileField": null,
+      "label": "Participants must hold a valid Green Card and bring their own Personal Protective Equipment (including safety helmet, reflective vest and safety shoes) for site access.",
+      "type": "RADIO",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true
+   }
   },
   {
    "id": "a4e3da61d33df",
@@ -485,7 +578,15 @@
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLScGCilH4W6Ejo1h0enfm7npIVsI0UJrkKRxts2ceQo6Z8rQHQ/viewform",
+    "formId": "1FAIpQLScGCilH4W6Ejo1h0enfm7npIVsI0UJrkKRxts2ceQo6Z8rQHQ",
+    "status": "CLOSED",
+    "fields": [],
+    "requiresManualCompletion": true
+   }
   },
   {
    "id": "abaff7b4f6a4c",
@@ -545,7 +646,89 @@
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSfGOQLfWoRWYinWunPi6E3EdR7wFgwCdVKhkW-oeJ2lq2V5Cw/viewform",
+    "formId": "1FAIpQLSfGOQLfWoRWYinWunPi6E3EdR7wFgwCdVKhkW-oeJ2lq2V5Cw",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.1803010735",
+      "profileField": "englishName",
+      "label": "English Full Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1014535213",
+      "profileField": "phone",
+      "label": "Mobile",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.587149929",
+      "profileField": "organisation",
+      "label": "Company / Organization Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.899923393",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1162583126",
+      "profileField": "hkieNumber",
+      "label": "HKIE Membership Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1456086524",
+      "profileField": null,
+      "label": "Are you a Young Member of the HKIE?",
+      "type": "DROPDOWN",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.647962589",
+      "profileField": "primaryDiscipline",
+      "label": "Discipline",
+      "type": "DROPDOWN",
+      "safePrefill": true,
+      "options": [
+       "Aircraft",
+       "Biomedical",
+       "Building",
+       "Building Services",
+       "Chemical",
+       "Civil",
+       "Control, Automation & Instrumentation",
+       "Electrical",
+       "Electronics",
+       "Environmental",
+       "Energy",
+       "Fire",
+       "Gas",
+       "Geotechnical",
+       "Information",
+       "Logistics & transportation",
+       "Manufacturing, Industrial & Systems",
+       "Marine & Naval Architecture",
+       "Materials",
+       "Mechanical",
+       "Structural",
+       "Others"
+      ]
+     }
+    ],
+    "requiresManualCompletion": true
+   }
   },
   {
    "id": "ab10639aeb755",
@@ -685,7 +868,65 @@
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSdkovvQufnLtGTl6OJbXyNatnJV-fEUIfDY4Tu6k80wZyT2yw/viewform",
+    "formId": "1FAIpQLSdkovvQufnLtGTl6OJbXyNatnJV-fEUIfDY4Tu6k80wZyT2yw",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.131592138",
+      "profileField": "englishName",
+      "label": "Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.96158622",
+      "profileField": "email",
+      "label": "Email Address",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1738162424",
+      "profileField": "phone",
+      "label": "Mobile Phone Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.2073682192",
+      "profileField": null,
+      "label": "Are you a HKIE Member?",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.2114421587",
+      "profileField": "hkieNumber",
+      "label": "HKIE Membership Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.927439564",
+      "profileField": null,
+      "label": "For HKIE Members",
+      "type": "CHECKBOX",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.320196535",
+      "profileField": null,
+      "label": "For Non-HKIE Members",
+      "type": "CHECKBOX",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true
+   }
   },
   {
    "id": "ab901f90a8c43",
@@ -765,7 +1006,100 @@
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSfbnltVabcqbTuDJ7Op_ZnGTMs1OsWLlL6ljJar7JkeHrhdCQ/viewform",
+    "formId": "1FAIpQLSfbnltVabcqbTuDJ7Op_ZnGTMs1OsWLlL6ljJar7JkeHrhdCQ",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.2092238618",
+      "profileField": null,
+      "label": "Title",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.100551799",
+      "profileField": "englishName",
+      "label": "Full name (Same as HKID / Travel Passport)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.390052584",
+      "profileField": null,
+      "label": "Passport no. / Mainland Travel Permit for Hong Kong and Macao Residents 港澳居民来往内地通行证 no.",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.222811039",
+      "profileField": "phone",
+      "label": "Mobile no.",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1463709412",
+      "profileField": "email",
+      "label": "Email",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.216183770",
+      "profileField": "organisation",
+      "label": "Organization",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.703491503",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.197417517",
+      "profileField": "hkieNumber",
+      "label": "HKIE or  IoM3  membership No.\nFill in \"NA\" if you are not a member",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1230997604",
+      "profileField": "primaryDiscipline",
+      "label": "Division (e.g. Geo.)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.230430873",
+      "profileField": null,
+      "label": "Option for Stay",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.508984085",
+      "profileField": null,
+      "label": "Option for Room",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1683548346",
+      "profileField": null,
+      "label": "Confirmation\nPlease carefully check all information provided above is correct before click on \"Submit\".",
+      "type": "CHECKBOX",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true
+   }
   },
   {
    "id": "ac623c8f304ba",
@@ -785,7 +1119,121 @@
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSfivZtdk-oxEAB5z914XeB7L8B1K7B9XWKvqSJAyg1zNIcMCw/viewform",
+    "formId": "1FAIpQLSfivZtdk-oxEAB5z914XeB7L8B1K7B9XWKvqSJAyg1zNIcMCw",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.1490171226",
+      "profileField": null,
+      "label": "Last Name (Mr/Ms/Ir/Prof/Dr)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.595427514",
+      "profileField": null,
+      "label": "First Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1967371291",
+      "profileField": "chineseName",
+      "label": "Name in Chinese (for activities in Mainland China)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.912398181",
+      "profileField": null,
+      "label": "Organization/Division/Committee",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.2083699287",
+      "profileField": "hkieNumber",
+      "label": "Membership No",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1035538069",
+      "profileField": "email",
+      "label": "Email",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.577103744",
+      "profileField": "phone",
+      "label": "Contact Phone Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.259499828",
+      "profileField": "organisation",
+      "label": "Company Name of the Participant",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.948653960",
+      "profileField": "position",
+      "label": "Company Position of the Participant",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1911636219",
+      "profileField": null,
+      "label": "Emergency Contact Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1610823693",
+      "profileField": null,
+      "label": "Relationship with Applicant",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.2042165764",
+      "profileField": null,
+      "label": "Emergency Contact Telephone No",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.145558658",
+      "profileField": null,
+      "label": "Hong Kong SAR Passport Number (For booking purpose)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1287266642",
+      "profileField": null,
+      "label": "Mainland Travel Permit for Hong Kong and Macao Residents 回鄉證 (For booking purpose)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1211345691",
+      "profileField": null,
+      "label": "I wish to apply for participation in the Sichuan Technical Study Visit 2026, jointly organised by the Hong Kong Institution of Highways and Transportation (HKIHT) and the Civil Division of The Hong Kong Institution of Engineers (HKIE Civil Division), to be held from 11 to 14 Nov 2026.\n\nI understand that my participation is subject to the organisers’ acceptance and receipt of any required payment by the stipulated deadline.\n\nI agree to comply with the final itinerary, travel arrangements, host-site requirements and all safety rules during technical and construction-site visits. I acknowledge that the itinerary, flight schedules, accommodation, transport and site-visit arrangements may be changed by the organisers due to weather, transport disruption, host-site requirements, safety considerations or other circumstances beyond the organisers’ reasonable control.\n\nI confirm that the information provided in this application is true and complete. I agree that my personal data may be collected, used and retained by HKIHT and the HKIE Civil Division solely for the purposes of administering this event, including travel, accommodation,  emergency contact and communication arrangements.",
+      "type": "RADIO",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true
+   }
   },
   {
    "id": "ad4ba20227c19",
@@ -805,7 +1253,15 @@
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLScsAr33s4CI_B6Svd-2UNdyBDmOvx_owVT-kKuSXq-6sF8lyQ/viewform",
+    "formId": "1FAIpQLScsAr33s4CI_B6Svd-2UNdyBDmOvx_owVT-kKuSXq-6sF8lyQ",
+    "status": "CLOSED",
+    "fields": [],
+    "requiresManualCompletion": true
+   }
   },
   {
    "id": "a0488518a8f48",
@@ -905,7 +1361,149 @@
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSfopEQnpYSptqIi6XxSrwgBm4H-q9kWymV6sKFEVOWuJk7h8g/viewform",
+    "formId": "1FAIpQLSfopEQnpYSptqIi6XxSrwgBm4H-q9kWymV6sKFEVOWuJk7h8g",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.1415670162",
+      "profileField": "englishName",
+      "label": "Full Name in English (e.g. Chan Tai Man Raymond)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.222152007",
+      "profileField": null,
+      "label": "Member of",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.933449764",
+      "profileField": null,
+      "label": "Name of Institute (Member of HKIFM, HKIE or CIHAPB may skip this question)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.2036976976",
+      "profileField": "hkieNumber",
+      "label": "Membership Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1495405939",
+      "profileField": "email",
+      "label": "Email Address (for sending confirmation)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.136344036",
+      "profileField": "phone",
+      "label": "Mobile Phone Number (for whatapps / phone use)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1376754329",
+      "profileField": "organisation",
+      "label": "Present Employment Company Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.105856659",
+      "profileField": "position",
+      "label": "Job Title",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.527089649",
+      "profileField": null,
+      "label": "Emergency Contact Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1902127501",
+      "profileField": null,
+      "label": "Emergency Contact Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1812409548",
+      "profileField": null,
+      "label": "Relationship to Emergency Contact",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1648921151",
+      "profileField": null,
+      "label": "Running Experience",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1910540023",
+      "profileField": null,
+      "label": "Typical Running Distance",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1527857622",
+      "profileField": null,
+      "label": "Have you participated in public running events before?",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.417980442",
+      "profileField": null,
+      "label": "Which upcoming activities would you like to attend?",
+      "type": "CHECKBOX",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.318522814",
+      "profileField": null,
+      "label": "Preferred Running Distance",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1802619135",
+      "profileField": null,
+      "label": "Would you be interested in participating in a charity run or public running event in 2026/2027?",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.893788006",
+      "profileField": null,
+      "label": "Photography and Publicity Consent:\nI agree that photographs and videos taken during HKIFM Running & Wellness Community activities may be used by HKIFM, HKIE & CIHAPB for:\n- Website \n- Social Media \n- Newsletter \n- Annual Report \n- Marketing and Promotional Materials",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.62562350",
+      "profileField": null,
+      "label": "Participant Declaration\n- I acknowledge that HKIFM, HKIE & CIHAPB does not provide personal accident or medical insurance for participants.\n\n- I hereby warrant and confirm to the HKIFM, HKIE & CIHAPB/the Event Organizer that I am physically fit to participate in and complete the Event without any medical or other assistance; and I also agree to indemnify and hold harmless the HKIFM, HKIE & CIHAPB/the Event Organizer from any injury or death suffered by me or any other persons and any damage to property as a result of me not being physically fit to participate in and complete the Event. For the avoidance of doubt, I have been advised, and I shall take up my own personal or other insurance policies to cover the event.",
+      "type": "RADIO",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true
+   }
   },
   {
    "id": "a59b985f34318",
@@ -1025,7 +1623,86 @@
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSfeOeQyctIDcVlDEiBQr4v6CxYZLje-Okq1cl1utAjn-EWzLw/viewform",
+    "formId": "1FAIpQLSfeOeQyctIDcVlDEiBQr4v6CxYZLje-Okq1cl1utAjn-EWzLw",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.344591893",
+      "profileField": null,
+      "label": "Title",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1967333753",
+      "profileField": null,
+      "label": "First Name / Given Name (Alan, Billy, Tai Man etc)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.489677352",
+      "profileField": null,
+      "label": "Last Name / Family Name (Chan, Cheung etc)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.399221802",
+      "profileField": "organisation",
+      "label": "Organization / Company / Institution",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1568771219",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1847772620",
+      "profileField": "phone",
+      "label": "Mobile Number / Contact Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.2009922543",
+      "profileField": "email",
+      "label": "Email Address",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.2039531699",
+      "profileField": "hkieNumber",
+      "label": "HKIE Membership No.",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1863677703",
+      "profileField": null,
+      "label": "Please advise if you are member(s) of the following organisations / divisions",
+      "type": "CHECKBOX",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1040363054",
+      "profileField": null,
+      "label": "An attendance certificate will be issued after completion of the seminar.",
+      "type": "RADIO",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true
+   }
   },
   {
    "id": "a554bfca904ad",
@@ -1045,7 +1722,114 @@
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLScoXGIaYP-_tlgUFfTQRENXUn23_SsW0PByHWcgqbvjBndotQ/viewform",
+    "formId": "1FAIpQLScoXGIaYP-_tlgUFfTQRENXUn23_SsW0PByHWcgqbvjBndotQ",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.565502605",
+      "profileField": "englishName",
+      "label": "Name (English):",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.941222996",
+      "profileField": "chineseName",
+      "label": "Name (Chinese):",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.853600966",
+      "profileField": "organisation",
+      "label": "Company / Organization:",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1795133542",
+      "profileField": null,
+      "label": "Mobile Number:",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1560606162",
+      "profileField": null,
+      "label": "Mainland Mobile Number (if applicable):",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1041504581",
+      "profileField": "email",
+      "label": "Email Address:",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1872759083",
+      "profileField": null,
+      "label": "Organization",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.802341350",
+      "profileField": "hkieNumber",
+      "label": "Membership No. ：",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1337436063",
+      "profileField": null,
+      "label": "Contact Person:",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.888473421",
+      "profileField": null,
+      "label": "Relationship:",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.754723017",
+      "profileField": null,
+      "label": "Contact Number:",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1516718579",
+      "profileField": null,
+      "label": "Dietary requirements (please specify):",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1377923989",
+      "profileField": null,
+      "label": "Others:",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.292635725",
+      "profileField": null,
+      "label": "Confirmation 確認",
+      "type": "RADIO",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true
+   }
   },
   {
    "id": "ade4c69a74c66",
@@ -1085,7 +1869,100 @@
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSeyS4ofsCb77YbO_o_oBYDq-FwkF1YAcQzh1WK7KjDWnNaAGQ/viewform",
+    "formId": "1FAIpQLSeyS4ofsCb77YbO_o_oBYDq-FwkF1YAcQzh1WK7KjDWnNaAGQ",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.622779266",
+      "profileField": null,
+      "label": "Title",
+      "type": "CHECKBOX",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.140934641",
+      "profileField": null,
+      "label": "Surname",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.301955072",
+      "profileField": null,
+      "label": "Given name",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.316645265",
+      "profileField": null,
+      "label": "Other name",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1763600254",
+      "profileField": "phone",
+      "label": "Mobile no.",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.691445747",
+      "profileField": "email",
+      "label": "Email",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1110084305",
+      "profileField": "organisation",
+      "label": "Organisation",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.697870861",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.728187877",
+      "profileField": "hkieNumber",
+      "label": "HKIE membership no.",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1583048997",
+      "profileField": "primaryDiscipline",
+      "label": "Division (e.g., Geo. Civil)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.772755793",
+      "profileField": null,
+      "label": "Age Group",
+      "type": "CHECKBOX",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1151640832",
+      "profileField": null,
+      "label": "Confirmation",
+      "type": "CHECKBOX",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true
+   }
   },
   {
    "id": "a724af91c5a13",
@@ -1165,7 +2042,79 @@
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLScDRL4QH_6sV4h68QduhefW_-ZMWOQSdbjeSfP0p9SrAWr97A/viewform",
+    "formId": "1FAIpQLScDRL4QH_6sV4h68QduhefW_-ZMWOQSdbjeSfP0p9SrAWr97A",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.1954009582",
+      "profileField": null,
+      "label": "Participation mode",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.23470369",
+      "profileField": "englishName",
+      "label": "Full Name (for CPD Certificate Issuance)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1442262263",
+      "profileField": "email",
+      "label": "Email Address",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1461319273",
+      "profileField": "phone",
+      "label": "Contact Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1343079659",
+      "profileField": "organisation",
+      "label": "Company Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.454715711",
+      "profileField": "position",
+      "label": "Job Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.119185228",
+      "profileField": null,
+      "label": "Membership",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.218194727",
+      "profileField": "hkieNumber",
+      "label": "Please fill in your membership number.",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.635061191",
+      "profileField": null,
+      "label": "Application will be accepted on a first-come-first-served basis and priority will be given to members of ASHRAE-HKC, CIBSE-HKB and HKIE-BSD. Successful applicants will be informed by a confirmation email on or before 13 November 2026.",
+      "type": "RADIO",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true
+   }
   },
   {
    "id": "aade9ecc04e2c",
@@ -2145,7 +3094,72 @@
    "free": null,
    "source": "HKIE CPD Calendar",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSeePTX0FOAtykLZya98GGUnHNJ6Qep2vSFutiZq7H1TLTyNkQ/viewform",
+    "formId": "1FAIpQLSeePTX0FOAtykLZya98GGUnHNJ6Qep2vSFutiZq7H1TLTyNkQ",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.1848171669",
+      "profileField": "englishName",
+      "label": "English Name (same as appeared on the certificate)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.269026720",
+      "profileField": "organisation",
+      "label": "Company",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1605964021",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.726516072",
+      "profileField": null,
+      "label": "Address",
+      "type": "PARAGRAPH",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1185874682",
+      "profileField": "phone",
+      "label": "Mobile",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.505595179",
+      "profileField": null,
+      "label": "",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.111158153",
+      "profileField": null,
+      "label": "Have you participated in other workshops organized by the organizer?",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.848084745",
+      "profileField": null,
+      "label": "How did you know about this workshop?",
+      "type": "RADIO",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true
+   }
   },
   {
    "id": "a9f8b3162dc94",

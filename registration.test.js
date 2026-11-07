@@ -478,13 +478,14 @@ describe('registration.js hardened local module', () => {
     assert.equal(loaded['evt-ok'].state, 'cancelled');
   });
 
-  it('adapter cannot autofill or submit', () => {
+  it('adapter cannot autofill or submit; URL-only canHandle is false', () => {
     const a = api.RegistrationAdapter;
     assert.equal(a.canHandle('https://example.com/register'), false);
+    assert.equal(a.canHandle('https://docs.google.com/forms/d/e/x/viewform'), false);
     assert.equal(a.inspect(), null);
     eq(a.matchFields(), []);
     assert.equal(a.fill(), undefined);
-    eq(a.validate(), { ok: false, reason: 'Sprint 1: no auto-fill' });
+    eq(a.validate(), { ok: false, reason: 'no auto-submit' });
     eq(a.getUnsupportedFields(), []);
     assert.equal('submit' in a, false);
     assert.equal(typeof a.submit, 'undefined');
@@ -524,8 +525,212 @@ describe('registration.js hardened local module', () => {
     assert.equal(saved.englishName, 'AliceChan');
   });
 
-  it('window.RegistrationAdapter is the disabled adapter', () => {
+  it('window.RegistrationAdapter is exposed', () => {
     assert.equal(ctx.window.RegistrationAdapter, api.RegistrationAdapter);
     assert.equal(ctx.window.RegistrationAdapter.canHandle('x'), false);
+  });
+});
+
+describe('Google Forms partial prefill (Sprint 2B2)', () => {
+  let ctx;
+  let api;
+
+  beforeEach(() => {
+    ctx = loadModule();
+    api = ctx.api;
+  });
+
+  afterEach(() => {
+    ctx = null;
+    api = null;
+  });
+
+  function openMeta(overrides = {}) {
+    return {
+      mechanism: 'GOOGLE_FORMS',
+      destination: 'https://docs.google.com/forms/d/e/1FAIpQLSfixture/viewform',
+      formId: '1FAIpQLSfixture',
+      status: 'OPEN',
+      requiresManualCompletion: true,
+      fields: [
+        {
+          entryId: 'entry.111',
+          profileField: 'englishName',
+          label: 'English Name',
+          type: 'SHORT_TEXT',
+          safePrefill: true
+        },
+        {
+          entryId: 'entry.222',
+          profileField: 'email',
+          label: 'Email',
+          type: 'SHORT_TEXT',
+          safePrefill: true
+        },
+        {
+          entryId: 'entry.333',
+          profileField: null,
+          label: 'Are you a HKIE Member?',
+          type: 'RADIO',
+          safePrefill: false
+        },
+        {
+          entryId: 'entry.444',
+          profileField: 'primaryDiscipline',
+          label: 'Discipline',
+          type: 'DROPDOWN',
+          safePrefill: true,
+          options: ['Civil', 'Structural']
+        }
+      ],
+      ...overrides
+    };
+  }
+
+  it('maps safe labels and refuses consent/title/judgment/split-name', () => {
+    assert.equal(api.mapGFormLabel('English Full Name'), 'englishName');
+    assert.equal(api.mapGFormLabel('Full name (Same as HKID / Travel Passport)'), 'englishName');
+    assert.equal(api.mapGFormLabel('Chinese Name (e.g. 陳大文)'), 'chineseName');
+    assert.equal(api.mapGFormLabel('Email Address'), 'email');
+    assert.equal(api.mapGFormLabel('Mobile Phone Number'), 'phone');
+    assert.equal(api.mapGFormLabel('Company Name'), 'organisation');
+    assert.equal(api.mapGFormLabel('Job Title'), 'position');
+    assert.equal(api.mapGFormLabel('HKIE Membership Number'), 'hkieNumber');
+    assert.equal(api.mapGFormLabel('Discipline'), 'primaryDiscipline');
+    assert.equal(api.mapGFormLabel('Title'), null);
+    assert.equal(api.mapGFormLabel('Title', 2), null);
+    assert.equal(api.mapGFormLabel('Surname (e.g. CHAN)'), null);
+    assert.equal(api.mapGFormLabel('Given Name (e.g. Tai Man)'), null);
+    assert.equal(api.mapGFormLabel('First Name / Given Name'), null);
+    assert.equal(api.mapGFormLabel('Last Name / Family Name'), null);
+    assert.equal(api.mapGFormLabel('Emergency Contact Name'), null);
+    assert.equal(
+      api.mapGFormLabel(
+        'Any personal data provided in this registration form will be used for the purposes directly related'
+      ),
+      null
+    );
+    assert.equal(api.mapGFormLabel('Are you a HKIE Member?'), null);
+    assert.equal(api.mapGFormLabel('I noted the above information.'), null);
+  });
+
+  it('clears ambiguous duplicate profileField mappings', () => {
+    const fields = api.resolveGFormFieldMappings([
+      { entryId: 'entry.1', profileField: 'email', label: 'Email', type: 'SHORT_TEXT', safePrefill: true },
+      { entryId: 'entry.2', profileField: 'email', label: 'E-mail', type: 'SHORT_TEXT', safePrefill: true },
+      { entryId: 'entry.3', profileField: 'phone', label: 'Mobile', type: 'SHORT_TEXT', safePrefill: true }
+    ]);
+    assert.equal(fields[0].profileField, null);
+    assert.equal(fields[0].safePrefill, false);
+    assert.equal(fields[1].profileField, null);
+    assert.equal(fields[2].profileField, 'phone');
+    assert.equal(fields[2].safePrefill, true);
+  });
+
+  it('buildGFormPrefillUrl encodes values and uses usp=pp_url', () => {
+    const profile = validProfile({
+      englishName: 'Alice Chan',
+      email: 'alice@example.com',
+      primaryDiscipline: 'Civil'
+    });
+    const url = api.buildGFormPrefillUrl(profile, openMeta());
+    assert.ok(url);
+    assert.equal(url.includes('usp=pp_url'), true);
+    assert.equal(url.includes('entry.111=' + encodeURIComponent('Alice Chan')), true);
+    assert.equal(url.includes('entry.222=' + encodeURIComponent('alice@example.com')), true);
+    assert.equal(url.includes('entry.444=' + encodeURIComponent('Civil')), true);
+    assert.equal(url.includes('entry.333='), false);
+    assert.equal(url.startsWith('https://docs.google.com/forms/d/e/1FAIpQLSfixture/viewform?'), true);
+  });
+
+  it('omits empty profile values and unmapped fields', () => {
+    const profile = validProfile({ englishName: 'Alice', email: 'alice@example.com', phone: '' });
+    const meta = openMeta({
+      fields: [
+        { entryId: 'entry.1', profileField: 'englishName', label: 'Name', type: 'SHORT_TEXT', safePrefill: true },
+        { entryId: 'entry.2', profileField: 'phone', label: 'Phone', type: 'SHORT_TEXT', safePrefill: true },
+        { entryId: 'entry.3', profileField: null, label: 'Consent', type: 'RADIO', safePrefill: false }
+      ]
+    });
+    const url = api.buildGFormPrefillUrl(profile, meta);
+    assert.ok(url);
+    assert.equal(url.includes('entry.1='), true);
+    assert.equal(url.includes('entry.2='), false);
+    assert.equal(url.includes('entry.3='), false);
+  });
+
+  it('dropdown/radio only prefills exact option match', () => {
+    const profile = validProfile({ primaryDiscipline: 'Mechanical' });
+    const url = api.buildGFormPrefillUrl(profile, openMeta());
+    assert.ok(url);
+    assert.equal(url.includes('entry.444='), false);
+  });
+
+  it('canHandle requires OPEN schema with safePrefill fields', () => {
+    const event = { id: 'e1', registration: openMeta() };
+    assert.equal(api.RegistrationAdapter.canHandle(event), true);
+    assert.equal(api.gformCanPrefill(openMeta({ status: 'CLOSED' })), false);
+    assert.equal(
+      api.RegistrationAdapter.canHandle({
+        id: 'e2',
+        registration: openMeta({ status: 'CLOSED' })
+      }),
+      false
+    );
+    assert.equal(
+      api.RegistrationAdapter.canHandle({
+        id: 'e3',
+        registration: openMeta({
+          fields: [{ entryId: 'entry.1', profileField: null, label: 'X', type: 'RADIO', safePrefill: false }]
+        })
+      }),
+      false
+    );
+  });
+
+  it('openGFormPrefill confirms, opens with noopener, sets opened, does not store URL', () => {
+    const profile = validProfile();
+    api.saveProfile(profile);
+    const opened = [];
+    const event = { id: 'evtG1', registration: openMeta() };
+    const res = api.openGFormPrefill(
+      event,
+      profile,
+      () => true,
+      (url, target, feat) => {
+        opened.push({ url, target, feat });
+      }
+    );
+    assert.equal(res.ok, true);
+    assert.equal(opened.length, 1);
+    assert.equal(opened[0].target, '_blank');
+    assert.equal(opened[0].feat, 'noopener,noreferrer');
+    assert.equal(opened[0].url.includes('usp=pp_url'), true);
+    assert.equal(api.getRegState('evtG1').state, 'opened');
+    // Prefill URL must not appear in localStorage (profile email may legitimately exist)
+    const dump = JSON.stringify(ctx.localStorage._dump());
+    assert.equal(dump.includes('usp=pp_url'), false);
+    assert.equal(dump.includes('entry.111'), false);
+    assert.equal(dump.includes('1FAIpQLSfixture'), false);
+  });
+
+  it('openGFormPrefill cancels without opening when confirm is false', () => {
+    const profile = validProfile();
+    const opened = [];
+    const res = api.openGFormPrefill(
+      { id: 'evtG2', registration: openMeta() },
+      profile,
+      () => false,
+      (url) => opened.push(url)
+    );
+    assert.equal(res.ok, false);
+    assert.equal(res.reason, 'cancelled');
+    assert.equal(opened.length, 0);
+    assert.equal(api.getRegState('evtG2'), null);
+  });
+
+  it('CLOSED forms do not build prefill URLs', () => {
+    const url = api.buildGFormPrefillUrl(validProfile(), openMeta({ status: 'CLOSED' }));
+    assert.equal(url, null);
   });
 });

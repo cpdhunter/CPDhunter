@@ -547,7 +547,45 @@ function fillRegPrep(e){
     s.textContent="本機報名狀態：未開始（與「我的進度」出席紀錄分開）";
     root.appendChild(s);
   }
-  const open=document.createElement("button");open.className="btn";open.type="button";
+  // Google Forms partial prefill (schema from events.json; values stay local)
+  const reg=e.registration;
+  if(reg&&reg.mechanism==="GOOGLE_FORMS"){
+    const g=document.createElement("div");g.className="note";
+    if(reg.status==="CLOSED"){
+      g.textContent="Registration closed. Prefill unavailable.";
+      root.appendChild(g);
+    }else if(reg.status==="OPEN"&&typeof gformCanPrefill==="function"&&gformCanPrefill(e)){
+      g.textContent="Google Forms detected";
+      root.appendChild(g);
+      const plan=typeof listGFormPrefillPlan==="function"?listGFormPrefillPlan(e,typeof loadProfile==="function"?loadProfile():{}):{prefill:[],manual:[]};
+      if(plan.prefill&&plan.prefill.length){
+        const pf=document.createElement("div");pf.className="meta";
+        const b=document.createElement("b");b.textContent="Will prefill：";pf.appendChild(b);
+        pf.appendChild(document.createTextNode(plan.prefill.map(x=>x.label||x.profileField).join("；")));
+        root.appendChild(pf);
+      }
+      if(plan.manual&&plan.manual.length){
+        const mf=document.createElement("div");mf.className="meta";
+        const b=document.createElement("b");b.textContent="Needs manual completion：";mf.appendChild(b);
+        mf.appendChild(document.createTextNode(plan.manual.map(x=>x.label||x.entryId).join("；")));
+        root.appendChild(mf);
+      }
+      const tip=document.createElement("div");tip.className="meta";
+      tip.textContent="Review every answer and submit manually on Google Forms.";
+      root.appendChild(tip);
+      const gbtn=document.createElement("button");gbtn.className="btn";gbtn.type="button";
+      gbtn.textContent="Open prefilled Google Form";
+      gbtn.onclick=()=>openPrefilledGForm(e.id);
+      root.appendChild(gbtn);
+    }else if(reg.status==="LOGIN_REQUIRED"){
+      g.textContent="Prefill unavailable (sign-in required). Manual registration required.";
+      root.appendChild(g);
+    }else{
+      g.textContent="Prefill unavailable. Manual registration required.";
+      root.appendChild(g);
+    }
+  }
+  const open=document.createElement("button");open.className=(reg&&reg.mechanism==="GOOGLE_FORMS"&&reg.status==="OPEN"&&typeof gformCanPrefill==="function"&&gformCanPrefill(e))?"btn sec":"btn";open.type="button";
   open.textContent="Open official registration page";
   open.onclick=()=>openOfficialReg(e.id);root.appendChild(open);
   const man=document.createElement("button");man.className="btn sec";man.type="button";
@@ -559,6 +597,25 @@ function fillRegPrep(e){
   const reset=document.createElement("button");reset.className="btn sec";reset.type="button";
   reset.textContent="Reset status";
   reset.onclick=()=>setLocalReg(e.id,"not_started");root.appendChild(reset);
+}
+function openPrefilledGForm(id){
+  const e=allEvents().find(x=>x.id===id);if(!e){toast("找不到活動");return}
+  const miss=missingRegFields();
+  if(miss.length){goRegProfile(miss);return}
+  if(typeof openGFormPrefill!=="function"){toast("報名模組未載入");return}
+  const profile=typeof loadProfile==="function"?loadProfile():null;
+  const res=openGFormPrefill(e,profile,confirm,window.open.bind(window));
+  if(!res||!res.ok){
+    if(res&&res.reason==="cancelled")return;
+    if(res&&res.reason==="closed"){toast("Registration closed");return}
+    toast("未能開啟預填表格");return;
+  }
+  fillRegPrep(e);
+  const badge=$("evRegBadge");
+  const st=regStatusLabel(id);
+  if(badge&&st){badge.textContent=st.text;badge.className="regbadge "+st.cls}
+  else if(st){showEv(id)}
+  toast("已開啟預填 Google 表格（請自行檢查並提交；未代你提交）");
 }
 function openOfficialReg(id){
   const e=allEvents().find(x=>x.id===id);if(!e||!e.url){toast("冇官方網址");return}

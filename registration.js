@@ -2,7 +2,7 @@
 // Profile and registration state are stored only in this browser (localStorage).
 // Nothing is sent to any server.
 // Hardened: schema v1 validation, state allowlist, import/export guards.
-// Still DISCONNECTED from index.html — experimental module only.
+// Connected to index.html Prepare Registration (Google Forms partial prefill).
 
 const PROFILE_KEY = "regProfile";
 const REGSTATE_KEY = "regState";
@@ -399,26 +399,302 @@ function clearRegState() {
   } catch {}
 }
 
-// Adapter remains disabled: no autofill, no submit(), no CAPTCHA,
-// no organiser API calls, no network transmission of profile.
+// ---- Google Forms partial-prefill (Sprint 2B2) ----
+// Schema comes from scraped event.registration (non-personal).
+// Profile values stay local; prefilled URL is built in memory only.
+// No submit(), no formResponse POST, no CAPTCHA, no sign-in.
+
+const GFORM_CONFIRM_MSG =
+  "CPD Hunter will place selected profile values into a temporary Google Forms URL. The URL is opened directly on Google and may appear in your browser history. Consent and questionnaire answers will not be filled. Continue?";
+
+const GFORM_SAFE_PROFILE_FIELDS = Object.freeze([
+  "englishName",
+  "chineseName",
+  "email",
+  "phone",
+  "organisation",
+  "position",
+  "hkieNumber",
+  "primaryDiscipline",
+  "secondaryDiscipline"
+]);
+
+function _normGFormLabel(label) {
+  if (!label) return "";
+  return String(label)
+    .toLowerCase()
+    .replace(/[\u3000\s]+/g, " ")
+    .replace(/[^\w\u4e00-\u9fff\s]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function _gformLabelHas(norm, phrases) {
+  for (let i = 0; i < phrases.length; i++) {
+    if (norm.indexOf(phrases[i]) !== -1) return true;
+  }
+  return false;
+}
+
+const _GFORM_BLOCK = [
+  "consent", "privacy", "personal data provided", "declaration", "acknowledge",
+  "i noted", "i agree", "marketing", "newsletter", "promotional",
+  "are you a hkie member", "are you hkie member", "are you a member", "are you member", "member?",
+  "attendance", "mode of", "passport number", "passport no", "travel document number", "room",
+  "accommodation", "hotel", "dietary", "allergy", "running", "legal",
+  "disclaimer", "assumption of risk", "emergency", "mainland mobile",
+  "other name", "media consent", "photography", "first come",
+  "priority will be given", "wish to apply", "course enrollment", "session ",
+  "surname", "given name", "first name", "last name", "family name", "forename",
+  "mr ms", "mr/ms", "ir/prof"
+];
+
+/**
+ * Deterministic label → profile field (mirrors scraper/gforms.py).
+ * Split name fields (surname/given) intentionally unmapped.
+ */
+function mapGFormLabel(label, typeCode) {
+  const norm = _normGFormLabel(label);
+  if (!norm) return null;
+  if (norm === "title" || norm.indexOf("title ") === 0) return null;
+  for (let i = 0; i < _GFORM_BLOCK.length; i++) {
+    if (norm.indexOf(_GFORM_BLOCK[i]) !== -1) return null;
+  }
+  if (norm.indexOf("聲明") !== -1) return null;
+
+  if (
+    _gformLabelHas(norm, [
+      "chinese name", "name in chinese", "name chinese", "中文姓名", "姓名 中文", "中文名"
+    ]) || /name\s*\(.*chinese/.test(norm)
+  ) {
+    return "chineseName";
+  }
+  if (_gformLabelHas(norm, ["email address", "e mail", "email", "電郵", "電子郵件"])) {
+    if (norm.indexOf("personal data") !== -1) return null;
+    return "email";
+  }
+  if (
+    _gformLabelHas(norm, [
+      "mobile phone", "mobile number", "mobile no", "contact number",
+      "contact phone", "telephone", "phone number", "mobile", "phone",
+      "手提電話", "聯絡電話", "電話"
+    ])
+  ) {
+    return "phone";
+  }
+  if (
+    _gformLabelHas(norm, [
+      "hkie membership", "hkie or iom3 membership", "membership no",
+      "membership number", "member no", "會員編號"
+    ]) ||
+    norm.indexOf("please fill in your membership number") !== -1 ||
+    /^membership no\b/.test(norm)
+  ) {
+    return "hkieNumber";
+  }
+  if (
+    _gformLabelHas(norm, [
+      "job title", "job position", "company position", "designation", "position", "職位"
+    ])
+  ) {
+    return "position";
+  }
+  if (
+    _gformLabelHas(norm, [
+      "organisation", "organization", "company name", "company", "employer",
+      "institution", "present employment", "公司", "機構", "僱主"
+    ])
+  ) {
+    if (norm.indexOf("division") !== -1 && norm.indexOf("committee") !== -1) return null;
+    if ((typeCode === 2 || typeCode === 4) && (norm === "organization" || norm === "organisation")) {
+      return null;
+    }
+    return "organisation";
+  }
+  if (_gformLabelHas(norm, ["secondary discipline", "second discipline", "次要界別"])) {
+    return "secondaryDiscipline";
+  }
+  if (
+    _gformLabelHas(norm, ["engineering discipline", "discipline", "專業界別", "學科"]) ||
+    /^division\b/.test(norm) ||
+    norm.indexOf("division e g") !== -1 ||
+    norm.indexOf("division eg") !== -1
+  ) {
+    if (norm.indexOf("committee") !== -1 || norm.indexOf("wish to apply") !== -1) return null;
+    return "primaryDiscipline";
+  }
+  if (
+    _gformLabelHas(norm, [
+      "english full name", "english name", "name in english", "full name",
+      "applicant name", "name english"
+    ]) || /name\s*\(.*english/.test(norm)
+  ) {
+    if (norm.indexOf("institute") !== -1 || norm.indexOf("emergency") !== -1) return null;
+    return "englishName";
+  }
+  if (norm === "name") return "englishName";
+  return null;
+}
+
+/**
+ * Resolve ambiguous duplicate profileField mappings: if two fields claim the
+ * same profile field, neither is safe to prefill.
+ */
+function resolveGFormFieldMappings(fields) {
+  const list = Array.isArray(fields) ? fields.map((f) => ({ ...f })) : [];
+  const counts = Object.create(null);
+  for (const f of list) {
+    const pf = f && f.profileField;
+    if (pf) counts[pf] = (counts[pf] || 0) + 1;
+  }
+  for (const f of list) {
+    if (f && f.profileField && counts[f.profileField] > 1) {
+      f.profileField = null;
+      f.safePrefill = false;
+    }
+  }
+  return list;
+}
+
+function getGFormRegistration(eventOrReg) {
+  if (!eventOrReg || typeof eventOrReg !== "object") return null;
+  const reg =
+    eventOrReg.registration && typeof eventOrReg.registration === "object"
+      ? eventOrReg.registration
+      : eventOrReg.mechanism
+        ? eventOrReg
+        : null;
+  if (!reg || reg.mechanism !== "GOOGLE_FORMS") return null;
+  return reg;
+}
+
+function gformCanPrefill(reg) {
+  const r = getGFormRegistration(reg);
+  if (!r) return false;
+  if (r.status !== "OPEN") return false;
+  const fields = Array.isArray(r.fields) ? r.fields : [];
+  return fields.some((f) => f && f.safePrefill && f.profileField && f.entryId);
+}
+
+function listGFormPrefillPlan(reg, profile) {
+  const r = getGFormRegistration(reg);
+  const prefill = [];
+  const manual = [];
+  if (!r) {
+    return { prefill, manual, status: null };
+  }
+  const fields = Array.isArray(r.fields) ? r.fields : [];
+  const p = profile && typeof profile === "object" ? profile : {};
+  for (const f of fields) {
+    if (!f || !f.entryId) continue;
+    const label = typeof f.label === "string" ? f.label : f.entryId;
+    const pf = f.profileField;
+    const raw = pf && typeof p[pf] === "string" ? p[pf].trim() : "";
+    let can = !!(f.safePrefill && pf && raw);
+    if (can && (f.type === "RADIO" || f.type === "DROPDOWN")) {
+      const opts = Array.isArray(f.options) ? f.options : [];
+      can = opts.some((o) => String(o) === raw);
+    }
+    if (can && (f.type === "CHECKBOX" || f.type === "SECTION" || f.type === "PAGE")) {
+      can = false;
+    }
+    if (can) prefill.push({ entryId: f.entryId, profileField: pf, label });
+    else manual.push({ entryId: f.entryId, profileField: pf || null, label });
+  }
+  return { prefill, manual, status: r.status || null, requiresManualCompletion: true };
+}
+
+/**
+ * Build a temporary prefilled viewform URL. Caller must not store/log/clipboard it.
+ * Returns null if nothing to prefill.
+ */
+function buildGFormPrefillUrl(profile, registrationMeta) {
+  const r = getGFormRegistration(registrationMeta);
+  if (!r || r.status !== "OPEN") return null;
+  const dest = typeof r.destination === "string" ? r.destination.trim() : "";
+  if (!dest || dest.indexOf("https://docs.google.com/forms/") !== 0) return null;
+  const plan = listGFormPrefillPlan(r, profile);
+  if (!plan.prefill.length) return null;
+  const params = ["usp=pp_url"];
+  for (const item of plan.prefill) {
+    const val = String(profile[item.profileField]).trim();
+    if (!val) continue;
+    const key = item.entryId.indexOf("entry.") === 0 ? item.entryId : "entry." + item.entryId;
+    params.push(encodeURIComponent(key) + "=" + encodeURIComponent(val));
+  }
+  if (params.length <= 1) return null;
+  const base = dest.split("?")[0].split("#")[0];
+  return base + "?" + params.join("&");
+}
+
+/**
+ * Confirm once, open prefilled Google Form, set local state to opened.
+ * Never logs or persists the URL. Returns { ok, reason }.
+ */
+function openGFormPrefill(event, profile, confirmFn, openFn) {
+  const r = getGFormRegistration(event);
+  if (!r) return { ok: false, reason: "not_google_forms" };
+  if (r.status === "CLOSED") return { ok: false, reason: "closed" };
+  if (r.status !== "OPEN") return { ok: false, reason: "unavailable" };
+  if (!profileComplete(profile)) return { ok: false, reason: "incomplete_profile" };
+  const ask = typeof confirmFn === "function" ? confirmFn : confirm;
+  if (!ask(GFORM_CONFIRM_MSG)) return { ok: false, reason: "cancelled" };
+  let url = null;
+  try {
+    url = buildGFormPrefillUrl(profile, r);
+  } catch {
+    return { ok: false, reason: "build_failed" };
+  }
+  if (!url) return { ok: false, reason: "nothing_to_prefill" };
+  const opener = typeof openFn === "function" ? openFn : window.open.bind(window);
+  try {
+    opener(url, "_blank", "noopener,noreferrer");
+  } finally {
+    url = null; // drop reference
+  }
+  const id = event && event.id != null ? String(event.id) : "";
+  if (id && _isSafeKey(id)) setRegState(id, "opened", "");
+  return { ok: true, reason: "opened" };
+}
+
+// Adapter: Google Forms only. No other mechanisms. Intentionally no submit().
 const RegistrationAdapter = {
-  canHandle(url) {
-    return false;
+  canHandle(eventOrUrl) {
+    if (typeof eventOrUrl === "string") {
+      // URL-only: never claim handle without scraped schema.
+      return false;
+    }
+    return gformCanPrefill(eventOrUrl);
   },
-  inspect() {
-    return null;
+  inspect(event) {
+    const r = getGFormRegistration(event);
+    if (!r) return null;
+    return {
+      mechanism: "GOOGLE_FORMS",
+      status: r.status,
+      destination: r.destination,
+      formId: r.formId,
+      requiresManualCompletion: true,
+      fieldCount: Array.isArray(r.fields) ? r.fields.length : 0
+    };
   },
-  matchFields() {
-    return [];
+  matchFields(event, profile) {
+    return listGFormPrefillPlan(event, profile).prefill;
+  },
+  getUnsupportedFields(event, profile) {
+    return listGFormPrefillPlan(event, profile).manual;
+  },
+  buildPrefillUrl(profile, registrationMeta) {
+    return buildGFormPrefillUrl(profile, registrationMeta);
+  },
+  openPrefill(event, profile, confirmFn, openFn) {
+    return openGFormPrefill(event, profile, confirmFn, openFn);
   },
   fill() {
-    /* disabled in Sprint 1 */
+    /* never DOM-fill; URL prefill only */
   },
   validate() {
-    return { ok: false, reason: "Sprint 1: no auto-fill" };
-  },
-  getUnsupportedFields() {
-    return [];
+    return { ok: false, reason: "no auto-submit" };
   }
   // intentionally no submit()
 };
@@ -451,6 +727,12 @@ _root.setRegState = setRegState;
 _root.getRegState = getRegState;
 _root.clearRegState = clearRegState;
 _root.RegistrationAdapter = RegistrationAdapter;
+_root.mapGFormLabel = mapGFormLabel;
+_root.buildGFormPrefillUrl = buildGFormPrefillUrl;
+_root.openGFormPrefill = openGFormPrefill;
+_root.gformCanPrefill = gformCanPrefill;
+_root.listGFormPrefillPlan = listGFormPrefillPlan;
+_root.GFORM_CONFIRM_MSG = GFORM_CONFIRM_MSG;
 
 // CommonJS exports for offline Node tests (no bundler required).
 if (typeof module !== "undefined" && module.exports) {
@@ -479,6 +761,15 @@ if (typeof module !== "undefined" && module.exports) {
     setRegState,
     getRegState,
     clearRegState,
-    RegistrationAdapter
+    RegistrationAdapter,
+    GFORM_CONFIRM_MSG,
+    GFORM_SAFE_PROFILE_FIELDS,
+    mapGFormLabel,
+    resolveGFormFieldMappings,
+    getGFormRegistration,
+    gformCanPrefill,
+    listGFormPrefillPlan,
+    buildGFormPrefillUrl,
+    openGFormPrefill
   };
 }

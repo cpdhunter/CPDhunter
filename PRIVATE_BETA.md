@@ -13,7 +13,7 @@
 - Full production frontend (`index.html`) with calendar, list, filters, event modal, My Progress, Settings, CSV export, Terms / Privacy
 - Approximately 100 future events visible from the latest daily dataset
 - **IMPLEMENTED:** Settings → Registration Profile (browser `localStorage` only)
-- **IMPLEMENTED:** Event modal → Prepare Registration (opens organiser URL only; no autofill; no submit)
+- **IMPLEMENTED:** Event modal → Prepare Registration (opens organiser URL; Google Forms partial prefill when schema is present; no autofill of other sites; no submit)
 - **IMPLEMENTED:** Local registration status (`not_started` | `opened` | `registered_manual` | `cancelled`)
 - No autofill of organiser forms
 - No auto-submit / automatic registration
@@ -35,10 +35,11 @@ These helpers live in `registration.js` and are loaded by the production fronten
   - Enforced state labels only: `not_started` | `opened` | `registered_manual` | `cancelled`
   - Rejects non-plain objects/arrays and unsafe keys (`__proto__`, `constructor`, `prototype`); `deleteProfile` and `clearRegState` remain separate
   - Local notes only; does not modify `events.json` and does not contact organisers
-- Disabled adapter interface on `window.RegistrationAdapter`
-  - Contract stubs: `canHandle`, `inspect`, `matchFields`, `fill`, `validate`, `getUnsupportedFields`
-  - `canHandle` always returns `false`; `fill` is disabled; `validate` reports no auto-fill
-  - No `submit()` implementation; automatic form submission is out of scope
+- Google Forms adapter on `window.RegistrationAdapter` (Sprint 2B2)
+  - Daily scraper (`scraper/gforms.py`) attaches non-personal `event.registration` schema (entry IDs, labels, types, safe profileField mappings) — never profile values
+  - On user confirmation, the browser builds a **temporary** prefilled Google Forms URL from the local Registration Profile and opens it with `noopener,noreferrer`
+  - Consent, title/honorific, member Y/N, and other judgment fields are never prefilled; split surname/given-name fields stay manual
+  - No `submit()`; no `formResponse` POST; URL is not stored in `localStorage`, `events.json`, or logs
 
 ## Target architecture (planned private hosting)
 
@@ -121,7 +122,8 @@ Event-detail flow:
 2. "準備報名 / Prepare Registration" shows a preparation panel if the local profile is complete.
 3. If the profile is incomplete, Settings → Registration Profile is shown with missing required fields listed.
 4. The panel shows event name, organiser, date/time, CPD hours, official URL, and the message "You are not registered yet."
-5. "Open official registration page" opens `event.url` in a new tab (`noopener`). It does not put profile data in the URL, does not autofill, and does not submit any form. Local state becomes `opened`.
+5. "Open official registration page" opens `event.url` in a new tab (`noopener,noreferrer`). It does not put profile data in the URL, does not autofill, and does not submit any form. Local state becomes `opened`.
+6. When `event.registration.mechanism` is `GOOGLE_FORMS` and status is `OPEN`, Prepare Registration may offer **Open prefilled Google Form** after a one-time confirmation. Selected local profile values are placed only in a temporary Google Forms URL (may appear in browser history / be sent to Google). Consent and questionnaire answers are not filled. Local state becomes `opened` (not registered). You must review and submit on Google Forms yourself.
 6. No automatic form submission in Sprint 1.
 
 ## Future adapter model (framework only; currently disabled)
