@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-07T06:48+08:00",
+ "updated": "2026-11-08T06:34+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -47,15 +47,13 @@
   },
   {
    "source": "CIC 建造業議會 Events",
-   "status": "OK_WITH_EVENTS",
-   "ok": true,
-   "n": 8,
-   "method": "playwright+cic-list",
+   "status": "EMPTY_UNVERIFIED",
+   "ok": false,
+   "n": 0,
+   "method": "cic-list",
    "page_title": "Events | Construction Industry Council",
-   "raw_candidates": 11,
-   "rejects": {
-    "date_range": 3
-   }
+   "raw_candidates": 0,
+   "rejects": {}
   },
   {
    "source": "CIC BIM Events",
@@ -101,12 +99,12 @@
    "source": "HKIE Events",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 19,
+   "n": 14,
    "method": "playwright+generic",
    "page_title": "Events - HKIE",
    "raw_candidates": 20,
    "rejects": {
-    "date_range": 1
+    "date_range": 6
    }
   },
   {
@@ -176,8 +174,7 @@
    "page_title": "Latest Events at ICE | Institution of Civil Engineers (ICE)",
    "raw_candidates": 12,
    "rejects": {
-    "overseas_physical": 6,
-    "date_range": 1
+    "overseas_physical": 7
    }
   },
   {
@@ -731,26 +728,6 @@
    }
   },
   {
-   "id": "ab10639aeb755",
-   "name": "Job Fair",
-   "org": "CIC",
-   "date": "2026-11-09",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true
-  },
-  {
    "id": "aa4aaca86b58d",
    "name": "Top tips for spending less online",
    "org": "ICE",
@@ -768,6 +745,26 @@
    "free": true,
    "source": "ICE Upcoming Events",
    "group": "ICE",
+   "auto": true
+  },
+  {
+   "id": "ab10639aeb755",
+   "name": "Job Fair",
+   "org": "CIC",
+   "date": "2026-11-09",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
    "auto": true
   },
   {
@@ -1324,26 +1321,6 @@
    "auto": true
   },
   {
-   "id": "ab1f7b6fd9b0f",
-   "name": "Conference／Seminar",
-   "org": "CIC",
-   "date": "2026-11-12",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true
-  },
-  {
    "id": "ab4412f3f623d",
    "name": "[HKIFM x CIHAPB x HKIE YMC] Running & Wellness Event (Facility x Housing x Engineering)",
    "org": "HKIE Events",
@@ -1546,10 +1523,10 @@
    "auto": true
   },
   {
-   "id": "aab4afadb8067",
-   "name": "Job Fair",
+   "id": "ab1f7b6fd9b0f",
+   "name": "Conference／Seminar",
    "org": "CIC",
-   "date": "2026-11-14",
+   "date": "2026-11-12",
    "time": "",
    "hrs": null,
    "hrs_est": false,
@@ -1830,6 +1807,26 @@
     ],
     "requiresManualCompletion": true
    }
+  },
+  {
+   "id": "aab4afadb8067",
+   "name": "Job Fair",
+   "org": "CIC",
+   "date": "2026-11-14",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true
   },
   {
    "id": "ade4c69a74c66",
@@ -2297,26 +2294,6 @@
    "auto": true
   },
   {
-   "id": "a3169a4e32050",
-   "name": "Exhibition",
-   "org": "CIC",
-   "date": "2026-11-23",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true
-  },
-  {
    "id": "ac679b030a8ec",
    "name": "Supporting Event",
    "org": "HKGBC",
@@ -2334,6 +2311,26 @@
    "free": null,
    "source": "HKGBC 綠建環評",
    "group": "HKGBC",
+   "auto": true
+  },
+  {
+   "id": "a3169a4e32050",
+   "name": "Exhibition",
+   "org": "CIC",
+   "date": "2026-11-23",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
    "auto": true
   },
   {
@@ -2517,6 +2514,26 @@
    "auto": true
   },
   {
+   "id": "aafbc3f3de808",
+   "name": "Supporting Event",
+   "org": "HKGBC",
+   "date": "2026-11-29",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true
+  },
+  {
    "id": "a0a71566eb258",
    "name": "Festival",
    "org": "CIC",
@@ -2554,26 +2571,6 @@
    "free": null,
    "source": "CIC 建造業議會 Events",
    "group": "CIC",
-   "auto": true
-  },
-  {
-   "id": "aafbc3f3de808",
-   "name": "Supporting Event",
-   "org": "HKGBC",
-   "date": "2026-11-29",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
    "auto": true
   },
   {
