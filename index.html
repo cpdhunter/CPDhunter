@@ -87,6 +87,13 @@ a{color:var(--p)}
 .bar div{height:100%;background:var(--p)}.bar.done div{background:var(--ok)}
 table{width:100%;border-collapse:collapse;font-size:.85rem}td,th{padding:6px;border-bottom:1px solid #eee;text-align:left}
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:10px 16px;border-radius:6px;display:none;z-index:30}
+.regbadge{display:inline-block;font-size:.75rem;padding:2px 8px;border-radius:10px;margin:2px 4px 0 0;background:#eceff1;color:#455a64}
+.regbadge.opened{background:#e3f2fd;color:#1565c0}
+.regbadge.manual{background:#e8f5e9;color:#2e7d32}
+.regbadge.cancelled{background:#fce4ec;color:#c62828}
+.regprep{margin-top:12px;padding-top:10px;border-top:1px solid #eee}
+.regprep h4{margin:0 0 6px;font-size:.95rem}
+.regfield{margin-top:2px}
 footer{text-align:center;font-size:.75rem;color:var(--mut);padding:20px;line-height:1.8}
 </style>
 </head>
@@ -175,9 +182,38 @@ footer{text-align:center;font-size:.75rem;color:var(--mut);padding:20px;line-hei
     <h3>來源統計：邊個機構最多免費 CPD？</h3>
     <div id="srcTbl" style="margin-top:8px"></div>
   </div>
+  <div class="card" id="regProfileCard">
+    <h3>報名檔案 Registration Profile</h3>
+    <div class="meta">Registration profile is stored only in this browser.</div>
+    <div class="meta" id="regProfileHint"></div>
+    <div class="row">
+      <div class="regfield"><label for="rp_title">Title</label><input id="rp_title" maxlength="20" autocomplete="honorific-prefix"></div>
+      <div class="regfield"><label for="rp_preferredLanguage">Preferred language</label><input id="rp_preferredLanguage" maxlength="50" placeholder="e.g. zh-HK / en"></div>
+    </div>
+    <div class="regfield"><label for="rp_englishName">English full name *</label><input id="rp_englishName" maxlength="150" autocomplete="name" required></div>
+    <div class="regfield"><label for="rp_chineseName">Chinese name</label><input id="rp_chineseName" maxlength="150"></div>
+    <div class="row">
+      <div class="regfield"><label for="rp_email">Email *</label><input id="rp_email" type="email" maxlength="254" autocomplete="email" required></div>
+      <div class="regfield"><label for="rp_phone">Phone</label><input id="rp_phone" maxlength="50" autocomplete="tel"></div>
+    </div>
+    <div class="row">
+      <div class="regfield"><label for="rp_position">Position *</label><input id="rp_position" maxlength="150" autocomplete="organization-title" required></div>
+      <div class="regfield"><label for="rp_organisation">Organisation *</label><input id="rp_organisation" maxlength="200" autocomplete="organization" required></div>
+    </div>
+    <div class="regfield"><label for="rp_hkieNumber">HKIE membership number</label><input id="rp_hkieNumber" maxlength="100"></div>
+    <div class="row">
+      <div class="regfield"><label for="rp_primaryDiscipline">Primary discipline *</label><select id="rp_primaryDiscipline" required></select></div>
+      <div class="regfield"><label for="rp_secondaryDiscipline">Secondary discipline</label><select id="rp_secondaryDiscipline"></select></div>
+    </div>
+    <button class="btn" type="button" onclick="saveRegProfileUI()">Save</button>
+    <button class="btn sec" type="button" onclick="exportRegProfileUI()">Export</button>
+    <button class="btn sec" type="button" onclick="$('rpImport').click()">Import JSON</button>
+    <button class="btn del" type="button" onclick="deleteRegProfileUI()">Delete</button>
+    <input type="file" id="rpImport" accept="application/json,.json" hidden>
+  </div>
   <div class="card">
     <h3>私隱及資料</h3>
-    <div class="meta">本網站唔設帳戶，你嘅學科設定同 CPD 紀錄只會存喺你部機嘅瀏覽器。刪除前建議先匯出 CSV。</div>
+    <div class="meta">本網站唔設帳戶。你嘅學科設定、CPD 紀錄同報名檔案只會存喺你部機嘅瀏覽器（localStorage），唔會由 CPD Hunter 傳送到伺服器。刪除前建議先匯出 CSV 同報名檔案。</div>
     <button class="btn del" onclick="wipeAll()">刪除本機所有資料</button>
   </div>
 </section>
@@ -202,6 +238,7 @@ footer{text-align:center;font-size:.75rem;color:var(--mut);padding:20px;line-hei
 </div></div>
 <div class="toast" id="toast"></div>
 
+<script src="registration.js"></script>
 <script>
 const CATS=["DSTM","OTM","GPM","H&S"];
 const CAT_NAME={"DSTM":"本科技術","OTM":"其他技術","GPM":"一般專業","H&S":"健康安全"};
@@ -324,16 +361,20 @@ function renderList(){
 // ---- 詳情 ----
 function showEv(id){
   const e=allEvents().find(x=>x.id===id);if(!e)return;
+  const st=regStatusLabel(id);
   $("evBox").innerHTML=`
-    <span class="tag cat ${kc(e.cat)}">${e.cat} ${CAT_NAME[e.cat]}</span>${e.why?`<span class="meta"> ${esc(e.why)}</span>`:""}
+    <span class="tag cat ${kc(e.cat)}">${e.cat} ${CAT_NAME[e.cat]}</span>${e.why?`<span class="meta"> ${esc(e.why)}</span>`:""}${st?`<span class="regbadge ${st.cls}" id="evRegBadge"></span>`:""}
     <h3 style="margin-top:8px">${esc(e.name)}</h3>
     <div class="meta">${esc(e.org)}</div>
     <div class="meta">📅 ${e.date} ${esc(e.time||"")}${e.time?" (HKT)":""}</div>
     <div class="meta">⏱ CPD：${e.hrs?e.hrs+" 小時"+(e.hrs_est?"（按活動時長估算，未經主辦方確認）":""):"未註明"}</div>
     <div><span class="tag">${e.region==="HK"?"香港":"海外"}</span>${e.online?'<span class="tag">網上</span>':""}${e.free===true?'<span class="tag" style="background:#e8f5e9;color:#2e7d32">免費</span>':'<span class="tag" style="background:#fff3e0;color:#e65100">收費未註明</span>'}</div>
     <a class="btn" href="${esc(e.url)}" target="_blank" rel="noopener">主辦方網頁 ↗</a>
-    <button class="btn sec" onclick="attended('${e.id}')">記錄到我的進度</button>
+    <button class="btn sec" onclick="attended('${esc(e.id)}')">記錄到我的進度</button>
+    <div class="regprep" id="regPrepRoot"></div>
     <button class="btn sec" onclick="$('evModal').classList.remove('on')">關閉</button>`;
+  if(st){const b=$("evRegBadge");if(b)b.textContent=st.text}
+  fillRegPrep(e);
   $("evModal").classList.add("on");
 }
 function attended(id){
@@ -388,6 +429,160 @@ function exportCSV(){
   const csv="\ufeff"+rows.map(r=>r.map(v=>`"${String(v).replace(/"/g,'""')}"`).join(",")).join("\n");
   const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));a.download="cpd_hunter_log.csv";a.click();
 }
+// ---- 報名檔案 / Prepare Registration（用 registration.js；唔複製邏輯）----
+const REG_FIELDS=["title","englishName","chineseName","email","phone","position","organisation","hkieNumber","primaryDiscipline","secondaryDiscipline","preferredLanguage"];
+const REG_REQUIRED=["englishName","email","organisation","position","primaryDiscipline"];
+const REG_LABEL={englishName:"English full name",email:"Email",organisation:"Organisation",position:"Position",primaryDiscipline:"Primary discipline"};
+function ensureRegSelects(){
+  const p=$("rp_primaryDiscipline"),s=$("rp_secondaryDiscipline");
+  if(!p||p.options.length)return;
+  p.add(new Option("— 請選擇 —",""));s.add(new Option("— 無 —",""));
+  DISCS.forEach(([v,n])=>{p.add(new Option(n+"　"+v,v));s.add(new Option(n+"　"+v,v))});
+}
+function fillRegProfileForm(){
+  ensureRegSelects();
+  const p=typeof loadProfile==="function"?loadProfile():null;
+  REG_FIELDS.forEach(k=>{const el=$("rp_"+k);if(!el)return;el.value=(p&&p[k])||""});
+  const hint=$("regProfileHint");
+  if(!hint)return;
+  if(typeof profileComplete==="function"&&profileComplete(p))hint.textContent="檔案完整，可用於「準備報名」。";
+  else{
+    const miss=missingRegFields(p);
+    hint.textContent=miss.length?"未齊必填："+miss.map(k=>REG_LABEL[k]||k).join("、"):"尚未儲存報名檔案。";
+  }
+}
+function missingRegFields(p){
+  p=p||(typeof loadProfile==="function"?loadProfile():null)||{};
+  return REG_REQUIRED.filter(k=>!(p[k]||"").toString().trim());
+}
+function readRegProfileForm(){
+  const o={version:1};
+  REG_FIELDS.forEach(k=>{const el=$("rp_"+k);if(!el)return;const v=el.value;if(v!=="")o[k]=v});
+  return o;
+}
+function saveRegProfileUI(){
+  if(typeof saveProfile!=="function"){toast("報名模組未載入");return}
+  const saved=saveProfile(readRegProfileForm());
+  if(!saved){toast("無法儲存：請檢查必填欄位、電郵格式同字數上限");fillRegProfileForm();return}
+  fillRegProfileForm();
+  toast(profileComplete(saved)?"報名檔案已儲存（完整）":"報名檔案已儲存（仍欠必填）");
+}
+function exportRegProfileUI(){
+  if(typeof exportProfile!=="function"){toast("報名模組未載入");return}
+  const out=exportProfile();
+  if(!out)toast("冇報名檔案可匯出");
+}
+function deleteRegProfileUI(){
+  if(!confirm("刪除本機報名檔案？唔會刪除報名狀態或 CPD 紀錄。"))return;
+  if(typeof deleteProfile==="function")deleteProfile();
+  fillRegProfileForm();toast("已刪除報名檔案");
+}
+function importRegProfileUI(file){
+  if(!file||typeof importProfile!=="function")return;
+  importProfile(file).then(p=>{
+    fillRegProfileForm();
+    toast("已匯入報名檔案");
+  }).catch(err=>{
+    const m=String(err&&err.message||err);
+    const map={invalid:"檔案無效",version:"版本唔支援",incomplete:"必填未齊",email:"電郵無效",too_large:"檔案過大",too_long:"欄位過長",type:"欄位類型無效",storage:"無法寫入本機"};
+    toast("匯入失敗："+(map[m]||m));
+  });
+}
+function regStatusLabel(id){
+  if(typeof getRegState!=="function")return null;
+  const st=getRegState(id);if(!st)return null;
+  if(st.state==="registered_manual")return{text:"已手動報名",cls:"manual",state:st.state};
+  if(st.state==="cancelled")return{text:"已取消",cls:"cancelled",state:st.state};
+  if(st.state==="opened")return{text:"已開啟報名頁",cls:"opened",state:st.state};
+  return null;
+}
+function goRegProfile(missing){
+  $("evModal").classList.remove("on");
+  document.querySelectorAll("nav button,section").forEach(x=>x.classList.remove("on"));
+  const tab=document.querySelector('nav button[data-t="settings"]');
+  if(tab)tab.classList.add("on");
+  $("settings").classList.add("on");
+  $("filters").style.display="none";
+  fillRegProfileForm();
+  const card=$("regProfileCard");
+  if(card)card.scrollIntoView({behavior:"smooth",block:"start"});
+  const first=missing[0]&&$("rp_"+missing[0]);
+  if(first)first.focus();
+  toast("請先完成報名檔案："+missing.map(k=>REG_LABEL[k]||k).join("、"));
+}
+function fillRegPrep(e){
+  const root=$("regPrepRoot");if(!root)return;
+  while(root.firstChild)root.removeChild(root.firstChild);
+  const h=document.createElement("h4");h.textContent="準備報名 / Prepare Registration";root.appendChild(h);
+  const miss=missingRegFields();
+  if(miss.length){
+    const m=document.createElement("div");m.className="meta";
+    m.textContent="報名檔案未齊，未能開啟準備流程。欠："+miss.map(k=>REG_LABEL[k]||k).join("、");
+    root.appendChild(m);
+    const b=document.createElement("button");b.className="btn";b.type="button";b.textContent="前往報名檔案";
+    b.onclick=()=>goRegProfile(miss);root.appendChild(b);
+    return;
+  }
+  const warn=document.createElement("div");warn.className="note";warn.textContent="You are not registered yet.";root.appendChild(warn);
+  const rows=[
+    ["活動 / Event",e.name],
+    ["主辦 / Organiser",e.org||""],
+    ["日期時間 / Date & time",e.date+(e.time?" "+e.time+" (HKT)":"")],
+    ["CPD 時數 / Hours",e.hrs?(String(e.hrs)+(e.hrs_est?"（估算）":"")):"未註明"],
+    ["官方報名網址 / Official URL",e.url||""]
+  ];
+  rows.forEach(([lab,val])=>{
+    const d=document.createElement("div");d.className="meta";
+    const strong=document.createElement("b");strong.textContent=lab+"：";d.appendChild(strong);
+    d.appendChild(document.createTextNode(val||"—"));
+    root.appendChild(d);
+  });
+  const st=regStatusLabel(e.id);
+  if(st){
+    const s=document.createElement("div");s.className="meta";
+    s.textContent="本機報名狀態（唔等於出席／完成 CPD）："+st.text;
+    root.appendChild(s);
+  }else{
+    const s=document.createElement("div");s.className="meta";
+    s.textContent="本機報名狀態：未開始（與「我的進度」出席紀錄分開）";
+    root.appendChild(s);
+  }
+  const open=document.createElement("button");open.className="btn";open.type="button";
+  open.textContent="Open official registration page";
+  open.onclick=()=>openOfficialReg(e.id);root.appendChild(open);
+  const man=document.createElement("button");man.className="btn sec";man.type="button";
+  man.textContent="Mark registered manually";
+  man.onclick=()=>setLocalReg(e.id,"registered_manual");root.appendChild(man);
+  const can=document.createElement("button");can.className="btn sec";can.type="button";
+  can.textContent="Mark cancelled";
+  can.onclick=()=>setLocalReg(e.id,"cancelled");root.appendChild(can);
+  const reset=document.createElement("button");reset.className="btn sec";reset.type="button";
+  reset.textContent="Reset status";
+  reset.onclick=()=>setLocalReg(e.id,"not_started");root.appendChild(reset);
+}
+function openOfficialReg(id){
+  const e=allEvents().find(x=>x.id===id);if(!e||!e.url){toast("冇官方網址");return}
+  const miss=missingRegFields();
+  if(miss.length){goRegProfile(miss);return}
+  if(typeof setRegState==="function")setRegState(id,"opened","");
+  // 只用活動本身嘅 url；唔會把報名檔案放入網址
+  window.open(e.url,"_blank","noopener,noreferrer");
+  fillRegPrep(e);
+  const badge=$("evRegBadge");
+  const st=regStatusLabel(id);
+  if(badge&&st){badge.textContent=st.text;badge.className="regbadge "+st.cls}
+  else if(!badge&&st){showEv(id)}
+  toast("已開啟主辦方報名頁（未代你提交）");
+}
+function setLocalReg(id,state){
+  if(typeof setRegState!=="function"){toast("報名模組未載入");return}
+  if(!setRegState(id,state,"")){toast("無法更新狀態");return}
+  const e=allEvents().find(x=>x.id===id);if(e)fillRegPrep(e);
+  showEv(id);
+  const map={registered_manual:"已標示手動報名",cancelled:"已標示取消",not_started:"已重設狀態",opened:"已標示開啟"};
+  toast(map[state]||"已更新");
+}
+
 function wipeAll(){if(!confirm("確定刪除本網站喺呢部裝置嘅所有資料？包括 CPD 紀錄，刪除後無法復原。"))return;localStorage.clear();location.reload()}
 
 // ---- 載入 ----
@@ -398,7 +593,9 @@ fetch("events.json?"+Date.now()).then(r=>r.json()).then(j=>{
   render();
 }).catch(()=>{$("upd").textContent="　未能載入活動清單"});
 
-function render(){renderDisc();renderChips();renderCal();renderList();renderSources();renderTracker()}
+function render(){renderDisc();renderChips();renderCal();renderList();renderSources();renderTracker();fillRegProfileForm()}
+const rpImport=$("rpImport");
+if(rpImport)rpImport.addEventListener("change",()=>{const f=rpImport.files&&rpImport.files[0];rpImport.value="";if(f)importRegProfileUI(f)});
 render();
 if(!myDisc())openDisc(true);
 </script>

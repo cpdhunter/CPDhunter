@@ -1,35 +1,38 @@
 # CPD Hunter — Private Friends & Family Beta (Sprint 1)
 
-> **Status: PLANNED / NOT DEPLOYED**
+> **Hosting / Access status: PLANNED / NOT DEPLOYED**
 >
-> This document is a **future implementation plan**. None of the private-beta hosting or registration UI described below is live in production today.
+> Cloudflare Pages and Cloudflare Access remain a **future** private-beta plan. They are **not** live.
+>
+> **Local Registration Profile + Prepare Registration: IMPLEMENTED** on the public GitHub Pages site (device-local only; no autofill / no auto-submit).
 
 ## Current production (verified)
 
 - Public GitHub Pages site: https://cpdhunter.github.io/CPDhunter/
 - Public GitHub repository
-- Restored full production frontend (`index.html`) with calendar, list, filters, My Progress, Settings, and CSV export
+- Full production frontend (`index.html`) with calendar, list, filters, event modal, My Progress, Settings, CSV export, Terms / Privacy
 - Approximately 100 future events visible from the latest daily dataset
+- **IMPLEMENTED:** Settings → Registration Profile (browser `localStorage` only)
+- **IMPLEMENTED:** Event modal → Prepare Registration (opens organiser URL only; no autofill; no submit)
+- **IMPLEMENTED:** Local registration status (`not_started` | `opened` | `registered_manual` | `cancelled`)
+- No autofill of organiser forms
+- No auto-submit / automatic registration
 - No Cloudflare Access
 - No private email allowlist
-- No Registration Profile UI
-- No Prepare Registration UI
-- No autofill
-- No auto-submit / automatic registration
 - Cloudflare Pages is **not** deployed
 - Cloudflare Access is **not** configured
 
-## Already implemented but not connected
+## Implemented local registration helpers (connected)
 
-These helpers exist in the repository as an experimental Sprint 1 module. They are **not** loaded by the live frontend and must not be described as production features.
+These helpers live in `registration.js` and are loaded by the production frontend.
 
-- `registration.js` (unconnected; not referenced by `index.html`; hardened + covered by `registration.test.js`)
-- Browser-local registration profile helper (`localStorage` key `regProfile`, schema version `1`)
+- `registration.js` (referenced by `index.html`; covered by `registration.test.js`)
+- Browser-local registration profile (`localStorage` key `regProfile`, schema version `1`)
   - Allowed fields: `title`, `englishName`, `chineseName`, `email`, `phone`, `position`, `organisation`, `hkieNumber`, `primaryDiscipline`, `secondaryDiscipline`, `preferredLanguage`
   - Required for a complete profile: `englishName`, `email`, `organisation`, `position`, `primaryDiscipline` (`title` is optional)
   - Export / import / validation / delete helpers enforce allowlist, conservative email checks, exact per-field length limits (import/save reject oversized or invalid-typed fields), and a 100 KB UTF-8 import cap
 - Browser-local registration-state helper (`localStorage` key `regState`)
-  - Enforced state labels only: `not_started` | `opened` | `registered_manual` | `cancelled` (any other value is rejected)
+  - Enforced state labels only: `not_started` | `opened` | `registered_manual` | `cancelled`
   - Rejects non-plain objects/arrays and unsafe keys (`__proto__`, `constructor`, `prototype`); `deleteProfile` and `clearRegState` remain separate
   - Local notes only; does not modify `events.json` and does not contact organisers
 - Disabled adapter interface on `window.RegistrationAdapter`
@@ -37,7 +40,7 @@ These helpers exist in the repository as an experimental Sprint 1 module. They a
   - `canHandle` always returns `false`; `fill` is disabled; `validate` reports no auto-fill
   - No `submit()` implementation; automatic form submission is out of scope
 
-## Target architecture (planned)
+## Target architecture (planned private hosting)
 
 ```
 Private GitHub repository (future target only)
@@ -58,27 +61,25 @@ Private GitHub repository (future target only)
                +--> CPD Hunter private website
                       |
                       +--> calendar / list / CPD progress
-                      +--> Settings → Registration Profile (local only; planned UI)
-                      +--> Prepare Registration (no auto-submit; planned UI)
+                      +--> Settings → Registration Profile (local only; already on public Pages)
+                      +--> Prepare Registration (no auto-submit; already on public Pages)
                       +--> local registration state
 ```
 
 GitHub remains the source of truth and scraper executor. Cloudflare Pages would be the intended private web deployment target. Cloudflare Access would be the intended access control (email OTP + owner-approved allowlist). No custom username/password system.
 
-## Future implementation plan
+## Remaining future plan (hosting only)
 
-The disconnected-module hardening and regression tests are complete; this does not activate any frontend UI or deployment. Remaining ordered work:
+Local registration UI and legal updates for it are done. Remaining ordered work for private beta hosting:
 
-1. Update `privacy.html` / `terms.html` **before** activating any registration-profile UI, so legal text matches actual collection behaviour.
-2. In a separate authorised integration task, safely add Registration Profile / Prepare Registration to the restored production frontend without regressing calendar, list, filters, My Progress, or Settings.
-3. Deploy Cloudflare Pages for a private beta host (free-tier target).
-4. Configure Cloudflare Access with email OTP and an owner-approved allowlist only.
-5. Verify the private deployment end-to-end (access gate, public Pages still healthy until cutover is intentional).
-6. Only then consider making the repository private and retiring public GitHub Pages.
+1. Deploy Cloudflare Pages for a private beta host (free-tier target).
+2. Configure Cloudflare Access with email OTP and an owner-approved allowlist only.
+3. Verify the private deployment end-to-end (access gate, public Pages still healthy until cutover is intentional).
+4. Only then consider making the repository private and retiring public GitHub Pages.
 
-## Registration Profile (planned UI over existing helper)
+## Registration Profile (implemented UI)
 
-When integrated later, profile data would remain device-local only under `regProfile`.
+Profile data remains device-local only under `regProfile`.
 
 Schema (version 1):
 
@@ -99,33 +100,33 @@ Schema (version 1):
 }
 ```
 
-- Export would create a local JSON file.
-- Import would validate structure / version / required fields before saving.
-- Delete would remove the local profile.
-- No profile data would be sent to GitHub, Cloudflare, `events.json`, or any API.
+- Export creates a local JSON file controlled by the user.
+- Import validates structure / version / required fields before saving.
+- Delete removes the local profile.
+- No profile data is sent to GitHub, Cloudflare, `events.json`, or any API by CPD Hunter.
 
-## Registration State (planned UI over existing helper)
+## Registration State (implemented UI)
 
 Stored only in `localStorage` under key `regState`.
 
 States: `not_started` | `opened` | `registered_manual` | `cancelled`
 
-Marking "Registered manually" would be a local note only. It would not mean the organiser has confirmed registration, and it would not modify `events.json`.
+Marking "Registered manually" is a local note only. It does not mean the organiser has confirmed registration, and it does not modify `events.json`.
 
-## Prepare Registration (planned; not deployed)
+## Prepare Registration (implemented; no auto-submit)
 
-Intended event-detail flow after safe frontend integration:
+Event-detail flow:
 
 1. Official organiser link is preserved.
-2. "準備報名" opens a preparation panel if the local profile is complete.
-3. If the profile is incomplete, Settings → Registration Profile is shown.
-4. The panel shows event details, official URL, and profile completeness.
-5. "Open official registration page" opens the organiser URL. It does not submit any form.
+2. "準備報名 / Prepare Registration" shows a preparation panel if the local profile is complete.
+3. If the profile is incomplete, Settings → Registration Profile is shown with missing required fields listed.
+4. The panel shows event name, organiser, date/time, CPD hours, official URL, and the message "You are not registered yet."
+5. "Open official registration page" opens `event.url` in a new tab (`noopener`). It does not put profile data in the URL, does not autofill, and does not submit any form. Local state becomes `opened`.
 6. No automatic form submission in Sprint 1.
 
 ## Future adapter model (framework only; currently disabled)
 
-`window.RegistrationAdapter` already exists as a disabled placeholder with:
+`window.RegistrationAdapter` exists as a disabled placeholder with:
 
 - `canHandle(url)`
 - `inspect()`
@@ -153,13 +154,13 @@ Do not invent email addresses. The operator must supply the approved list.
 1. Remove or disable the Cloudflare Access application.
 2. Optionally point DNS or the custom domain back to GitHub Pages.
 3. Keep the repository public if public access is desired.
-4. Any later local registration-profile features would continue to work without Access; they are optional and device-local.
+4. Local registration-profile features continue to work without Access; they are optional and device-local.
 
-## How to leave private beta undeployed (current safe state)
+## How to leave private hosting undeployed (current safe state)
 
 - Leave Cloudflare Access unconfigured / disabled.
-- Keep serving the restored public GitHub Pages site.
-- Leave `registration.js` unconnected until review, legal updates, frontend integration, and tests are complete.
+- Keep serving the public GitHub Pages site (including local Registration Profile / Prepare Registration).
+- Do not claim Cloudflare / private-access deployment until it is actually configured.
 
 ## Zero-cost assumptions
 
@@ -173,7 +174,7 @@ Do not invent email addresses. The operator must supply the approved list.
 - Scraper recovery: see [MAINTENANCE.md](MAINTENANCE.md).
 - Until Cloudflare Pages is intentionally adopted, GitHub Pages remains the operational public site.
 - If a future Cloudflare deployment fails, keep GitHub Pages healthy as the fallback.
-- Any future profile data would live only in the user's browser; export before clearing browser data.
+- Profile data lives only in the user's browser; export before clearing browser data.
 
 ## Out of scope (Sprint 1)
 
