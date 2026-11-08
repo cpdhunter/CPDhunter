@@ -95,6 +95,19 @@ table{width:100%;border-collapse:collapse;font-size:.85rem}td,th{padding:6px;bor
 .regprep h4{margin:0 0 6px;font-size:.95rem}
 .regfield{margin-top:2px}
 footer{text-align:center;font-size:.75rem;color:var(--mut);padding:20px;line-height:1.8}
+
+.reco{margin-top:12px}
+.reco h3{margin:0 0 4px;font-size:1.05rem}
+.reco .reco-sub{font-size:.8rem;color:var(--mut);margin:0 0 8px}
+.reco-card{border:1px solid #e0e0e0;border-radius:8px;padding:10px 12px;margin-bottom:8px;border-left:4px solid var(--c,#999);background:#fff;cursor:pointer}
+.reco-card .nm{font-size:.95rem;font-weight:600;margin:0 0 4px}
+.reco-card .reasons{margin:6px 0 0;padding:0;list-style:none}
+.reco-card .reasons li{font-size:.78rem;color:#455a64;margin:2px 0;padding-left:12px;position:relative}
+.reco-card .reasons li::before{content:"•";position:absolute;left:0;color:var(--p)}
+.reco-why{margin-top:6px;font-size:.8rem}
+.reco-why summary{cursor:pointer;color:var(--p);user-select:none}
+.reco-why .why-body{margin-top:4px;padding:8px;background:#f7f9fc;border-radius:6px;font-size:.78rem;color:#455a64;line-height:1.5}
+.reco-empty{font-size:.9rem;color:var(--mut);padding:4px 0}
 </style>
 </head>
 <body>
@@ -123,6 +136,7 @@ footer{text-align:center;font-size:.75rem;color:var(--mut);padding:20px;line-hei
     <select id="fFree"><option value="">免費／未註明</option><option value="yes">只顯示確認免費</option></select>
     <input id="fQ" placeholder="搜尋關鍵字…">
   </div>
+  <div id="recoRoot" class="reco" hidden></div>
 </div>
 
 <section id="cal" class="on">
@@ -213,7 +227,7 @@ footer{text-align:center;font-size:.75rem;color:var(--mut);padding:20px;line-hei
   </div>
   <div class="card">
     <h3>私隱及資料</h3>
-    <div class="meta">本網站唔設帳戶。你嘅學科設定、CPD 紀錄同報名檔案只會存喺你部機嘅瀏覽器（localStorage），唔會由 CPD Hunter 傳送到伺服器。刪除前建議先匯出 CSV 同報名檔案。</div>
+    <div class="meta">本網站唔設帳戶。你嘅學科設定、CPD 紀錄、報名檔案同個人化推薦只會存／計喺你部機嘅瀏覽器（localStorage），唔會由 CPD Hunter 傳送到伺服器。刪除前建議先匯出 CSV 同報名檔案。</div>
     <button class="btn del" onclick="wipeAll()">刪除本機所有資料</button>
   </div>
 </section>
@@ -238,6 +252,7 @@ footer{text-align:center;font-size:.75rem;color:var(--mut);padding:20px;line-hei
 </div></div>
 <div class="toast" id="toast"></div>
 
+<script src="recommendations.js"></script>
 <script src="registration.js"></script>
 <script>
 const CATS=["DSTM","OTM","GPM","H&S"];
@@ -680,6 +695,99 @@ function setLocalReg(id,state){
 
 function wipeAll(){if(!confirm("確定刪除本網站喺呢部裝置嘅所有資料？包括 CPD 紀錄，刪除後無法復原。"))return;localStorage.clear();location.reload()}
 
+// ---- 為你推薦 / Recommended for You（recommendations.js；瀏覽器本機計算）----
+function renderReco(){
+  const root=$("recoRoot");if(!root)return;
+  while(root.firstChild)root.removeChild(root.firstChild);
+  root.hidden=true;
+  if(typeof CPDRecommendations==="undefined")return;
+  const R=CPDRecommendations;
+  const future=DATA.events.filter(e=>e.date>=today);
+  if(!future.length)return;
+  const memberType=LS("mtype")||"corp";
+  const logs=LS("logs")||[];
+  const deficits=R.getDeficits({memberType,logs,year:today.slice(0,4)});
+  const regMap=(typeof loadRegState==="function"?loadRegState():{})||{};
+  const result=R.rankEvents(DATA.events,{
+    discipline:myDisc(),
+    related:myRel(),
+    memberType,
+    today,
+    logs,
+    deficits,
+    regState:regMap
+  },R.RECO_MAX);
+  root.hidden=false;
+  const h=document.createElement("h3");h.textContent="為你推薦 / Recommended for You";root.appendChild(h);
+  const sub=document.createElement("div");sub.className="reco-sub";
+  sub.textContent="根據你嘅學科、CPD 進度同本機報名狀態，喺瀏覽器即時計算（唔會上傳個人資料）。";
+  root.appendChild(sub);
+  if(result.emptyKind==="no_discipline"){
+    const empty=document.createElement("div");empty.className="reco-empty";
+    empty.textContent="設定你嘅 HKIE discipline，就可以收到個人化 CPD 推薦。";
+    root.appendChild(empty);
+    const btn=document.createElement("button");btn.className="btn";btn.type="button";
+    btn.textContent="設定 discipline";btn.onclick=()=>openDisc();root.appendChild(btn);
+    return;
+  }
+  const banner=R.emptyStateMessage(result.emptyKind);
+  if(banner&&(result.emptyKind==="deficits_complete"||result.emptyKind==="deficits_complete_none"||result.emptyKind==="none")){
+    const note=document.createElement("div");note.className="note";note.textContent=banner.title;root.appendChild(note);
+  }
+  if(!result.ranked.length){
+    if(result.emptyKind!=="deficits_complete"){
+      const empty=document.createElement("div");empty.className="reco-empty";
+      empty.textContent="暫時冇合適推薦。";root.appendChild(empty);
+    }
+    return;
+  }
+  result.ranked.forEach(s=>{
+    const e=s.event;
+    const card=document.createElement("div");
+    card.className="reco-card "+kc(s.cat);
+    card.onclick=ev=>{if(ev.target.closest("details"))return;showEv(e.id)};
+    const nm=document.createElement("div");nm.className="nm";nm.textContent=e.name;card.appendChild(nm);
+    const meta=document.createElement("div");meta.className="meta";
+    meta.textContent=e.date+(e.time?" "+e.time:"")+" · "+(e.org||"");
+    card.appendChild(meta);
+    const tags=document.createElement("div");
+    const cat=document.createElement("span");cat.className="tag cat "+kc(s.cat);cat.textContent=s.cat+" "+(CAT_NAME[s.cat]||"");tags.appendChild(cat);
+    if(e.hrs){const t=document.createElement("span");t.className="tag";t.textContent=(e.hrs_est?"~":"")+e.hrs+"h"+(e.hrs_est?" 估算":" 官方");tags.appendChild(t)}
+    if(e.free===true){const t=document.createElement("span");t.className="tag";t.style.background="#e8f5e9";t.style.color="#2e7d32";t.textContent="免費";tags.appendChild(t)}
+    else{const t=document.createElement("span");t.className="tag";t.style.background="#fff3e0";t.style.color="#e65100";t.textContent="收費未註明";tags.appendChild(t)}
+    if(e.online===true){const t=document.createElement("span");t.className="tag";t.textContent="網上";tags.appendChild(t)}
+    else if(e.online===false){const t=document.createElement("span");t.className="tag";t.textContent="實體";tags.appendChild(t)}
+    const reg=e.registration;
+    if(reg&&reg.status==="OPEN"&&reg.destination){const t=document.createElement("span");t.className="tag";t.textContent="可報名";tags.appendChild(t)}
+    else if(reg&&reg.mechanism==="GOOGLE_FORMS"&&reg.status==="OPEN"){const t=document.createElement("span");t.className="tag";t.textContent="Google Forms";tags.appendChild(t)}
+    card.appendChild(tags);
+    if(s.reasons&&s.reasons.length){
+      const ul=document.createElement("ul");ul.className="reasons";
+      s.reasons.slice(0,4).forEach(txt=>{const li=document.createElement("li");li.textContent=txt;ul.appendChild(li)});
+      card.appendChild(ul);
+    }
+    const why=document.createElement("details");why.className="reco-why";
+    const sum=document.createElement("summary");sum.textContent="點解推薦？";why.appendChild(sum);
+    const body=document.createElement("div");body.className="why-body";
+    const lines=[];
+    lines.push("類別："+s.cat+(s.flags.categoryDeficit>0?"（仲差 "+s.flags.categoryDeficit+" 小時）":"（呢類要求暫時已達標／唔適用）"));
+    if(s.discMatch==="primary")lines.push("學科：符合你嘅主要 discipline（"+myDisc()+"）");
+    else if(s.discMatch==="related")lines.push("學科：符合已設定相關界別");
+    else if(e.type==="Technical")lines.push("學科：非你嘅主要／相關界別（OTM）");
+    else lines.push("學科：非技術類活動");
+    if(s.flags.hoursKind==="official")lines.push("時數：官方 "+s.flags.hrs+" 小時");
+    else if(s.flags.hoursKind==="estimated")lines.push("時數：估算 "+s.flags.hrs+" 小時");
+    else lines.push("時數：未註明");
+    lines.push("費用："+(e.free===true?"確認免費":"未註明"));
+    if(s.flags.hasGFormPrefill)lines.push("報名：Google Forms 可預填基本資料");
+    else if(s.flags.hasDestination)lines.push("報名：已有報名連結，可準備報名");
+    else lines.push("報名：連結未確認／可能需要登入或驗證");
+    lines.forEach((ln,i)=>{if(i)body.appendChild(document.createElement("br"));body.appendChild(document.createTextNode(ln))});
+    why.appendChild(body);card.appendChild(why);
+    root.appendChild(card);
+  });
+}
+
 // ---- 載入 ----
 ["fReg","fSrc","fFree"].forEach(i=>$(i).onchange=render);$("fQ").oninput=render;
 fetch("events.json?"+Date.now()).then(r=>r.json()).then(j=>{
@@ -688,7 +796,7 @@ fetch("events.json?"+Date.now()).then(r=>r.json()).then(j=>{
   render();
 }).catch(()=>{$("upd").textContent="　未能載入活動清單"});
 
-function render(){renderDisc();renderChips();renderCal();renderList();renderSources();renderTracker();fillRegProfileForm()}
+function render(){renderDisc();renderChips();renderCal();renderList();renderSources();renderTracker();fillRegProfileForm();renderReco()}
 const rpImport=$("rpImport");
 if(rpImport)rpImport.addEventListener("change",()=>{const f=rpImport.files&&rpImport.files[0];rpImport.value="";if(f)importRegProfileUI(f)});
 render();
