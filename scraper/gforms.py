@@ -738,7 +738,14 @@ def enrich_google_forms_registration(
         stats["scanned"] += 1
         n += 1
         try:
-            form_url = _discover(ev)
+            # Prefer destination already found by reg_discover when it is Google Forms
+            existing = ev.get("registration") or {}
+            form_url = None
+            dest = existing.get("destination") if existing.get("mechanism") == "GOOGLE_FORMS" else None
+            if isinstance(dest, str) and ("forms.gle" in dest or "docs.google.com/forms" in dest):
+                form_url = dest
+            if not form_url:
+                form_url = _discover(ev)
             if not form_url:
                 continue
             stats["discovered"] += 1
@@ -750,6 +757,16 @@ def enrich_google_forms_registration(
                 form_cache[form_url] = meta
                 if sleep_s:
                     time.sleep(sleep_s)
+            # Preserve discovery diagnostics from Sprint 2C
+            for k in ("sourceUrlClass", "confidence", "discoveryMethod"):
+                if existing.get(k) and not meta.get(k):
+                    meta[k] = existing[k]
+            if not meta.get("sourceUrlClass"):
+                meta["sourceUrlClass"] = "DIRECT_REGISTRATION"
+            if not meta.get("confidence"):
+                meta["confidence"] = "HIGH"
+            if not meta.get("discoveryMethod"):
+                meta["discoveryMethod"] = "gforms_schema_enrich"
             ev["registration"] = meta
             st = meta.get("status") or "UNKNOWN"
             stats[st] = stats.get(st, 0) + 1

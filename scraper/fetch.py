@@ -137,6 +137,18 @@ def parse_date(s):
 
 def extract_oshc(soup, base):
     out = []
+    # Prefer explicit activity links from OSHC seminars JS helpers
+    html = str(soup)
+    js_map = {}
+    for m in re.finditer(
+        r"checkButtonClick\(\s*'eng'\s*,\s*'seminars_conferences'\s*,\s*'((?:\\'|[^'])*)'\s*,\s*'((?:\\'|[^'])*)'",
+        html,
+        re.I,
+    ):
+        title = m.group(1).replace("\\'", "'")
+        href = m.group(2).replace("\\'", "'").strip()
+        if href.startswith("http"):
+            js_map[re.sub(r"[^a-z0-9\u4e00-\u9fff]", "", title.lower())] = href
     for table in soup.find_all("table"):
         for tr in table.find_all("tr")[1:]:
             tds = tr.find_all("td")
@@ -145,7 +157,17 @@ def extract_oshc(soup, base):
             title = tds[1].get_text(strip=True)
             d = parse_date(date_s)
             if d and title:
-                out.append({"title": title, "date": d, "url": base, "organizer": "OSHC", "is_online": "Online" in title or None})
+                url = base
+                key = re.sub(r"[^a-z0-9\u4e00-\u9fff]", "", title.lower())
+                if key in js_map:
+                    url = js_map[key]
+                else:
+                    # fuzzy: longest js title contained / containing
+                    for jt, href in js_map.items():
+                        if key and (key in jt or jt in key) and len(key) > 20:
+                            url = href
+                            break
+                out.append({"title": title, "date": d, "url": url, "organizer": "OSHC", "is_online": "Online" in title or None})
     return out
 
 def extract_hkie_cpd(soup, base):
@@ -217,6 +239,53 @@ def extract_cic(soup, base):
             out.append({"title": title, "date": d, "url": base, "organizer": "CIC"})
     return out
 
+def extract_rstcs(soup, base):
+    """RSTCS events page: Zoom webinar/register links and dated cards."""
+    out = []
+    html = str(soup)
+    # Zoom registration links with nearby title
+    for a in soup.find_all("a", href=True):
+        href = (a.get("href") or "").strip()
+        if "zoom.us" not in href.lower() or "register" not in href.lower():
+            continue
+        parent = a.find_parent(["div", "li", "article", "tr", "section"])
+        title = a.get_text(strip=True) or (parent.get_text(" ", strip=True)[:200] if parent else "")
+        ctx = parent.get_text(" ", strip=True) if parent else title
+        d = parse_date(ctx)
+        # Summit 2026 without a clear day — skip undated rather than invent
+        if not d:
+            # try year-only future placeholder from title
+            ym = re.search(r"(20\d{2})", title)
+            if ym and int(ym.group(1)) >= TODAY.year:
+                # Without a real day, do not invent a date
+                continue
+            continue
+        out.append({
+            "title": title[:200] or "RSTCS event",
+            "date": d,
+            "url": urljoin(base, href),
+            "organizer": "CIC RSTCS",
+            "is_online": True,
+            "is_free": True,
+        })
+    # Also generic dated anchors on the page
+    if not out:
+        for a in soup.find_all("a", href=True):
+            parent = a.find_parent(["div", "li", "article", "tr"])
+            ctx = (parent.get_text(" ", strip=True) if parent else "") + " " + a.get_text()
+            d = parse_date(ctx)
+            title = a.get_text(strip=True)
+            if d and title and len(title) > 12 and "facebook" not in (a.get("href") or "").lower():
+                out.append({"title": title[:200], "date": d, "url": urljoin(base, a["href"]), "organizer": "CIC RSTCS"})
+    seen = set()
+    uniq = []
+    for e in out:
+        k = (e["date"], e["title"][:60])
+        if k not in seen:
+            seen.add(k)
+            uniq.append(e)
+    return uniq[:20]
+
 def extract_csb(soup, base):
     out = []
     for table in soup.find_all("table"):
@@ -227,19 +296,51 @@ def extract_csb(soup, base):
             title = tds[1].get_text(strip=True)
             d = parse_date(date_s)
             if d and title:
-                a = tds[1].find("a")
-                url = urljoin(base, a["href"]) if a and a.get("href") else base
+                a = tds[1].find("a", href=True)
+                href = (a.get("href") or "").strip() if a else ""
+                url = urljoin(base, href) if href else base
                 out.append({"title": title, "date": d, "url": url, "organizer": tds[2].get_text(strip=True) if len(tds)>2 else "CSB/Labour"})
     return out
 
 def extract_hkgbc(soup, base):
     out = []
-    text = soup.get_text("\n", strip=True)
-    for m in re.finditer(r"(\d{1,2}\s+[A-Za-z]+\s+\d{4}|\d{4}年\d{1,2}月\d{1,2}日)\s*\|\s*(.+?)(?:\n|$)", text):
-        d = parse_date(m.group(1))
-        title = m.group(2).strip()
-        if d and title and len(title) > 8:
-            out.append({"title": title, "date": d, "url": base, "organizer": "HKGBC"})
+    # Prefer per-event detail cards (events-detail?eventId=)
+    for a in soup.find_all("a", href=True):
+        href = (a.get("href") or "").strip()
+        if "events-detail" not in href.lower() and "eventid=" not in href.lower():
+            continue
+        parent = a.find_parent(["div", "li", "article", "tr", "section"])
+        ctx = (parent.get_text(" ", strip=True) if parent else "") + " " + a.get_text()
+        d = parse_date(ctx)
+        title = a.get_text(" ", strip=True) or ""
+        # Skip date-only link text; prefer nearby heading/description
+        if (not title) or (parse_date(title) and len(title) < 24):
+            if parent:
+                # pick the longest substantial text node-ish from children links/headings
+                parts = []
+                for el in parent.find_all(["h2", "h3", "h4", "p", "a"]):
+                    t = el.get_text(" ", strip=True)
+                    if t and not (parse_date(t) and len(t) < 24):
+                        parts.append(t)
+                parts = sorted(set(parts), key=len, reverse=True)
+                title = parts[0] if parts else (parent.get_text(" ", strip=True)[:200])
+        title = re.sub(r"\s+", " ", title).strip()
+        # Drop listing chrome prefixes
+        title = re.sub(r"^(?:Supporting Event|HKGBC Event|CPD Event)[,|\s]*", "", title, flags=re.I).strip() or title
+        if "|" in title:
+            # keep the more descriptive side
+            bits = [b.strip() for b in title.split("|") if b.strip()]
+            bits = sorted(bits, key=len, reverse=True)
+            title = bits[0] if bits else title
+        if d and title and len(title) > 8 and not (parse_date(title) and len(title) < 24):
+            out.append({"title": title[:200], "date": d, "url": urljoin(base, href), "organizer": "HKGBC"})
+    if not out:
+        text = soup.get_text("\n", strip=True)
+        for m in re.finditer(r"(\d{1,2}\s+[A-Za-z]+\s+\d{4}|\d{4}年\d{1,2}月\d{1,2}日)\s*\|\s*(.+?)(?:\n|$)", text):
+            d = parse_date(m.group(1))
+            title = m.group(2).strip()
+            if d and title and len(title) > 8:
+                out.append({"title": title, "date": d, "url": base, "organizer": "HKGBC"})
     if not out:
         for a in soup.find_all("a", href=True):
             parent = a.find_parent(["div", "li", "article"])
@@ -247,7 +348,15 @@ def extract_hkgbc(soup, base):
             d = parse_date(ctx)
             if d and len(a.get_text(strip=True)) > 10:
                 out.append({"title": a.get_text(strip=True)[:200], "date": d, "url": urljoin(base, a["href"]), "organizer": "HKGBC"})
-    return out[:30]
+    # Dedup by date+title
+    seen = set()
+    uniq = []
+    for e in out:
+        k = (e["date"], e["title"][:80])
+        if k not in seen:
+            seen.add(k)
+            uniq.append(e)
+    return uniq[:30]
 
 def extract_hkie_div(soup, base):
     out = []
@@ -382,15 +491,18 @@ def process_source(src):
     html = fetch_html(url, use_playwright=use_pw)
     soup = BeautifulSoup(html, "html.parser")
     title = soup.title.get_text(strip=True) if soup.title else ""
+    # Surface under-construction banners into title for status classification
+    body_txt = soup.get_text(" ", strip=True)[:500].lower()
+    if "page under construction" in body_txt and "under construction" not in title.lower():
+        title = (title + " Page Under Construction").strip()
     raw = []
     method = "generic"
-    if "oshc.org.hk" in url or "csb.gov.hk" in url:
-        if "oshc" in url:
-            raw = extract_oshc(soup, url)
-            method = "oshc-table"
-        else:
-            raw = extract_csb(soup, url)
-            method = "csb-table"
+    if "oshc.org.hk" in url:
+        raw = extract_oshc(soup, url)
+        method = "oshc-table"
+    elif "csb.gov.hk" in url:
+        raw = extract_csb(soup, url)
+        method = "csb-table"
     elif "oshsreg.gov.hk" in url or "labour.gov.hk" in url:
         raw = extract_labour(soup, url)
         method = "labour-list"
@@ -403,7 +515,13 @@ def process_source(src):
     elif "ice.org.uk" in url:
         raw = extract_ice(soup, url)
         method = "ice-cards"
-    elif "cic.hk" in url or "bim.cic" in url or "citac" in url or "rstc.cic" in url:
+    elif "rstc.cic" in url:
+        raw = extract_rstcs(soup, url)
+        method = "rstcs"
+        if not raw:
+            raw = extract_cic(soup, url)
+            method = "cic-list"
+    elif "cic.hk" in url or "bim.cic" in url or "citac" in url:
         raw = extract_cic(soup, url)
         method = "cic-list"
     elif "hkgbc" in url:
@@ -535,6 +653,8 @@ def main():
                 st = "OK_WITH_EVENTS"
             elif rejects and all(k in ("date_range", "overseas_physical", "paid", "social") for k in rejects):
                 st = "VERIFIED_EMPTY"
+            elif "under construction" in (page_title or "").lower() or "page under construction" in (page_title or "").lower():
+                st = "VERIFIED_EMPTY"
             else:
                 st = "EMPTY_UNVERIFIED"
             log(f"  {st} {method}: raw={len(raw)} kept={n} rejects={rejects} title={page_title[:60]}")
@@ -606,6 +726,14 @@ def main():
     raw_count = len(events)
     events = dedup_events(events)
     log(f"Dedup: {raw_count} -> {len(events)}")
+    # Sprint 2C: discover registration destinations first (no PII), then
+    # Google Forms schema enrichment so newly found forms.gle links get fields.
+    try:
+        from reg_discover import enrich_registration_discovery
+        dstats = enrich_registration_discovery(events)
+        log(f"Registration discovery: {dstats}")
+    except Exception as ex:
+        log(f"Registration discovery skipped: {type(ex).__name__}: {ex}")
     try:
         from gforms import enrich_google_forms_registration
         gstats = enrich_google_forms_registration(events)

@@ -36,6 +36,7 @@ These helpers live in `registration.js` and are loaded by the production fronten
   - Rejects non-plain objects/arrays and unsafe keys (`__proto__`, `constructor`, `prototype`); `deleteProfile` and `clearRegState` remain separate
   - Local notes only; does not modify `events.json` and does not contact organisers
 - Google Forms adapter on `window.RegistrationAdapter` (Sprint 2B2)
+- Registration destination discovery on events (Sprint 2C): `registration.destination` / mechanism metadata from the daily scrape — still no autofill except Google Forms partial prefill; no submit
   - Daily scraper (`scraper/gforms.py`) attaches non-personal `event.registration` schema (entry IDs, labels, types, safe profileField mappings) — never profile values
   - On user confirmation, the browser builds a **temporary** prefilled Google Forms URL from the local Registration Profile and opens it with `noopener,noreferrer`
   - Consent, title/honorific, member Y/N, and other judgment fields are never prefilled; split surname/given-name fields stay manual

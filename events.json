@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-08T06:34+08:00",
+ "updated": "2026-11-08T12:07+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -242,7 +242,15 @@
    "free": true,
    "source": "IET Hong Kong",
    "group": "IET",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "UNKNOWN",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "fetch_error:SSLError"
+   }
   },
   {
    "id": "abc9d56d8bfe2",
@@ -262,7 +270,15 @@
    "free": true,
    "source": "IET Hong Kong",
    "group": "IET",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "UNKNOWN",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "fetch_error:SSLError"
+   }
   },
   {
    "id": "aa847036940ad",
@@ -282,7 +298,15 @@
    "free": true,
    "source": "IET Hong Kong",
    "group": "IET",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "UNKNOWN",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "fetch_error:SSLError"
+   }
   },
   {
    "id": "a478779907b35",
@@ -296,13 +320,21 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "url": "https://sms.oshc.hk/online/activityE.aspx?activityid=9920",
    "region": "HK",
    "online": null,
    "free": null,
    "source": "OSHC Seminars & Conferences",
    "group": "OSHC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "OSHC_PORTAL",
+    "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9920",
+    "status": "OPEN",
+    "sourceUrlClass": "DIRECT_REGISTRATION",
+    "confidence": "HIGH",
+    "discoveryMethod": "event_url_oshc_activity"
+   }
   },
   {
    "id": "a8e751b4d04be",
@@ -322,7 +354,15 @@
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_no_reg_link"
+   }
   },
   {
    "id": "a78114df25d1f",
@@ -342,7 +382,15 @@
    "free": true,
    "source": "ICE Upcoming Events",
    "group": "ICE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "CAPTCHA_BLOCKED",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "HIGH",
+    "discoveryMethod": "ice_cloudflare_or_403"
+   }
   },
   {
    "id": "a3ab020d7df52",
@@ -362,7 +410,15 @@
    "free": null,
    "source": "IStructE Events",
    "group": "IStructE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "a599edd1ecf94",
@@ -382,7 +438,15 @@
    "free": null,
    "source": "IStructE Events",
    "group": "IStructE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "http_404"
+   }
   },
   {
    "id": "aa10a3736bf94",
@@ -402,7 +466,15 @@
    "free": null,
    "source": "CIC 建造業議會 Events",
    "group": "CIC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "a2ca2dd338911",
@@ -422,7 +494,15 @@
    "free": true,
    "source": "IET Hong Kong",
    "group": "IET",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "UNKNOWN",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "fetch_error:SSLError"
+   }
   },
   {
    "id": "a027745149b1c",
@@ -442,7 +522,15 @@
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6a0171363aec4b08762606fa&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
+   }
   },
   {
    "id": "a45a63d6efa69",
@@ -554,7 +642,10 @@
       "safePrefill": false
      }
     ],
-    "requiresManualCompletion": true
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
    }
   },
   {
@@ -582,7 +673,10 @@
     "formId": "1FAIpQLScGCilH4W6Ejo1h0enfm7npIVsI0UJrkKRxts2ceQo6Z8rQHQ",
     "status": "CLOSED",
     "fields": [],
-    "requiresManualCompletion": true
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
    }
   },
   {
@@ -603,7 +697,15 @@
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6ad706505f713be01510fb27&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
+   }
   },
   {
    "id": "a6aa3a5abf83e",
@@ -623,7 +725,15 @@
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6ace682f5f713be0150de637&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
+   }
   },
   {
    "id": "a9c8065ecc521",
@@ -724,7 +834,10 @@
       ]
      }
     ],
-    "requiresManualCompletion": true
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
    }
   },
   {
@@ -745,7 +858,15 @@
    "free": true,
    "source": "ICE Upcoming Events",
    "group": "ICE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "CAPTCHA_BLOCKED",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "HIGH",
+    "discoveryMethod": "ice_cloudflare_or_403"
+   }
   },
   {
    "id": "ab10639aeb755",
@@ -765,7 +886,15 @@
    "free": null,
    "source": "CIC 建造業議會 Events",
    "group": "CIC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "a1b7f9d1302d9",
@@ -785,7 +914,15 @@
    "free": null,
    "source": "ICE Upcoming Events",
    "group": "ICE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "CAPTCHA_BLOCKED",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "HIGH",
+    "discoveryMethod": "ice_cloudflare_or_403"
+   }
   },
   {
    "id": "a48157addf413",
@@ -799,13 +936,21 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.csb.gov.hk/english/oshcs/events/coming-events.html",
+   "url": "https://sms.oshc.hk/online/activityE.aspx?activityid=9904",
    "region": "HK",
    "online": true,
    "free": null,
    "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
    "group": "Labour Dept",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "OSHC_PORTAL",
+    "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9904",
+    "status": "OPEN",
+    "sourceUrlClass": "DIRECT_REGISTRATION",
+    "confidence": "HIGH",
+    "discoveryMethod": "event_url_oshc_activity"
+   }
   },
   {
    "id": "a71da95a33d8a",
@@ -819,13 +964,21 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.csb.gov.hk/english/oshcs/events/coming-events.html",
+   "url": "https://sms.oshc.hk/online/activityE.aspx?activityid=9916",
    "region": "HK",
    "online": null,
    "free": null,
    "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
    "group": "Labour Dept",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "OSHC_PORTAL",
+    "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9916",
+    "status": "OPEN",
+    "sourceUrlClass": "DIRECT_REGISTRATION",
+    "confidence": "HIGH",
+    "discoveryMethod": "event_url_oshc_activity"
+   }
   },
   {
    "id": "a0fc0748f1c42",
@@ -845,7 +998,15 @@
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_no_reg_link"
+   }
   },
   {
    "id": "a36a119ab7d5b",
@@ -922,7 +1083,10 @@
       "safePrefill": false
      }
     ],
-    "requiresManualCompletion": true
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
    }
   },
   {
@@ -943,7 +1107,15 @@
    "free": null,
    "source": "HKGBC 綠建環評",
    "group": "HKGBC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "MICROSOFT_FORMS",
+    "destination": "https://forms.cloud.microsoft/r/HQkXhCEWWa",
+    "status": "OPEN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkgbc_detail_microsoft_forms,pos_text,in_detail"
+   }
   },
   {
    "id": "a2a2774b23755",
@@ -963,7 +1135,15 @@
    "free": true,
    "source": "ICE Upcoming Events",
    "group": "ICE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "CAPTCHA_BLOCKED",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "HIGH",
+    "discoveryMethod": "ice_cloudflare_or_403"
+   }
   },
   {
    "id": "aaf334d8c70f6",
@@ -983,7 +1163,15 @@
    "free": true,
    "source": "ICE Upcoming Events",
    "group": "ICE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "CAPTCHA_BLOCKED",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "HIGH",
+    "discoveryMethod": "ice_cloudflare_or_403"
+   }
   },
   {
    "id": "a421ceb4f4782",
@@ -1095,7 +1283,10 @@
       "safePrefill": false
      }
     ],
-    "requiresManualCompletion": true
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
    }
   },
   {
@@ -1229,7 +1420,10 @@
       "safePrefill": false
      }
     ],
-    "requiresManualCompletion": true
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
    }
   },
   {
@@ -1257,7 +1451,10 @@
     "formId": "1FAIpQLScsAr33s4CI_B6Svd-2UNdyBDmOvx_owVT-kKuSXq-6sF8lyQ",
     "status": "CLOSED",
     "fields": [],
-    "requiresManualCompletion": true
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
    }
   },
   {
@@ -1278,7 +1475,15 @@
    "free": true,
    "source": "IET Hong Kong",
    "group": "IET",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "UNKNOWN",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "fetch_error:SSLError"
+   }
   },
   {
    "id": "af07b68ed3099",
@@ -1292,13 +1497,21 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.csb.gov.hk/english/oshcs/events/coming-events.html",
+   "url": "https://sms.oshc.hk/online/activityE.aspx?activityid=9907",
    "region": "HK",
    "online": true,
    "free": null,
    "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
    "group": "Labour Dept",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "OSHC_PORTAL",
+    "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9907",
+    "status": "OPEN",
+    "sourceUrlClass": "DIRECT_REGISTRATION",
+    "confidence": "HIGH",
+    "discoveryMethod": "event_url_oshc_activity"
+   }
   },
   {
    "id": "ae5b5895e874d",
@@ -1312,13 +1525,21 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.csb.gov.hk/english/oshcs/events/coming-events.html",
+   "url": "https://www.csb.gov.hk/english/oshcs/events/files/12112026R2.pdf",
    "region": "HK",
    "online": null,
    "free": null,
    "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
    "group": "Labour Dept",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "OTHER_PUBLIC_FORM",
+    "destination": "https://www.csb.gov.hk/english/oshcs/events/files/12112026R2.pdf",
+    "status": "OPEN",
+    "sourceUrlClass": "PDF_FLYER",
+    "confidence": "HIGH",
+    "discoveryMethod": "event_url_pdf_flyer"
+   }
   },
   {
    "id": "ab4412f3f623d",
@@ -1479,7 +1700,10 @@
       "safePrefill": false
      }
     ],
-    "requiresManualCompletion": true
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
    }
   },
   {
@@ -1500,7 +1724,15 @@
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "EVENTBRITE",
+    "destination": "https://www.eventbrite.hk/e/ice-hka-gs-x-hkie-ymc-joint-society-safety-seminar-tickets-2002985255819",
+    "status": "OPEN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_eventbrite"
+   }
   },
   {
    "id": "adb48017152ad",
@@ -1520,7 +1752,15 @@
    "free": true,
    "source": "ICE Upcoming Events",
    "group": "ICE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "CAPTCHA_BLOCKED",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "HIGH",
+    "discoveryMethod": "ice_cloudflare_or_403"
+   }
   },
   {
    "id": "ab1f7b6fd9b0f",
@@ -1540,7 +1780,15 @@
    "free": null,
    "source": "CIC 建造業議會 Events",
    "group": "CIC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "a7f35abcd1fe7",
@@ -1560,7 +1808,15 @@
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6ae56d341f1d426669be1206&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
+   }
   },
   {
    "id": "a871662b50df9",
@@ -1580,7 +1836,15 @@
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "EVENTBRITE",
+    "destination": "https://www.eventbrite.hk/e/ice-hka-gs-x-hkie-gd-local-geo-tour-2026-tickets-2002254328596",
+    "status": "OPEN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_eventbrite"
+   }
   },
   {
    "id": "acb2bf8f0518f",
@@ -1678,7 +1942,10 @@
       "safePrefill": false
      }
     ],
-    "requiresManualCompletion": true
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
    }
   },
   {
@@ -1805,7 +2072,10 @@
       "safePrefill": false
      }
     ],
-    "requiresManualCompletion": true
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
    }
   },
   {
@@ -1826,7 +2096,15 @@
    "free": null,
    "source": "CIC 建造業議會 Events",
    "group": "CIC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "ade4c69a74c66",
@@ -1846,7 +2124,15 @@
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6ab0d3b8a5c8f81c9509596a&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
+   }
   },
   {
    "id": "a2f3918835b55",
@@ -1958,7 +2244,10 @@
       "safePrefill": false
      }
     ],
-    "requiresManualCompletion": true
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
    }
   },
   {
@@ -1979,11 +2268,19 @@
    "free": null,
    "source": "HKGBC 綠建環評",
    "group": "HKGBC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_detail_no_reg"
+   }
   },
   {
    "id": "a36ffb58d06b0",
-   "name": "Online Seminar on \"Office Pracatitioners: Effective Strategies for Managing Workplace Verbal Abuse\"",
+   "name": "Online Seminar on “ Office Pracatitioners: Effective Strategies for Managing Workplace Verbal Abuse”",
    "org": "OSHC",
    "date": "2026-11-17",
    "time": "",
@@ -1993,13 +2290,21 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.csb.gov.hk/english/oshcs/events/coming-events.html",
+   "url": "https://sms.oshc.hk/online/activityE.aspx?activityid=9921",
    "region": "HK",
    "online": true,
    "free": null,
    "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
    "group": "Labour Dept",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "OSHC_PORTAL",
+    "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9921",
+    "status": "OPEN",
+    "sourceUrlClass": "DIRECT_REGISTRATION",
+    "confidence": "HIGH",
+    "discoveryMethod": "event_url_oshc_activity"
+   }
   },
   {
    "id": "a119423674472",
@@ -2013,13 +2318,21 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.csb.gov.hk/english/oshcs/events/coming-events.html",
+   "url": "https://sms.oshc.hk/online/activityE.aspx?activityid=9905",
    "region": "HK",
    "online": true,
    "free": null,
    "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
    "group": "Labour Dept",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "OSHC_PORTAL",
+    "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9905",
+    "status": "OPEN",
+    "sourceUrlClass": "DIRECT_REGISTRATION",
+    "confidence": "HIGH",
+    "discoveryMethod": "event_url_oshc_activity"
+   }
   },
   {
    "id": "ad8fa708c4fa0",
@@ -2110,7 +2423,10 @@
       "safePrefill": false
      }
     ],
-    "requiresManualCompletion": true
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
    }
   },
   {
@@ -2131,7 +2447,15 @@
    "free": true,
    "source": "勞工處 職業健康公開講座",
    "group": "Labour Dept",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "labour_oshsreg_listing_no_per_event_link"
+   }
   },
   {
    "id": "a3d3ddcd83f77",
@@ -2145,13 +2469,21 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.csb.gov.hk/english/oshcs/events/coming-events.html",
+   "url": "https://www.labour.gov.hk/common/osh/pdf/OHPT/Public_Talk_Flyer_EN.pdf",
    "region": "HK",
    "online": null,
    "free": null,
    "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
    "group": "Labour Dept",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "OTHER_PUBLIC_FORM",
+    "destination": "https://www.labour.gov.hk/common/osh/pdf/OHPT/Public_Talk_Flyer_EN.pdf",
+    "status": "OPEN",
+    "sourceUrlClass": "PDF_FLYER",
+    "confidence": "HIGH",
+    "discoveryMethod": "event_url_pdf_flyer"
+   }
   },
   {
    "id": "a7bf2f3deba85",
@@ -2171,7 +2503,15 @@
    "free": true,
    "source": "勞工處 職業健康公開講座",
    "group": "Labour Dept",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "labour_oshsreg_listing_no_per_event_link"
+   }
   },
   {
    "id": "ad197e4684c76",
@@ -2185,13 +2525,21 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.csb.gov.hk/english/oshcs/events/coming-events.html",
+   "url": "https://sms.oshc.hk/online/activityE.aspx?activityid=9919",
    "region": "HK",
    "online": true,
    "free": null,
    "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
    "group": "Labour Dept",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "OSHC_PORTAL",
+    "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9919",
+    "status": "OPEN",
+    "sourceUrlClass": "DIRECT_REGISTRATION",
+    "confidence": "HIGH",
+    "discoveryMethod": "event_url_oshc_activity"
+   }
   },
   {
    "id": "a83dfa7413660",
@@ -2205,13 +2553,21 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.csb.gov.hk/english/oshcs/events/coming-events.html",
+   "url": "https://www.csb.gov.hk/english/oshcs/events/files/20112026R.pdf",
    "region": "HK",
    "online": null,
    "free": null,
    "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
    "group": "Labour Dept",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "OTHER_PUBLIC_FORM",
+    "destination": "https://www.csb.gov.hk/english/oshcs/events/files/20112026R.pdf",
+    "status": "OPEN",
+    "sourceUrlClass": "PDF_FLYER",
+    "confidence": "HIGH",
+    "discoveryMethod": "event_url_pdf_flyer"
+   }
   },
   {
    "id": "a03c082d94a54",
@@ -2231,7 +2587,15 @@
    "free": null,
    "source": "CIC 建造業議會 Events",
    "group": "CIC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "a067e6ae6ceda",
@@ -2251,7 +2615,15 @@
    "free": null,
    "source": "CIC 建造業議會 Events",
    "group": "CIC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "a31579a69f015",
@@ -2271,7 +2643,15 @@
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6ad70fb75f713be015110308&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
+   }
   },
   {
    "id": "ade4f8038a5f3",
@@ -2291,7 +2671,15 @@
    "free": null,
    "source": "HKGBC 綠建環評",
    "group": "HKGBC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_detail_no_reg"
+   }
   },
   {
    "id": "ac679b030a8ec",
@@ -2311,7 +2699,15 @@
    "free": null,
    "source": "HKGBC 綠建環評",
    "group": "HKGBC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_detail_no_reg"
+   }
   },
   {
    "id": "a3169a4e32050",
@@ -2331,7 +2727,15 @@
    "free": null,
    "source": "CIC 建造業議會 Events",
    "group": "CIC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "ae8d9b546d4a1",
@@ -2345,13 +2749,21 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.csb.gov.hk/english/oshcs/events/coming-events.html",
+   "url": "https://sms.oshc.hk/online/activityE.aspx?activityid=9915",
    "region": "HK",
    "online": true,
    "free": null,
    "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
    "group": "Labour Dept",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "OSHC_PORTAL",
+    "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9915",
+    "status": "OPEN",
+    "sourceUrlClass": "DIRECT_REGISTRATION",
+    "confidence": "HIGH",
+    "discoveryMethod": "event_url_oshc_activity"
+   }
   },
   {
    "id": "aabaa5bcbcf53",
@@ -2371,7 +2783,15 @@
    "free": null,
    "source": "HKGBC 綠建環評",
    "group": "HKGBC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_ambiguous_date_match"
+   }
   },
   {
    "id": "a7d0e5ed7232e",
@@ -2391,7 +2811,15 @@
    "free": null,
    "source": "HKGBC 綠建環評",
    "group": "HKGBC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_ambiguous_date_match"
+   }
   },
   {
    "id": "ac93e8dcb4a2f",
@@ -2405,13 +2833,21 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.csb.gov.hk/english/oshcs/events/coming-events.html",
+   "url": "https://www.csb.gov.hk/english/oshcs/events/files/25112026R.pdf",
    "region": "HK",
    "online": null,
    "free": null,
    "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
    "group": "Labour Dept",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "OTHER_PUBLIC_FORM",
+    "destination": "https://www.csb.gov.hk/english/oshcs/events/files/25112026R.pdf",
+    "status": "OPEN",
+    "sourceUrlClass": "PDF_FLYER",
+    "confidence": "HIGH",
+    "discoveryMethod": "event_url_pdf_flyer"
+   }
   },
   {
    "id": "a47217062e3fb",
@@ -2431,7 +2867,15 @@
    "free": null,
    "source": "HKGBC 綠建環評",
    "group": "HKGBC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_detail_no_reg"
+   }
   },
   {
    "id": "aaef3155d0224",
@@ -2451,7 +2895,15 @@
    "free": null,
    "source": "CIC (UK) Events",
    "group": "CIC UK",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "a5fe6f51406cf",
@@ -2471,7 +2923,15 @@
    "free": true,
    "source": "IET Hong Kong",
    "group": "IET",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "UNKNOWN",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "fetch_error:SSLError"
+   }
   },
   {
    "id": "a380e44ce787b",
@@ -2491,7 +2951,15 @@
    "free": null,
    "source": "HKGBC 綠建環評",
    "group": "HKGBC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_ambiguous_date_match"
+   }
   },
   {
    "id": "ac6876385b4da",
@@ -2511,7 +2979,15 @@
    "free": null,
    "source": "HKGBC 綠建環評",
    "group": "HKGBC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "MICROSOFT_FORMS",
+    "destination": "https://forms.cloud.microsoft/r/wrpjQ6aTev",
+    "status": "OPEN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkgbc_detail_microsoft_forms,pos_text,in_detail"
+   }
   },
   {
    "id": "aafbc3f3de808",
@@ -2531,7 +3007,15 @@
    "free": null,
    "source": "HKGBC 綠建環評",
    "group": "HKGBC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_detail_no_reg"
+   }
   },
   {
    "id": "a0a71566eb258",
@@ -2551,7 +3035,15 @@
    "free": null,
    "source": "CIC 建造業議會 Events",
    "group": "CIC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "a3bae6a859f4b",
@@ -2571,7 +3063,15 @@
    "free": null,
    "source": "CIC 建造業議會 Events",
    "group": "CIC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "a9951acb64987",
@@ -2591,7 +3091,15 @@
    "free": null,
    "source": "HKGBC 綠建環評",
    "group": "HKGBC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "OTHER_PUBLIC_FORM",
+    "destination": "https://hkgbc.org.hk/eng/news-events/news/2026/images/20261130-1201_HKBU_Professional_Training_Program_2026.pdf",
+    "status": "OPEN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "hkgbc_detail_pdf,in_detail,title_close"
+   }
   },
   {
    "id": "ac3346432202c",
@@ -2605,13 +3113,21 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "url": "https://sms.oshc.hk/portal/enrollment/activityE.aspx?activityid=9326",
    "region": "HK",
    "online": true,
    "free": null,
    "source": "OSHC Seminars & Conferences",
    "group": "OSHC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "OSHC_PORTAL",
+    "destination": "https://sms.oshc.hk/portal/enrollment/activityE.aspx?activityid=9326",
+    "status": "OPEN",
+    "sourceUrlClass": "DIRECT_REGISTRATION",
+    "confidence": "HIGH",
+    "discoveryMethod": "event_url_oshc_activity"
+   }
   },
   {
    "id": "aa075ca19cc63",
@@ -2631,7 +3147,15 @@
    "free": true,
    "source": "勞工處 職業健康公開講座",
    "group": "Labour Dept",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "labour_oshsreg_listing_no_per_event_link"
+   }
   },
   {
    "id": "ab88a531ffff7",
@@ -2651,7 +3175,15 @@
    "free": null,
    "source": "HKIE CPD Calendar",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "aef528bd2afde",
@@ -2671,7 +3203,15 @@
    "free": null,
    "source": "HKIE CPD Calendar",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "aeaa33aaed0b3",
@@ -2691,7 +3231,15 @@
    "free": null,
    "source": "HKIE CPD Calendar",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "a28885122d740",
@@ -2711,7 +3259,15 @@
    "free": null,
    "source": "HKIE CPD Calendar",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "acf4c737b8df0",
@@ -2731,7 +3287,15 @@
    "free": null,
    "source": "HKGBC 綠建環評",
    "group": "HKGBC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_detail_no_reg"
+   }
   },
   {
    "id": "a874a1e8c3d1d",
@@ -2751,7 +3315,15 @@
    "free": true,
    "source": "勞工處 職業健康公開講座",
    "group": "Labour Dept",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "labour_oshsreg_listing_no_per_event_link"
+   }
   },
   {
    "id": "a6b93008dcf84",
@@ -2771,7 +3343,15 @@
    "free": null,
    "source": "HKIE CPD Calendar",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "a1ecd972ef46e",
@@ -2791,7 +3371,15 @@
    "free": null,
    "source": "HKIE CPD Calendar",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "a11329f5a1fdc",
@@ -2811,7 +3399,15 @@
    "free": null,
    "source": "HKIE CPD Calendar",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "a950db50905f7",
@@ -2831,7 +3427,15 @@
    "free": null,
    "source": "HKGBC 綠建環評",
    "group": "HKGBC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "OTHER_PUBLIC_FORM",
+    "destination": "https://hkgbc.org.hk/eng/news-events/news/2026/images/20261202-1205_EIHK_LEAFLET-CCATC-26th-Intake.pdf",
+    "status": "OPEN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "hkgbc_detail_pdf,in_detail,title_close"
+   }
   },
   {
    "id": "abca57a6e638a",
@@ -2851,7 +3455,15 @@
    "free": true,
    "source": "IET Hong Kong",
    "group": "IET",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "UNKNOWN",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "fetch_error:SSLError"
+   }
   },
   {
    "id": "a0f3dbfa250f2",
@@ -2865,13 +3477,21 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "url": "https://sms.oshc.hk/online/activityE.aspx?activityid=9924",
    "region": "HK",
    "online": null,
    "free": null,
    "source": "OSHC Seminars & Conferences",
    "group": "OSHC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "OSHC_PORTAL",
+    "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9924",
+    "status": "OPEN",
+    "sourceUrlClass": "DIRECT_REGISTRATION",
+    "confidence": "HIGH",
+    "discoveryMethod": "event_url_oshc_activity"
+   }
   },
   {
    "id": "ac9369b2c4304",
@@ -2885,13 +3505,21 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "url": "https://sms.oshc.hk/online/activityE.aspx?activityid=9930",
    "region": "HK",
    "online": null,
    "free": null,
    "source": "OSHC Seminars & Conferences",
    "group": "OSHC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "OSHC_PORTAL",
+    "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9930",
+    "status": "OPEN",
+    "sourceUrlClass": "DIRECT_REGISTRATION",
+    "confidence": "HIGH",
+    "discoveryMethod": "event_url_oshc_activity"
+   }
   },
   {
    "id": "a5b2f2074e51b",
@@ -2911,7 +3539,15 @@
    "free": null,
    "source": "HKIE CPD Calendar",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "OTHER_PUBLIC_FORM",
+    "destination": "https://www.bsigroup.com/en-HK/products-and-services/training-courses-and-qualifications/iso-19650-and-bim-training-online-courses/",
+    "status": "OPEN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "page_scan_pos_text,in_detail"
+   }
   },
   {
    "id": "a56211c3bee83",
@@ -2931,7 +3567,15 @@
    "free": null,
    "source": "HKGBC 綠建環評",
    "group": "HKGBC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_detail_no_reg"
+   }
   },
   {
    "id": "a171d613d3cba",
@@ -2945,13 +3589,21 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "url": "https://sms.oshc.hk/portal/enrollment/activityE.aspx?activityid=8741",
    "region": "HK",
    "online": true,
    "free": null,
    "source": "OSHC Seminars & Conferences",
    "group": "OSHC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "OSHC_PORTAL",
+    "destination": "https://sms.oshc.hk/portal/enrollment/activityE.aspx?activityid=8741",
+    "status": "OPEN",
+    "sourceUrlClass": "DIRECT_REGISTRATION",
+    "confidence": "HIGH",
+    "discoveryMethod": "event_url_oshc_activity"
+   }
   },
   {
    "id": "a30d451c38ea9",
@@ -2971,7 +3623,15 @@
    "free": null,
    "source": "ICE Upcoming Events",
    "group": "ICE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "CAPTCHA_BLOCKED",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "HIGH",
+    "discoveryMethod": "ice_cloudflare_or_403"
+   }
   },
   {
    "id": "a10273c20faeb",
@@ -2991,7 +3651,15 @@
    "free": null,
    "source": "HKIE CPD Calendar",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "OTHER_PUBLIC_FORM",
+    "destination": "https://learning.sgs.com/lmt/clmsCatalogDetails.prMain?in_sessionId=21844554555020&in_from_module=CLMSCOURSECALENDAR.PRMAIN&in_offeringId=185233174",
+    "status": "OPEN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "page_scan_pos_text,in_detail"
+   }
   },
   {
    "id": "afcfe454fc163",
@@ -3011,7 +3679,15 @@
    "free": null,
    "source": "HKGBC 綠建環評",
    "group": "HKGBC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_detail_no_reg"
+   }
   },
   {
    "id": "a98726d728045",
@@ -3031,7 +3707,15 @@
    "free": null,
    "source": "HKIE CPD Calendar",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "ada976c21a817",
@@ -3051,7 +3735,15 @@
    "free": null,
    "source": "HKIE CPD Calendar",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "a223d07054882",
@@ -3071,7 +3763,15 @@
    "free": null,
    "source": "HKIE CPD Calendar",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "a634fdd0ebba2",
@@ -3155,7 +3855,10 @@
       "safePrefill": false
      }
     ],
-    "requiresManualCompletion": true
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "page_scan_google_forms,in_detail"
    }
   },
   {
@@ -3176,7 +3879,15 @@
    "free": null,
    "source": "HKIE CPD Calendar",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "afeae72bf67f8",
@@ -3196,7 +3907,15 @@
    "free": null,
    "source": "HKIE CPD Calendar",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "OTHER_PUBLIC_FORM",
+    "destination": "https://www.bsigroup.com/en-HK/products-and-services/training-courses-and-qualifications/",
+    "status": "OPEN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "page_scan_pos_text,in_detail"
+   }
   },
   {
    "id": "ad3a9fe5e7c86",
@@ -3210,13 +3929,21 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+   "url": "https://sms.oshc.hk/portal/enrollment/activityE.aspx?activityid=7429",
    "region": "HK",
    "online": true,
    "free": null,
    "source": "OSHC Seminars & Conferences",
    "group": "OSHC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "OSHC_PORTAL",
+    "destination": "https://sms.oshc.hk/portal/enrollment/activityE.aspx?activityid=7429",
+    "status": "OPEN",
+    "sourceUrlClass": "DIRECT_REGISTRATION",
+    "confidence": "HIGH",
+    "discoveryMethod": "event_url_oshc_activity"
+   }
   },
   {
    "id": "ad06b680556c6",
@@ -3236,7 +3963,15 @@
    "free": null,
    "source": "HKIE CPD Calendar",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "aa1db7eb3df72",
@@ -3256,7 +3991,15 @@
    "free": null,
    "source": "HKIE CPD Calendar",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "a98264d35e675",
@@ -3276,7 +4019,15 @@
    "free": true,
    "source": "勞工處 職業健康公開講座",
    "group": "Labour Dept",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "labour_oshsreg_listing_no_per_event_link"
+   }
   },
   {
    "id": "a5f71e0a80d3a",
@@ -3296,7 +4047,15 @@
    "free": true,
    "source": "勞工處 職業健康公開講座",
    "group": "Labour Dept",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "labour_oshsreg_listing_no_per_event_link"
+   }
   },
   {
    "id": "a844254617957",
@@ -3316,7 +4075,15 @@
    "free": null,
    "source": "HKIE CPD Calendar",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "ab130258f34a5",
@@ -3336,7 +4103,15 @@
    "free": null,
    "source": "HKIE CPD Calendar",
    "group": "HKIE",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "a81456abc49c7",
@@ -3356,7 +4131,15 @@
    "free": true,
    "source": "勞工處 職業健康公開講座",
    "group": "Labour Dept",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "labour_oshsreg_listing_no_per_event_link"
+   }
   },
   {
    "id": "adf90093a883c",
@@ -3376,7 +4159,15 @@
    "free": true,
    "source": "勞工處 職業健康公開講座",
    "group": "Labour Dept",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "labour_oshsreg_listing_no_per_event_link"
+   }
   },
   {
    "id": "a741c878000de",
@@ -3396,7 +4187,124 @@
    "free": null,
    "source": "HKGBC 綠建環評",
    "group": "HKGBC",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSdwysRtM0qoSKlRYizdsE8yIc3prtmoxh9Z3Dk6hcDartl9eQ/viewform",
+    "formId": "1FAIpQLSdwysRtM0qoSKlRYizdsE8yIc3prtmoxh9Z3Dk6hcDartl9eQ",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.1000000",
+      "profileField": null,
+      "label": "Salutation",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.867138197",
+      "profileField": null,
+      "label": "English Surname",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1000001",
+      "profileField": null,
+      "label": "English Given Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1535820534",
+      "profileField": null,
+      "label": "English Nickname",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1000002",
+      "profileField": "organisation",
+      "label": "Organisation Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1000003",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1000004",
+      "profileField": null,
+      "label": "Contact No.",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1000006",
+      "profileField": "email",
+      "label": "Email Address",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.243626137",
+      "profileField": null,
+      "label": "Mailing Address",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.471918298",
+      "profileField": null,
+      "label": "For the course materials, I would like to have:",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.10703657",
+      "profileField": null,
+      "label": "Please note that we require you to reserve 26 January 2027 (Tue) as a fallback option for this course.",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.2123161649",
+      "profileField": null,
+      "label": "Please note that you are required to participate in the Webinar Trial Run at any time during the following time slot. This will ensure that you can successfully access the link.",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1000010",
+      "profileField": null,
+      "label": "Are you a member of any of the following organisations?",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.461651566",
+      "profileField": "hkieNumber",
+      "label": "Membership Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.775034901",
+      "profileField": null,
+      "label": "Would you be interested in receiving information about similar products and services from the Energy Institute in the UK in the future?",
+      "type": "RADIO",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkgbc_detail_google_forms,in_detail,title_close"
+   }
   },
   {
    "id": "a6eb3561b627a",
@@ -3416,7 +4324,15 @@
    "free": true,
    "source": "勞工處 職業健康公開講座",
    "group": "Labour Dept",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "labour_oshsreg_listing_no_per_event_link"
+   }
   },
   {
    "id": "a5ed6ade1cd3e",
@@ -3436,7 +4352,15 @@
    "free": true,
    "source": "勞工處 職業健康公開講座",
    "group": "Labour Dept",
-   "auto": true
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "labour_oshsreg_listing_no_per_event_link"
+   }
   }
  ]
 }

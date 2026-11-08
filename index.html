@@ -547,7 +547,7 @@ function fillRegPrep(e){
     s.textContent="本機報名狀態：未開始（與「我的進度」出席紀錄分開）";
     root.appendChild(s);
   }
-  // Google Forms partial prefill (schema from events.json; values stay local)
+  // Registration discovery + Google Forms partial prefill (values stay local)
   const reg=e.registration;
   if(reg&&reg.mechanism==="GOOGLE_FORMS"){
     const g=document.createElement("div");g.className="note";
@@ -584,6 +584,34 @@ function fillRegPrep(e){
       g.textContent="Prefill unavailable. Manual registration required.";
       root.appendChild(g);
     }
+  }else if(reg){
+    const note=document.createElement("div");note.className="note";
+    const mech=reg.mechanism||"";
+    if(mech==="REGISTRATION_CLOSED"||reg.status==="CLOSED"){
+      note.textContent="Registration closed.";
+    }else if(mech==="CAPTCHA_BLOCKED"){
+      note.textContent="Prefill unavailable (site challenge). Open the official page to continue.";
+    }else if(mech==="LOGIN_REQUIRED"||reg.status==="LOGIN_REQUIRED"||mech==="HKIE_PORTAL"){
+      note.textContent="Manual registration required (organiser portal / sign-in).";
+    }else if(mech==="REGISTRATION_LINK_NOT_FOUND"){
+      note.textContent="Registration destination not found automatically. Use the official page.";
+    }else if(reg.destination){
+      const labels={MICROSOFT_FORMS:"Microsoft Forms",EVENTBRITE:"Eventbrite",ZOOM:"Zoom registration",OSHC_PORTAL:"OSHC portal",CIC_PORTAL:"CIC portal",OTHER_PUBLIC_FORM:"Public registration link",PLAIN_HTML_FORM:"Organiser form"};
+      note.textContent=(labels[mech]||"Registration destination")+" detected. Prefill is Google Forms only — review and submit on the organiser site.";
+    }else{
+      note.textContent="Manual registration required.";
+    }
+    root.appendChild(note);
+    if(reg.destination&&typeof reg.destination==="string"&&reg.destination.startsWith("http")&&reg.destination!==(e.url||"")){
+      const destMeta=document.createElement("div");destMeta.className="meta";
+      const b=document.createElement("b");b.textContent="Registration destination：";destMeta.appendChild(b);
+      destMeta.appendChild(document.createTextNode(reg.destination));
+      root.appendChild(destMeta);
+      const destBtn=document.createElement("button");destBtn.className="btn";destBtn.type="button";
+      destBtn.textContent="Open registration destination";
+      destBtn.onclick=()=>openRegDestination(e.id);
+      root.appendChild(destBtn);
+    }
   }
   const open=document.createElement("button");open.className=(reg&&reg.mechanism==="GOOGLE_FORMS"&&reg.status==="OPEN"&&typeof gformCanPrefill==="function"&&gformCanPrefill(e))?"btn sec":"btn";open.type="button";
   open.textContent="Open official registration page";
@@ -597,6 +625,16 @@ function fillRegPrep(e){
   const reset=document.createElement("button");reset.className="btn sec";reset.type="button";
   reset.textContent="Reset status";
   reset.onclick=()=>setLocalReg(e.id,"not_started");root.appendChild(reset);
+}
+function openRegDestination(id){
+  const e=allEvents().find(x=>x.id===id);if(!e){toast("找不到活動");return}
+  const dest=e.registration&&e.registration.destination;
+  if(!dest||typeof dest!=="string"||!dest.startsWith("http")){toast("未有報名目的地");return}
+  // Official event URL is preserved separately; this opens discovered destination only.
+  window.open(dest,"_blank","noopener,noreferrer");
+  setLocalReg(id,"opened");
+  fillRegPrep(e);
+  toast("已開啟報名目的地（未代你提交）");
 }
 function openPrefilledGForm(id){
   const e=allEvents().find(x=>x.id===id);if(!e){toast("找不到活動");return}

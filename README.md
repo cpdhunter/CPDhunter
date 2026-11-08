@@ -29,7 +29,7 @@ See [MAINTENANCE.md](MAINTENANCE.md) for architecture, source management, health
 
 ## What is NOT live
 
-- `registration.js` is an **unconnected experimental Sprint 1 module** in the repository. It is **not** loaded by `index.html`.
+- `registration.js` is loaded by `index.html` for local Registration Profile + Prepare Registration (Google Forms partial prefill only; no auto-submit).
 - Registration Profile UI is **not** deployed.
 - Prepare Registration UI is **not** deployed.
 - Automatic registration / autofill / auto-submit do **not** exist.
@@ -57,8 +57,10 @@ Do not treat planned private-beta features in [PRIVATE_BETA.md](PRIVATE_BETA.md)
 ## 檔案說明
 | 檔案 | 用途 |
 |---|---|
-| `index.html` | 主網站（月曆、列表、我的進度、設定）— 目前**未**連接 `registration.js` |
-| `registration.js` | Sprint 1 實驗模組（本機 profile / registration-state helpers + disabled adapter）。**未連接前端，未上線** |
+| `index.html` | 主網站（月曆、列表、我的進度、設定；已連接本機報名準備） |
+| `registration.js` | 本機 Registration Profile / registration-state + Google Forms partial prefill adapter |
+| `scraper/reg_discover.py` | 報名目的地發現（非個人資料；每日 scraper 跑） |
+| `scraper/gforms.py` | Google Forms 公開 schema 擷取（非個人資料） |
 | `terms.html` / `privacy.html` | 使用條款 / 私隱政策（中英對照；描述目前公開 GitHub Pages 行為） |
 | `config.js` | 營運者名稱、電郵、生效日期 |
 | `assets/` | Logo 同網站 icon |

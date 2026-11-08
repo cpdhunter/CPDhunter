@@ -4,6 +4,7 @@
 - **Frontend**: Static HTML/JS on GitHub Pages (`index.html`). No server-side user data.
 - **Data**: `events.json` (generated daily), `sources.json` (source list), `manual.json` (manual events).
 - **Scraper**: `scraper/fetch.py` runs via GitHub Actions (`Daily CPD update` workflow).
+  - After dedup: `reg_discover.py` attaches non-PII registration destination metadata; then `gforms.py` parses public Google Forms schemas.
   - Priority: official API/feed → JSON-LD → source-specific BeautifulSoup parser → Playwright → generic.
   - Classification: deterministic keyword rules first; optional Cloudflare Workers AI only for low-confidence cases.
   - Playwright Chromium used for JS-rendered pages.
