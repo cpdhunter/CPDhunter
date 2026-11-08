@@ -1,6 +1,6 @@
 """
 CPD Hunter - daily CPD collector v2.1
-- Source-family parsers (HKIE, CIC, ICE, HKGBC, CSB/Labour, OSHC)
+- Source-family parsers (HKIE, CIC, ICE, HKGBC, CSB/Labour, OSHC, CIPHE, HKICM)
 - Better date parsing for common formats
 - Status: OK_WITH_EVENTS / VERIFIED_EMPTY / EMPTY_UNVERIFIED / FAIL
 - Per-source diagnostics + source_health.json
@@ -454,7 +454,7 @@ def clean(e, src, rejects):
                     est = True
             except Exception:
                 pass
-        return {
+        out = {
             "id": "a" + hashlib.sha1((re.sub(r"[^a-z0-9\u4e00-\u9fff]", "", title.lower()) + "|" + e["date"]).encode()).hexdigest()[:12],
             "name": title[:200],
             "org": (e.get("organizer") or src["name"])[:120],
@@ -472,6 +472,31 @@ def clean(e, src, rejects):
             "group": src.get("group") or src["name"],
             "auto": True,
         }
+        # Optional non-PII destination hint from source parsers (Sprint 2C2).
+        # Uses existing registration metadata shape; never stores profile values.
+        dest = e.get("registration_destination")
+        if isinstance(dest, str) and dest.startswith("http"):
+            low = dest.lower()
+            if "forms.gle" in low or "docs.google.com/forms" in low or "google.com/forms" in low:
+                mech = "GOOGLE_FORMS"
+            elif "forms.office.com" in low:
+                mech = "MICROSOFT_FORMS"
+            elif "eventbrite." in low:
+                mech = "EVENTBRITE"
+            elif "zoom.us" in low:
+                mech = "ZOOM"
+            else:
+                mech = "OTHER_PUBLIC_FORM"
+            out["registration"] = {
+                "mechanism": mech,
+                "destination": dest,
+                "status": "OPEN",
+                "sourceUrlClass": "DIRECT_REGISTRATION",
+                "confidence": "HIGH",
+                "discoveryMethod": "source_parser",
+                "requiresManualCompletion": True,
+            }
+        return out
     except Exception:
         rejects["exception"] = rejects.get("exception", 0) + 1
         return None
@@ -527,6 +552,14 @@ def process_source(src):
     elif "hkgbc" in url:
         raw = extract_hkgbc(soup, url)
         method = "hkgbc"
+    elif "ciphe.org.hk" in url:
+        from parsers.ciphe import extract_ciphe
+        raw = extract_ciphe(soup, url)
+        method = "ciphe"
+    elif "hkicm.org.hk" in url:
+        from parsers.hkicm import extract_hkicm
+        raw = extract_hkicm(soup, url)
+        method = "hkicm"
     else:
         raw = generic_extract(soup, url)
         method = "generic"

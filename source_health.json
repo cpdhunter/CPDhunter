@@ -6,7 +6,7 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 7,
+  "consecutive_fail": 8,
   "last_success": null,
   "updated": "2026-11-08"
  },
@@ -37,7 +37,7 @@
  "公務員事務局 職安健活動 (勞工處/OSHC)": {
   "last_status": "OK_WITH_EVENTS",
   "last_n": 11,
-  "last_method": "oshc-table",
+  "last_method": "csb-table",
   "last_error": null,
   "raw_candidates": 14,
   "rejects": {
@@ -54,7 +54,7 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 1,
+  "consecutive_fail": 2,
   "last_success": "2026-11-07",
   "updated": "2026-11-08"
  },
@@ -65,29 +65,31 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 7,
+  "consecutive_fail": 8,
   "last_success": null,
   "updated": "2026-11-08"
  },
  "CIC CITAC Upcoming Events": {
-  "last_status": "EMPTY_UNVERIFIED",
+  "last_status": "VERIFIED_EMPTY",
   "last_n": 0,
   "last_method": "cic-list",
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 7,
+  "consecutive_fail": 0,
   "last_success": null,
   "updated": "2026-11-08"
  },
  "CIC RSTCS 工作坊": {
-  "last_status": "EMPTY_UNVERIFIED",
+  "last_status": "VERIFIED_EMPTY",
   "last_n": 0,
-  "last_method": "cic-list",
+  "last_method": "rstcs",
   "last_error": null,
-  "raw_candidates": 0,
-  "rejects": {},
-  "consecutive_fail": 7,
+  "raw_candidates": 3,
+  "rejects": {
+   "date_range": 3
+  },
+  "consecutive_fail": 0,
   "last_success": null,
   "updated": "2026-11-08"
  },
@@ -103,15 +105,13 @@
   "updated": "2026-11-08"
  },
  "HKIE Events": {
-  "last_status": "OK_WITH_EVENTS",
-  "last_n": 14,
-  "last_method": "playwright+generic",
+  "last_status": "EMPTY_UNVERIFIED",
+  "last_n": 0,
+  "last_method": "generic",
   "last_error": null,
-  "raw_candidates": 20,
-  "rejects": {
-   "date_range": 6
-  },
-  "consecutive_fail": 0,
+  "raw_candidates": 0,
+  "rejects": {},
+  "consecutive_fail": 1,
   "last_success": "2026-11-08",
   "updated": "2026-11-08"
  },
@@ -135,7 +135,7 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 7,
+  "consecutive_fail": 8,
   "last_success": null,
   "updated": "2026-11-08"
  },
@@ -146,19 +146,22 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 7,
+  "consecutive_fail": 8,
   "last_success": null,
   "updated": "2026-11-08"
  },
  "HKIS CPD": {
-  "last_status": "FAIL",
-  "last_n": 0,
-  "last_method": null,
-  "last_error": "讀取網頁失敗：HTTP 403（網站封鎖咗雲端伺服器）",
-  "raw_candidates": null,
-  "rejects": null,
-  "consecutive_fail": 7,
-  "last_success": null,
+  "last_status": "OK_WITH_EVENTS",
+  "last_n": 12,
+  "last_method": "generic",
+  "last_error": null,
+  "raw_candidates": 20,
+  "rejects": {
+   "social": 1,
+   "date_range": 7
+  },
+  "consecutive_fail": 0,
+  "last_success": "2026-11-08",
   "updated": "2026-11-08"
  },
  "HKGBC 綠建環評": {
@@ -178,50 +181,43 @@
   "last_status": "FAIL",
   "last_n": 0,
   "last_method": null,
-  "last_error": "Playwright 失敗：Error",
+  "last_error": "讀取網頁失敗：SSL 憑證問題",
   "raw_candidates": null,
   "rejects": null,
-  "consecutive_fail": 7,
+  "consecutive_fail": 8,
   "last_success": null,
   "updated": "2026-11-08"
  },
  "ICE Upcoming Events": {
-  "last_status": "OK_WITH_EVENTS",
-  "last_n": 5,
-  "last_method": "ice-cards",
-  "last_error": null,
-  "raw_candidates": 12,
-  "rejects": {
-   "overseas_physical": 7
-  },
-  "consecutive_fail": 0,
+  "last_status": "FAIL",
+  "last_n": 0,
+  "last_method": null,
+  "last_error": "讀取網頁失敗：HTTP 403（網站封鎖咗雲端伺服器）",
+  "raw_candidates": null,
+  "rejects": null,
+  "consecutive_fail": 1,
   "last_success": "2026-11-08",
   "updated": "2026-11-08"
  },
  "ICE Lectures": {
-  "last_status": "VERIFIED_EMPTY",
+  "last_status": "FAIL",
   "last_n": 0,
-  "last_method": "ice-cards",
-  "last_error": null,
-  "raw_candidates": 12,
-  "rejects": {
-   "date_range": 1,
-   "overseas_physical": 11
-  },
-  "consecutive_fail": 0,
+  "last_method": null,
+  "last_error": "讀取網頁失敗：HTTP 403（網站封鎖咗雲端伺服器）",
+  "raw_candidates": null,
+  "rejects": null,
+  "consecutive_fail": 1,
   "last_success": null,
   "updated": "2026-11-08"
  },
  "IStructE Events": {
-  "last_status": "VERIFIED_EMPTY",
+  "last_status": "EMPTY_UNVERIFIED",
   "last_n": 0,
   "last_method": "generic",
   "last_error": null,
-  "raw_candidates": 1,
-  "rejects": {
-   "date_range": 1
-  },
-  "consecutive_fail": 0,
+  "raw_candidates": 0,
+  "rejects": {},
+  "consecutive_fail": 1,
   "last_success": "2026-11-06",
   "updated": "2026-11-08"
  },
@@ -232,7 +228,7 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 7,
+  "consecutive_fail": 8,
   "last_success": null,
   "updated": "2026-11-08"
  },
@@ -242,6 +238,30 @@
   "last_method": "generic",
   "last_error": null,
   "raw_candidates": 1,
+  "rejects": {},
+  "consecutive_fail": 0,
+  "last_success": "2026-11-08",
+  "updated": "2026-11-08"
+ },
+ "CIPHE Hong Kong Events": {
+  "last_status": "OK_WITH_EVENTS",
+  "last_n": 1,
+  "last_method": "ciphe",
+  "last_error": null,
+  "raw_candidates": 26,
+  "rejects": {
+   "date_range": 25
+  },
+  "consecutive_fail": 0,
+  "last_success": "2026-11-08",
+  "updated": "2026-11-08"
+ },
+ "HKICM Learning / CPD": {
+  "last_status": "OK_WITH_EVENTS",
+  "last_n": 2,
+  "last_method": "hkicm",
+  "last_error": null,
+  "raw_candidates": 2,
   "rejects": {},
   "consecutive_fail": 0,
   "last_success": "2026-11-08",

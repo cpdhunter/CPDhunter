@@ -38,7 +38,14 @@ Located in `scraper/fetch.py`:
 - `extract_cic` — CIC date lists
 - `extract_csb` — CSB/Labour tables
 - `extract_hkgbc` — HKGBC listings
+- `parsers/ciphe.py` — CIPHE Hong Kong Events Calendar (free-first; paid/dinner/overseas visits excluded)
+- `parsers/hkicm.py` — HKICM Learning/CPD (free-first; news/dinner/membership sessions excluded)
 - Fallback: `generic_extract` or Playwright
+
+### Sprint 2C2 source decisions
+- **CIPHE Hong Kong** — ACCEPT_NOW (`https://ciphe.org.hk/Events_Calendar.html`)
+- **HKICM Learning/CPD** — ACCEPT_NOW (`https://hkicm.org.hk/learning-cpd/`)
+- **CIBSE Hong Kong Region** — PILOT only (listing/detail HTML does not expose fee/free; free-first policy forbids inferring free from missing fee; not added to `sources.json`)
 
 ## Running locally
 ```bash
