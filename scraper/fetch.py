@@ -485,6 +485,8 @@ def clean(e, src, rejects):
                 mech = "EVENTBRITE"
             elif "zoom.us" in low:
                 mech = "ZOOM"
+            elif "sms.oshc.hk" in low and "activity" in low:
+                mech = "OSHC_PORTAL"
             else:
                 mech = "OTHER_PUBLIC_FORM"
             out["registration"] = {
@@ -511,7 +513,7 @@ def load(path, default):
 def process_source(src):
     url = src["url"]
     use_pw = False
-    if "localevents.theiet" in url or "istructe" in url or "sms.oshc" in url:
+    if "localevents.theiet" in url or "istructe" in url:
         use_pw = True
     html = fetch_html(url, use_playwright=use_pw)
     soup = BeautifulSoup(html, "html.parser")
@@ -522,7 +524,25 @@ def process_source(src):
         title = (title + " Page Under Construction").strip()
     raw = []
     method = "generic"
-    if "oshc.org.hk" in url:
+    if "sms.oshc.hk" in url and "activit" in url:
+        from parsers.oshc_activity import (
+            extract_oshc_activity,
+            build_activity_url_index,
+            attach_activity_urls,
+        )
+        raw = extract_oshc_activity(soup, url)
+        method = "oshc-activity"
+        # Resolve public activity detail URLs from OSHC seminars index (GET only).
+        # Needed so frozen dedup can match against OSHC Seminars / CSB / Labour.
+        try:
+            idx_html = fetch_html(
+                "https://www.oshc.org.hk/eng/main/training/seminars_conferences/",
+                use_playwright=False,
+            )
+            raw = attach_activity_urls(raw, build_activity_url_index(idx_html))
+        except Exception as ex:
+            log(f"  oshc-activity url enrich skipped: {type(ex).__name__}")
+    elif "oshc.org.hk" in url:
         raw = extract_oshc(soup, url)
         method = "oshc-table"
     elif "csb.gov.hk" in url:
