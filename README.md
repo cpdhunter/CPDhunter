@@ -25,14 +25,13 @@ See [MAINTENANCE.md](MAINTENANCE.md) for architecture, source management, health
   - `VERIFIED_EMPTY`
   - `EMPTY_UNVERIFIED`
   - `FAIL`
-- **Local features in the live frontend:** CPD progress tracking and CSV export (browser `localStorage` only).
+- **Local features in the live frontend:** CPD progress tracking and CSV export, Registration Profile + Prepare Registration, recommendations, local ICS calendar export, and attendance→CPD confirmation (browser `localStorage` only; no OAuth / no auto-submit).
 
 ## What is NOT live
 
-- `registration.js` is loaded by `index.html` for local Registration Profile + Prepare Registration (Google Forms partial prefill only; no auto-submit).
-- Registration Profile UI is **not** deployed.
-- Prepare Registration UI is **not** deployed.
 - Automatic registration / autofill / auto-submit do **not** exist.
+- Calendar export uses downloadable `.ics` only — no Google/Microsoft Calendar OAuth or API.
+- Attendance and Registration Profile stay device-local (`localStorage`); nothing is uploaded by CPD Hunter.
 - Cloudflare Pages hosting is **not** deployed.
 - Cloudflare Access (email OTP / allowlist) is **not** configured.
 - The repository and GitHub Pages site remain **public**.

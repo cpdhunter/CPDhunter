@@ -108,6 +108,25 @@ footer{text-align:center;font-size:.75rem;color:var(--mut);padding:20px;line-hei
 .reco-why summary{cursor:pointer;color:var(--p);user-select:none}
 .reco-why .why-body{margin-top:4px;padding:8px;background:#f7f9fc;border-radius:6px;font-size:.78rem;color:#455a64;line-height:1.5}
 .reco-empty{font-size:.9rem;color:var(--mut);padding:4px 0}
+
+.nm.clamp,.clamp{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:break-word}
+.subnav{display:flex;gap:6px;margin:8px 0 4px}
+.subnav button{flex:1;padding:8px;border:1px solid #ccc;background:#fff;border-radius:8px;cursor:pointer;font-size:.9rem}
+.subnav button.on{background:var(--p);color:#fff;border-color:var(--p)}
+.qchips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.qchip{border:1px solid #bbb;background:#fff;border-radius:16px;padding:5px 11px;font-size:.82rem;cursor:pointer}
+.qchip.on{background:var(--g);color:#fff;border-color:var(--g)}
+.home-grid{display:grid;gap:12px}
+.home-stat{font-size:1.4rem;font-weight:800;color:var(--p)}
+.myev{margin-top:8px}
+.myev-item{border:1px solid #e0e0e0;border-radius:8px;padding:10px 12px;margin-bottom:8px;border-left:4px solid var(--c,#999);background:#fff}
+.myev-item .nm{font-weight:600;margin:0 0 4px}
+.attend-box{margin-top:10px;padding:10px;background:#f7f9fc;border-radius:8px;border:1px solid #e3eaf3}
+.attend-box h4{margin:0 0 6px;font-size:.95rem}
+.est-warn{color:var(--warn);font-size:.82rem;margin:6px 0}
+@media (max-width:640px){
+  nav button{font-size:.8rem;padding:10px 2px}
+}
 </style>
 </head>
 <body>
@@ -119,16 +138,36 @@ footer{text-align:center;font-size:.75rem;color:var(--mut);padding:20px;line-hei
   </div>
 </header>
 <nav>
-  <button class="on" data-t="cal">月曆</button>
-  <button data-t="list">列表</button>
-  <button data-t="tracker">我的進度</button>
+  <button class="on" data-t="home">首頁</button>
+  <button data-t="events">活動</button>
+  <button data-t="tracker">我的 CPD</button>
   <button data-t="settings">設定</button>
 </nav>
 <main>
 
-<div id="filters">
+<section id="home" class="on">
+  <div class="home-grid">
+    <div class="card">
+      <h3>今年 CPD 總覽</h3>
+      <div class="home-stat" id="homeTotal">–</div>
+      <div class="meta" id="homeTotalMeta"></div>
+      <div id="homeBars" style="margin-top:8px"></div>
+    </div>
+    <div class="card">
+      <h3>為你推薦 / Top 5</h3>
+      <div id="homeReco"></div>
+    </div>
+    <div class="card">
+      <h3>即將出席（已報名）</h3>
+      <div id="homeUpcomingReg"></div>
+    </div>
+  </div>
+</section>
+
+<div id="filters" hidden>
   <div class="note">活動由程式每日自動收集，CPD 類別同時數只供參考（「~」代表按活動時長估算），一切以主辦方同 HKIE 為準。<span id="upd"></span></div>
   <div class="discbar">🎓 我的學科：<b id="discLbl"></b><button class="btn sec" style="margin:0 0 0 auto;padding:4px 10px" onclick="openDisc()">更改</button></div>
+  <div class="qchips" id="qChips"></div>
   <div class="chips" id="catChips"></div>
   <div class="row">
     <select id="fReg"><option value="">香港＋海外</option><option value="HK">香港</option><option value="Overseas">海外（網上）</option></select>
@@ -139,7 +178,14 @@ footer{text-align:center;font-size:.75rem;color:var(--mut);padding:20px;line-hei
   <div id="recoRoot" class="reco" hidden></div>
 </div>
 
-<section id="cal" class="on">
+<div id="eventsSub" hidden>
+  <div class="subnav">
+    <button type="button" id="evTabList" class="on" onclick="setEventsMode('list')">即將舉行 Upcoming</button>
+    <button type="button" id="evTabCal" onclick="setEventsMode('cal')">月曆 Calendar</button>
+  </div>
+</div>
+
+<section id="cal">
   <div class="calhead">
     <button onclick="moveMonth(-1)">‹</button>
     <h2 id="monLbl"></h2>
@@ -165,6 +211,11 @@ footer{text-align:center;font-size:.75rem;color:var(--mut);padding:20px;line-hei
     </div>
     <div id="bars" style="margin-top:12px"></div>
     <div class="meta" id="reqNote"></div>
+  </div>
+  <div class="card">
+    <h3>我的活動 My Events</h3>
+    <div class="meta">報名狀態 ≠ 出席／完成 CPD。以下只反映本機報名狀態。</div>
+    <div id="myEventsRoot" class="myev"></div>
   </div>
   <div class="card">
     <h3>手動加入紀錄</h3>
@@ -227,7 +278,7 @@ footer{text-align:center;font-size:.75rem;color:var(--mut);padding:20px;line-hei
   </div>
   <div class="card">
     <h3>私隱及資料</h3>
-    <div class="meta">本網站唔設帳戶。你嘅學科設定、CPD 紀錄、報名檔案同個人化推薦只會存／計喺你部機嘅瀏覽器（localStorage），唔會由 CPD Hunter 傳送到伺服器。刪除前建議先匯出 CSV 同報名檔案。</div>
+    <div class="meta">本網站唔設帳戶。你嘅學科設定、CPD 紀錄、出席狀態、報名檔案同個人化推薦只會存／計喺你部機嘅瀏覽器（localStorage），唔會由 CPD Hunter 傳送到伺服器。刪除前建議先匯出 CSV 同報名檔案。</div>
     <button class="btn del" onclick="wipeAll()">刪除本機所有資料</button>
   </div>
 </section>
@@ -254,6 +305,9 @@ footer{text-align:center;font-size:.75rem;color:var(--mut);padding:20px;line-hei
 
 <script src="recommendations.js"></script>
 <script src="registration.js"></script>
+<script src="calendar_export.js"></script>
+<script src="attendance.js"></script>
+<script src="cpd_bridge.js"></script>
 <script>
 const CATS=["DSTM","OTM","GPM","H&S"];
 const CAT_NAME={"DSTM":"本科技術","OTM":"其他技術","GPM":"一般專業","H&S":"健康安全"};
@@ -289,18 +343,57 @@ function catOf(e){
 function allEvents(){return DATA.events.map(e=>{const[c,w]=catOf(e);return{...e,cat:c,why:w}})}
 function filtered(){
   const rg=$("fReg").value,src=$("fSrc").value,fy=$("fFree").value,q=$("fQ").value.trim().toLowerCase();
-  return allEvents().filter(e=>(!rg||e.region===rg)&&(!src||(e.group||e.source)===src)&&(!fy||e.free===true)&&(!q||(e.name+" "+e.org).toLowerCase().includes(q)));
+  const dayLimit=quickDays?(()=>{const d=new Date(today+"T00:00:00+08:00");d.setDate(d.getDate()+7);return d.toISOString().slice(0,10)})():null;
+  return allEvents().filter(e=>{
+    if(rg&&e.region!==rg)return false;
+    if(src&&(e.group||e.source)!==src)return false;
+    if(fy&&e.free!==true)return false;
+    if(quickOnline&&e.online!==true)return false;
+    if(dayLimit&&(e.date<today||e.date>dayLimit))return false;
+    if(q&&!(e.name+" "+e.org).toLowerCase().includes(q))return false;
+    return true;
+  });
 }
 const byCat=l=>l.filter(e=>!selCat||e.cat===selCat);
 const sortEv=(a,b)=>(a.date+(a.time||"")).localeCompare(b.date+(b.time||""));
 
-// ---- tabs ----
-document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{
-  document.querySelectorAll("nav button,section").forEach(x=>x.classList.remove("on"));
-  b.classList.add("on");$(b.dataset.t).classList.add("on");
-  $("filters").style.display=["cal","list"].includes(b.dataset.t)?"":"none";
+// ---- tabs (HOME / EVENTS / MY CPD / SETTINGS) ----
+let eventsMode=(typeof matchMedia==="function"&&matchMedia("(max-width:640px)").matches)?"list":"cal";
+let quickReco=false,quickDays=false,quickOnline=false;
+function showMainTab(name){
+  document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("on",x.dataset.t===name));
+  document.querySelectorAll("main > section").forEach(x=>x.classList.remove("on"));
+  const filters=$("filters"),sub=$("eventsSub");
+  if(name==="home"){
+    $("home").classList.add("on");
+    if(filters)filters.hidden=true;
+    if(sub)sub.hidden=true;
+  }else if(name==="events"){
+    if(filters)filters.hidden=false;
+    if(sub)sub.hidden=false;
+    setEventsMode(eventsMode,true);
+  }else if(name==="tracker"){
+    $("tracker").classList.add("on");
+    if(filters)filters.hidden=true;
+    if(sub)sub.hidden=true;
+  }else if(name==="settings"){
+    $("settings").classList.add("on");
+    if(filters)filters.hidden=true;
+    if(sub)sub.hidden=true;
+  }
   render();window.scrollTo(0,0);
-});
+}
+function setEventsMode(mode,skipRender){
+  eventsMode=mode==="cal"?"cal":"list";
+  const cal=$("cal"),list=$("list");
+  if(cal)cal.classList.toggle("on",eventsMode==="cal");
+  if(list)list.classList.toggle("on",eventsMode==="list");
+  const tl=$("evTabList"),tc=$("evTabCal");
+  if(tl)tl.classList.toggle("on",eventsMode==="list");
+  if(tc)tc.classList.toggle("on",eventsMode==="cal");
+  if(!skipRender)render();
+}
+document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>showMainTab(b.dataset.t));
 
 // ---- 學科 ----
 $("pDisc").add(new Option("— 請選擇 —",""));
@@ -328,7 +421,29 @@ function renderDisc(){
 function renderChips(){
   $("catChips").innerHTML=[["","全部"],...CATS.map(c=>[c,c+" "+CAT_NAME[c]])]
     .map(([v,n])=>`<button class="chip ${v?kc(v):""} ${selCat===v?"on":""}" data-c="${v}">${v?"<i></i>":""}${n}</button>`).join("");
-  document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{selCat=b.dataset.c;render()});
+  document.querySelectorAll("#catChips .chip").forEach(b=>b.onclick=()=>{selCat=b.dataset.c;render()});
+  renderQuickChips();
+}
+function renderQuickChips(){
+  const root=$("qChips");if(!root)return;
+  const items=[
+    ["reco","為我推薦",quickReco],
+    ["days","7日內",quickDays],
+    ["free","免費",$("fFree")&&$("fFree").value==="yes"],
+    ["online","Online",quickOnline],
+    ["DSTM","DSTM",selCat==="DSTM"],
+    ["HS","H&S",selCat==="H&S"]
+  ];
+  root.innerHTML=items.map(([k,lab,on])=>`<button type="button" class="qchip ${on?"on":""}" data-q="${k}">${lab}</button>`).join("");
+  root.querySelectorAll(".qchip").forEach(b=>b.onclick=()=>{
+    const k=b.dataset.q;
+    if(k==="reco"){quickReco=!quickReco;if(quickReco){const r=$("recoRoot");if(r){r.hidden=false;r.scrollIntoView({behavior:"smooth",block:"start"})}}render();return}
+    if(k==="days"){quickDays=!quickDays;render();return}
+    if(k==="free"){if($("fFree"))$("fFree").value=$("fFree").value==="yes"?"":"yes";render();return}
+    if(k==="online"){quickOnline=!quickOnline;render();return}
+    if(k==="DSTM"){selCat=selCat==="DSTM"?"":"DSTM";render();return}
+    if(k==="HS"){selCat=selCat==="H&S"?"":"H&S";render();return}
+  });
 }
 
 // ---- 月曆 ----
@@ -358,7 +473,7 @@ function renderCal(){
   $("dayList").innerHTML=`<div class="datehd">${title}</div>`+(show.length?groupList(show,!one):'<div class="meta">冇活動</div>');
 }
 function pickDay(d){selDay=selDay===d?null:d;renderCal()}
-function item(e){return `<div class="item ${kc(e.cat)}" onclick="showEv('${e.id}')"><div class="hrs">${e.hrs?(e.hrs_est?"~":"")+e.hrs:"–"}<small>CPD 小時</small></div><div><div class="nm">${esc(e.name)}</div><span class="tag cat">${e.cat}</span></div></div>`}
+function item(e){return `<div class="item ${kc(e.cat)}" onclick="showEv('${e.id}')"><div class="hrs">${e.hrs?(e.hrs_est?"~":"")+e.hrs:"–"}<small>CPD 小時</small></div><div><div class="nm clamp" title="${esc(e.name)}">${esc(e.name)}</div><span class="tag cat">${e.cat}</span></div></div>`}
 function groupList(list,withDate){
   if(!withDate)return list.map(item).join("");
   let h="",last="";
@@ -374,31 +489,127 @@ function renderList(){
 }
 
 // ---- 詳情 ----
+function regStateOf(id){
+  if(typeof getRegState!=="function")return "not_started";
+  const st=getRegState(id);return (st&&st.state)||"not_started";
+}
+function addToCalendar(id){
+  if(typeof CPDCalendarExport==="undefined"||!CPDCalendarExport.downloadICS){toast("行事曆模組未載入");return}
+  const e=allEvents().find(x=>x.id===id);if(!e){toast("找不到活動");return}
+  try{
+    // Official URL only — never Google prefill / never Registration Profile PII
+    CPDCalendarExport.downloadICS({
+      id:e.id,name:e.name,date:e.date,time:e.time||"",org:e.org||"",venue:e.venue||"",
+      hrs:e.hrs,hrs_est:!!e.hrs_est,url:e.url||"",cat:e.cat
+    },{category:e.cat});
+    toast("已下載 .ics（請用 Outlook／Apple／Google 行事曆匯入）");
+  }catch(err){toast("無法產生行事曆："+(err&&err.message||err))}
+}
 function showEv(id){
   const e=allEvents().find(x=>x.id===id);if(!e)return;
   const st=regStatusLabel(id);
+  const rstate=regStateOf(id);
+  const showCalPrimary=rstate==="registered_manual";
+  const showCalSecondary=rstate==="opened";
+  const calBtn=showCalPrimary
+    ?`<button class="btn" type="button" onclick="addToCalendar('${esc(e.id)}')">加入行事曆 Add to Calendar</button>`
+    :(showCalSecondary?`<button class="btn sec" type="button" onclick="addToCalendar('${esc(e.id)}')">加入行事曆 Add to Calendar</button>`:"");
   $("evBox").innerHTML=`
     <span class="tag cat ${kc(e.cat)}">${e.cat} ${CAT_NAME[e.cat]}</span>${e.why?`<span class="meta"> ${esc(e.why)}</span>`:""}${st?`<span class="regbadge ${st.cls}" id="evRegBadge"></span>`:""}
-    <h3 style="margin-top:8px">${esc(e.name)}</h3>
+    <h3 class="clamp" style="margin-top:8px" title="${esc(e.name)}">${esc(e.name)}</h3>
     <div class="meta">${esc(e.org)}</div>
     <div class="meta">📅 ${e.date} ${esc(e.time||"")}${e.time?" (HKT)":""}</div>
     <div class="meta">⏱ CPD：${e.hrs?e.hrs+" 小時"+(e.hrs_est?"（按活動時長估算，未經主辦方確認）":""):"未註明"}</div>
     <div><span class="tag">${e.region==="HK"?"香港":"海外"}</span>${e.online?'<span class="tag">網上</span>':""}${e.free===true?'<span class="tag" style="background:#e8f5e9;color:#2e7d32">免費</span>':'<span class="tag" style="background:#fff3e0;color:#e65100">收費未註明</span>'}</div>
     <a class="btn" href="${esc(e.url)}" target="_blank" rel="noopener">主辦方網頁 ↗</a>
-    <button class="btn sec" onclick="attended('${esc(e.id)}')">記錄到我的進度</button>
+    ${calBtn}
+    <button class="btn sec" type="button" onclick="attendedManual('${esc(e.id)}')">記錄到我的進度</button>
+    <div id="attendPromptRoot"></div>
     <div class="regprep" id="regPrepRoot"></div>
-    <button class="btn sec" onclick="$('evModal').classList.remove('on')">關閉</button>`;
+    <button class="btn sec" type="button" onclick="$('evModal').classList.remove('on')">關閉</button>`;
   if(st){const b=$("evRegBadge");if(b)b.textContent=st.text}
   fillRegPrep(e);
+  fillAttendPrompt(e);
   $("evModal").classList.add("on");
 }
-function attended(id){
-  const e=allEvents().find(x=>x.id===id);const L=LS("logs")||[];
-  if(L.some(l=>l.evId===id)){toast("已經記錄咗");return}
+/** Legacy manual add from event modal — still uses production logs key; duplicate via adapter. */
+function attendedManual(id){
+  const e=allEvents().find(x=>x.id===id);if(!e)return;
+  const L=LS("logs")||[];
+  const has=(typeof CPDLogAdapter!=="undefined"&&CPDLogAdapter.hasEventLog)?CPDLogAdapter.hasEventLog(L,id):L.some(l=>l.evId===id||l.eventId===id);
+  if(has){toast("已經記錄咗");return}
   let h=+e.hrs;
   if(!h||e.hrs_est){h=+prompt("呢個活動有幾多 CPD 小時？",e.hrs||"1.5");if(!h)return}
   L.push({id:Date.now(),evId:id,name:e.name,date:e.date,hrs:h,cat:e.cat,mode:"Structured"});
-  SS("logs",L);toast(`已記錄 ${h} 小時（${e.cat}）`);
+  SS("logs",L);render();toast(`已記錄 ${h} 小時（${e.cat}）`);
+}
+function fillAttendPrompt(e){
+  const root=$("attendPromptRoot");if(!root)return;
+  while(root.firstChild)root.removeChild(root.firstChild);
+  if(typeof CPDAttendance==="undefined")return;
+  const rstate=regStateOf(e.id);
+  if(!CPDAttendance.shouldPrompt(e,rstate,new Date())){
+    const att=CPDAttendance.get(e.id);
+    if(att.state==="attended"||att.state==="not_attended"){
+      const note=document.createElement("div");note.className="meta";
+      note.textContent=att.state==="attended"?"出席狀態：已參加（本機）":"出席狀態：冇參加（本機）";
+      root.appendChild(note);
+    }
+    return;
+  }
+  const box=document.createElement("div");box.className="attend-box";
+  const h=document.createElement("h4");h.textContent="你有參加嗎？ Did you attend?";box.appendChild(h);
+  const yes=document.createElement("button");yes.className="btn";yes.type="button";yes.textContent="有參加 / Yes";
+  yes.onclick=()=>openAttendReview(e.id);box.appendChild(yes);
+  const no=document.createElement("button");no.className="btn sec";no.type="button";no.textContent="冇參加 / No";
+  no.onclick=()=>{
+    try{CPDAttendance.set(e.id,"not_attended");fillAttendPrompt(e);renderMyEvents();toast("已標示冇參加（未加入 CPD）")}
+    catch(err){toast(String(err&&err.message||err))}
+  };
+  box.appendChild(no);
+  root.appendChild(box);
+}
+function openAttendReview(id){
+  const e=allEvents().find(x=>x.id===id);if(!e)return;
+  const root=$("attendPromptRoot");if(!root)return;
+  while(root.firstChild)root.removeChild(root.firstChild);
+  const box=document.createElement("div");box.className="attend-box";
+  const h=document.createElement("h4");h.textContent="確認後先加入 CPD 紀錄";box.appendChild(h);
+  const nm=document.createElement("div");nm.className="meta";nm.innerHTML="<b>活動：</b>";nm.appendChild(document.createTextNode(e.name));box.appendChild(nm);
+  const catLab=document.createElement("label");catLab.textContent="類別 Category";box.appendChild(catLab);
+  const catSel=document.createElement("select");catSel.id="attCat";
+  CATS.forEach(c=>{const o=document.createElement("option");o.value=c;o.textContent=c+" "+(CAT_NAME[c]||"");if(c===e.cat)o.selected=true;catSel.appendChild(o)});
+  box.appendChild(catSel);
+  const hrsLab=document.createElement("label");hrsLab.textContent="CPD 時數 Hours";box.appendChild(hrsLab);
+  const hrsIn=document.createElement("input");hrsIn.id="attHrs";hrsIn.type="number";hrsIn.step="0.5";hrsIn.min="0.5";hrsIn.max="24";
+  if(e.hrs)hrsIn.value=String(e.hrs);box.appendChild(hrsIn);
+  const status=document.createElement("div");status.className="meta";
+  if(!e.hrs)status.textContent="時數未註明 — 必須自行填寫有效時數。";
+  else if(e.hrs_est){status.className="est-warn";status.textContent="This value is estimated. Verify it before adding.";}
+  else status.textContent="官方時數（可按實況修改）。";
+  box.appendChild(status);
+  const tip=document.createElement("div");tip.className="meta";tip.textContent="按「確認加入」先會寫入 CPD 紀錄同標記出席。";box.appendChild(tip);
+  const conf=document.createElement("button");conf.className="btn";conf.type="button";conf.textContent="確認加入 CPD";
+  conf.onclick=()=>confirmAttendAdd(e.id);box.appendChild(conf);
+  const back=document.createElement("button");back.className="btn sec";back.type="button";back.textContent="返回";
+  back.onclick=()=>fillAttendPrompt(e);box.appendChild(back);
+  root.appendChild(box);
+}
+function confirmAttendAdd(id){
+  const e=allEvents().find(x=>x.id===id);if(!e)return;
+  if(typeof CPDAttendance==="undefined"||typeof CPDLogAdapter==="undefined"){toast("出席模組未載入");return}
+  const cat=($("attCat")&&$("attCat").value)||e.cat;
+  const hours=Number($("attHrs")&&$("attHrs").value);
+  if(!Number.isFinite(hours)||hours<=0||hours>24){toast("請輸入有效 CPD 時數（0–24）");return}
+  const L=LS("logs")||[];
+  try{
+    const next=CPDLogAdapter.addAttendanceToProdLog(L,e,cat,hours,CPDAttendance);
+    SS("logs",next);
+    CPDAttendance.set(e.id,"attended");
+    render();
+    fillAttendPrompt(allEvents().find(x=>x.id===id)||e);
+    toast(`已加入 ${hours} 小時（${cat}）`);
+  }catch(err){toast(String(err&&err.message||err))}
 }
 
 // ---- 來源統計 ----
@@ -513,11 +724,7 @@ function regStatusLabel(id){
 }
 function goRegProfile(missing){
   $("evModal").classList.remove("on");
-  document.querySelectorAll("nav button,section").forEach(x=>x.classList.remove("on"));
-  const tab=document.querySelector('nav button[data-t="settings"]');
-  if(tab)tab.classList.add("on");
-  $("settings").classList.add("on");
-  $("filters").style.display="none";
+  showMainTab("settings");
   fillRegProfileForm();
   const card=$("regProfileCard");
   if(card)card.scrollIntoView({behavior:"smooth",block:"start"});
@@ -695,6 +902,107 @@ function setLocalReg(id,state){
 
 function wipeAll(){if(!confirm("確定刪除本網站喺呢部裝置嘅所有資料？包括 CPD 紀錄，刪除後無法復原。"))return;localStorage.clear();location.reload()}
 
+// ---- My Events (registration state groups; attendance separate) ----
+function myEventCard(e,regLabel){
+  const rstate=regStateOf(e.id);
+  const showCal=rstate==="registered_manual"||rstate==="opened";
+  const calCls=rstate==="registered_manual"?"btn":"btn sec";
+  let attendHtml="";
+  if(typeof CPDAttendance!=="undefined"&&CPDAttendance.shouldPrompt(e,rstate,new Date())){
+    attendHtml=`<div class="attend-box"><b>你有參加嗎？</b>
+      <button class="btn" type="button" onclick="event.stopPropagation();showEv('${esc(e.id)}')">有參加 / Yes</button>
+      <button class="btn sec" type="button" onclick="event.stopPropagation();markNotAttended('${esc(e.id)}')">冇參加 / No</button></div>`;
+  }
+  return `<div class="myev-item ${kc(e.cat)}" onclick="showEv('${esc(e.id)}')">
+    <div class="nm clamp" title="${esc(e.name)}">${esc(e.name)}</div>
+    <div class="meta">${e.date} ${esc(e.time||"")}${e.time?" (HKT)":""} · ${esc(e.org||"")}</div>
+    <div><span class="tag cat ${kc(e.cat)}">${esc(e.cat)}</span>
+      <span class="tag">${e.hrs?(e.hrs_est?"~":"")+e.hrs+"h":"時數未註明"}</span>
+      <span class="regbadge ${regLabel.cls}">${esc(regLabel.text)}</span></div>
+    ${showCal?`<button class="${calCls}" type="button" onclick="event.stopPropagation();addToCalendar('${esc(e.id)}')">加入行事曆</button>`:""}
+    ${attendHtml}
+  </div>`;
+}
+function markNotAttended(id){
+  if(typeof CPDAttendance==="undefined")return;
+  try{CPDAttendance.set(id,"not_attended");renderMyEvents();toast("已標示冇參加（未加入 CPD）")}
+  catch(err){toast(String(err&&err.message||err))}
+}
+function renderMyEvents(){
+  const root=$("myEventsRoot");if(!root)return;
+  const events=allEvents();
+  const upcoming=[],past=[],cancelled=[];
+  events.forEach(e=>{
+    const st=regStatusLabel(e.id);if(!st)return;
+    if(st.state==="cancelled"){cancelled.push({e,st});return}
+    if(st.state==="registered_manual"||st.state==="opened"){
+      const end=(typeof CPDAttendance!=="undefined"&&CPDAttendance.endMoment)?CPDAttendance.endMoment(e):null;
+      const isPast=end?end<new Date():e.date<today;
+      (isPast?past:upcoming).push({e,st});
+    }
+  });
+  const sortPairs=(a,b)=>(a.e.date+(a.e.time||"")).localeCompare(b.e.date+(b.e.time||""));
+  upcoming.sort(sortPairs);past.sort((a,b)=>sortPairs(b,a));cancelled.sort(sortPairs);
+  const block=(title,arr)=>`<div class="datehd">${title}（${arr.length}）</div>`+(arr.length?arr.map(x=>myEventCard(x.e,x.st)).join(""):'<div class="meta">暫時冇</div>');
+  root.innerHTML=block("即將舉行 Upcoming registered",upcoming)+block("已過去 Past registered",past)+block("已取消 Cancelled",cancelled);
+}
+
+// ---- Home ----
+function renderHome(){
+  const totalEl=$("homeTotal"),metaEl=$("homeTotalMeta"),barsEl=$("homeBars");
+  const recoEl=$("homeReco"),upEl=$("homeUpcomingReg");
+  if(!totalEl)return;
+  const yr=today.slice(0,4),mt=LS("mtype")||"corp";
+  const L=(LS("logs")||[]).filter(l=>l.date&&String(l.date).startsWith(yr));
+  const by=c=>L.filter(l=>l.cat===c).reduce((s,l)=>s+(Number(l.hrs)||0),0);
+  const self=L.filter(l=>l.mode==="Self-study").reduce((s,l)=>s+(Number(l.hrs)||0),0);
+  const struct=L.filter(l=>l.mode!=="Self-study").reduce((s,l)=>s+(Number(l.hrs)||0),0);
+  const total=mt==="corp"?struct+Math.min(self,SELF_CAP):struct;
+  totalEl.textContent=total+" 小時";
+  metaEl.textContent=yr+" · "+(mt==="corp"?"正式會員":'Scheme "A"')+" · 本機 CPD 紀錄";
+  const req=mt==="corp"?{tot:30,DSTM:5,GPM:5,"H&S":3}:{tot:45,DSTM:0,GPM:0,"H&S":6};
+  const bit=(lbl,v,r)=>{if(!r)return `<div class="meta">${lbl}：${v} 小時</div>`;const left=Math.max(0,r-v);
+    return `<div class="meta">${lbl}：<b>${v}</b>/${r}${left?` <span style="color:var(--warn)">仲差 ${left}</span>`:' <span style="color:var(--ok)">✔</span>'}</div>`};
+  barsEl.innerHTML=bit("總數",total,req.tot)+bit("DSTM",by("DSTM"),req.DSTM||null)+bit("GPM",by("GPM"),req.GPM||null)+bit("H&S",by("H&S"),req["H&S"]||null)+`<div class="meta">OTM：${by("OTM")} 小時</div>`;
+  // Top 5 mirror of reco (do not change scoring)
+  if(recoEl){
+    while(recoEl.firstChild)recoEl.removeChild(recoEl.firstChild);
+    if(typeof CPDRecommendations!=="undefined"){
+      const R=CPDRecommendations;
+      const logs=LS("logs")||[];
+      const deficits=R.getDeficits({memberType:mt,logs,year:yr});
+      const regMap=(typeof loadRegState==="function"?loadRegState():{})||{};
+      const result=R.rankEvents(DATA.events,{discipline:myDisc(),related:myRel(),memberType:mt,today,logs,deficits,regState:regMap},R.RECO_MAX);
+      if(!result.ranked.length){
+        const empty=document.createElement("div");empty.className="meta";empty.textContent="暫時冇推薦（可先設定學科或睇活動列表）。";recoEl.appendChild(empty);
+      }else{
+        result.ranked.slice(0,5).forEach(s=>{
+          const e=s.event;
+          const card=document.createElement("div");card.className="reco-card "+kc(s.cat);
+          card.onclick=()=>showEv(e.id);
+          const nm=document.createElement("div");nm.className="nm clamp";nm.title=e.name;nm.textContent=e.name;card.appendChild(nm);
+          const meta=document.createElement("div");meta.className="meta";meta.textContent=e.date+(e.time?" "+e.time:"")+" · "+s.cat;card.appendChild(meta);
+          recoEl.appendChild(card);
+        });
+      }
+    }else{
+      const empty=document.createElement("div");empty.className="meta";empty.textContent="推薦模組未載入";recoEl.appendChild(empty);
+    }
+  }
+  if(upEl){
+    const pairs=[];
+    allEvents().forEach(e=>{
+      const st=regStatusLabel(e.id);if(!st)return;
+      if(st.state!=="registered_manual"&&st.state!=="opened")return;
+      const end=(typeof CPDAttendance!=="undefined"&&CPDAttendance.endMoment)?CPDAttendance.endMoment(e):null;
+      const isPast=end?end<new Date():e.date<today;
+      if(!isPast)pairs.push({e,st});
+    });
+    pairs.sort((a,b)=>(a.e.date+(a.e.time||"")).localeCompare(b.e.date+(b.e.time||"")));
+    upEl.innerHTML=pairs.length?pairs.slice(0,8).map(x=>myEventCard(x.e,x.st)).join(""):'<div class="meta">未有已報名嘅即將舉行活動</div>';
+  }
+}
+
 // ---- 為你推薦 / Recommended for You（recommendations.js；瀏覽器本機計算）----
 function renderReco(){
   const root=$("recoRoot");if(!root)return;
@@ -796,7 +1104,7 @@ fetch("events.json?"+Date.now()).then(r=>r.json()).then(j=>{
   render();
 }).catch(()=>{$("upd").textContent="　未能載入活動清單"});
 
-function render(){renderDisc();renderChips();renderCal();renderList();renderSources();renderTracker();fillRegProfileForm();renderReco()}
+function render(){renderDisc();renderChips();renderCal();renderList();renderSources();renderTracker();renderMyEvents();renderHome();fillRegProfileForm();renderReco()}
 const rpImport=$("rpImport");
 if(rpImport)rpImport.addEventListener("change",()=>{const f=rpImport.files&&rpImport.files[0];rpImport.value="";if(f)importRegProfileUI(f)});
 render();

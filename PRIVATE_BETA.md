@@ -15,6 +15,9 @@
 - **IMPLEMENTED:** Settings → Registration Profile (browser `localStorage` only)
 - **IMPLEMENTED:** Event modal → Prepare Registration (opens organiser URL; Google Forms partial prefill when schema is present; no autofill of other sites; no submit)
 - **IMPLEMENTED:** Local registration status (`not_started` | `opened` | `registered_manual` | `cancelled`)
+- **IMPLEMENTED:** Local ICS “Add to Calendar” (`calendar_export.js`; official event URL only; no Profile PII)
+- **IMPLEMENTED:** Post-event attendance prompt → review form → existing CPD log (`attendance.js` + `cpd_bridge.js`; duplicate-safe)
+- **IMPLEMENTED:** Home / Events / My CPD / Settings navigation with My Events groups
 - No autofill of organiser forms
 - No auto-submit / automatic registration
 - No Cloudflare Access
