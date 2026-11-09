@@ -1,14 +1,14 @@
 {
- "updated": "2026-11-09T06:39+08:00",
+ "updated": "2026-11-09T12:02+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 4,
+   "n": 6,
    "method": "oshc-activity",
    "page_title": "OSHC",
-   "raw_candidates": 4,
+   "raw_candidates": 6,
    "rejects": {}
   },
   {
@@ -91,10 +91,10 @@
    "source": "HKIE CPD Calendar",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 16,
+   "n": 10,
    "method": "hkie-cpd",
    "page_title": "CPD Calendar - HKIE",
-   "raw_candidates": 16,
+   "raw_candidates": 10,
    "rejects": {}
   },
   {
@@ -148,15 +148,10 @@
   },
   {
    "source": "HKGBC 綠建環評",
-   "status": "OK_WITH_EVENTS",
-   "ok": true,
-   "n": 17,
-   "method": "hkgbc",
-   "page_title": "Events & Trainings | HKGBC",
-   "raw_candidates": 30,
-   "rejects": {
-    "date_range": 13
-   }
+   "status": "FAIL",
+   "ok": false,
+   "n": 0,
+   "err": "讀取網頁失敗：逾時"
   },
   {
    "source": "IET Hong Kong",
@@ -415,34 +410,6 @@
    }
   },
   {
-   "id": "a3ab020d7df52",
-   "name": "Ceremony",
-   "org": "IStructE Events",
-   "date": "2026-11-06",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.istructe.org/events/search/?c=ceremony",
-   "region": "Overseas",
-   "online": null,
-   "free": null,
-   "source": "IStructE Events",
-   "group": "IStructE",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
    "id": "a599edd1ecf94",
    "name": "Structural Awards 2026 ceremony",
    "org": "IStructE Events",
@@ -468,34 +435,6 @@
     "sourceUrlClass": "LISTING_PAGE",
     "confidence": "LOW",
     "discoveryMethod": "http_404"
-   }
-  },
-  {
-   "id": "aa10a3736bf94",
-   "name": "Job Fair",
-   "org": "CIC",
-   "date": "2026-11-06",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -919,34 +858,6 @@
    }
   },
   {
-   "id": "ab10639aeb755",
-   "name": "Job Fair",
-   "org": "CIC",
-   "date": "2026-11-09",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
    "id": "a1c2e7212ffc8",
    "name": "How Quantity Surveyors Drive Decarbonisation through Carbon Benchmarking and MiC Procurement",
    "org": "HKIS CPD",
@@ -1168,34 +1079,6 @@
    }
   },
   {
-   "id": "abfbc3e39a854",
-   "name": "HKGBC Event , CPD Event Environment and Conservation Fund Green Building Education and Capacity Building Programmes - Micro-credential Topical Course",
-   "org": "HKGBC",
-   "date": "2026-11-10",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1084",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "MICROSOFT_FORMS",
-    "destination": "https://forms.cloud.microsoft/r/HQkXhCEWWa",
-    "status": "OPEN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "HIGH",
-    "discoveryMethod": "hkgbc_detail_microsoft_forms,pos_text,in_detail"
-   }
-  },
-  {
    "id": "a2a2774b23755",
    "name": "Experiential learning – start your journey",
    "org": "ICE",
@@ -1280,6 +1163,34 @@
    }
   },
   {
+   "id": "abfbc3e39a854",
+   "name": "HKGBC Event , CPD Event Environment and Conservation Fund Green Building Education and Capacity Building Programmes - Micro-credential Topical Course",
+   "org": "HKGBC",
+   "date": "2026-11-10",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1084",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true,
+   "registration": {
+    "mechanism": "MICROSOFT_FORMS",
+    "destination": "https://forms.cloud.microsoft/r/HQkXhCEWWa",
+    "status": "OPEN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkgbc_detail_microsoft_forms,pos_text,in_detail"
+   }
+  },
+  {
    "id": "a0854b2694d8a",
    "name": "[Rescheduled] “Day Tour—Discover Discovery Bay: Embrace a green community and experience a unique way of life” 【愉景灣探索一日遊 : —起走進綠色社區，感受獨特生活】",
    "org": "HKIS CPD",
@@ -1305,34 +1216,6 @@
     "sourceUrlClass": "CAPTCHA_BLOCKED",
     "confidence": "MEDIUM",
     "discoveryMethod": "page_captcha_blocked"
-   }
-  },
-  {
-   "id": "ab901f90a8c43",
-   "name": "HKGBC Event",
-   "org": "HKGBC",
-   "date": "2026-11-10",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "MICROSOFT_FORMS",
-    "destination": "https://forms.cloud.microsoft/r/HQkXhCEWWa",
-    "status": "OPEN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "HIGH",
-    "discoveryMethod": "hkgbc_detail_microsoft_forms,pos_text,in_detail"
    }
   },
   {
@@ -1958,34 +1841,6 @@
    }
   },
   {
-   "id": "ab1f7b6fd9b0f",
-   "name": "Conference／Seminar",
-   "org": "CIC",
-   "date": "2026-11-12",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
    "id": "a7f35abcd1fe7",
    "name": "Technical Visit to MiMEP Design and Manufacturing Centre",
    "org": "HKIE Events",
@@ -2274,34 +2129,6 @@
    }
   },
   {
-   "id": "aab4afadb8067",
-   "name": "Job Fair",
-   "org": "CIC",
-   "date": "2026-11-14",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
    "id": "a6d65524ca365",
    "name": "存量物業的綠色升級與價值提升——城市更新、運營改善與綠色金融",
    "org": "HKIS CPD",
@@ -2486,34 +2313,6 @@
     "General"
    ],
    "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1079",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "LOW",
-    "discoveryMethod": "hkgbc_detail_no_reg"
-   }
-  },
-  {
-   "id": "a724af91c5a13",
-   "name": "Supporting Event",
-   "org": "HKGBC",
-   "date": "2026-11-16",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
    "region": "HK",
    "online": null,
    "free": null,
@@ -2794,34 +2593,6 @@
    }
   },
   {
-   "id": "aade9ecc04e2c",
-   "name": "15:30 - 17:00",
-   "org": "Labour Dept",
-   "date": "2026-11-19",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www1.oshsreg.gov.hk/ocrs/talk/search.xhtml?regType=Individual",
-   "region": "HK",
-   "online": null,
-   "free": true,
-   "source": "勞工處 職業健康公開講座",
-   "group": "Labour Dept",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "labour_oshsreg_listing_no_per_event_link"
-   }
-  },
-  {
    "id": "a3d3ddcd83f77",
    "name": "Talk on \"Occupational Health of Office Workers Series (II) Prevention of Musculoskeletal Disorders for Office Workers\"",
    "org": "Labour Department",
@@ -2850,14 +2621,14 @@
    }
   },
   {
-   "id": "a7bf2f3deba85",
-   "name": "15:30 - 17:00",
+   "id": "a7e807cda73df",
+   "name": "辦公室僱員職業健康系列(II) 辦公室僱員 - 預防肌骨骼疾病",
    "org": "Labour Dept",
    "date": "2026-11-19",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
+   "time": "15:30-17:00",
+   "hrs": 1.5,
+   "hrs_est": true,
+   "type": "H&S",
    "disc": [
     "General"
    ],
@@ -2987,62 +2758,6 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
     "discoveryMethod": "hkie_eventdetail_portal"
-   }
-  },
-  {
-   "id": "a03c082d94a54",
-   "name": "Job Fair",
-   "org": "CIC",
-   "date": "2026-11-20",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
-   "id": "a067e6ae6ceda",
-   "name": "Conference／Seminar",
-   "org": "CIC",
-   "date": "2026-11-20",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -3454,34 +3169,6 @@
    }
   },
   {
-   "id": "ade4f8038a5f3",
-   "name": "Supporting Event",
-   "org": "HKGBC",
-   "date": "2026-11-21",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "LOW",
-    "discoveryMethod": "hkgbc_detail_no_reg"
-   }
-  },
-  {
    "id": "aea7748875e02",
    "name": "Supporting Event DEVB & CSTID & CIC - CIExpo 2026 (23-25 Nov 2026)",
    "org": "HKGBC",
@@ -3494,62 +3181,6 @@
     "General"
    ],
    "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1088",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "LOW",
-    "discoveryMethod": "hkgbc_detail_no_reg"
-   }
-  },
-  {
-   "id": "a3169a4e32050",
-   "name": "Exhibition",
-   "org": "CIC",
-   "date": "2026-11-23",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
-   "id": "ac679b030a8ec",
-   "name": "Supporting Event",
-   "org": "HKGBC",
-   "date": "2026-11-23",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
    "region": "HK",
    "online": null,
    "free": null,
@@ -3650,62 +3281,6 @@
    }
   },
   {
-   "id": "aabaa5bcbcf53",
-   "name": "Supporting Event",
-   "org": "HKGBC",
-   "date": "2026-11-24",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "hkgbc_ambiguous_date_match"
-   }
-  },
-  {
-   "id": "a7d0e5ed7232e",
-   "name": "HKGBC Event",
-   "org": "HKGBC",
-   "date": "2026-11-24",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "hkgbc_ambiguous_date_match"
-   }
-  },
-  {
    "id": "ac93e8dcb4a2f",
    "name": "Seminar on \"Understanding and Responding to Verbal Violence (Part I: for frontline staff)\"",
    "org": "Civil Service Bureau",
@@ -3731,6 +3306,34 @@
     "sourceUrlClass": "PDF_FLYER",
     "confidence": "HIGH",
     "discoveryMethod": "event_url_pdf_flyer"
+   }
+  },
+  {
+   "id": "a868cb260cef7",
+   "name": "November 2026 Economic and Policy Briefing",
+   "org": "CIC (UK) Events",
+   "date": "2026-11-26",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.org.uk/events/november-2026-economic-and-policy-briefing",
+   "region": "Overseas",
+   "online": null,
+   "free": null,
+   "source": "CIC (UK) Events",
+   "group": "CIC UK",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -3787,34 +3390,6 @@
     "sourceUrlClass": "LISTING_PAGE",
     "confidence": "LOW",
     "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
-   "id": "a47217062e3fb",
-   "name": "Supporting Event",
-   "org": "HKGBC",
-   "date": "2026-11-26",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "LOW",
-    "discoveryMethod": "hkgbc_detail_no_reg"
    }
   },
   {
@@ -3902,34 +3477,6 @@
    }
   },
   {
-   "id": "a380e44ce787b",
-   "name": "Supporting Event",
-   "org": "HKGBC",
-   "date": "2026-11-27",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "hkgbc_ambiguous_date_match"
-   }
-  },
-  {
    "id": "a6c4f781506e4",
    "name": "HKGBC Event 環境及自然保育基金資助 綠建教育與能力建設計劃 「綠色建築基礎證書課程」( 2026年11月28日及12月12日 ) (Chinese Only)",
    "org": "HKGBC",
@@ -4014,34 +3561,6 @@
    }
   },
   {
-   "id": "ac6876385b4da",
-   "name": "HKGBC Event",
-   "org": "HKGBC",
-   "date": "2026-11-28",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "MICROSOFT_FORMS",
-    "destination": "https://forms.cloud.microsoft/r/wrpjQ6aTev",
-    "status": "OPEN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "HIGH",
-    "discoveryMethod": "hkgbc_detail_microsoft_forms,pos_text,in_detail"
-   }
-  },
-  {
    "id": "ad9e26c91d95c",
    "name": "Supporting Event 建造業議會 - 2026建造工友嘉年華 (Chinese only)",
    "org": "HKGBC",
@@ -4054,90 +3573,6 @@
     "General"
    ],
    "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1086",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "LOW",
-    "discoveryMethod": "hkgbc_detail_no_reg"
-   }
-  },
-  {
-   "id": "a0a71566eb258",
-   "name": "Festival",
-   "org": "CIC",
-   "date": "2026-11-29",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
-   "id": "a3bae6a859f4b",
-   "name": "Others",
-   "org": "CIC",
-   "date": "2026-11-29",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
-   "id": "aafbc3f3de808",
-   "name": "Supporting Event",
-   "org": "HKGBC",
-   "date": "2026-11-29",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
    "region": "HK",
    "online": null,
    "free": null,
@@ -4182,34 +3617,6 @@
    }
   },
   {
-   "id": "a9951acb64987",
-   "name": "Supporting Event",
-   "org": "HKGBC",
-   "date": "2026-11-30",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "OTHER_PUBLIC_FORM",
-    "destination": "https://hkgbc.org.hk/eng/news-events/news/2026/images/20261130-1201_HKBU_Professional_Training_Program_2026.pdf",
-    "status": "OPEN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "MEDIUM",
-    "discoveryMethod": "hkgbc_detail_pdf,in_detail,title_close"
-   }
-  },
-  {
    "id": "ac3346432202c",
    "name": "Online Open Seminar on Safety and Health of Gas Welding and Flame Cutting Works",
    "org": "OSHC",
@@ -4235,62 +3642,6 @@
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
     "discoveryMethod": "event_url_oshc_activity"
-   }
-  },
-  {
-   "id": "aa075ca19cc63",
-   "name": "15:30 - 17:00",
-   "org": "Labour Dept",
-   "date": "2026-12-01",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www1.oshsreg.gov.hk/ocrs/talk/search.xhtml?regType=Individual",
-   "region": "HK",
-   "online": null,
-   "free": true,
-   "source": "勞工處 職業健康公開講座",
-   "group": "Labour Dept",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "labour_oshsreg_listing_no_per_event_link"
-   }
-  },
-  {
-   "id": "ab88a531ffff7",
-   "name": "11 December 2026 (Fri)",
-   "org": "HKIE",
-   "date": "2026-12-01",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://hkie.org.hk/professional-development/continuing-professional-development/cpd-calendar/",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIE CPD Calendar",
-   "group": "HKIE",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -4406,62 +3757,6 @@
    }
   },
   {
-   "id": "acf4c737b8df0",
-   "name": "Supporting Event",
-   "org": "HKGBC",
-   "date": "2026-12-01",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "LOW",
-    "discoveryMethod": "hkgbc_detail_no_reg"
-   }
-  },
-  {
-   "id": "a874a1e8c3d1d",
-   "name": "15:30 - 17:00",
-   "org": "Labour Dept",
-   "date": "2026-12-01",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www1.oshsreg.gov.hk/ocrs/talk/search.xhtml?regType=Individual",
-   "region": "HK",
-   "online": null,
-   "free": true,
-   "source": "勞工處 職業健康公開講座",
-   "group": "Labour Dept",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "labour_oshsreg_listing_no_per_event_link"
-   }
-  },
-  {
    "id": "a6b93008dcf84",
    "name": "eLearning series: Mastering AI Tools for Professional Technical Writing",
    "org": "HKIE",
@@ -4546,6 +3841,34 @@
    }
   },
   {
+   "id": "af4ec016907f5",
+   "name": "體力處理操作及預防背部勞損",
+   "org": "Labour Dept",
+   "date": "2026-12-01",
+   "time": "15:30-17:00",
+   "hrs": 1.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www1.oshsreg.gov.hk/ocrs/talk/search.xhtml?regType=Individual",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "勞工處 職業健康公開講座",
+   "group": "Labour Dept",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "labour_oshsreg_listing_no_per_event_link"
+   }
+  },
+  {
    "id": "a044b21888739",
    "name": "Supporting Event EIHK - Certified Carbon Auditor Training Course 26th intake (2-5 Dec 2026)",
    "org": "HKGBC",
@@ -4602,34 +3925,6 @@
    }
   },
   {
-   "id": "a950db50905f7",
-   "name": "Supporting Event",
-   "org": "HKGBC",
-   "date": "2026-12-02",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "OTHER_PUBLIC_FORM",
-    "destination": "https://hkgbc.org.hk/eng/news-events/news/2026/images/20261202-1205_EIHK_LEAFLET-CCATC-26th-Intake.pdf",
-    "status": "OPEN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "MEDIUM",
-    "discoveryMethod": "hkgbc_detail_pdf,in_detail,title_close"
-   }
-  },
-  {
    "id": "abca57a6e638a",
    "name": "SPACE BIC by ERATOSTHENES",
    "org": "IET Cyprus",
@@ -4683,6 +3978,34 @@
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
     "discoveryMethod": "event_url_oshc_activity"
+   }
+  },
+  {
+   "id": "a0bfe972335a4",
+   "name": "Global BIM Coordinator Professional Training Course",
+   "org": "HKIE",
+   "date": "2026-12-04",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/cpd-courses/global-bim-coordinator-professional-training-course-11/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE CPD Calendar",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "OTHER_PUBLIC_FORM",
+    "destination": "https://www.bsigroup.com/en-HK/products-and-services/training-courses-and-qualifications/iso-19650-and-bim-training-online-courses/",
+    "status": "OPEN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "page_scan_pos_text,in_detail"
    }
   },
   {
@@ -4754,34 +4077,6 @@
     "General"
    ],
    "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1093",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "LOW",
-    "discoveryMethod": "hkgbc_detail_no_reg"
-   }
-  },
-  {
-   "id": "a56211c3bee83",
-   "name": "Supporting Event",
-   "org": "HKGBC",
-   "date": "2026-12-07",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
    "region": "HK",
    "online": null,
    "free": null,
@@ -4938,62 +4233,6 @@
    }
   },
   {
-   "id": "afcfe454fc163",
-   "name": "HKGBC Event",
-   "org": "HKGBC",
-   "date": "2026-12-09",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "LOW",
-    "discoveryMethod": "hkgbc_detail_no_reg"
-   }
-  },
-  {
-   "id": "a98726d728045",
-   "name": "18 December 2026 (Fri)",
-   "org": "HKIE",
-   "date": "2026-12-11",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://hkie.org.hk/professional-development/continuing-professional-development/cpd-calendar/",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIE CPD Calendar",
-   "group": "HKIE",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
    "id": "ada976c21a817",
    "name": "Sustainable Development Planning and ESG for Engineers",
    "org": "HKIE",
@@ -5017,34 +4256,6 @@
     "destination": null,
     "status": "UNKNOWN",
     "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
-   "id": "a223d07054882",
-   "name": "28 & 29 December 2026 (Mon & Tue)",
-   "org": "HKIE",
-   "date": "2026-12-11",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://hkie.org.hk/professional-development/continuing-professional-development/cpd-calendar/",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIE CPD Calendar",
-   "group": "HKIE",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
     "confidence": "LOW",
     "discoveryMethod": "page_no_candidate"
    }
@@ -5166,34 +4377,6 @@
     "sourceUrlClass": "UNKNOWN",
     "confidence": "HIGH",
     "discoveryMethod": "page_scan_google_forms,pos_text"
-   }
-  },
-  {
-   "id": "a9f8b3162dc94",
-   "name": "9-11 Dec 2026 (Wed-Fri)",
-   "org": "HKIE",
-   "date": "2026-12-14",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://hkie.org.hk/professional-development/continuing-professional-development/cpd-calendar/",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIE CPD Calendar",
-   "group": "HKIE",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -5383,34 +4566,6 @@
    }
   },
   {
-   "id": "ad06b680556c6",
-   "name": "4 & 7-11 December 2026",
-   "org": "HKIE",
-   "date": "2026-12-18",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://hkie.org.hk/professional-development/continuing-professional-development/cpd-calendar/",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIE CPD Calendar",
-   "group": "HKIE",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
    "id": "aa1db7eb3df72",
    "name": "Project Management and Impactful Communication",
    "org": "HKIE",
@@ -5439,13 +4594,13 @@
    }
   },
   {
-   "id": "a98264d35e675",
-   "name": "15:30 - 16:45",
+   "id": "a76a97ad66abb",
+   "name": "工作間的感染控制",
    "org": "Labour Dept",
    "date": "2026-12-21",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
+   "time": "15:30-16:45",
+   "hrs": 1.0,
+   "hrs_est": true,
    "type": "Technical",
    "disc": [
     "General"
@@ -5467,38 +4622,10 @@
    }
   },
   {
-   "id": "a5f71e0a80d3a",
-   "name": "15:30 - 16:45",
-   "org": "Labour Dept",
-   "date": "2026-12-21",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www1.oshsreg.gov.hk/ocrs/talk/search.xhtml?regType=Individual",
-   "region": "HK",
-   "online": null,
-   "free": true,
-   "source": "勞工處 職業健康公開講座",
-   "group": "Labour Dept",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "labour_oshsreg_listing_no_per_event_link"
-   }
-  },
-  {
-   "id": "a844254617957",
-   "name": "11 December 2026 (Fri)",
+   "id": "a3885400434a0",
+   "name": "Integrated ASNT PT & MT NDT Level (1) ASNT Professional Course",
    "org": "HKIE",
-   "date": "2026-12-29",
+   "date": "2026-12-28",
    "time": "",
    "hrs": null,
    "hrs_est": false,
@@ -5506,7 +4633,7 @@
    "disc": [
     "General"
    ],
-   "url": "https://hkie.org.hk/professional-development/continuing-professional-development/cpd-calendar/",
+   "url": "https://hkie.org.hk/cpd-courses/integrated-asnt-pt-mt-ndt-level-1-asnt-professional-course-2/",
    "region": "HK",
    "online": null,
    "free": null,
@@ -5517,7 +4644,7 @@
     "mechanism": "REGISTRATION_LINK_NOT_FOUND",
     "destination": null,
     "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
+    "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "LOW",
     "discoveryMethod": "page_no_candidate"
    }
@@ -5551,41 +4678,13 @@
    }
   },
   {
-   "id": "a81456abc49c7",
-   "name": "15:30 - 16:45",
+   "id": "a56cd290f0677",
+   "name": "預防上肢勞損",
    "org": "Labour Dept",
    "date": "2027-01-04",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www1.oshsreg.gov.hk/ocrs/talk/search.xhtml?regType=Individual",
-   "region": "HK",
-   "online": null,
-   "free": true,
-   "source": "勞工處 職業健康公開講座",
-   "group": "Labour Dept",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "labour_oshsreg_listing_no_per_event_link"
-   }
-  },
-  {
-   "id": "adf90093a883c",
-   "name": "15:30 - 16:45",
-   "org": "Labour Dept",
-   "date": "2027-01-04",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
+   "time": "15:30-16:45",
+   "hrs": 1.0,
+   "hrs_est": true,
    "type": "Technical",
    "disc": [
     "General"
@@ -5739,183 +4838,18 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "HIGH",
-    "discoveryMethod": "hkgbc_detail_google_forms,in_detail,title_close"
-   }
-  },
-  {
-   "id": "a741c878000de",
-   "name": "Supporting Event",
-   "org": "HKGBC",
-   "date": "2027-01-12",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "GOOGLE_FORMS",
-    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSdwysRtM0qoSKlRYizdsE8yIc3prtmoxh9Z3Dk6hcDartl9eQ/viewform",
-    "formId": "1FAIpQLSdwysRtM0qoSKlRYizdsE8yIc3prtmoxh9Z3Dk6hcDartl9eQ",
-    "status": "OPEN",
-    "fields": [
-     {
-      "entryId": "entry.1000000",
-      "profileField": null,
-      "label": "Salutation",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.867138197",
-      "profileField": null,
-      "label": "English Surname",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1000001",
-      "profileField": null,
-      "label": "English Given Name",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1535820534",
-      "profileField": null,
-      "label": "English Nickname",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1000002",
-      "profileField": "organisation",
-      "label": "Organisation Name",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1000003",
-      "profileField": "position",
-      "label": "Position",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1000004",
-      "profileField": null,
-      "label": "Contact No.",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1000006",
-      "profileField": "email",
-      "label": "Email Address",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.243626137",
-      "profileField": null,
-      "label": "Mailing Address",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.471918298",
-      "profileField": null,
-      "label": "For the course materials, I would like to have:",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.10703657",
-      "profileField": null,
-      "label": "Please note that we require you to reserve 26 January 2027 (Tue) as a fallback option for this course.",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.2123161649",
-      "profileField": null,
-      "label": "Please note that you are required to participate in the Webinar Trial Run at any time during the following time slot. This will ensure that you can successfully access the link.",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1000010",
-      "profileField": null,
-      "label": "Are you a member of any of the following organisations?",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.461651566",
-      "profileField": "hkieNumber",
-      "label": "Membership Number",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.775034901",
-      "profileField": null,
-      "label": "Would you be interested in receiving information about similar products and services from the Energy Institute in the UK in the future?",
-      "type": "RADIO",
-      "safePrefill": false
-     }
-    ],
-    "requiresManualCompletion": true,
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "HIGH",
-    "discoveryMethod": "hkgbc_detail_google_forms,in_detail,title_close"
-   }
-  },
-  {
-   "id": "a6eb3561b627a",
-   "name": "15:30 - 17:00",
-   "org": "Labour Dept",
-   "date": "2027-01-13",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www1.oshsreg.gov.hk/ocrs/talk/search.xhtml?regType=Individual",
-   "region": "HK",
-   "online": null,
-   "free": true,
-   "source": "勞工處 職業健康公開講座",
-   "group": "Labour Dept",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
     "confidence": "LOW",
-    "discoveryMethod": "labour_oshsreg_listing_no_per_event_link"
+    "discoveryMethod": "hkgbc_no_detail_for_date"
    }
   },
   {
-   "id": "a5ed6ade1cd3e",
-   "name": "15:30 - 17:00",
+   "id": "a14468b9d6cc3",
+   "name": "體力處理操作及預防背部勞損",
    "org": "Labour Dept",
    "date": "2027-01-13",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
+   "time": "15:30-17:00",
+   "hrs": 1.5,
+   "hrs_est": true,
    "type": "Technical",
    "disc": [
     "General"
