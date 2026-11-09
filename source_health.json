@@ -54,7 +54,7 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 1,
+  "consecutive_fail": 2,
   "last_success": "2026-11-09",
   "updated": "2026-11-09"
  },
@@ -65,7 +65,7 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 13,
+  "consecutive_fail": 14,
   "last_success": null,
   "updated": "2026-11-09"
  },
@@ -135,7 +135,7 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 13,
+  "consecutive_fail": 14,
   "last_success": null,
   "updated": "2026-11-09"
  },
@@ -146,7 +146,7 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 13,
+  "consecutive_fail": 14,
   "last_success": null,
   "updated": "2026-11-09"
  },
@@ -157,7 +157,7 @@
   "last_error": "讀取網頁失敗：HTTP 403（網站封鎖咗雲端伺服器）",
   "raw_candidates": null,
   "rejects": null,
-  "consecutive_fail": 5,
+  "consecutive_fail": 6,
   "last_success": "2026-11-08",
   "updated": "2026-11-09"
  },
@@ -181,7 +181,7 @@
   "last_error": "Playwright 失敗：Error",
   "raw_candidates": null,
   "rejects": null,
-  "consecutive_fail": 13,
+  "consecutive_fail": 14,
   "last_success": null,
   "updated": "2026-11-09"
  },
@@ -232,7 +232,7 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 13,
+  "consecutive_fail": 14,
   "last_success": null,
   "updated": "2026-11-09"
  },
