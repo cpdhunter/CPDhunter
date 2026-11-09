@@ -1,14 +1,14 @@
 {
- "updated": "2026-11-09T12:26+08:00",
+ "updated": "2026-11-10T06:48+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 6,
+   "n": 5,
    "method": "oshc-activity",
    "page_title": "OSHC",
-   "raw_candidates": 6,
+   "raw_candidates": 5,
    "rejects": {}
   },
   {
@@ -191,12 +191,12 @@
    "source": "ICE Upcoming Events",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 6,
+   "n": 5,
    "method": "ice-cards",
    "page_title": "Latest Events at ICE | Institution of Civil Engineers (ICE)",
    "raw_candidates": 12,
    "rejects": {
-    "overseas_physical": 6
+    "overseas_physical": 7
    }
   },
   {
@@ -858,8 +858,8 @@
     "destination": "https://www.eventbrite.com/e/top-tips-for-spending-less-online-tickets-1988558868105?aff=oddtdtcreator",
     "status": "OPEN",
     "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "HIGH",
-    "discoveryMethod": "ice_page_eventbrite,pos_text,in_detail"
+    "confidence": "LOW",
+    "discoveryMethod": "ice_no_reg_link"
    }
   },
   {
@@ -1924,79 +1924,8 @@
     "mechanism": "GOOGLE_FORMS",
     "destination": "https://docs.google.com/forms/d/e/1FAIpQLSfeOeQyctIDcVlDEiBQr4v6CxYZLje-Okq1cl1utAjn-EWzLw/viewform",
     "formId": "1FAIpQLSfeOeQyctIDcVlDEiBQr4v6CxYZLje-Okq1cl1utAjn-EWzLw",
-    "status": "OPEN",
-    "fields": [
-     {
-      "entryId": "entry.344591893",
-      "profileField": null,
-      "label": "Title",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1967333753",
-      "profileField": null,
-      "label": "First Name / Given Name (Alan, Billy, Tai Man etc)",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.489677352",
-      "profileField": null,
-      "label": "Last Name / Family Name (Chan, Cheung etc)",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.399221802",
-      "profileField": "organisation",
-      "label": "Organization / Company / Institution",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1568771219",
-      "profileField": "position",
-      "label": "Position",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1847772620",
-      "profileField": "phone",
-      "label": "Mobile Number / Contact Number",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.2009922543",
-      "profileField": "email",
-      "label": "Email Address",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.2039531699",
-      "profileField": "hkieNumber",
-      "label": "HKIE Membership No.",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1863677703",
-      "profileField": null,
-      "label": "Please advise if you are member(s) of the following organisations / divisions",
-      "type": "CHECKBOX",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1040363054",
-      "profileField": null,
-      "label": "An attendance certificate will be issued after completion of the seminar.",
-      "type": "RADIO",
-      "safePrefill": false
-     }
-    ],
+    "status": "CLOSED",
+    "fields": [],
     "requiresManualCompletion": true,
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
