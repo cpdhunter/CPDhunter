@@ -565,13 +565,35 @@ describe('recommendations.js Sprint 2D', () => {
     assert.ok(msg.title.includes('已達標'));
   });
 
-  it('Scheme A uses tracker H&S/OTM annual targets', () => {
+  it('Scheme A uses TN-G period H&S/OTM/GPM targets', () => {
     const d = api.getDeficits({ memberType: 'trainee', logs: [], year: '2026' });
-    assert.equal(d.req['H&S'], 6);
-    assert.equal(d.req.OTM, 6);
+    assert.equal(d.req['H&S'], 18);
+    assert.equal(d.req.OTM, 18);
+    assert.equal(d.req.GPM, 18);
     assert.equal(d.req.total, 45);
     assert.equal(d.req.DSTM, 0);
-    assert.equal(d.deficit['H&S'], 6);
+    assert.equal(d.deficit['H&S'], 18);
+    assert.equal(d.deficit.OTM, 18);
+    assert.equal(d.deficit.GPM, 18);
+    // Period categories use all-time logs; year still gates total
+    const d2 = api.getDeficits({
+      memberType: 'trainee',
+      logs: [
+        { date: '2025-06-01', cat: 'H&S', hrs: 10, mode: 'Structured' },
+        { date: '2026-03-01', cat: 'H&S', hrs: 5, mode: 'Structured' },
+        { date: '2025-01-01', cat: 'OTM', hrs: 18, mode: 'Structured' },
+        { date: '2026-02-01', cat: 'GPM', hrs: 3, mode: 'Structured' }
+      ],
+      year: '2026'
+    });
+    assert.equal(d2.logged['H&S'], 15);
+    assert.equal(d2.deficit['H&S'], 3);
+    assert.equal(d2.logged.OTM, 18);
+    assert.equal(d2.deficit.OTM, 0);
+    assert.equal(d2.logged.GPM, 3);
+    assert.equal(d2.deficit.GPM, 15);
+    assert.equal(d2.logged.total, 8);
+    assert.equal(d2.deficit.total, 37);
   });
 
   it('getRecommendationReasons returns deterministic items', () => {

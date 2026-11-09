@@ -637,8 +637,10 @@ function renderTracker(){
     $("bars").innerHTML=bar("總數（自學最多計 10）",struct+Math.min(self,SELF_CAP),30)+bar("DSTM",by("DSTM"),5)+bar("GPM",by("GPM"),5)+bar("H&S",by("H&S"),3)+`<div class="meta">OTM：${by("OTM")} 小時（計入總數）</div>`;
     $("reqNote").textContent="參考 HKIE 正式會員要求：每年最少 30 小時，包括 DSTM ≥5、BAS/GPM ≥5、H&S ≥3；自學最多計 10 小時。以 HKIE 最新指引為準。";
   }else{
-    $("bars").innerHTML=bar("今年總數（平均每年 45）",struct,45)+bar("H&S",by("H&S"),6)+bar("OTM",by("OTM"),6)+`<div class="meta">DSTM：${by("DSTM")} 小時　GPM：${by("GPM")} 小時</div>`;
-    $("reqNote").textContent="參考 HKIE TN-G：Scheme \"A\" 學員平均每年 45 小時；整個培訓期 H&S、OTM、GPM 各最少 18 小時；學員唔可以計自學。以 HKIE 最新 TN-G 為準。";
+    const allLogs=LS("logs")||[];
+    const byAll=c=>allLogs.filter(l=>l.cat===c).reduce((s,l)=>s+(Number(l.hrs)||0),0);
+    $("bars").innerHTML=bar("今年總數（平均每年 45）",struct,45)+bar("H&S（培訓期）",byAll("H&S"),18)+bar("OTM（培訓期）",byAll("OTM"),18)+bar("GPM（培訓期）",byAll("GPM"),18)+`<div class="meta">DSTM：${byAll("DSTM")} 小時（應佔較高比例；冇固定最低）</div>`;
+    $("reqNote").textContent="參考 HKIE TN-G：Scheme \"A\" 學員平均每年 45 小時；培訓期 H&S、OTM、GPM 各最少 18 小時；DSTM 應佔較高比例、冇固定最低；學員唔可以計自學。以 HKIE 最新 TN-G 為準。";
   }
   $("logTbl").innerHTML=L.length?`<table><tr><th>日期</th><th>活動</th><th>類別</th><th>時數</th><th></th></tr>${
     L.sort((a,b)=>b.date.localeCompare(a.date)).map(l=>`<tr><td>${l.date}</td><td>${esc(l.name)}${l.mode==="Self-study"?"（自學）":""}</td><td><select onchange="setCat(${l.id},this.value)" style="padding:3px;width:auto">${CATS.map(c=>`<option ${c===l.cat?"selected":""}>${c}</option>`).join("")}</select></td><td>${l.hrs}</td><td><a href="#" onclick="delLog(${l.id});return false">✕</a></td></tr>`).join("")}</table>`:'<div class="meta">今年未有紀錄</div>';
@@ -953,17 +955,28 @@ function renderHome(){
   const recoEl=$("homeReco"),upEl=$("homeUpcomingReg");
   if(!totalEl)return;
   const yr=today.slice(0,4),mt=LS("mtype")||"corp";
-  const L=(LS("logs")||[]).filter(l=>l.date&&String(l.date).startsWith(yr));
+  const allLogs=LS("logs")||[];
+  const L=allLogs.filter(l=>l.date&&String(l.date).startsWith(yr));
   const by=c=>L.filter(l=>l.cat===c).reduce((s,l)=>s+(Number(l.hrs)||0),0);
+  const byAll=c=>allLogs.filter(l=>l.cat===c).reduce((s,l)=>s+(Number(l.hrs)||0),0);
   const self=L.filter(l=>l.mode==="Self-study").reduce((s,l)=>s+(Number(l.hrs)||0),0);
   const struct=L.filter(l=>l.mode!=="Self-study").reduce((s,l)=>s+(Number(l.hrs)||0),0);
   const total=mt==="corp"?struct+Math.min(self,SELF_CAP):struct;
   totalEl.textContent=total+" 小時";
   metaEl.textContent=yr+" · "+(mt==="corp"?"正式會員":'Scheme "A"')+" · 本機 CPD 紀錄";
-  const req=mt==="corp"?{tot:30,DSTM:5,GPM:5,"H&S":3}:{tot:45,DSTM:0,GPM:0,"H&S":6};
-  const bit=(lbl,v,r)=>{if(!r)return `<div class="meta">${lbl}：${v} 小時</div>`;const left=Math.max(0,r-v);
+  const bit=(lbl,v,r)=>{if(r==null||r===0)return `<div class="meta">${lbl}：${v} 小時</div>`;const left=Math.max(0,r-v);
     return `<div class="meta">${lbl}：<b>${v}</b>/${r}${left?` <span style="color:var(--warn)">仲差 ${left}</span>`:' <span style="color:var(--ok)">✔</span>'}</div>`};
-  barsEl.innerHTML=bit("總數",total,req.tot)+bit("DSTM",by("DSTM"),req.DSTM||null)+bit("GPM",by("GPM"),req.GPM||null)+bit("H&S",by("H&S"),req["H&S"]||null)+`<div class="meta">OTM：${by("OTM")} 小時</div>`;
+  if(mt==="corp"){
+    barsEl.innerHTML=bit("總數",total,30)+bit("DSTM",by("DSTM"),5)+bit("GPM",by("GPM"),5)+bit("H&S",by("H&S"),3)+`<div class="meta">OTM：${by("OTM")} 小時</div>`;
+  }else{
+    let hs=byAll("H&S"),otm=byAll("OTM"),gpm=byAll("GPM"),dstm=byAll("DSTM"),yearTot=total;
+    if(typeof CPDRecommendations!=="undefined"){
+      const d=CPDRecommendations.getDeficits({memberType:"trainee",logs:allLogs,year:yr});
+      hs=d.logged["H&S"];otm=d.logged.OTM;gpm=d.logged.GPM;dstm=d.logged.DSTM;yearTot=d.logged.total;
+      totalEl.textContent=yearTot+" 小時";
+    }
+    barsEl.innerHTML=bit("總數",yearTot,45)+bit("H&S",hs,18)+bit("OTM",otm,18)+bit("GPM",gpm,18)+`<div class="meta">DSTM：${dstm} 小時</div><div class="meta">類別為培訓期累計（TN-G ≥18）</div>`;
+  }
   // Top 5 mirror of reco (do not change scoring)
   if(recoEl){
     while(recoEl.firstChild)recoEl.removeChild(recoEl.firstChild);

@@ -8,7 +8,7 @@ const RECO_MAX = 5;
 
 /** Mirror My Progress / tracker requirements — do not invent HKIE numbers. */
 const CORP_REQ = { total: 30, DSTM: 5, GPM: 5, 'H&S': 3, OTM: 0, selfCap: 10 };
-const TRAINEE_REQ = { total: 45, DSTM: 0, GPM: 0, 'H&S': 6, OTM: 6, selfCap: 0 };
+const TRAINEE_REQ = { total: 45, DSTM: 0, GPM: 18, 'H&S': 18, OTM: 18, selfCap: 0 };
 
 function getRequirements(memberType) {
   return memberType === 'trainee' ? Object.assign({}, TRAINEE_REQ) : Object.assign({}, CORP_REQ);
@@ -23,18 +23,22 @@ function getDeficits(opts) {
   const year = String((opts && opts.year) || '').slice(0, 4);
   const req = getRequirements(memberType);
   const logs = Array.isArray(opts && opts.logs) ? opts.logs : [];
-  const L = year ? logs.filter((l) => l && typeof l.date === 'string' && l.date.startsWith(year)) : logs.slice();
-  const by = (c) =>
-    L.filter((l) => l.cat === c).reduce((s, l) => s + (Number(l.hrs) || 0), 0);
-  const self = L.filter((l) => l.mode === 'Self-study').reduce((s, l) => s + (Number(l.hrs) || 0), 0);
-  const struct = L.filter((l) => l.mode !== 'Self-study').reduce((s, l) => s + (Number(l.hrs) || 0), 0);
+  const yearLogs = year
+    ? logs.filter((l) => l && typeof l.date === 'string' && l.date.startsWith(year))
+    : logs.slice();
+  // Trainee H&S/OTM/GPM ≥18 are training-period totals; no start date → all-time logs proxy.
+  const catLogs = memberType === 'trainee' ? logs.slice() : yearLogs;
+  const byCat = (c) =>
+    catLogs.filter((l) => l.cat === c).reduce((s, l) => s + (Number(l.hrs) || 0), 0);
+  const self = yearLogs.filter((l) => l.mode === 'Self-study').reduce((s, l) => s + (Number(l.hrs) || 0), 0);
+  const struct = yearLogs.filter((l) => l.mode !== 'Self-study').reduce((s, l) => s + (Number(l.hrs) || 0), 0);
   const totalLogged =
     memberType === 'trainee' ? struct : struct + Math.min(self, req.selfCap);
   const logged = {
-    DSTM: by('DSTM'),
-    OTM: by('OTM'),
-    GPM: by('GPM'),
-    'H&S': by('H&S'),
+    DSTM: byCat('DSTM'),
+    OTM: byCat('OTM'),
+    GPM: byCat('GPM'),
+    'H&S': byCat('H&S'),
     total: totalLogged
   };
   const deficit = {};
