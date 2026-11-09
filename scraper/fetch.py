@@ -537,6 +537,7 @@ def _hkgbc_detail_title(html: str) -> str:
 
 
 def extract_hkgbc(soup, base, fetch_detail=None):
+    extract_hkgbc._detail_fetches = 0
     """
     HKGBC listing: prefer p.title; strip badge chrome; never store badge-only titles.
     Optional fetch_detail(url)->html for badge-only rows needing a detail H1/og:title.
@@ -571,12 +572,16 @@ def extract_hkgbc(soup, base, fetch_detail=None):
             title = bits[0] if bits else title
         title = strip_hkgbc_badges(title)
         detail_url = urljoin(base, href)
+        # Detail fetch only for badge-only/empty titles; cap to avoid listing timeouts.
         if (not title or not is_good_title(title) or len(title) < 8) and fetch_detail:
-            try:
-                html = fetch_detail(detail_url)
-                title = _hkgbc_detail_title(html) or title
-            except Exception:
-                pass
+            n_detail = getattr(extract_hkgbc, "_detail_fetches", 0)
+            if n_detail < 8:
+                try:
+                    html = fetch_detail(detail_url)
+                    title = _hkgbc_detail_title(html) or title
+                    extract_hkgbc._detail_fetches = n_detail + 1
+                except Exception:
+                    pass
         if not d or not title or not is_good_title(title) or len(title) < 8:
             continue
         if parse_date(title) and len(title) < 24:
@@ -816,7 +821,15 @@ def process_source(src):
     use_pw = False
     if "localevents.theiet" in url or "istructe" in url:
         use_pw = True
-    html = fetch_html(url, use_playwright=use_pw)
+    try:
+        html = fetch_html(url, use_playwright=use_pw)
+    except StepError:
+        # HKGBC listing often times out from cloud IPs — one Playwright retry.
+        if (not use_pw) and PLAYWRIGHT_OK and "hkgbc" in url:
+            html = fetch_html(url, use_playwright=True)
+            use_pw = True
+        else:
+            raise
     soup = BeautifulSoup(html, "html.parser")
     title = soup.title.get_text(strip=True) if soup.title else ""
     # Surface under-construction banners into title for status classification
@@ -886,7 +899,7 @@ def process_source(src):
     else:
         raw = generic_extract(soup, url)
         method = "generic"
-    if not raw and PLAYWRIGHT_OK and not use_pw and ("hkie" in url or "ice" in url or "cic" in url):
+    if not raw and PLAYWRIGHT_OK and not use_pw and ("hkie" in url or "ice" in url or "cic" in url or "hkgbc" in url):
         try:
             html2 = fetch_html(url, use_playwright=True)
             soup2 = BeautifulSoup(html2, "html.parser")
@@ -894,6 +907,8 @@ def process_source(src):
                 raw = extract_hkie_cpd(soup2, url)
             elif "ice" in url:
                 raw = extract_ice(soup2, url)
+            elif "hkgbc" in url:
+                raw = extract_hkgbc(soup2, url, fetch_detail=None)  # listing-only; no nested fetches
             elif "cic" in url:
                 raw = extract_cic(soup2, url)
             else:

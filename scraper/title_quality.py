@@ -151,11 +151,18 @@ def title_quality_reason(title: str) -> Optional[str]:
         return "date_only"
     if is_filter_or_badge_title(t):
         return "filter_or_badge"
-    # Badge-only after strip
+    # Unstripped HKGBC category prefixes (contaminated stored titles)
+    if re.match(r"^(?:Supporting Event|HKGBC Event|CPD Event)\b", t, re.I):
+        return "hkgbc_badge_prefix"
     stripped = strip_hkgbc_badges(t)
     if not stripped or is_filter_or_badge_title(stripped):
         if HKGBC_BADGE_PREFIX_RE.match(t) or t.lower() in HKGBC_BADGES:
             return "hkgbc_badge"
+    # Listing chrome concatenation (e.g. CIC UK card dump)
+    if re.search(r"\bBegins\s+\d", t, re.I) and re.search(r"Find out more", t, re.I):
+        return "page_chrome"
+    if re.match(r"^Begins\s+\d", t, re.I):
+        return "page_chrome"
     return None
 
 

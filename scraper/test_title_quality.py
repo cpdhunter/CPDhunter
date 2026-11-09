@@ -68,6 +68,8 @@ def test_validator_rejects_impossible():
     assert is_good_title(long_title)
     # Workshop inside longer title is fine
     assert is_good_title("Temporary Works Workshop 2026")
+    assert title_quality_reason("Supporting Event IAMC & HKU - Conference") == "hkgbc_badge_prefix"
+    assert title_quality_reason("Begins 11th November 2026 November 2026 Economic and Policy Briefing Begins 11th November 2026 Find out more") == "page_chrome"
     print("validator OK")
 
 
@@ -241,7 +243,9 @@ def test_stale_contaminated_not_preserved():
         {"id": "oldbad1", "name": "15:30 - 17:00", "date": "2026-12-01", "auto": True, "source": "Labour"},
         {"id": "oldbad2", "name": "Job Fair", "date": "2026-11-20", "auto": True, "source": "CIC"},
         {"id": "oldbad3", "name": "Supporting Event", "date": "2026-11-16", "auto": True, "source": "HKGBC"},
+        {"id": "oldbad3b", "name": "Supporting Event IAMC & HKU - Conference", "date": "2026-11-21", "auto": True, "source": "HKGBC"},
         {"id": "oldbad4", "name": "11 December 2026 (Fri)", "date": "2026-12-11", "auto": True, "source": "HKIE"},
+        {"id": "oldbad5", "name": "Begins 11th November 2026 Foo Begins 11th November 2026 Find out more", "date": "2026-11-26", "auto": True, "source": "CIC UK"},
         {"id": "oldgood", "name": "Real Kept Seminar", "date": "2026-12-05", "auto": True, "source": "X"},
     ]
     found = {
@@ -253,7 +257,7 @@ def test_stale_contaminated_not_preserved():
             if not good(e.get("name") or ""):
                 continue
             kept[e["id"]] = e
-    assert "oldbad1" not in kept and "oldbad2" not in kept and "oldbad3" not in kept and "oldbad4" not in kept
+    assert "oldbad1" not in kept and "oldbad2" not in kept and "oldbad3" not in kept and "oldbad3b" not in kept and "oldbad4" not in kept and "oldbad5" not in kept
     assert "oldgood" in kept
     print("stale contaminated migration OK")
 
