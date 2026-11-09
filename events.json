@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-09T12:02+08:00",
+ "updated": "2026-11-09T12:11+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -47,13 +47,15 @@
   },
   {
    "source": "CIC 建造業議會 Events",
-   "status": "EMPTY_UNVERIFIED",
-   "ok": false,
-   "n": 0,
-   "method": "cic-list",
+   "status": "OK_WITH_EVENTS",
+   "ok": true,
+   "n": 8,
+   "method": "playwright+cic-list",
    "page_title": "Events | Construction Industry Council",
-   "raw_candidates": 0,
-   "rejects": {}
+   "raw_candidates": 12,
+   "rejects": {
+    "date_range": 4
+   }
   },
   {
    "source": "CIC BIM Events",
@@ -148,10 +150,15 @@
   },
   {
    "source": "HKGBC 綠建環評",
-   "status": "FAIL",
-   "ok": false,
-   "n": 0,
-   "err": "讀取網頁失敗：逾時"
+   "status": "OK_WITH_EVENTS",
+   "ok": true,
+   "n": 19,
+   "method": "hkgbc",
+   "page_title": "Events & Trainings | HKGBC",
+   "raw_candidates": 40,
+   "rejects": {
+    "date_range": 21
+   }
   },
   {
    "source": "IET Hong Kong",
@@ -830,6 +837,34 @@
    }
   },
   {
+   "id": "accb580af9d6f",
+   "name": "Job Fair Construction Industry Recruitment Day",
+   "org": "CIC",
+   "date": "2026-11-09",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events/detail.page-20260101-6",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
    "id": "aa4aaca86b58d",
    "name": "Top tips for spending less online",
    "org": "ICE",
@@ -1079,6 +1114,34 @@
    }
   },
   {
+   "id": "a36eed4399493",
+   "name": "Environment and Conservation Fund Green Building Education and Capacity Building Programmes - Micro-credential Topical Course",
+   "org": "HKGBC",
+   "date": "2026-11-10",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1084",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true,
+   "registration": {
+    "mechanism": "MICROSOFT_FORMS",
+    "destination": "https://forms.cloud.microsoft/r/HQkXhCEWWa",
+    "status": "OPEN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkgbc_detail_microsoft_forms,pos_text,in_detail"
+   }
+  },
+  {
    "id": "a2a2774b23755",
    "name": "Experiential learning – start your journey",
    "org": "ICE",
@@ -1160,34 +1223,6 @@
     "sourceUrlClass": "LISTING_PAGE",
     "confidence": "HIGH",
     "discoveryMethod": "ice_page_microsoft_forms,pos_text,in_detail"
-   }
-  },
-  {
-   "id": "abfbc3e39a854",
-   "name": "HKGBC Event , CPD Event Environment and Conservation Fund Green Building Education and Capacity Building Programmes - Micro-credential Topical Course",
-   "org": "HKGBC",
-   "date": "2026-11-10",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1084",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "MICROSOFT_FORMS",
-    "destination": "https://forms.cloud.microsoft/r/HQkXhCEWWa",
-    "status": "OPEN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "HIGH",
-    "discoveryMethod": "hkgbc_detail_microsoft_forms,pos_text,in_detail"
    }
   },
   {
@@ -1620,6 +1655,34 @@
    }
   },
   {
+   "id": "a2c1e6ac315ce",
+   "name": "Conference／Seminar RSTCS Summit 2026",
+   "org": "CIC",
+   "date": "2026-11-12",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://cic-hk.zoom.us/webinar/register/WN_niUjNlAeTrqebVRn88pM2A",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "ZOOM",
+    "destination": "https://cic-hk.zoom.us/webinar/register/WN_niUjNlAeTrqebVRn88pM2A",
+    "status": "OPEN",
+    "sourceUrlClass": "DIRECT_REGISTRATION",
+    "confidence": "HIGH",
+    "discoveryMethod": "event_url_direct_reg"
+   }
+  },
+  {
    "id": "ab4412f3f623d",
    "name": "[HKIFM x CIHAPB x HKIE YMC] Running & Wellness Event (Facility x Housing x Engineering)",
    "org": "HKIE Events",
@@ -1838,6 +1901,34 @@
     "sourceUrlClass": "LISTING_PAGE",
     "confidence": "HIGH",
     "discoveryMethod": "ice_page_eventbrite,pos_text,in_detail"
+   }
+  },
+  {
+   "id": "ac254f5de91d3",
+   "name": "Job Fair ITCTS Recruitment Day",
+   "org": "CIC",
+   "date": "2026-11-14",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events/detail.page-20261114",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -2301,8 +2392,8 @@
    }
   },
   {
-   "id": "ae1245db45a20",
-   "name": "Supporting Event COSH、CIC、HKIHRM及OSHC - 香港無煙領先企業大獎2026 [截止報名日期：2026年11月16日] (Chinese only)",
+   "id": "aef2b181c8663",
+   "name": "COSH、CIC、HKIHRM及OSHC - 香港無煙領先企業大獎2026 [截止報名日期：2026年11月16日] (Chinese only)",
    "org": "HKGBC",
    "date": "2026-11-16",
    "time": "",
@@ -2705,6 +2796,62 @@
    }
   },
   {
+   "id": "ad9113c40cf64",
+   "name": "Job Fair ITCTS Recruitment Day",
+   "org": "CIC",
+   "date": "2026-11-20",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events/detail.page-20261120",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
+   "id": "aa3d014e40442",
+   "name": "Conference／Seminar Webinar on “Construction Workers Registration Ordinance” (CWRO)",
+   "org": "CIC",
+   "date": "2026-11-20",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/eform/cwrbriefingsession/regform.aspx?lang=en-US",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "CAPTCHA_BLOCKED",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "page_captcha_blocked"
+   }
+  },
+  {
    "id": "a51c8d2e44cba",
    "name": "Webinar on The Emerging Space Economy: Opportunities and Challenges",
    "org": "HKIE Events",
@@ -2754,6 +2901,34 @@
    "registration": {
     "mechanism": "HKIE_PORTAL",
     "destination": "https://event.hkie.org.hk/events/share?id=6ae14fb0235f6d2201364ef3&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
+   }
+  },
+  {
+   "id": "a1621fbbd960d",
+   "name": "Event 123 - Testing",
+   "org": "HKIE Events",
+   "date": "2026-11-21",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ae314c9235f6d2201370e92/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6ae314c9235f6d2201370e92&companyCode=hkie",
     "status": "LOGIN_REQUIRED",
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
@@ -2979,6 +3154,34 @@
    }
   },
   {
+   "id": "a153070c1c33f",
+   "name": "IAMC & HKU - International Conference on Modular Construction 2026",
+   "org": "HKGBC",
+   "date": "2026-11-21",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1082",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_detail_no_reg"
+   }
+  },
+  {
    "id": "a86ae34fc03fc",
    "name": "Where Cultures Meet and Dice Roll 文化相遇處・骰子啟航時",
    "org": "HKIE Events",
@@ -3141,10 +3344,10 @@
    }
   },
   {
-   "id": "a9aee8df4659d",
-   "name": "Supporting Event IAMC & HKU - International Conference on Modular Construction 2026",
-   "org": "HKGBC",
-   "date": "2026-11-21",
+   "id": "a78f25fecd0bf",
+   "name": "Exhibition Construction Innovation Expo 2026 (CIExpo 2026)",
+   "org": "CIC",
+   "date": "2026-11-23",
    "time": "",
    "hrs": null,
    "hrs_est": false,
@@ -3152,25 +3355,25 @@
    "disc": [
     "General"
    ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1082",
+   "url": "https://www.cic.hk/en/events/detail.page-20261123",
    "region": "HK",
    "online": null,
    "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
    "auto": true,
    "registration": {
     "mechanism": "REGISTRATION_LINK_NOT_FOUND",
     "destination": null,
     "status": "UNKNOWN",
-    "sourceUrlClass": "EVENT_DETAIL",
+    "sourceUrlClass": "LISTING_PAGE",
     "confidence": "LOW",
-    "discoveryMethod": "hkgbc_detail_no_reg"
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
-   "id": "aea7748875e02",
-   "name": "Supporting Event DEVB & CSTID & CIC - CIExpo 2026 (23-25 Nov 2026)",
+   "id": "a00c208d03564",
+   "name": "DEVB & CSTID & CIC - CIExpo 2026 (23-25 Nov 2026)",
    "org": "HKGBC",
    "date": "2026-11-23",
    "time": "",
@@ -3225,8 +3428,8 @@
    }
   },
   {
-   "id": "ab7b6d550d616",
-   "name": "Supporting Event HKIA - HKIA 70th Anniversary International Symposium 2026 (24-25 Nov 2026)",
+   "id": "a89102dba6dca",
+   "name": "HKIA - HKIA 70th Anniversary International Symposium 2026 (24-25 Nov 2026)",
    "org": "HKGBC",
    "date": "2026-11-24",
    "time": "",
@@ -3253,8 +3456,8 @@
    }
   },
   {
-   "id": "a6e668667192e",
-   "name": "HKGBC Event , CPD Event Environment and Conservation Fund Green Building Education and Capacity Building Programmes - Micro-credential Topical Course - Energy-efficient Airflow Management for Green Da",
+   "id": "a9cbe70761493",
+   "name": "Environment and Conservation Fund Green Building Education and Capacity Building Programmes - Micro-credential Topical Course - Energy-efficient Airflow Management for Green Data Centres: Principles, Practices and Retrofit Approaches",
    "org": "HKGBC",
    "date": "2026-11-24",
    "time": "",
@@ -3274,6 +3477,34 @@
    "registration": {
     "mechanism": "MICROSOFT_FORMS",
     "destination": "https://forms.cloud.microsoft/r/90sujC2Nhn",
+    "status": "OPEN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkgbc_detail_microsoft_forms,pos_text,in_detail"
+   }
+  },
+  {
+   "id": "a55a3fca5b02d",
+   "name": "RCx CPD Webinar - M&V Essentials for RCx Professionals - Why It Matters, the Required Skills, and the IPMVP Role",
+   "org": "HKGBC",
+   "date": "2026-11-24",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1091",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true,
+   "registration": {
+    "mechanism": "MICROSOFT_FORMS",
+    "destination": "https://forms.cloud.microsoft/r/rBNZY3t9jk",
     "status": "OPEN",
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
@@ -3309,36 +3540,8 @@
    }
   },
   {
-   "id": "a868cb260cef7",
-   "name": "November 2026 Economic and Policy Briefing",
-   "org": "CIC (UK) Events",
-   "date": "2026-11-26",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.org.uk/events/november-2026-economic-and-policy-briefing",
-   "region": "Overseas",
-   "online": null,
-   "free": null,
-   "source": "CIC (UK) Events",
-   "group": "CIC UK",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
-   "id": "ac2d4435fc50a",
-   "name": "Supporting Event IndiaGBC - Green Building Congress 2026 (26 - 28 Nov 2026)",
+   "id": "ab161ac4c7edc",
+   "name": "IndiaGBC - Green Building Congress 2026 (26 - 28 Nov 2026)",
    "org": "HKGBC",
    "date": "2026-11-26",
    "time": "",
@@ -3365,8 +3568,8 @@
    }
   },
   {
-   "id": "aaef3155d0224",
-   "name": "Begins 11th November 2026 November 2026 Economic and Policy Briefing Begins 11th November 2026 11 November CIC webinar bringing together leaders in the construction industry Find out more",
+   "id": "a868cb260cef7",
+   "name": "November 2026 Economic and Policy Briefing",
    "org": "CIC (UK) Events",
    "date": "2026-11-26",
    "time": "",
@@ -3421,8 +3624,8 @@
    }
   },
   {
-   "id": "acac737f2d7e5",
-   "name": "Supporting Event BSL - BEAM Society Knowledge Sharing Symposium 2026",
+   "id": "a4cd6a73709a4",
+   "name": "BSL - BEAM Society Knowledge Sharing Symposium 2026",
    "org": "HKGBC",
    "date": "2026-11-27",
    "time": "",
@@ -3449,8 +3652,8 @@
    }
   },
   {
-   "id": "a7b229046cb19",
-   "name": "Supporting Event BSOMES, HKHA & CIPHE HKB – Smart and Sustainable Water Use in Hospitality Industry Symposium 2026",
+   "id": "a72878f522756",
+   "name": "BSOMES, HKHA & CIPHE HKB – Smart and Sustainable Water Use in Hospitality Industry Symposium 2026",
    "org": "HKGBC",
    "date": "2026-11-27",
    "time": "",
@@ -3477,8 +3680,8 @@
    }
   },
   {
-   "id": "a6c4f781506e4",
-   "name": "HKGBC Event 環境及自然保育基金資助 綠建教育與能力建設計劃 「綠色建築基礎證書課程」( 2026年11月28日及12月12日 ) (Chinese Only)",
+   "id": "a582b25aebf2b",
+   "name": "環境及自然保育基金資助 綠建教育與能力建設計劃 「綠色建築基礎證書課程」( 2026年11月28日及12月12日 ) (Chinese Only)",
    "org": "HKGBC",
    "date": "2026-11-28",
    "time": "",
@@ -3561,8 +3764,64 @@
    }
   },
   {
-   "id": "ad9e26c91d95c",
-   "name": "Supporting Event 建造業議會 - 2026建造工友嘉年華 (Chinese only)",
+   "id": "af19557e13738",
+   "name": "Festival 2026 Construction Workers Carnival",
+   "org": "CIC",
+   "date": "2026-11-29",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cwf.cic.hk/en/Home",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
+   "id": "ac15cf2d18dd3",
+   "name": "Others 2026 Construction Workers Carnival - Construction Workers Talent Performance",
+   "org": "CIC",
+   "date": "2026-11-29",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cwf.cic.hk/en/EventsDetail/114",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
+   "id": "ae60e9459c208",
+   "name": "建造業議會 - 2026建造工友嘉年華 (Chinese only)",
    "org": "HKGBC",
    "date": "2026-11-29",
    "time": "",
@@ -3589,8 +3848,8 @@
    }
   },
   {
-   "id": "a2b70d7dbe965",
-   "name": "Supporting Event HKBU - HKBU Professional Training Program on Sludge Treatment & Biosolids Management 2026 (30 Nov - 1 Dec 2026)",
+   "id": "ab0f938902632",
+   "name": "HKBU - HKBU Professional Training Program on Sludge Treatment & Biosolids Management 2026 (30 Nov - 1 Dec 2026)",
    "org": "HKGBC",
    "date": "2026-11-30",
    "time": "",
@@ -3729,8 +3988,8 @@
    }
   },
   {
-   "id": "ae573c956ffb8",
-   "name": "Supporting Event RIBA - Asia AI in Architecture Forum 2026",
+   "id": "abef9a747c0d9",
+   "name": "RIBA - Asia AI in Architecture Forum 2026",
    "org": "HKGBC",
    "date": "2026-12-01",
    "time": "",
@@ -3869,8 +4128,8 @@
    }
   },
   {
-   "id": "a044b21888739",
-   "name": "Supporting Event EIHK - Certified Carbon Auditor Training Course 26th intake (2-5 Dec 2026)",
+   "id": "ad42b8a88672d",
+   "name": "EIHK - Certified Carbon Auditor Training Course 26th intake (2-5 Dec 2026)",
    "org": "HKGBC",
    "date": "2026-12-02",
    "time": "",
@@ -3922,6 +4181,34 @@
     "sourceUrlClass": "CAPTCHA_BLOCKED",
     "confidence": "MEDIUM",
     "discoveryMethod": "page_captcha_blocked"
+   }
+  },
+  {
+   "id": "a2ff55574083e",
+   "name": "RCx CPD Webinar - Unlocking Building Performance Through Data-Driven RCx and ASHRAE Best Practices",
+   "org": "HKGBC",
+   "date": "2026-12-03",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1092",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true,
+   "registration": {
+    "mechanism": "MICROSOFT_FORMS",
+    "destination": "https://forms.cloud.microsoft/r/YwwRD1J6Zx",
+    "status": "OPEN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkgbc_detail_microsoft_forms,pos_text,in_detail"
    }
   },
   {
@@ -4037,6 +4324,34 @@
    }
   },
   {
+   "id": "a00578bd8ead5",
+   "name": "ChinaGBC & SGBA - 熱帶、亞熱帶 (夏熱冬暖) 地區綠建大會（2026年12月7至9日）(Chinese only)",
+   "org": "HKGBC",
+   "date": "2026-12-07",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1093",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_detail_no_reg"
+   }
+  },
+  {
    "id": "a5b2f2074e51b",
    "name": "Global BIM Coordinator Professional Training Course",
    "org": "HKIE",
@@ -4062,34 +4377,6 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "MEDIUM",
     "discoveryMethod": "page_scan_pos_text,in_detail"
-   }
-  },
-  {
-   "id": "a608646f739da",
-   "name": "Supporting Event ChinaGBC & SGBA - 熱帶、亞熱帶 (夏熱冬暖) 地區綠建大會（2026年12月7至9日）(Chinese only)",
-   "org": "HKGBC",
-   "date": "2026-12-07",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1093",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "LOW",
-    "discoveryMethod": "hkgbc_detail_no_reg"
    }
   },
   {
@@ -4205,8 +4492,8 @@
    }
   },
   {
-   "id": "a637b0dd6a291",
-   "name": "HKGBC Event 2026 HKGBC Regional Forum X WorldGBC AP Leadership Awards Showcase (9 - 10 Dec 2026)",
+   "id": "a793bce29a623",
+   "name": "2026 HKGBC Regional Forum X WorldGBC AP Leadership Awards Showcase (9 - 10 Dec 2026)",
    "org": "HKGBC",
    "date": "2026-12-09",
    "time": "",
@@ -4706,8 +4993,8 @@
    }
   },
   {
-   "id": "a6c692829438f",
-   "name": "Supporting Event EIHK - Training Course on Energy Audit for Building Energy Efficiency (21st Intake) (12, 14, 19 & 21 Jan 2027)",
+   "id": "ab92e3de75c47",
+   "name": "EIHK - Training Course on Energy Audit for Building Energy Efficiency (21st Intake) (12, 14, 19 & 21 Jan 2027)",
    "org": "HKGBC",
    "date": "2027-01-12",
    "time": "",
