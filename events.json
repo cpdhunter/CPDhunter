@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-09T12:11+08:00",
+ "updated": "2026-11-09T12:19+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -47,15 +47,13 @@
   },
   {
    "source": "CIC 建造業議會 Events",
-   "status": "OK_WITH_EVENTS",
-   "ok": true,
-   "n": 8,
-   "method": "playwright+cic-list",
+   "status": "EMPTY_UNVERIFIED",
+   "ok": false,
+   "n": 0,
+   "method": "cic-list",
    "page_title": "Events | Construction Industry Council",
-   "raw_candidates": 12,
-   "rejects": {
-    "date_range": 4
-   }
+   "raw_candidates": 0,
+   "rejects": {}
   },
   {
    "source": "CIC BIM Events",
@@ -834,34 +832,6 @@
     "sourceUrlClass": "CAPTCHA_BLOCKED",
     "confidence": "MEDIUM",
     "discoveryMethod": "page_captcha_blocked"
-   }
-  },
-  {
-   "id": "accb580af9d6f",
-   "name": "Job Fair Construction Industry Recruitment Day",
-   "org": "CIC",
-   "date": "2026-11-09",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events/detail.page-20260101-6",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -1655,34 +1625,6 @@
    }
   },
   {
-   "id": "a2c1e6ac315ce",
-   "name": "Conference／Seminar RSTCS Summit 2026",
-   "org": "CIC",
-   "date": "2026-11-12",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://cic-hk.zoom.us/webinar/register/WN_niUjNlAeTrqebVRn88pM2A",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "ZOOM",
-    "destination": "https://cic-hk.zoom.us/webinar/register/WN_niUjNlAeTrqebVRn88pM2A",
-    "status": "OPEN",
-    "sourceUrlClass": "DIRECT_REGISTRATION",
-    "confidence": "HIGH",
-    "discoveryMethod": "event_url_direct_reg"
-   }
-  },
-  {
    "id": "ab4412f3f623d",
    "name": "[HKIFM x CIHAPB x HKIE YMC] Running & Wellness Event (Facility x Housing x Engineering)",
    "org": "HKIE Events",
@@ -1901,34 +1843,6 @@
     "sourceUrlClass": "LISTING_PAGE",
     "confidence": "HIGH",
     "discoveryMethod": "ice_page_eventbrite,pos_text,in_detail"
-   }
-  },
-  {
-   "id": "ac254f5de91d3",
-   "name": "Job Fair ITCTS Recruitment Day",
-   "org": "CIC",
-   "date": "2026-11-14",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events/detail.page-20261114",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -2796,62 +2710,6 @@
    }
   },
   {
-   "id": "ad9113c40cf64",
-   "name": "Job Fair ITCTS Recruitment Day",
-   "org": "CIC",
-   "date": "2026-11-20",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events/detail.page-20261120",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
-   "id": "aa3d014e40442",
-   "name": "Conference／Seminar Webinar on “Construction Workers Registration Ordinance” (CWRO)",
-   "org": "CIC",
-   "date": "2026-11-20",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/eform/cwrbriefingsession/regform.aspx?lang=en-US",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "CAPTCHA_BLOCKED",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
-    "confidence": "MEDIUM",
-    "discoveryMethod": "page_captcha_blocked"
-   }
-  },
-  {
    "id": "a51c8d2e44cba",
    "name": "Webinar on The Emerging Space Economy: Opportunities and Challenges",
    "org": "HKIE Events",
@@ -3344,34 +3202,6 @@
    }
   },
   {
-   "id": "a78f25fecd0bf",
-   "name": "Exhibition Construction Innovation Expo 2026 (CIExpo 2026)",
-   "org": "CIC",
-   "date": "2026-11-23",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events/detail.page-20261123",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
    "id": "a00c208d03564",
    "name": "DEVB & CSTID & CIC - CIExpo 2026 (23-25 Nov 2026)",
    "org": "HKGBC",
@@ -3761,62 +3591,6 @@
     "sourceUrlClass": "CAPTCHA_BLOCKED",
     "confidence": "MEDIUM",
     "discoveryMethod": "page_captcha_blocked"
-   }
-  },
-  {
-   "id": "af19557e13738",
-   "name": "Festival 2026 Construction Workers Carnival",
-   "org": "CIC",
-   "date": "2026-11-29",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cwf.cic.hk/en/Home",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
-   "id": "ac15cf2d18dd3",
-   "name": "Others 2026 Construction Workers Carnival - Construction Workers Talent Performance",
-   "org": "CIC",
-   "date": "2026-11-29",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cwf.cic.hk/en/EventsDetail/114",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
    }
   },
   {
