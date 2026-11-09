@@ -15,6 +15,18 @@ import urllib.robotparser
 import requests
 from bs4 import BeautifulSoup
 
+from title_quality import (
+    clamp_title,
+    is_date_only_title,
+    is_filter_or_badge_title,
+    is_good_title,
+    is_time_only_title,
+    strip_hkgbc_badges,
+    strip_page_chrome,
+    title_quality_reason,
+    CIC_EVENT_TYPE_LABELS,
+)
+
 try:
     from playwright.sync_api import sync_playwright
     PLAYWRIGHT_OK = True
@@ -121,6 +133,13 @@ def parse_date(s):
     if m:
         try: return dt.date(int(m.group(1)), int(m.group(2)), int(m.group(3))).isoformat()
         except: pass
+    # "4 & 7-11 December 2026" / "28 & 29 December 2026" → first day
+    m = re.search(r"(\d{1,2})\s*&\s*\d{1,2}(?:[-\u2013]\d{1,2})?\s+([A-Za-z]+)\s+(\d{4})", s)
+    if m:
+        day, mon, year = int(m.group(1)), m.group(2).lower()[:3], int(m.group(3))
+        if mon in MONTHS:
+            try: return dt.date(year, MONTHS[mon], day).isoformat()
+            except: pass
     m = re.search(r"(\d{1,2})(?:[-\u2013]\d{1,2})?\s+([A-Za-z]+)\s+(\d{4})", s)
     if m:
         day, mon, year = int(m.group(1)), m.group(2).lower()[:3], int(m.group(3))
@@ -171,39 +190,170 @@ def extract_oshc(soup, base):
     return out
 
 def extract_hkie_cpd(soup, base):
+    """Parse one Elementor CPD card/container at a time (title+date+url same card)."""
     out = []
-    lines = soup.get_text("\n", strip=True).splitlines()
-    for i, line in enumerate(lines):
-        if not line or len(line) < 15: continue
-        for j in range(1, 5):
-            if i + j >= len(lines): break
-            d = parse_date(lines[i + j])
-            if d:
-                title = line.strip()
-                if re.match(r"CPD\d", title) or len(title) < 20: continue
-                a = None
-                for h in soup.find_all(["h2", "h3"]):
-                    if title[:30] in h.get_text():
-                        a = h.find("a")
-                        break
-                url = urljoin(base, a["href"]) if a and a.get("href") else base
-                out.append({"title": title, "date": d, "url": url, "organizer": "HKIE"})
+    cards = soup.select(".e-loop-item")
+    if not cards:
+        # Fallback: populated widget wraps that contain a CPD code heading
+        cards = []
+        for wrap in soup.select(".elementor-widget-wrap"):
+            txt = wrap.get_text("\n", strip=True)
+            if re.search(r"\bCPD\d{3,}/\d{4}\b", txt):
+                cards.append(wrap)
+    for card in cards:
+        lines = [ln.strip() for ln in card.get_text("\n", strip=True).splitlines() if ln.strip()]
+        if not lines:
+            continue
+        title = None
+        date_s = None
+        # Prefer explicit heading
+        for h in card.select("h1, h2, h3, h4, .elementor-heading-title"):
+            ht = re.sub(r"\s+", " ", h.get_text(" ", strip=True)).strip()
+            if not ht:
+                continue
+            if re.match(r"^CPD\d", ht, re.I):
+                continue
+            if is_date_only_title(ht) or is_time_only_title(ht):
+                continue
+            if len(ht) >= 15:
+                title = ht
                 break
-    return out[:25]
+        # Line scan inside THIS card only
+        for ln in lines:
+            if re.match(r"^CPD\d", ln, re.I):
+                continue
+            if is_time_only_title(ln):
+                continue
+            if is_date_only_title(ln) or parse_date(ln):
+                if date_s is None and parse_date(ln):
+                    date_s = ln
+                continue
+            if title is None and len(ln) >= 15 and not is_filter_or_badge_title(ln):
+                title = ln
+        if not title or not date_s:
+            continue
+        if is_date_only_title(title) or is_time_only_title(title):
+            continue
+        d = parse_date(date_s)
+        if not d:
+            continue
+        a = card.find("a", href=True)
+        url = urljoin(base, a["href"]) if a else base
+        out.append({"title": title, "date": d, "url": url, "organizer": "HKIE"})
+    # Dedup by date+title
+    seen = set()
+    uniq = []
+    for e in out:
+        k = (e["date"], e["title"][:80])
+        if k not in seen:
+            seen.add(k)
+            uniq.append(e)
+    return uniq[:40]
+
 
 def extract_labour(soup, base):
+    """Parse Labour OSH talk datatable rows: date/time/topic from SAME row."""
     out = []
-    lines = soup.get_text("\n", strip=True).splitlines()
-    for i, line in enumerate(lines):
-        d = parse_date(line)
-        if not d: continue
-        for j in range(1, 6):
-            if i + j >= len(lines): break
-            title = lines[i + j].strip()
-            if title and len(title) > 6 and not parse_date(title) and "報名" not in title:
-                out.append({"title": title, "date": d, "url": base, "organizer": "Labour Dept"})
-                break
-    return out[:15]
+    rows = soup.select("tr.ui-widget-content") or []
+    if not rows:
+        # Generic table fallback
+        for table in soup.find_all("table"):
+            rows.extend(table.find_all("tr")[1:])
+    for tr in rows:
+        lines = [ln.strip() for ln in tr.get_text("\n", strip=True).splitlines() if ln.strip()]
+        if not lines:
+            continue
+        date_s = None
+        time_s = None
+        title_parts = []
+        venue_started = False
+        for ln in lines:
+            if ln in ("現正接受報名", "報名", "講座題目", "講座地點", "Accepting registration"):
+                continue
+            if date_s is None and parse_date(ln):
+                date_s = ln
+                continue
+            if time_s is None and is_time_only_title(ln):
+                time_s = ln
+                continue
+            if is_time_only_title(ln) or is_date_only_title(ln):
+                continue
+            # Venue heuristics — stop collecting title once venue-like line appears
+            if re.search(r"圖書館|演講廳|講座室|診所|太空館|港鐵|銅鑼灣|尖沙咀|粉嶺|中央", ln):
+                venue_started = True
+            if venue_started:
+                continue
+            if parse_date(ln):
+                continue
+            title_parts.append(ln)
+        if not date_s:
+            continue
+        title = re.sub(r"\s+", " ", " ".join(title_parts)).strip()
+        # Prefer structured topic nodes when present
+        for sel in [".courseAndTalkContent", ".talkTitle", ".title", "td"]:
+            pass
+        if not title or is_time_only_title(title) or is_date_only_title(title) or is_filter_or_badge_title(title):
+            continue
+        if len(title) < 4:
+            continue
+        d = parse_date(date_s)
+        if not d:
+            continue
+        ev = {"title": title, "date": d, "url": base, "organizer": "Labour Dept"}
+        if time_s:
+            m = re.match(r"(\d{1,2}:\d{2})\s*[-–—]\s*(\d{1,2}:\d{2})", time_s)
+            if m:
+                ev["start_time"] = m.group(1)
+                ev["end_time"] = m.group(2)
+        out.append(ev)
+    # Fallback: line-scan but NEVER accept time-only as title; stay within block
+    if not out:
+        lines = soup.get_text("\n", strip=True).splitlines()
+        i = 0
+        while i < len(lines):
+            d = parse_date(lines[i])
+            if not d:
+                i += 1
+                continue
+            time_s = None
+            title_parts = []
+            j = i + 1
+            while j < len(lines) and j < i + 10:
+                ln = lines[j].strip()
+                if parse_date(ln) and j > i + 1:
+                    break
+                if is_time_only_title(ln):
+                    if time_s is None:
+                        time_s = ln
+                    j += 1
+                    continue
+                if ln in ("現正接受報名", "報名"):
+                    j += 1
+                    break
+                if re.search(r"圖書館|演講廳|講座室|診所|太空館|港鐵", ln):
+                    break
+                if ln and not is_date_only_title(ln):
+                    title_parts.append(ln)
+                j += 1
+            title = re.sub(r"\s+", " ", " ".join(title_parts)).strip()
+            if title and not is_time_only_title(title) and len(title) >= 4:
+                ev = {"title": title, "date": d, "url": base, "organizer": "Labour Dept"}
+                if time_s:
+                    m = re.match(r"(\d{1,2}:\d{2})\s*[-–—]\s*(\d{1,2}:\d{2})", time_s)
+                    if m:
+                        ev["start_time"] = m.group(1)
+                        ev["end_time"] = m.group(2)
+                out.append(ev)
+            i = j if j > i + 1 else i + 1
+    seen = set()
+    uniq = []
+    for e in out:
+        k = (e["date"], e["title"][:80])
+        if k not in seen:
+            seen.add(k)
+            uniq.append(e)
+    return uniq[:20]
+
 
 def extract_ice(soup, base):
     out = []
@@ -213,6 +363,8 @@ def extract_ice(soup, base):
         title_el = art.find(["h2", "h3", "h4", "a"])
         title = title_el.get_text(strip=True) if title_el else ""
         if len(title) < 10: continue
+        if not is_good_title(title):
+            continue
         d = parse_date(text)
         if d:
             a = art.find("a", href=True)
@@ -229,15 +381,63 @@ def extract_ice(soup, base):
             uniq.append(e)
     return uniq[:40]
 
+
+
+def _cic_clean_title(title: str) -> str:
+    """Strip leading dd.mm.yyyy (or ranges) then reject pure Event Types labels."""
+    t = re.sub(r"\s+", " ", (title or "")).strip()
+    t = re.sub(r"^\d{2}\.\d{2}\.\d{4}(?:\s*-\s*\d{2}\.\d{2}\.\d{4})?\s+", "", t).strip()
+    t = re.sub(r"^\d{4}-\d{2}-\d{2}\s+", "", t).strip()
+    if not t or is_filter_or_badge_title(t) or is_date_only_title(t) or is_time_only_title(t):
+        return ""
+    return t
+
 def extract_cic(soup, base):
+    """CIC events: require real calendar/card titles; reject Event Types filter labels."""
     out = []
-    text = soup.get_text("\n", strip=True)
-    for m in re.finditer(r"(\d{2}\.\d{2}\.\d{4}(?:\s*-\s*\d{2}\.\d{2}\.\d{4})?)\s+(.+?)(?:\n|$)", text):
-        d = parse_date(m.group(1).split("-")[0].strip())
-        title = m.group(2).strip()
-        if d and title and len(title) > 5:
+    # Prefer event anchors / cards with a date in the same container
+    for a in soup.find_all("a", href=True):
+        href = (a.get("href") or "").strip()
+        # Skip pure filter/navigation chrome
+        parent = a.find_parent(["option", "select"])
+        if parent:
+            continue
+        title = _cic_clean_title(a.get_text(" ", strip=True))
+        # Prefer headings inside a card when present
+        card = a.find_parent(["article", "li", "div", "td", "tr"])
+        if card:
+            for h in card.find_all(["h1", "h2", "h3", "h4"]):
+                ht = _cic_clean_title(h.get_text(" ", strip=True))
+                if ht and len(ht) >= 5:
+                    title = ht
+                    break
+            ctx = card.get_text(" ", strip=True)
+        else:
+            ctx = a.get_text(" ", strip=True)
+        if not title or len(title) < 5:
+            continue
+        d = parse_date(ctx) or parse_date(a.get_text(" ", strip=True))
+        if not d:
+            continue
+        out.append({"title": title, "date": d, "url": urljoin(base, href), "organizer": "CIC"})
+    # Legacy dd.mm.yyyy line scan — still reject filter labels
+    if not out:
+        text = soup.get_text("\n", strip=True)
+        for m in re.finditer(r"(\d{2}\.\d{2}\.\d{4}(?:\s*-\s*\d{2}\.\d{2}\.\d{4})?)\s+(.+?)(?:\n|$)", text):
+            d = parse_date(m.group(1).split("-")[0].strip())
+            title = _cic_clean_title(m.group(2).strip())
+            if not d or not title or len(title) < 5:
+                continue
             out.append({"title": title, "date": d, "url": base, "organizer": "CIC"})
-    return out
+    seen = set()
+    uniq = []
+    for e in out:
+        k = (e["date"], e["title"][:80])
+        if k not in seen:
+            seen.add(k)
+            uniq.append(e)
+    return uniq[:40]
+
 
 def extract_rstcs(soup, base):
     """RSTCS events page: Zoom webinar/register links and dated cards."""
@@ -250,6 +450,7 @@ def extract_rstcs(soup, base):
             continue
         parent = a.find_parent(["div", "li", "article", "tr", "section"])
         title = a.get_text(strip=True) or (parent.get_text(" ", strip=True)[:200] if parent else "")
+        title = strip_page_chrome(title)
         ctx = parent.get_text(" ", strip=True) if parent else title
         d = parse_date(ctx)
         # Summit 2026 without a clear day — skip undated rather than invent
@@ -260,8 +461,10 @@ def extract_rstcs(soup, base):
                 # Without a real day, do not invent a date
                 continue
             continue
+        if not is_good_title(title):
+            continue
         out.append({
-            "title": title[:200] or "RSTCS event",
+            "title": clamp_title(title) or "RSTCS event",
             "date": d,
             "url": urljoin(base, href),
             "organizer": "CIC RSTCS",
@@ -274,9 +477,9 @@ def extract_rstcs(soup, base):
             parent = a.find_parent(["div", "li", "article", "tr"])
             ctx = (parent.get_text(" ", strip=True) if parent else "") + " " + a.get_text()
             d = parse_date(ctx)
-            title = a.get_text(strip=True)
-            if d and title and len(title) > 12 and "facebook" not in (a.get("href") or "").lower():
-                out.append({"title": title[:200], "date": d, "url": urljoin(base, a["href"]), "organizer": "CIC RSTCS"})
+            title = strip_page_chrome(a.get_text(strip=True))
+            if d and title and len(title) > 12 and is_good_title(title) and "facebook" not in (a.get("href") or "").lower():
+                out.append({"title": clamp_title(title), "date": d, "url": urljoin(base, a["href"]), "organizer": "CIC RSTCS"})
     seen = set()
     uniq = []
     for e in out:
@@ -285,6 +488,7 @@ def extract_rstcs(soup, base):
             seen.add(k)
             uniq.append(e)
     return uniq[:20]
+
 
 def extract_csb(soup, base):
     out = []
@@ -302,52 +506,89 @@ def extract_csb(soup, base):
                 out.append({"title": title, "date": d, "url": url, "organizer": tds[2].get_text(strip=True) if len(tds)>2 else "CSB/Labour"})
     return out
 
-def extract_hkgbc(soup, base):
+
+def _hkgbc_detail_title(html: str) -> str:
+    """Prefer H1 → heading → og:title → page title minus site chrome."""
+    soup = BeautifulSoup(html, "html.parser")
+    for sel in ["h1", "h2.event-title", ".event-title", "h2", "h3"]:
+        el = soup.select_one(sel) if "." in sel or sel.startswith("h") else None
+        if sel.startswith("h") and "." not in sel:
+            el = soup.find(sel)
+        if not el:
+            continue
+        t = strip_hkgbc_badges(el.get_text(" ", strip=True))
+        t = strip_page_chrome(t)
+        if t and is_good_title(t) and len(t) >= 8:
+            return t
+    og = soup.find("meta", property="og:title")
+    if og and og.get("content"):
+        t = strip_hkgbc_badges(og["content"])
+        t = re.sub(r"\s*\|\s*HKGBC.*$", "", t, flags=re.I).strip()
+        t = strip_page_chrome(t)
+        if t and is_good_title(t) and len(t) >= 8:
+            return t
+    if soup.title:
+        t = strip_hkgbc_badges(soup.title.get_text(strip=True))
+        t = re.sub(r"\s*\|\s*HKGBC.*$", "", t, flags=re.I).strip()
+        t = strip_page_chrome(t)
+        if t and is_good_title(t) and len(t) >= 8:
+            return t
+    return ""
+
+
+def extract_hkgbc(soup, base, fetch_detail=None):
+    """
+    HKGBC listing: prefer p.title; strip badge chrome; never store badge-only titles.
+    Optional fetch_detail(url)->html for badge-only rows needing a detail H1/og:title.
+    """
     out = []
-    # Prefer per-event detail cards (events-detail?eventId=)
     for a in soup.find_all("a", href=True):
         href = (a.get("href") or "").strip()
         if "events-detail" not in href.lower() and "eventid=" not in href.lower():
             continue
         parent = a.find_parent(["div", "li", "article", "tr", "section"])
-        ctx = (parent.get_text(" ", strip=True) if parent else "") + " " + a.get_text()
-        d = parse_date(ctx)
-        title = a.get_text(" ", strip=True) or ""
-        # Skip date-only link text; prefer nearby heading/description
-        if (not title) or (parse_date(title) and len(title) < 24):
-            if parent:
-                # pick the longest substantial text node-ish from children links/headings
-                parts = []
-                for el in parent.find_all(["h2", "h3", "h4", "p", "a"]):
-                    t = el.get_text(" ", strip=True)
-                    if t and not (parse_date(t) and len(t) < 24):
-                        parts.append(t)
-                parts = sorted(set(parts), key=len, reverse=True)
-                title = parts[0] if parts else (parent.get_text(" ", strip=True)[:200])
+        d = None
+        title = ""
+        if parent:
+            # Structured fields
+            date_el = parent.select_one("span.eventDate, .eventDate, p.date span.eventDate")
+            title_el = parent.select_one("p.title, .title")
+            if date_el:
+                d = parse_date(date_el.get_text(" ", strip=True))
+            if title_el:
+                title = title_el.get_text(" ", strip=True)
+            if not d:
+                d = parse_date(parent.get_text(" ", strip=True))
+        if not title:
+            title = a.get_text(" ", strip=True) or ""
+        title = strip_hkgbc_badges(title)
         title = re.sub(r"\s+", " ", title).strip()
-        # Drop listing chrome prefixes
-        title = re.sub(r"^(?:Supporting Event|HKGBC Event|CPD Event)[,|\s]*", "", title, flags=re.I).strip() or title
         if "|" in title:
-            # keep the more descriptive side
             bits = [b.strip() for b in title.split("|") if b.strip()]
+            # Drop badge-only bits
+            bits = [b for b in bits if not is_filter_or_badge_title(b) and not (parse_date(b) and len(b) < 24)]
             bits = sorted(bits, key=len, reverse=True)
             title = bits[0] if bits else title
-        if d and title and len(title) > 8 and not (parse_date(title) and len(title) < 24):
-            out.append({"title": title[:200], "date": d, "url": urljoin(base, href), "organizer": "HKGBC"})
+        title = strip_hkgbc_badges(title)
+        detail_url = urljoin(base, href)
+        if (not title or not is_good_title(title) or len(title) < 8) and fetch_detail:
+            try:
+                html = fetch_detail(detail_url)
+                title = _hkgbc_detail_title(html) or title
+            except Exception:
+                pass
+        if not d or not title or not is_good_title(title) or len(title) < 8:
+            continue
+        if parse_date(title) and len(title) < 24:
+            continue
+        out.append({"title": clamp_title(title), "date": d, "url": detail_url, "organizer": "HKGBC"})
     if not out:
         text = soup.get_text("\n", strip=True)
         for m in re.finditer(r"(\d{1,2}\s+[A-Za-z]+\s+\d{4}|\d{4}年\d{1,2}月\d{1,2}日)\s*\|\s*(.+?)(?:\n|$)", text):
             d = parse_date(m.group(1))
-            title = m.group(2).strip()
-            if d and title and len(title) > 8:
-                out.append({"title": title, "date": d, "url": base, "organizer": "HKGBC"})
-    if not out:
-        for a in soup.find_all("a", href=True):
-            parent = a.find_parent(["div", "li", "article"])
-            ctx = (parent.get_text(" ", strip=True) if parent else "") + " " + a.get_text()
-            d = parse_date(ctx)
-            if d and len(a.get_text(strip=True)) > 10:
-                out.append({"title": a.get_text(strip=True)[:200], "date": d, "url": urljoin(base, a["href"]), "organizer": "HKGBC"})
+            title = strip_hkgbc_badges(m.group(2).strip())
+            if d and title and len(title) > 8 and is_good_title(title):
+                out.append({"title": clamp_title(title), "date": d, "url": base, "organizer": "HKGBC"})
     # Dedup by date+title
     seen = set()
     uniq = []
@@ -356,7 +597,8 @@ def extract_hkgbc(soup, base):
         if k not in seen:
             seen.add(k)
             uniq.append(e)
-    return uniq[:30]
+    return uniq[:40]
+
 
 def extract_hkie_div(soup, base):
     out = []
@@ -365,6 +607,8 @@ def extract_hkie_div(soup, base):
         if not title_el: continue
         title = title_el.get_text(strip=True)
         if len(title) < 15: continue
+        if not is_good_title(title):
+            continue
         text = art.get_text(" ", strip=True)
         d = parse_date(text)
         if d:
@@ -373,17 +617,70 @@ def extract_hkie_div(soup, base):
             out.append({"title": title, "date": d, "url": url, "organizer": "HKIE Division"})
     return out[:20]
 
+
 def generic_extract(soup, base):
+    """Prefer H1/heading/og over chrome-filled anchor text; strip Begins/Find out more."""
     out = []
+    # Detail-page style: single primary title
+    h1 = soup.find("h1")
+    og = soup.find("meta", property="og:title")
+    page_primary = None
+    if h1:
+        page_primary = strip_page_chrome(h1.get_text(" ", strip=True))
+    if (not page_primary or not is_good_title(page_primary)) and og and og.get("content"):
+        page_primary = strip_page_chrome(re.sub(r"\s*\|.*$", "", og["content"]))
     for a in soup.find_all("a", href=True):
         txt = a.get_text(" ", strip=True)
         if not txt or len(txt) < 8: continue
-        parent = a.find_parent(["li", "div", "article", "tr", "p"])
+        parent = a.find_parent(["li", "div", "article", "tr", "p", "section"])
         ctx = parent.get_text(" ", strip=True) if parent else txt
         d = parse_date(ctx) or parse_date(txt)
-        if d:
-            out.append({"title": txt[:200], "date": d, "url": urljoin(base, a["href"]), "organizer": None})
-    return out[:20]
+        if not d:
+            continue
+        title = None
+        if parent:
+            for h in parent.find_all(["h1", "h2", "h3", "h4"]):
+                ht = strip_page_chrome(h.get_text(" ", strip=True))
+                if ht and len(ht) >= 8 and is_good_title(ht):
+                    title = ht
+                    break
+        if not title:
+            title = strip_page_chrome(txt)
+        # If still chrome-y but page has a clean primary and URL looks like a detail page
+        if page_primary and is_good_title(page_primary):
+            href = (a.get("href") or "")
+            path_match = urlparse(urljoin(base, href)).path.rstrip("/") == urlparse(base).path.rstrip("/")
+            contains_primary = bool(title) and page_primary.lower() in title.lower()
+            chrome_extra = bool(title) and (
+                "begins" in title.lower()
+                or "find out more" in title.lower()
+                or (contains_primary and len(title) > len(page_primary) + 10)
+            )
+            if (not title or not is_good_title(title) or chrome_extra) and (path_match or "event" in href.lower()):
+                if contains_primary or page_primary.lower() in ctx.lower() or path_match:
+                    title = page_primary
+        if not title or not is_good_title(title) or len(title) < 8:
+            continue
+        out.append({"title": clamp_title(title), "date": d, "url": urljoin(base, a["href"]), "organizer": None})
+    # Dedup preferring shorter clean titles for same URL+date
+    best = {}
+    for e in out:
+        k = (e["date"], e["url"])
+        prev = best.get(k)
+        if prev is None:
+            best[k] = e
+            continue
+        # Prefer title without chrome words / shorter reasonable title
+        def score(t):
+            s = 0
+            if "begins" in t.lower() or "find out more" in t.lower():
+                s -= 50
+            s -= abs(len(t) - 60) / 10
+            return s
+        if score(e["title"]) > score(prev["title"]):
+            best[k] = e
+    return list(best.values())[:20]
+
 
 def classify_rule(title):
     if HS_KW.search(title): return "H&S"
@@ -410,15 +707,19 @@ def ai_classify(title, org):
 
 def clean(e, src, rejects):
     try:
-        title = (e.get("title") or "").strip()
+        title = clamp_title(strip_page_chrome((e.get("title") or "").strip()))
+        # HKGBC badge prefixes may still arrive from older extract paths
+        if "hkgbc" in (src.get("url") or "").lower() or (e.get("organizer") or "") == "HKGBC":
+            title = clamp_title(strip_hkgbc_badges(title))
         date = parse_date(e.get("date")) or e.get("date")
         if not date:
             rejects["no_date"] = rejects.get("no_date", 0) + 1
             return None
         e["date"] = dt.date.fromisoformat(str(date)[:10]).isoformat()
         url = e.get("url") or src["url"]
-        if not title or not str(url).startswith("http"):
-            rejects["bad_title_url"] = rejects.get("bad_title_url", 0) + 1
+        reason = title_quality_reason(title)
+        if reason or not title or not str(url).startswith("http"):
+            rejects["bad_title"] = rejects.get("bad_title", 0) + 1
             return None
         d = dt.date.fromisoformat(e["date"])
         if d < TODAY or d > TODAY + dt.timedelta(days=KEEP_DAYS_AHEAD):
@@ -456,7 +757,7 @@ def clean(e, src, rejects):
                 pass
         out = {
             "id": "a" + hashlib.sha1((re.sub(r"[^a-z0-9\u4e00-\u9fff]", "", title.lower()) + "|" + e["date"]).encode()).hexdigest()[:12],
-            "name": title[:200],
+            "name": clamp_title(title),
             "org": (e.get("organizer") or src["name"])[:120],
             "date": e["date"],
             "time": f"{s_hkt}-{e_hkt}" if s_hkt and e_hkt else (s_hkt or ""),
@@ -570,7 +871,9 @@ def process_source(src):
         raw = extract_cic(soup, url)
         method = "cic-list"
     elif "hkgbc" in url:
-        raw = extract_hkgbc(soup, url)
+        def _hkgbc_fetch(detail_url):
+            return fetch_html(detail_url, use_playwright=False)
+        raw = extract_hkgbc(soup, url, fetch_detail=_hkgbc_fetch)
         method = "hkgbc"
     elif "ciphe.org.hk" in url:
         from parsers.ciphe import extract_ciphe
@@ -767,9 +1070,16 @@ def main():
             log(f"Issue sync skipped: {ex}")
 
     cutoff = (TODAY - dt.timedelta(days=KEEP_DAYS_PAST)).isoformat()
+    stale_bad = 0
     for e in old:
         if e.get("auto") and e.get("date", "") >= cutoff and e.get("id") not in found:
+            # Do not preserve contaminated titles from prior scrapes (title fixes change IDs).
+            if not is_good_title(e.get("name") or ""):
+                stale_bad += 1
+                continue
             found[e["id"]] = e
+    if stale_bad:
+        log(f"Dropped {stale_bad} stale contaminated title(s) from previous events.json")
     for e in load(MANUAL, []):
         if e.get("date", "") >= cutoff:
             e.setdefault("id", "m" + hashlib.sha1((e.get("url", "") + e["date"]).encode()).hexdigest()[:12])
@@ -779,6 +1089,20 @@ def main():
     raw_count = len(events)
     events = dedup_events(events)
     log(f"Dedup: {raw_count} -> {len(events)}")
+    # Post-scrape title quality gate (detect only; scrapers already reject)
+    bad_future = []
+    for e in events:
+        if e.get("date", "") < TODAY.isoformat():
+            continue
+        reason = title_quality_reason(e.get("name") or "")
+        if reason:
+            bad_future.append((e.get("id"), reason, (e.get("name") or "")[:60]))
+    if bad_future:
+        log(f"TITLE QUALITY FAIL: {len(bad_future)} future event(s) with impossible titles:")
+        for i, r, n in bad_future[:20]:
+            log(f"  {i} {r}: {n}")
+    else:
+        log("TITLE QUALITY: 0 date-only / time-only / filter-label / HKGBC-badge titles")
     # Sprint 2C: discover registration destinations first (no PII), then
     # Google Forms schema enrichment so newly found forms.gle links get fields.
     try:

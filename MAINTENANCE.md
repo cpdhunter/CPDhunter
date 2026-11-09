@@ -41,6 +41,11 @@ Located in `scraper/fetch.py`:
 - `parsers/ciphe.py` — CIPHE Hong Kong Events Calendar (free-first; paid/dinner/overseas visits excluded)
 - `parsers/hkicm.py` — HKICM Learning/CPD (free-first; news/dinner/membership sessions excluded)
 - Fallback: `generic_extract` or Playwright
+- `title_quality.py` — post-extraction title validator (reject date-only / time-only / filter-label / HKGBC-badge titles; never rewrite). `clean()` rejects `bad_title`. Stale contaminated titles from prior `events.json` are not preserved when IDs change after a title fix.
+- HKGBC: prefer `p.title`; iteratively strip Supporting/HKGBC/CPD Event badges; detail H1/og:title fallback; titles stored up to ~500 chars (UI truncates visually).
+- Labour: datatable row parse; time-only never title.
+- CIC: Event Types filter labels rejected as titles.
+- HKIE CPD: one `.e-loop-item` card → title+date+url; date strings never titles.
 
 ### Sprint 2C2 source decisions
 - **CIPHE Hong Kong** — ACCEPT_NOW (`https://ciphe.org.hk/Events_Calendar.html`)
