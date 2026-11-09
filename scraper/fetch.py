@@ -22,6 +22,7 @@ from title_quality import (
     is_good_title,
     is_time_only_title,
     strip_hkgbc_badges,
+    strip_cic_type_prefix,
     strip_page_chrome,
     title_quality_reason,
     CIC_EVENT_TYPE_LABELS,
@@ -384,10 +385,11 @@ def extract_ice(soup, base):
 
 
 def _cic_clean_title(title: str) -> str:
-    """Strip leading dd.mm.yyyy (or ranges) then reject pure Event Types labels."""
+    """Strip leading dd.mm.yyyy (or ranges) and Event Types prefixes; reject pure labels."""
     t = re.sub(r"\s+", " ", (title or "")).strip()
     t = re.sub(r"^\d{2}\.\d{2}\.\d{4}(?:\s*-\s*\d{2}\.\d{2}\.\d{4})?\s+", "", t).strip()
     t = re.sub(r"^\d{4}-\d{2}-\d{2}\s+", "", t).strip()
+    t = strip_cic_type_prefix(t)
     if not t or is_filter_or_badge_title(t) or is_date_only_title(t) or is_time_only_title(t):
         return ""
     return t

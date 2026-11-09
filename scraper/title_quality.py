@@ -93,6 +93,21 @@ def strip_hkgbc_badges(title: str) -> str:
     return t
 
 
+def strip_cic_type_prefix(title: str) -> str:
+    """If title starts with an Event Types label + more text, strip the label only."""
+    t = normalize_ws(title)
+    low = t.lower()
+    # Longest-first so Conference／Seminar beats Conference
+    labels = sorted(CIC_EVENT_TYPE_LABELS, key=len, reverse=True)
+    for lab in labels:
+        if low == lab:
+            return ""
+        if low.startswith(lab + " "):
+            rest = t[len(lab):].lstrip(" 	-|:/")
+            return normalize_ws(rest)
+    return t
+
+
 def strip_page_chrome(title: str) -> str:
     """Remove structurally obvious listing chrome; do not editorially shorten."""
     t = normalize_ws(title)
@@ -158,6 +173,10 @@ def title_quality_reason(title: str) -> Optional[str]:
     if not stripped or is_filter_or_badge_title(stripped):
         if HKGBC_BADGE_PREFIX_RE.match(t) or t.lower() in HKGBC_BADGES:
             return "hkgbc_badge"
+    # CIC Event Types still prefixed onto a real name
+    cic_rest = strip_cic_type_prefix(t)
+    if cic_rest != t:
+        return "cic_type_prefix" if cic_rest else "filter_or_badge"
     # Listing chrome concatenation (e.g. CIC UK card dump)
     if re.search(r"\bBegins\s+\d", t, re.I) and re.search(r"Find out more", t, re.I):
         return "page_chrome"

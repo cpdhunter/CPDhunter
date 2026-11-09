@@ -165,6 +165,10 @@ def test_cic_parser():
     # Exact filter labels alone rejected
     assert "Job Fair" not in titles
     assert "Exhibition" not in titles
+    # Type prefix stripped from longer titles
+    from title_quality import strip_cic_type_prefix
+    assert strip_cic_type_prefix("Job Fair Construction Industry Recruitment Day") == "Construction Industry Recruitment Day"
+    assert strip_cic_type_prefix("Conference／Seminar RSTCS Summit 2026") == "RSTCS Summit 2026"
     print("cic parser OK", titles)
 
 
