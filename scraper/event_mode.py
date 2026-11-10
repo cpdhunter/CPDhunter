@@ -1,8 +1,10 @@
 """Conservative attendance-mode classification.
 
 online is False is not physical evidence by itself.
-A real physical address/venue with no online evidence is FACE_TO_FACE.
-District or organisation names alone remain UNKNOWN.
+A high-confidence physical venue/address may be FACE_TO_FACE only when it was
+extracted from the official event-specific detail page (venueSource=event_detail)
+and that same page has no online joining option.
+Listing-page venues, district names, and organisation names alone remain UNKNOWN.
 Do not use AI to infer mode.
 """
 from __future__ import annotations
@@ -62,8 +64,10 @@ ENGLISH_STREET_RE = re.compile(
 )
 NAMED_PLACE_RE = re.compile(
     r"演講廳|講座室|職業健康診所|太空館|圖書館|會議展覽中心|會展中心|"
+    r"培訓中心|會議室|會議廳|"
     r"\bconvention\s+cent(?:re|er)\b|\bexhibition\s+cent(?:re|er)\b|"
-    r"\bauditorium\b|\blecture\s+(?:room|theatre|theater|hall)\b",
+    r"\bauditorium\b|\blecture\s+(?:room|theatre|theater|hall)\b|"
+    r"\b(?:training|conference)\s+cent(?:re|er)\b|\bconference\s+room\b",
     re.I,
 )
 LECTURE_ROOM_RE = re.compile(
@@ -95,6 +99,16 @@ def evidence_text(event: Optional[Dict[str, Any]]) -> str:
 
 def _any(patterns: Iterable[re.Pattern], text: str) -> bool:
     return any(p.search(text) for p in patterns)
+
+
+def from_event_detail(event: Optional[Dict[str, Any]]) -> bool:
+    """True when venue/mode evidence was taken from an official event detail page."""
+    if not event or not isinstance(event, dict):
+        return False
+    src = _clean(
+        event.get("venueSource") or event.get("modeSource") or event.get("evidenceSource")
+    ).lower()
+    return src in {"event_detail", "detail", "official_detail"}
 
 
 def has_physical_address(event: Optional[Dict[str, Any]]) -> bool:
@@ -129,7 +143,7 @@ def infer_mode(event: Optional[Dict[str, Any]]) -> Dict[str, str]:
 
     online = _any(ONLINE_PATTERNS, text)
     face = _any(FACE_PATTERNS, text)
-    physical = has_physical_address(event)
+    physical = from_event_detail(event) and has_physical_address(event)
     if online and (face or physical):
         return {"mode": MODE_HYBRID, "confidence": "HIGH", "reason": "online_and_face_evidence"}
     if online:
@@ -162,7 +176,7 @@ def mode_of(event: Optional[Dict[str, Any]]) -> str:
 
 
 def attach_mode(event: Dict[str, Any]) -> Dict[str, Any]:
-    """Stamp mode only when evidence is reliable. Never invent FACE_TO_FACE from online=false alone."""
+    """Stamp mode only when evidence is reliable. Never invent FACE_TO_FACE from online=false or a listing-only venue."""
     inferred = infer_mode(event)
     if inferred["mode"] != MODE_UNKNOWN:
         event["mode"] = inferred["mode"]
