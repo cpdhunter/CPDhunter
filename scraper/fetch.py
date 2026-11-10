@@ -98,6 +98,16 @@ def allowed(url):
         _robots[base] = rp
     return _robots[base].can_fetch(BOT, url)
 
+def _usable_html_response(status_code, text):
+    """Accept rare non-200 responses that still carry a full HTML document.
+    GitHub Actions IPs sometimes receive HTTP 202 from tqm.com.hk / CloudFront
+    with the complete course page in the body.
+    """
+    if status_code not in (202,) or not isinstance(text, str) or len(text) < 4000:
+        return False
+    low = text.lower()
+    return "<html" in low or "<!doctype html" in low
+
 def fetch_html(url, use_playwright=False, session=None):
     if not allowed(url):
         raise StepError("robots.txt 唔准讀取")
@@ -125,7 +135,7 @@ def fetch_html(url, use_playwright=False, session=None):
             last = "讀取網頁失敗：逾時"; time.sleep(5); continue
         except Exception as ex:
             last = f"讀取網頁失敗：{type(ex).__name__}"; time.sleep(5); continue
-        if r.status_code == 200:
+        if r.status_code == 200 or _usable_html_response(r.status_code, r.text):
             r.encoding = r.apparent_encoding or r.encoding
             return r.text
         last = f"讀取網頁失敗：HTTP {r.status_code}" + ("（網站封鎖咗雲端伺服器）" if r.status_code in (401,403,429) else "")
@@ -1124,7 +1134,8 @@ def process_source(src):
         html = fetch_html(url, use_playwright=use_pw, session=labour_session)
     except StepError:
         # HKGBC listing often times out from cloud IPs — one Playwright retry.
-        if (not use_pw) and PLAYWRIGHT_OK and "hkgbc" in url:
+        # TQM / CloudFront may return HTTP 202 to GitHub Actions IPs.
+        if (not use_pw) and PLAYWRIGHT_OK and ("hkgbc" in url or "tqm.com.hk" in url):
             html = fetch_html(url, use_playwright=True)
             use_pw = True
         else:
@@ -1209,17 +1220,21 @@ def process_source(src):
         raw = extract_tqm(soup, url)
         method = "tqm-list"
         try:
-            raw = enrich_tqm_course_details(
-                raw,
-                lambda u: fetch_html(u, use_playwright=False),
-            )
+            def _tqm_fetch(u):
+                try:
+                    return fetch_html(u, use_playwright=False)
+                except StepError:
+                    if PLAYWRIGHT_OK:
+                        return fetch_html(u, use_playwright=True)
+                    raise
+            raw = enrich_tqm_course_details(raw, _tqm_fetch)
             method = "tqm-list+detail"
         except Exception as ex:
             log(f"  tqm detail enrich skipped: {type(ex).__name__}")
     else:
         raw = generic_extract(soup, url)
         method = "generic"
-    if not raw and PLAYWRIGHT_OK and not use_pw and ("hkie" in url or "ice" in url or "cic" in url or "hkgbc" in url):
+    if not raw and PLAYWRIGHT_OK and not use_pw and ("hkie" in url or "ice" in url or "cic" in url or "hkgbc" in url or "tqm.com.hk" in url):
         try:
             html2 = fetch_html(url, use_playwright=True)
             soup2 = BeautifulSoup(html2, "html.parser")
@@ -1231,6 +1246,9 @@ def process_source(src):
                 raw = extract_hkgbc(soup2, url, fetch_detail=None)  # listing-only; no nested fetches
             elif "cic" in url:
                 raw = extract_cic(soup2, url)
+            elif "tqm.com.hk" in url:
+                from parsers.tqm import extract_tqm
+                raw = extract_tqm(soup2, url)
             else:
                 raw = generic_extract(soup2, url)
             if raw:

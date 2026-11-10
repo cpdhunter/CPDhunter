@@ -200,6 +200,28 @@ def test_month_first_dates_parse():
     print("month-first dates OK")
 
 
+def test_fetch_html_accepts_202_with_full_html():
+    from unittest.mock import patch
+    from fetch import fetch_html, StepError, _usable_html_response
+
+    full = "<!DOCTYPE html><html><body>" + ("course " * 800) + "</body></html>"
+    assert _usable_html_response(202, full)
+    assert not _usable_html_response(202, "<html>short</html>")
+    assert not _usable_html_response(403, full)
+    assert not _usable_html_response(202, "")
+
+    class _Resp:
+        status_code = 202
+        text = full
+        apparent_encoding = "utf-8"
+        encoding = "utf-8"
+
+    with patch("fetch.allowed", return_value=True), patch("fetch.requests.get", return_value=_Resp()):
+        got = fetch_html("https://tqm.com.hk/training/upcoming/")
+    assert "course" in got
+    print("HTTP 202 full HTML accepted OK")
+
+
 def test_public_source_url_scope():
     assert _is_tqm_public_source_url(BASE)
     assert _is_tqm_public_source_url(DETAIL_DAY2)
@@ -219,4 +241,5 @@ if __name__ == "__main__":
     test_paid_survives_clean_with_mode_and_time()
     test_month_first_dates_parse()
     test_public_source_url_scope()
+    test_fetch_html_accepts_202_with_full_html()
     print("All TQM tests passed")
