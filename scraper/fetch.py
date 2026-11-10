@@ -491,6 +491,105 @@ def extract_labour(soup, base):
     return uniq[:20]
 
 
+
+_LABOUR_REG_CHROME_RE = re.compile(
+    r"職業健康公開講座\s*[-–—]?\s*網上報名(?:須知)?|網上報名(?:須知)?"
+)
+
+
+def _strip_labour_registration_chrome(text):
+    """網上報名 is registration, not an online joining option."""
+    return re.sub(r"\s+", " ", _LABOUR_REG_CHROME_RE.sub(" ", text or "")).strip()
+
+
+def parse_labour_talk_detail(html):
+    """Extract labelled talk fields from an official OSHSREG talk detail page."""
+    soup = BeautifulSoup(html or "", "html.parser")
+    venue = None
+    date_s = None
+    time_s = None
+    table = soup.select_one("table.tableTalkView")
+    if table:
+        for tr in table.find_all("tr"):
+            tds = tr.find_all(["td", "th"])
+            if len(tds) < 2:
+                continue
+            label = re.sub(r"\s+", " ", tds[0].get_text(" ", strip=True)).strip()
+            value = re.sub(r"\s+", " ", tds[1].get_text(" ", strip=True)).strip()
+            if "講座地點" in label or label.lower() in ("地點", "venue"):
+                venue = value
+            elif "講座日期" in label:
+                date_s = value
+            elif "講座時間" in label:
+                time_s = value
+    title = ""
+    description = ""
+    content = soup.select_one("#content")
+    if content:
+        parts = []
+        for child in content.children:
+            name = getattr(child, "name", None)
+            classes = child.get("class") if getattr(child, "get", None) else None
+            if name == "table" and classes and "tableTalkView" in classes:
+                break
+            if not getattr(child, "get_text", None):
+                continue
+            t = re.sub(r"\s+", " ", child.get_text(" ", strip=True)).strip()
+            if t and t != "講座詳情":
+                parts.append(t)
+        if parts:
+            title = parts[0]
+            description = " ".join(parts[1:])
+    return {
+        "title": title,
+        "venue": venue or "",
+        "description": _strip_labour_registration_chrome(description),
+        "date": date_s,
+        "time": time_s,
+    }
+
+
+def enrich_labour_talk_details(events, fetch_detail):
+    """Classify Labour talks from each official talk detail page, not the listing venue."""
+    from event_mode import infer_mode, MODE_UNKNOWN
+
+    out = []
+    for ev in events or []:
+        item = dict(ev)
+        url = item.get("url") or ""
+        if "selectedTalkHdr=" not in url or not callable(fetch_detail):
+            out.append(item)
+            continue
+        try:
+            html = fetch_detail(url)
+        except Exception:
+            out.append(item)
+            continue
+        if not html:
+            out.append(item)
+            continue
+        detail = parse_labour_talk_detail(html)
+        detail_venue = (detail.get("venue") or "").strip()
+        if detail_venue:
+            item["venueSource"] = "event_detail"
+            if not item.get("venue"):
+                item["venue"] = detail_venue
+        desc = (detail.get("description") or "").strip()
+        if desc and not item.get("description"):
+            item["description"] = desc
+        evidence = {
+            "name": detail.get("title") or item.get("title"),
+            "venue": detail_venue or None,
+            "description": desc or None,
+            "venueSource": "event_detail" if detail_venue else "",
+        }
+        inferred = infer_mode(evidence)
+        if inferred["mode"] != MODE_UNKNOWN:
+            item["mode"] = inferred["mode"]
+        out.append(item)
+    return out
+
+
 def extract_ice(soup, base):
     out = []
     for art in soup.find_all(["article", "div", "li"]):
@@ -963,7 +1062,13 @@ def clean(e, src, rejects):
             raw = e.get(key)
             if isinstance(raw, str) and raw.strip():
                 out[key] = raw.strip()[:limit]
-        # Stamp mode only with reliable evidence. online=false is not Face to Face.
+        vs = e.get("venueSource")
+        if isinstance(vs, str) and vs.strip():
+            out["venueSource"] = vs.strip()[:40]
+        explicit_mode = e.get("mode")
+        if isinstance(explicit_mode, str) and explicit_mode.strip():
+            out["mode"] = explicit_mode.strip()
+        # Stamp mode only with reliable evidence. online=false / listing venue is not Face to Face.
         attach_mode(out)
         return out
     except Exception:
@@ -1026,6 +1131,14 @@ def process_source(src):
     elif "oshsreg.gov.hk" in url or "labour.gov.hk" in url:
         raw = extract_labour(soup, url)
         method = "labour-list"
+        if "oshsreg.gov.hk" in url:
+            try:
+                raw = enrich_labour_talk_details(
+                    raw, lambda u: fetch_html(u, use_playwright=False)
+                )
+                method = "labour-list+detail"
+            except Exception as ex:
+                log(f"  labour detail enrich skipped: {type(ex).__name__}")
     elif "hkie.org.hk" in url and "cpd-calendar" in url:
         raw = extract_hkie_cpd(soup, url)
         method = "hkie-cpd"

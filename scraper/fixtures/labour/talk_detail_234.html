@@ -1,0 +1,312 @@
+<!DOCTYPE html><html lang="zh" xmlns="http://www.w3.org/1999/xhtml"><head id="j_idt3"><link type="text/css" rel="stylesheet" href="/ocrs/javax.faces.resource/theme.css.xhtml?ln=primefaces-saga&amp;v=13.0.0"><link type="text/css" rel="stylesheet" href="/ocrs/javax.faces.resource/primeicons/primeicons.css.xhtml?ln=primefaces&amp;v=13.0.0"><link type="text/css" rel="stylesheet" href="/ocrs/org.richfaces.resources/javax.faces.resource/org.richfaces/skinning.ecss?db=eAETn3PiPwAEwwJ7"><link type="text/css" rel="stylesheet" href="/ocrs/javax.faces.resource/css/styles.css.xhtml"><link type="text/css" rel="stylesheet" href="/ocrs/javax.faces.resource/css/overriderPrimeFaces.css.xhtml"><script type="text/javascript" src="/ocrs/javax.faces.resource/jquery/jquery.js.xhtml?ln=primefaces&amp;v=13.0.0"></script><script type="text/javascript" src="/ocrs/javax.faces.resource/jquery/jquery-plugins.js.xhtml?ln=primefaces&amp;v=13.0.0"></script><script type="text/javascript" src="/ocrs/javax.faces.resource/core.js.xhtml?ln=primefaces&amp;v=13.0.0"></script><link type="text/css" rel="stylesheet" href="/ocrs/javax.faces.resource/components.css.xhtml?ln=primefaces&amp;v=13.0.0"><script type="text/javascript" src="/ocrs/javax.faces.resource/components.js.xhtml?ln=primefaces&amp;v=13.0.0"></script><script type="text/javascript">if(window.PrimeFaces){PrimeFaces.settings.locale='zh';PrimeFaces.settings.viewId='/talk/view.xhtml';PrimeFaces.settings.contextPath='/ocrs';PrimeFaces.settings.cookiesSecure=false;}</script>
+	<title>
+			勞工處 - 講座詳情
+		</title>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="IE=edge">
+	<meta name="keywords" content="勞工處">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self' https://www.labour.gov.hk/    ; script-src 'self' https://www.labour.gov.hk/   'unsafe-inline'  'unsafe-eval'; img-src 'self' data: *;   style-src 'self' https://www.labour.gov.hk/   'unsafe-inline'">
+	<link rel="shortcut icon" href="/ocrs/javax.faces.resource/logo.ico.xhtml?ln=images"><script type="text/javascript" src="/ocrs/javax.faces.resource/bootstrap.js.xhtml?ln=js"></script><script type="text/javascript" src="/ocrs/javax.faces.resource/js/calendarValidation.js.xhtml"></script></head><body><script type="text/javascript" src="/ocrs/javax.faces.resource/jquery.inputmask.bundle.js.xhtml?ln=js"></script>
+
+	
+	
+
+
+
+	<script type="text/javascript">
+		function resizable() {
+
+			if(console) {
+				console.log('jQuery version: ' + jQuery.fn.jquery);
+			}
+			modifyPageAttr();
+			Inputmask("9999 9999").mask('.phonenoformat');
+		}
+
+		function modifyPageAttr(){
+			var pages = $('.rf-ds-nmb-btn');
+			if(pages){
+				if(pages.length > 0){
+					pages.each(function(){
+						var pageNumber = $(this).text();
+						$(this).attr("aria-label","頁 "+" "+pageNumber);
+						console.log("attr:"+"頁 "+" "+pageNumber);
+					});
+				}
+			}
+			var firstBtn = $('.rf-ds-btn-first');
+			firstBtn.attr("aria-label","首頁");
+			firstBtn.attr("style","color:#707070;background:#FCFCFC;border-color:#716C7F;");
+
+			var firstBtn = $('.rf-ds-btn-prev');
+			firstBtn.attr("aria-label","上一頁");
+			firstBtn.attr("style","color:#707070;background:#FCFCFC;border-color:#716C7F;");
+
+			var firstBtn = $('.rf-ds-btn-next');
+			firstBtn.attr("aria-label","下一頁");
+			firstBtn.attr("style","color:#707070;background:#FCFCFC;border-color:#716C7F;");
+
+			var firstBtn = $('.rf-ds-btn-last');
+			firstBtn.attr("aria-label","尾頁");
+			firstBtn.attr("style","color:#707070;background:#FCFCFC;border-color:#716C7F;");
+
+			$('.rf-cal-btn').click(function(){
+				$('.rf-cal-tl-btn').map(function() {
+					if($(this).text() == "<<") {
+						$(this).attr("aria-label","上一年").attr("role", "button");
+					}
+					if($(this).text() == "<") {
+						$(this).attr("aria-label","上一個月").attr("role", "button");
+					}
+					if($(this).text() == ">") {
+						$(this).attr("aria-label","下一個月").attr("role", "button");
+					}
+					if($(this).text() == ">>") {
+						$(this).attr("aria-label","下一年").attr("role", "button");
+					}
+					if($(this).text() == "x") {
+						$(this).attr("aria-label","關閉日曆").attr("role", "button");
+					}
+				})
+			});
+		}
+
+		$(window).on('load', function() {
+			resizable();
+		});
+
+
+		function hideSmartFlag(needHideImg){
+			$("#"+needHideImg).hide();
+		}
+
+		$(document).ready(function(){
+			$('.applyGenderSelect').change(function(){
+				$("#courseGenderFlag").hide();
+				$("#talkGenderFlag").hide();
+			});
+
+			if($(".rf-cal-popup").length>0){
+//                        $(".rf-cal-popup").delegate(".rf-cal-inp","click",function(){
+//                            var $dateFieldFrHeader= $("#mainForm\\:dateFieldFrHeader");
+//                            console.log($dateFieldFrHeader);
+//                            var dateHeaderBtns=$dateFieldFrHeader.find("td");
+//                            console.log(dateHeaderBtns);
+//                            $(dateHeaderBtns[0].children).attr("aria-label","前一年");
+//                        });
+//                        $(".rf-cal-popup").delegate("")
+//
+//
+//
+//                        var $dateFieldFrHeader= $("#mainForm\\:dateFieldFrHeader");
+//                        console.log($dateFieldFrHeader);
+//
+//                        $dateFieldFrHeader.click(function(){
+//                            var dateHeaderBtns=$dateFieldFrHeader.find("td");
+//                            console.log(dateHeaderBtns);
+//                            $(dateHeaderBtns[0].children()).attr("aria-label","前一年");
+//                        });
+			}
+
+		});
+	</script><div id="ajaxStatus"></div>
+
+	<div class="printLogo"><img src="/ocrs/javax.faces.resource/landing/logo_tc.svg.xhtml?ln=images" alt="勞工處">
+
+	</div>
+	<div id="desktop-top">
+		<ul class="toolBar">
+			<li class="title">
+					<a href="https://www.labour.gov.hk/tc/index.htm" target="_blank"><img src="/ocrs/javax.faces.resource/landing/logo_tc.svg.xhtml?ln=images" alt="勞工處">
+					</a>
+			</li>
+			<li>
+				<ul>
+					<li>
+						<a class="spinner-trigger" href="/ocrs/home.xhtml">主頁</a>
+					</li>
+					<li>
+						<a class="spinner-trigger" href="/ocrs/contactus.xhtml">聯絡我們</a>
+					</li>
+					<li class="lang">
+<form id="j_idt35" name="j_idt35" method="post" action="/ocrs/talk/view.xhtml?cid=1" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="j_idt35" value="j_idt35">
+<script type="text/javascript" src="/ocrs/javax.faces.resource/jsf.js.xhtml?ln=javax.faces"></script><a href="#" title="En" onclick="mojarra.jsfcljs(document.getElementById('j_idt35'),{'j_idt35:j_idt36':'j_idt35:j_idt36'},'');return false" class="enLang spinner-trigger">En</a><a href="#" title="简" onclick="mojarra.jsfcljs(document.getElementById('j_idt35'),{'j_idt35:j_idt38':'j_idt35:j_idt38'},'');return false" class="scLang spinner-trigger">简</a><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="-1533077466333298284:-7959646268432302330" autocomplete="off">
+</form>
+					</li>
+					<li class="textsize">
+						<a class="spinner-trigger" href="/ocrs/textsize.xhtml">字型大小</a>
+					</li>
+					<li>
+						<a href="javascript:window.print();" class="fas fa-print" title="列印"></a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div id="mobile-top">
+		<ul>
+			<li class="title">
+					<a href="https://www.labour.gov.hk/tc/index.htm" target="_blank"><img src="/ocrs/javax.faces.resource/landing/logo_tc.svg.xhtml?ln=images" alt="勞工處">
+					</a>
+			</li>
+			<li class="lang">
+				<nav class="navbar navbar-expand-lg navbar-light bg-light header-bg">
+					<div class="container-fluid">
+						<button class="navbar-toggler header-bg" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+							<span class="navbar-toggler-icon"></span>
+						</button>
+						<div class="collapse navbar-collapse" id="navbarToggleExternalContent">
+<form id="j_idt53" name="j_idt53" method="post" action="/ocrs/talk/view.xhtml?cid=1" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="j_idt53" value="j_idt53">
+
+								<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+									<li>
+										<a class="spinner-trigger" href="/ocrs/home.xhtml">主頁</a>
+									</li>
+									<li>
+										<a class="spinner-trigger" href="/ocrs/contactus.xhtml">聯絡我們</a>
+									</li>
+									<li class="textsize">
+										<a class="spinner-trigger" href="/ocrs/textsize.xhtml">字型大小</a>
+									</li>
+									<li>
+										<a href="javascript:window.print();" class="fas fa-print" title="列印"></a>
+									</li>
+									<li><a href="#" title="En" onclick="mojarra.jsfcljs(document.getElementById('j_idt53'),{'j_idt53:j_idt55':'j_idt53:j_idt55'},'');return false" class="enLang spinner-trigger">En</a>
+									</li>
+									<li>
+									</li>
+									<li><a href="#" title="简" onclick="mojarra.jsfcljs(document.getElementById('j_idt53'),{'j_idt53:j_idt59':'j_idt53:j_idt59'},'');return false" class="scLang spinner-trigger">简</a>
+									</li>
+								</ul><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:1" value="-1533077466333298284:-7959646268432302330" autocomplete="off">
+</form>
+						</div>
+					</div>
+				</nav>
+			</li>
+		</ul>
+	</div>
+		<div id="breadcrumbs">
+			<a class="spinner-trigger" href="/ocrs/home.xhtml">主頁</a>
+			<a class="spinner-trigger" href="/ocrs/talk/note.xhtml">職業健康公開講座 - 網上報名須知</a>
+			<a class="spinner-trigger" href="/ocrs/talk/search.xhtml">個人</a>
+			<span>講座詳情</span>
+		</div>
+<form id="mainForm" name="mainForm" method="post" action="/ocrs/talk/view.xhtml?cid=1" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="mainForm" value="mainForm">
+
+		<div id="content">
+			<h1>講座詳情</h1>
+
+			<h2>辦公室僱員職業健康系列(II)
+辦公室僱員 - 預防肌骨骼疾病
+			</h2>
+
+			<p>本講座目的是講解辦公室僱員因長時間進行重複性的工作或保持不正確的坐姿，容易引致腰背及上肢筋肌勞損。內容包括介紹肌骨骼疾病的成因及預防措施，並示範和練習工作間運動。
+			</p>
+
+			<p>
+			</p>
+
+			<p>
+			</p>
+
+
+
+			<table class="tableTalkView">
+				<tbody>
+					<tr>
+						<td>講座日期
+						</td>
+						<td>2026-11-19
+						</td>
+					</tr>
+
+					<tr>
+						<td>講座時間
+						</td>
+						<td>15
+							:
+							30
+							-
+							17
+							:
+							00
+						</td>
+					</tr>
+
+					<tr>
+						<td>講座地點
+						</td>
+						<td>香港中央圖書館演講廳
+						</td>
+					</tr>
+
+					<tr>
+						<td>講者
+						</td>
+						<td>
+							<ol>
+									<li>職業環境衛生師
+									</li>
+									<li>職業健康護士
+									</li>
+							</ol>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+
+			<div class="alignC"><input id="mainForm:back-button" type="submit" name="mainForm:back-button" value="返回" class="spinner-trigger">
+			</div>
+		</div><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:2" value="-1533077466333298284:-7959646268432302330" autocomplete="off">
+</form><div id="j_idt124"></div><div id="j_idt125" class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-shadow ui-hidden-container" style="display: none; width: auto; height: auto;" role="dialog" aria-describedby="j_idt125_content" aria-hidden="true" aria-modal="true"><div class="ui-dialog-content ui-widget-content" id="j_idt125_content" style="height: auto;">
+		<div class="spinner-container">
+			<div class="spinner">
+				<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+			</div>
+		</div></div></div>
+	<style>
+		 .ui-dialog {
+			position: fixed;
+			top: 50% !important;
+			left: 50% !important;
+			transform: translate(-50%, -50%);
+		}
+	</style>
+	<script>
+	
+	$('.spinner-trigger').click(() => {
+		$('.spinner-container').show()
+	});
+	
+	</script>
+    
+	<div id="footer">
+	
+		<div id="backtotop">
+		<a href="javascript:void(0)" onclick="javascript:backTop();" title="回到頁首"><img src="/ocrs/javax.faces.resource/backtotop.png.xhtml?ln=images" alt="回到頁首"></a>
+		</div>
+		<div>
+			<div class="left">
+				<ul>
+					<li>2022-SV © 勞工處</li>
+					<li><a href="/ocrs/privacypolicy.xhtml">私隱政策</a></li>
+					<li><a href="/ocrs/sitemap.xhtml">網頁指南</a></li>
+				</ul>
+			</div>
+			<div class="right">
+				<ul>
+					<li>覆檢日期: 16/02/2022</li>
+					<li>
+						<a href="http://www.w3.org/WAI/WCAG2AA-Conformance" target="_blank" title="遵守2A級無障礙圖示，萬維網聯盟（W3C）- 無障礙網頁倡議（WAI）Web Content Accessibility Guidelines 2.1"><img src="/ocrs/javax.faces.resource/footer/img-footer-logo-1.png.xhtml?ln=images" alt="遵守2A級無障礙圖示，萬維網聯盟（W3C）- 無障礙網頁倡議（WAI）Web Content Accessibility Guidelines 2.1"></a>
+						<a href="https://www.brandhk.gov.hk/zh-hk/" target="_blank" title="香港品牌形象 - 亞洲國際都會"><img src="/ocrs/javax.faces.resource/footer/img-footer-logo-2.png.xhtml?ln=images" alt="香港品牌形象 - 亞洲國際都會"></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+<div id="textarea_simulator" style="position: absolute; top: 0px; left: 0px; visibility: hidden;"></div><div class="ui-dialog-docking-zone"></div></body></html>
