@@ -367,7 +367,11 @@ function catOf(e){
   if(r)return["DSTM","屬相關界別："+DN[r]];
   return["OTM",d.length?"屬"+d.map(x=>DN[x]||x).join("、"):"一般技術"];
 }
-function allEvents(){return DATA.events.map(e=>{const[c,w]=catOf(e);return{...e,cat:c,why:w}})}
+function hasTimeSlot(e){return /\d{1,2}:\d{2}/.test(String(e.time||""))}
+function decorateEvent(e){const[c,w]=catOf(e);return{...e,cat:c,why:w}}
+function allEvents(){return DATA.events.filter(hasTimeSlot).map(decorateEvent)}
+/** Lookup by id in full catalog (incl. untimed) so attendance/showEv still work for existing regState. */
+function eventById(id){const e=DATA.events.find(x=>x.id===id);return e?decorateEvent(e):null}
 function filtered(){
   const rg=$("fReg").value,src=$("fSrc").value,fy=$("fFree").value,q=$("fQ").value.trim().toLowerCase();
   const dayLimit=quickDays?(()=>{const d=new Date(today+"T00:00:00+08:00");d.setDate(d.getDate()+7);return d.toISOString().slice(0,10)})():null;
@@ -522,7 +526,7 @@ function regStateOf(id){
 }
 function addToCalendar(id){
   if(typeof CPDCalendarExport==="undefined"||!CPDCalendarExport.downloadICS){toast("行事曆模組未載入");return}
-  const e=allEvents().find(x=>x.id===id);if(!e){toast("找不到活動");return}
+  const e=eventById(id);if(!e){toast("找不到活動");return}
   try{
     // Official URL only — never Google prefill / never Registration Profile PII
     CPDCalendarExport.downloadICS({
@@ -533,7 +537,7 @@ function addToCalendar(id){
   }catch(err){toast("無法產生行事曆："+(err&&err.message||err))}
 }
 function showEv(id){
-  const e=allEvents().find(x=>x.id===id);if(!e)return;
+  const e=eventById(id);if(!e)return;
   const st=regStatusLabel(id);
   const rstate=regStateOf(id);
   const showCalPrimary=rstate==="registered_manual";
@@ -561,7 +565,7 @@ function showEv(id){
 }
 /** Legacy manual add from event modal — still uses production logs key; duplicate via adapter. */
 function attendedManual(id){
-  const e=allEvents().find(x=>x.id===id);if(!e)return;
+  const e=eventById(id);if(!e)return;
   const L=LS("logs")||[];
   const has=(typeof CPDLogAdapter!=="undefined"&&CPDLogAdapter.hasEventLog)?CPDLogAdapter.hasEventLog(L,id):L.some(l=>l.evId===id||l.eventId===id);
   if(has){toast("已經記錄咗");return}
@@ -597,7 +601,7 @@ function fillAttendPrompt(e){
   root.appendChild(box);
 }
 function openAttendReview(id){
-  const e=allEvents().find(x=>x.id===id);if(!e)return;
+  const e=eventById(id);if(!e)return;
   const root=$("attendPromptRoot");if(!root)return;
   while(root.firstChild)root.removeChild(root.firstChild);
   const box=document.createElement("div");box.className="attend-box";
@@ -623,7 +627,7 @@ function openAttendReview(id){
   root.appendChild(box);
 }
 function confirmAttendAdd(id){
-  const e=allEvents().find(x=>x.id===id);if(!e)return;
+  const e=eventById(id);if(!e)return;
   if(typeof CPDAttendance==="undefined"||typeof CPDLogAdapter==="undefined"){toast("出席模組未載入");return}
   const cat=($("attCat")&&$("attCat").value)||e.cat;
   const hours=Number($("attHrs")&&$("attHrs").value);
@@ -634,7 +638,7 @@ function confirmAttendAdd(id){
     SS("logs",next);
     CPDAttendance.set(e.id,"attended");
     render();
-    fillAttendPrompt(allEvents().find(x=>x.id===id)||e);
+    fillAttendPrompt(eventById(id)||e);
     toast(`已加入 ${hours} 小時（${cat}）`);
   }catch(err){toast(String(err&&err.message||err))}
 }
@@ -878,7 +882,7 @@ function fillRegPrep(e){
   reset.onclick=()=>setLocalReg(e.id,"not_started");root.appendChild(reset);
 }
 function openRegDestination(id){
-  const e=allEvents().find(x=>x.id===id);if(!e){toast("找不到活動");return}
+  const e=eventById(id);if(!e){toast("找不到活動");return}
   const dest=e.registration&&e.registration.destination;
   if(!dest||typeof dest!=="string"||!dest.startsWith("http")){toast("未有報名目的地");return}
   // Official event URL is preserved separately; this opens discovered destination only.
@@ -888,7 +892,7 @@ function openRegDestination(id){
   toast("已開啟報名目的地（未代你提交）");
 }
 function openPrefilledGForm(id){
-  const e=allEvents().find(x=>x.id===id);if(!e){toast("找不到活動");return}
+  const e=eventById(id);if(!e){toast("找不到活動");return}
   const miss=missingRegFields();
   if(miss.length){goRegProfile(miss);return}
   if(typeof openGFormPrefill!=="function"){toast("報名模組未載入");return}
@@ -907,7 +911,7 @@ function openPrefilledGForm(id){
   toast("已開啟預填 Google 表格（請自行檢查並提交；未代你提交）");
 }
 function openOfficialReg(id){
-  const e=allEvents().find(x=>x.id===id);if(!e||!e.url){toast("冇官方網址");return}
+  const e=eventById(id);if(!e||!e.url){toast("冇官方網址");return}
   const miss=missingRegFields();
   if(miss.length){goRegProfile(miss);return}
   if(typeof setRegState==="function")setRegState(id,"opened","");
@@ -923,7 +927,7 @@ function openOfficialReg(id){
 function setLocalReg(id,state){
   if(typeof setRegState!=="function"){toast("報名模組未載入");return}
   if(!setRegState(id,state,"")){toast("無法更新狀態");return}
-  const e=allEvents().find(x=>x.id===id);if(e)fillRegPrep(e);
+  const e=eventById(id);if(e)fillRegPrep(e);
   showEv(id);
   const map={registered_manual:"已標示手動報名",cancelled:"已標示取消",not_started:"已重設狀態",opened:"已標示開啟"};
   toast(map[state]||"已更新");
@@ -1012,7 +1016,7 @@ function renderHome(){
       const logs=LS("logs")||[];
       const deficits=R.getDeficits({memberType:mt,logs,year:yr});
       const regMap=(typeof loadRegState==="function"?loadRegState():{})||{};
-      const result=R.rankEvents(DATA.events,{discipline:myDisc(),related:myRel(),memberType:mt,today,logs,deficits,regState:regMap},R.RECO_MAX);
+      const result=R.rankEvents(DATA.events.filter(hasTimeSlot),{discipline:myDisc(),related:myRel(),memberType:mt,today,logs,deficits,regState:regMap},R.RECO_MAX);
       if(!result.ranked.length){
         const empty=document.createElement("div");empty.className="meta";empty.textContent="暫時冇推薦（可先設定學科或睇活動列表）。";recoEl.appendChild(empty);
       }else{
@@ -1050,13 +1054,13 @@ function renderReco(){
   root.hidden=true;
   if(typeof CPDRecommendations==="undefined")return;
   const R=CPDRecommendations;
-  const future=DATA.events.filter(e=>e.date>=today);
+  const future=DATA.events.filter(e=>e.date>=today&&hasTimeSlot(e));
   if(!future.length)return;
   const memberType=LS("mtype")||"corp";
   const logs=LS("logs")||[];
   const deficits=R.getDeficits({memberType,logs,year:today.slice(0,4)});
   const regMap=(typeof loadRegState==="function"?loadRegState():{})||{};
-  const result=R.rankEvents(DATA.events,{
+  const result=R.rankEvents(DATA.events.filter(hasTimeSlot),{
     discipline:myDisc(),
     related:myRel(),
     memberType,
