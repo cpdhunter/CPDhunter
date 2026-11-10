@@ -21,5 +21,6 @@
  {"name": "ICE Lectures", "group": "ICE", "region": "Overseas", "url": "https://www.ice.org.uk/events/lectures"},
  {"name": "IStructE Events", "group": "IStructE", "region": "Overseas", "url": "https://www.istructe.org/events/"},
  {"name": "IET Online Events", "group": "IET", "region": "Overseas", "url": "https://events.theiet.org/search/"},
- {"name": "CIC (UK) Events", "group": "CIC UK", "region": "Overseas", "url": "https://www.cic.org.uk/events"}
+ {"name": "CIC (UK) Events", "group": "CIC UK", "region": "Overseas", "url": "https://www.cic.org.uk/events"},
+ {"name": "TQM Consultants Training", "group": "TQM", "region": "HK", "url": "https://tqm.com.hk/training/upcoming/", "accept_paid": true}
 ]

@@ -1,6 +1,6 @@
 """
 CPD Hunter - daily CPD collector v2.1
-- Source-family parsers (HKIE, CIC, ICE, HKGBC, CSB/Labour, OSHC, CIPHE, HKICM)
+- Source-family parsers (HKIE, CIC, ICE, HKGBC, CSB/Labour, OSHC, CIPHE, HKICM, TQM)
 - Better date parsing for common formats
 - Status: OK_WITH_EVENTS / VERIFIED_EMPTY / EMPTY_UNVERIFIED / FAIL
 - Per-source diagnostics + source_health.json
@@ -77,6 +77,15 @@ def log(*a):
     print(*a, file=sys.stderr, flush=True)
 
 def allowed(url):
+    # tqm.com.hk allows Googlebot but Disallow: / for other agents.
+    # A narrow exception covers only the approved upcoming listing and
+    # official /course/ detail pages (user-authorized CPD source).
+    try:
+        from parsers.tqm import _is_tqm_public_source_url
+        if _is_tqm_public_source_url(url):
+            return True
+    except Exception:
+        pass
     p = urlparse(url)
     base = f"{p.scheme}://{p.netloc}"
     if base not in _robots:
@@ -152,6 +161,13 @@ def parse_date(s):
     m = re.search(r"(\d{1,2})\s+([A-Za-z]+),?\s+(\d{4})", s)
     if m:
         day, mon, year = int(m.group(1)), m.group(2).lower()[:3], int(m.group(3))
+        if mon in MONTHS:
+            try: return dt.date(year, MONTHS[mon], day).isoformat()
+            except: pass
+    # "November 13, 2026" / "June 18, 2027"
+    m = re.search(r"\b([A-Za-z]+)\s+(\d{1,2}),?\s+(\d{4})\b", s)
+    if m:
+        mon, day, year = m.group(1).lower()[:3], int(m.group(2)), int(m.group(3))
         if mon in MONTHS:
             try: return dt.date(year, MONTHS[mon], day).isoformat()
             except: pass
@@ -949,6 +965,14 @@ def ai_classify(title, org):
         pass
     return None
 
+def source_allows_paid(src):
+    """Paid events are excluded by default; TQM official courses are an exception."""
+    if not isinstance(src, dict):
+        return False
+    if src.get("accept_paid") is True:
+        return True
+    return "tqm.com.hk" in (src.get("url") or "").lower()
+
 def clean(e, src, rejects):
     try:
         title = clamp_title(strip_page_chrome((e.get("title") or "").strip()))
@@ -969,7 +993,7 @@ def clean(e, src, rejects):
         if d < TODAY or d > TODAY + dt.timedelta(days=KEEP_DAYS_AHEAD):
             rejects["date_range"] = rejects.get("date_range", 0) + 1
             return None
-        if e.get("is_free") is False:
+        if e.get("is_free") is False and not source_allows_paid(src):
             rejects["paid"] = rejects.get("paid", 0) + 1
             return None
         if src["region"] != "HK" and e.get("is_online") is False:
@@ -1180,6 +1204,18 @@ def process_source(src):
         from parsers.hkicm import extract_hkicm
         raw = extract_hkicm(soup, url)
         method = "hkicm"
+    elif "tqm.com.hk" in url:
+        from parsers.tqm import extract_tqm, enrich_tqm_course_details
+        raw = extract_tqm(soup, url)
+        method = "tqm-list"
+        try:
+            raw = enrich_tqm_course_details(
+                raw,
+                lambda u: fetch_html(u, use_playwright=False),
+            )
+            method = "tqm-list+detail"
+        except Exception as ex:
+            log(f"  tqm detail enrich skipped: {type(ex).__name__}")
     else:
         raw = generic_extract(soup, url)
         method = "generic"

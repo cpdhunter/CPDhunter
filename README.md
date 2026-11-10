@@ -82,7 +82,7 @@ Do not treat planned private-beta features in [PRIVATE_BETA.md](PRIVATE_BETA.md)
 3. 兩樣都唔就顯示「–」。
 
 ## 日常維護
-- **加減來源**：改 `sources.json`。`region` 填 `HK` 或 `Overseas`；`type` 可填預設類別（例如 `H&S`）；`free: true` 代表全部免費；`disabled: true` 暫停。
+- **加減來源**：改 `sources.json`。`region` 填 `HK` 或 `Overseas`；`type` 可填預設類別（例如 `H&S`）；`free: true` 代表全部免費；`accept_paid: true` 允許已標明收費嘅活動進入目錄（例如 TQM Consultants 官方課程；免費篩選仍會排除）；`disabled: true` 暫停。
 - **人手加活動**：喺 `manual.json` 加。
 - **檢查來源**：`events.json` 嘅 `status` 或 `source_health.json`。連續 3 次 `FAIL` / `EMPTY_UNVERIFIED` 會自動開 `[CPD Source]` GitHub Issue。
 - 詳見 [MAINTENANCE.md](MAINTENANCE.md)。
