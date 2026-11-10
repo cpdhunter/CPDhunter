@@ -10,6 +10,18 @@ const RECO_MAX = 5;
 const CORP_REQ = { total: 30, DSTM: 5, GPM: 5, 'H&S': 3, OTM: 0, selfCap: 10 };
 const TRAINEE_REQ = { total: 45, DSTM: 0, GPM: 18, 'H&S': 18, OTM: 18, selfCap: 0 };
 
+function getEventMode() {
+  if (typeof CPDEventMode !== 'undefined' && CPDEventMode) return CPDEventMode;
+  if (typeof require === 'function') {
+    try {
+      return require('./event_mode');
+    } catch (err) {
+      return null;
+    }
+  }
+  return null;
+}
+
 function getRequirements(memberType) {
   return memberType === 'trainee' ? Object.assign({}, TRAINEE_REQ) : Object.assign({}, CORP_REQ);
 }
@@ -116,6 +128,12 @@ function scoreEvent(e, ctx) {
   if (st === 'registered_manual') return null;
   if (st === 'cancelled') return null;
 
+  const modeApi = getEventMode();
+  if (ctx && Array.isArray(ctx.allowedModes)) {
+    if (!ctx.allowedModes.length) return null;
+    if (modeApi && !modeApi.matches(e, ctx.allowedModes)) return null;
+  }
+
   const cls = classifyEvent(e, discipline, related);
   const cat = cls.cat;
   let score = 0;
@@ -185,14 +203,20 @@ function scoreEvent(e, ctx) {
     });
   }
 
-  // ONLINE (separate if not already folded into free reason text-only)
-  if (e.online === true) {
-    score += 10;
-    if (e.free !== true) {
-      reasons.push({ code: 'online', text: '網上活動', detail: 'online === true' });
+  // ATTENDANCE MODE — weights from CPDEventMode.scoreBonus only (25 / 18 / 0 / -3)
+  const mode = modeApi ? modeApi.modeOf(e) : null;
+  const modeBonus = modeApi ? modeApi.scoreBonus(e) : 0;
+  flags.mode = mode;
+  if (modeApi) {
+    score += modeBonus;
+    if (mode === 'ONLINE') {
+      reasons.push({ code: 'mode_online', text: '網上活動', detail: 'mode ONLINE' });
+    } else if (mode === 'HYBRID') {
+      reasons.push({ code: 'mode_hybrid', text: '混合模式，可網上參與', detail: 'mode HYBRID' });
+    } else if (mode === 'FACE_TO_FACE') {
+      reasons.push({ code: 'mode_face', text: '面授活動', detail: 'mode FACE_TO_FACE' });
     } else {
-      // still record for 點解推薦 detail; avoid duplicate short text
-      reasons.push({ code: 'online', text: 'Online', detail: 'online === true', quiet: true });
+      reasons.push({ code: 'mode_unknown', text: '活動形式未確認', detail: 'mode UNKNOWN' });
     }
   }
 

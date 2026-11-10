@@ -13,6 +13,18 @@ const vm = require('vm');
 
 const MODULE_PATH = path.join(__dirname, 'recommendations.js');
 
+function loadEventModeInto(sandbox) {
+  const emPath = path.join(__dirname, 'event_mode.js');
+  const code = fs.readFileSync(emPath, 'utf8');
+  const prev = sandbox.module;
+  sandbox.module = { exports: {} };
+  sandbox.exports = sandbox.module.exports;
+  vm.runInNewContext(code, sandbox, { filename: 'event_mode.js' });
+  sandbox.CPDEventMode = sandbox.module.exports;
+  sandbox.module = prev || { exports: {} };
+  sandbox.exports = sandbox.module.exports;
+}
+
 function loadModule() {
   const code = fs.readFileSync(MODULE_PATH, 'utf8');
   const networkCalls = [];
@@ -45,6 +57,7 @@ function loadModule() {
   };
   sandbox.globalThis = sandbox;
   sandbox.global = sandbox;
+  loadEventModeInto(sandbox);
   Object.defineProperty(sandbox, 'fetch', {
     get() {
       return fetchTrap;
@@ -254,7 +267,9 @@ describe('recommendations.js Sprint 2D', () => {
       registration: { status: 'UNKNOWN', destination: null, mechanism: 'UNKNOWN' }
     });
     const c = ctx({ deficits: defs });
-    assert.equal(api.scoreEvent(on, c).score - api.scoreEvent(off, c).score, 10);
+    assert.equal(api.scoreEvent(on, c).score - api.scoreEvent(off, c).score, 28);
+    assert.ok(api.scoreEvent(on, c).reasons.includes('網上活動'));
+    assert.ok(api.scoreEvent(off, c).reasons.includes('活動形式未確認'));
   });
 
   it('7. official hours rank above estimated', () => {
@@ -601,5 +616,76 @@ describe('recommendations.js Sprint 2D', () => {
     const reasons = api.getRecommendationReasons(s);
     assert.ok(reasons.length > 0);
     assert.ok(reasons.every((r) => r.text));
+  });
+
+  it('mode weights are exactly 25 / 18 / 0 / -3', () => {
+    const defs = withDeficits([
+      { date: '2026-01-01', cat: 'DSTM', hrs: 5, mode: 'Structured' },
+      { date: '2026-01-02', cat: 'GPM', hrs: 5, mode: 'Structured' },
+      { date: '2026-01-03', cat: 'H&S', hrs: 3, mode: 'Structured' }
+    ]);
+    const c = ctx({ deficits: defs });
+    const base = {
+      type: 'H&S',
+      free: null,
+      hrs: null,
+      registration: { status: 'UNKNOWN', destination: null, mechanism: 'UNKNOWN' }
+    };
+    const online = api.scoreEvent(baseEvent(Object.assign({ id: 'on', mode: 'ONLINE', online: null }, base)), c);
+    const hybrid = api.scoreEvent(baseEvent(Object.assign({ id: 'hy', mode: 'HYBRID', online: null }, base)), c);
+    const face = api.scoreEvent(baseEvent(Object.assign({ id: 'ft', mode: 'FACE_TO_FACE', online: null }, base)), c);
+    const unk = api.scoreEvent(baseEvent(Object.assign({ id: 'un', mode: 'UNKNOWN', online: null }, base)), c);
+    assert.equal(online.score - face.score, 25);
+    assert.equal(hybrid.score - face.score, 18);
+    assert.equal(unk.score - face.score, -3);
+    assert.ok(online.reasons.includes('網上活動'));
+    assert.ok(hybrid.reasons.includes('混合模式，可網上參與'));
+    assert.ok(face.reasons.includes('面授活動'));
+    assert.ok(unk.reasons.includes('活動形式未確認'));
+    assert.equal(JSON.stringify(online).includes('"+25"') || String(online.reasons).includes('+25'), false);
+  });
+
+  it('outstanding deficit still outranks online bonus', () => {
+    const defs = withDeficits([
+      { date: '2026-01-01', cat: 'DSTM', hrs: 5, mode: 'Structured' },
+      { date: '2026-01-02', cat: 'GPM', hrs: 5, mode: 'Structured' }
+      // H&S still short
+    ]);
+    const c = ctx({ deficits: defs });
+    const hsFace = baseEvent({
+      id: 'hsf',
+      type: 'H&S',
+      mode: 'FACE_TO_FACE',
+      online: null,
+      free: null,
+      hrs: null,
+      registration: { status: 'UNKNOWN', destination: null, mechanism: 'UNKNOWN' }
+    });
+    const otmOnline = baseEvent({
+      id: 'otmo',
+      type: 'Technical',
+      disc: ['Mechanical'],
+      mode: 'ONLINE',
+      online: true,
+      free: null,
+      hrs: null,
+      registration: { status: 'UNKNOWN', destination: null, mechanism: 'UNKNOWN' }
+    });
+    const r = api.rankEvents([otmOnline, hsFace], c);
+    assert.equal(r.ranked[0].id, 'hsf');
+    assert.ok(api.scoreEvent(hsFace, c).score > api.scoreEvent(otmOnline, c).score);
+  });
+
+  it('disabled user mode is excluded from recommended shortlist only', () => {
+    const defs = withDeficits([]);
+    const on = baseEvent({ id: 'on', mode: 'ONLINE', type: 'H&S', free: true });
+    const hy = baseEvent({ id: 'hy', mode: 'HYBRID', type: 'H&S', free: true, name: 'Hybrid seminar' });
+    const all = api.rankEvents([on, hy], ctx({ deficits: defs }));
+    assert.ok(all.ranked.some((s) => s.id === 'on'));
+    const filtered = api.rankEvents([on, hy], ctx({ deficits: defs, allowedModes: ['HYBRID'] }));
+    assert.ok(filtered.ranked.every((s) => s.id !== 'on'));
+    assert.ok(filtered.ranked.some((s) => s.id === 'hy'));
+    const none = api.rankEvents([on, hy], ctx({ deficits: defs, allowedModes: [] }));
+    assert.equal(none.ranked.length, 0);
   });
 });
