@@ -98,9 +98,33 @@ describe('event-mode UX integration', () => {
     assert.equal(M.modeOf({ online: false, venue: 'HKIE' }), 'UNKNOWN');
     assert.equal(M.inferMode({ online: false }).reason, 'legacy_false_insufficient');
   });
-  it('7. physical venue alone remains UNKNOWN', () => {
+  it('7. district or org-only venue remains UNKNOWN', () => {
     assert.equal(M.modeOf({ venue: 'Kowloon Bay' }), 'UNKNOWN');
-    assert.equal(M.modeOf({ venue: 'Hong Kong Convention Centre' }), 'UNKNOWN');
+    assert.equal(M.modeOf({ venue: '銅鑼灣' }), 'UNKNOWN');
+    assert.equal(M.modeOf({ venue: 'HKIE HQ' }), 'UNKNOWN');
+    assert.equal(M.modeOf({ venue: 'Hong Kong' }), 'UNKNOWN');
+  });
+  it('7b. physical address without online evidence is FACE_TO_FACE', () => {
+    assert.equal(M.modeOf({ venue: 'Hong Kong Convention Centre' }), 'FACE_TO_FACE');
+    assert.equal(
+      M.modeOf({
+        venue: '香港中央圖書館演講廳 香港銅鑼灣高士威道66號'
+      }),
+      'FACE_TO_FACE'
+    );
+    assert.equal(
+      M.inferMode({
+        venue: '香港中央圖書館演講廳 香港銅鑼灣高士威道66號'
+      }).reason,
+      'physical_address_no_online'
+    );
+    assert.equal(
+      M.modeOf({
+        venue: '香港中央圖書館演講廳 香港銅鑼灣高士威道66號',
+        description: 'Also available on Zoom webinar'
+      }),
+      'HYBRID'
+    );
   });
   it('8. Zoom becomes ONLINE', () => {
     assert.equal(M.modeOf({ venue: 'Zoom' }), 'ONLINE');
@@ -289,8 +313,11 @@ describe('event-mode UX integration', () => {
     assert.equal(Object.values(counts).reduce((a, b) => a + b, 0), future.length);
     future.forEach((e) => {
       if (e.online === false) {
-        const mode = M.modeOf({ online: false, venue: e.venue, name: 'x' });
-        assert.notEqual(mode, 'FACE_TO_FACE');
+        const sample = { online: false, venue: e.venue, name: 'x' };
+        // online=false alone is not Face to Face; a real physical address may be.
+        if (!M.hasPhysicalAddress(sample)) {
+          assert.notEqual(M.modeOf(sample), 'FACE_TO_FACE');
+        }
       }
     });
   });

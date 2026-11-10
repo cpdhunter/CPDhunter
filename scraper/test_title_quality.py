@@ -17,6 +17,7 @@ from title_quality import (
     strip_page_chrome,
     title_quality_reason,
 )
+from event_mode import attach_mode, mode_of
 from fetch import (
     clean,
     extract_cic,
@@ -157,6 +158,19 @@ def test_labour_parser():
     # Adjacent events do not share titles incorrectly — unique date+title
     keys = [(e["date"], e["title"]) for e in raw]
     assert len(keys) == len(set(keys))
+    # Official talkVenue is captured; venue text must not leak into title
+    venues = [e.get("venue") or "" for e in raw]
+    assert all(venues), raw
+    assert any("中央圖書館" in v or "高士威道" in v or "66號" in v for v in venues), venues
+    for e in raw:
+        title = e["title"]
+        assert "高士威道" not in title, e
+        assert "演講廳" not in title, e
+        assert "66號" not in title, e
+        stamped = dict(e)
+        attach_mode(stamped)
+        assert stamped.get("mode") == "FACE_TO_FACE", stamped
+        assert mode_of(e) == "FACE_TO_FACE", e
     print("labour parser OK", len(raw), raw[0])
 
 
