@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-10T17:41+08:00",
+ "updated": "2026-11-11T06:45+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -15,12 +15,12 @@
    "source": "OSHC Seminars & Conferences",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 12,
+   "n": 10,
    "method": "oshc-table",
    "page_title": "Seminars & Conferences",
    "raw_candidates": 583,
    "rejects": {
-    "date_range": 571
+    "date_range": 573
    }
   },
   {
@@ -37,12 +37,12 @@
    "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 11,
+   "n": 9,
    "method": "csb-table",
    "page_title": "Civil Service Bureau -  COMING EVENTS",
    "raw_candidates": 14,
    "rejects": {
-    "date_range": 3
+    "date_range": 5
    }
   },
   {
@@ -101,11 +101,13 @@
    "source": "HKIE Events",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 20,
+   "n": 18,
    "method": "playwright+generic",
    "page_title": "Events - HKIE",
    "raw_candidates": 20,
-   "rejects": {}
+   "rejects": {
+    "date_range": 2
+   }
   },
   {
    "source": "HKIE Building Division",
@@ -150,12 +152,12 @@
    "source": "HKGBC 綠建環評",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 23,
+   "n": 22,
    "method": "hkgbc",
    "page_title": "Events & Trainings | HKGBC",
    "raw_candidates": 40,
    "rejects": {
-    "date_range": 17
+    "date_range": 18
    }
   },
   {
@@ -191,12 +193,13 @@
    "source": "ICE Upcoming Events",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 4,
+   "n": 3,
    "method": "ice-cards",
    "page_title": "Latest Events at ICE | Institution of Civil Engineers (ICE)",
    "raw_candidates": 12,
    "rejects": {
-    "overseas_physical": 8
+    "overseas_physical": 8,
+    "date_range": 1
    }
   },
   {
@@ -1149,8 +1152,8 @@
     "destination": "https://events.teams.microsoft.com/event/069a7fcf-b29f-4f70-9074-0911a0b7c1b8@114d2b23-fca7-4089-9fd7-23ab03af1a7a?source=copyLinkLegacyShareLinkDialog",
     "status": "OPEN",
     "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "MEDIUM",
-    "discoveryMethod": "ice_page_pos_text,in_detail"
+    "confidence": "LOW",
+    "discoveryMethod": "ice_no_reg_link"
    }
   },
   {
@@ -1178,8 +1181,8 @@
     "destination": "https://events.zoom.us/ev/AmI485NkWFIck4gFdcEUtdeltC94XGCKGVg2cYBBftyIz8Tbz8ep~An-lqS84gWOsSfFw8kphk1c-KO0686Meyhh9QAymUwQwNr2IhvgGPKKZ4Q",
     "status": "OPEN",
     "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "MEDIUM",
-    "discoveryMethod": "ice_page_pos_text,in_detail"
+    "confidence": "LOW",
+    "discoveryMethod": "ice_no_reg_link"
    }
   },
   {
@@ -1207,8 +1210,8 @@
     "destination": "https://forms.office.com/e/ENhEHqRT1R",
     "status": "OPEN",
     "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "HIGH",
-    "discoveryMethod": "ice_page_microsoft_forms,pos_text,in_detail"
+    "confidence": "LOW",
+    "discoveryMethod": "ice_no_reg_link"
    }
   },
   {
@@ -1890,6 +1893,64 @@
     "sourceUrlClass": "LISTING_PAGE",
     "confidence": "HIGH",
     "discoveryMethod": "ice_page_eventbrite,pos_text,in_detail"
+   }
+  },
+  {
+   "id": "a5e7d89438810",
+   "name": "Let's talk about... the sweet stuff",
+   "org": "ICE",
+   "date": "2026-11-12",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.ice.org.uk/events/upcoming-events/ben-fund-lets-talk-about-the-sweet-stuff",
+   "region": "Overseas",
+   "online": true,
+   "free": true,
+   "source": "ICE Upcoming Events",
+   "group": "ICE",
+   "auto": true,
+   "mode": "ONLINE",
+   "registration": {
+    "mechanism": "EVENTBRITE",
+    "destination": "https://www.eventbrite.com/e/lets-talk-about-the-sweet-stuff-tickets-1988557848054?aff=oddtdtcreator",
+    "status": "OPEN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "HIGH",
+    "discoveryMethod": "ice_page_eventbrite,pos_text,in_detail"
+   }
+  },
+  {
+   "id": "aa49c5d9a54f0",
+   "name": "The Wrexham Gateway regeneration project",
+   "org": "ICE",
+   "date": "2026-11-12",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.ice.org.uk/events/upcoming-events/the-wrexham-gateway-regeneration-project",
+   "region": "Overseas",
+   "online": true,
+   "free": true,
+   "source": "ICE Upcoming Events",
+   "group": "ICE",
+   "auto": true,
+   "mode": "ONLINE",
+   "registration": {
+    "mechanism": "MICROSOFT_FORMS",
+    "destination": "https://forms.cloud.microsoft/e/KeAETsc6aM",
+    "status": "OPEN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "HIGH",
+    "discoveryMethod": "ice_page_microsoft_forms,pos_text,in_detail"
    }
   },
   {
@@ -5214,10 +5275,7 @@
     "sourceUrlClass": "UNKNOWN",
     "confidence": "LOW",
     "discoveryMethod": "page_no_candidate"
-   },
-   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
-   "venueSource": "event_detail",
-   "mode": "FACE_TO_FACE"
+   }
   },
   {
    "id": "a76a97ad66abb",
