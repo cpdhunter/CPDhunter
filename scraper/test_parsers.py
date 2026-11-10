@@ -8,6 +8,8 @@ def test_parse_date():
     assert parse_date("06.11.2026") == "2026-11-06"
     assert parse_date("09 November 2026") == "2026-11-09"
     assert parse_date("4 Dec, 2026") == "2026-12-04"
+    assert parse_date("November 13, 2026") == "2026-11-13"
+    assert parse_date("June 18, 2027") == "2027-06-18"
     print("parse_date OK")
 
 def test_classify():
