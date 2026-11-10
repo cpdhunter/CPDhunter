@@ -28,7 +28,15 @@ CIC_EVENT_TYPE_LABELS = frozenset({
 FILTER_LABELS = HKGBC_BADGES | CIC_EVENT_TYPE_LABELS
 
 TIME_ONLY_RE = re.compile(
-    r"^\d{1,2}:\d{2}\s*[-–—]\s*\d{1,2}:\d{2}$"
+    r"""^
+    (?:
+        \d{1,2}:\d{2}\s*(?:a\.?m\.?|p\.?m\.?)?
+        \s*[-–—]\s*
+        \d{1,2}:\d{2}\s*(?:a\.?m\.?|p\.?m\.?)?
+      | \d{4}\s*[-–—]\s*\d{4}
+    )
+    $""",
+    re.I | re.X,
 )
 
 # Date / date-range only (optional weekday parenthetical).

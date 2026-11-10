@@ -24,6 +24,9 @@ from fetch import (
     extract_hkie_cpd,
     extract_labour,
     generic_extract,
+    hours_from_range,
+    parse_time_range,
+    stated_cpd_hours,
     is_good_title as fetch_is_good,  # noqa: F401 — re-export path
 )
 
@@ -39,7 +42,10 @@ def test_validator_rejects_impossible():
     assert title_quality_reason("") == "empty"
     assert is_time_only_title("15:30 - 17:00")
     assert is_time_only_title("15:30 – 16:45")
+    assert is_time_only_title("9:30am - 6:30pm")
+    assert is_time_only_title("09:00 am – 5:00 pm")
     assert title_quality_reason("15:30 - 17:00") == "time_only"
+    assert title_quality_reason("9:30am - 6:30pm") == "time_only"
     assert is_date_only_title("11 December 2026 (Fri)")
     assert is_date_only_title("28 & 29 December 2026 (Mon & Tue)")
     assert is_date_only_title("9-11 Dec 2026 (Wed-Fri)")
@@ -198,6 +204,25 @@ def test_hkie_cpd_parser():
     assert nec["date"] == "2026-12-11", nec
     bim = next(e for e in raw if "BIM Coordinator" in e["title"])
     assert bim["date"] == "2026-12-04", bim  # parse_date takes first day of range
+    # Duration / stated hours captured (not used as title)
+    iso = next(e for e in raw if "ISO 14064" in e["title"])
+    assert iso.get("start_time") == "09:30" and iso.get("end_time") == "17:30", iso
+    bim_mgr = next(e for e in raw if "BIM Manager" in e["title"])
+    assert bim_mgr.get("start_time") == "09:30" and bim_mgr.get("end_time") == "18:30", bim_mgr
+    esg = next(e for e in raw if "Sustainable Development Planning" in e["title"])
+    assert esg.get("start_time") == "13:30" and esg.get("end_time") == "17:00", esg
+    any_hrs = [e for e in raw if e.get("cpd_hours") == 3]
+    assert any_hrs, "expected any 3 hours cards"
+    nec = next(e for e in raw if "NEC4" in e["title"])
+    assert nec.get("start_time") == "09:00" and nec.get("end_time") == "17:00", nec
+    assert sum(1 for e in raw if e.get("start_time") or e.get("cpd_hours")) >= 9, raw
+    # clean() estimates from duration / keeps stated hours
+    src = {"name": "HKIE CPD Calendar", "url": "https://hkie.org.hk/", "region": "HK", "free": None, "group": "HKIE", "type": "Technical"}
+    rejects = {}
+    c_iso = clean({**iso, "is_online": None, "is_free": None}, src, rejects)
+    assert c_iso and c_iso["hrs"] == 8.0 and c_iso["hrs_est"] is True, c_iso
+    c_any = clean({**any_hrs[0], "is_online": None, "is_free": None}, src, rejects)
+    assert c_any and c_any["hrs"] == 3 and c_any["hrs_est"] is False, c_any
     print("hkie-cpd parser OK", len(raw))
 
 
@@ -275,8 +300,31 @@ def test_strip_page_chrome():
     print("strip_page_chrome OK", cleaned)
 
 
+
+def test_parse_time_range_and_hours():
+    assert parse_time_range("9:30 – 17:30") == ("09:30", "17:30")
+    assert parse_time_range("09:30-17:30") == ("09:30", "17:30")
+    assert parse_time_range("0900 - 1700") == ("09:00", "17:00")
+    assert parse_time_range("9:30am - 6:30pm") == ("09:30", "18:30")
+    assert parse_time_range("1:30pm - 5:00pm") == ("13:30", "17:00")
+    assert parse_time_range("9:30 a.m. – 5:00 p.m.") == ("09:30", "17:00")
+    assert parse_time_range("09:00 am – 5:00 pm") == ("09:00", "17:00")
+    assert parse_time_range("not a time") is None
+    assert hours_from_range("09:30", "17:30") == 8.0
+    assert hours_from_range("13:30", "17:00") == 3.5
+    assert hours_from_range("06:45", "17:00") == 10.0  # 615 min within 720
+    assert hours_from_range("09:00", "22:00") is None  # 780 > 720
+    assert hours_from_range("22:45", "01:00") == 2.0  # overnight
+    assert stated_cpd_hours("any 3 hours") == 3
+    assert stated_cpd_hours("Any 3 Hours") == 3
+    assert stated_cpd_hours("2 hours") == 2
+    assert stated_cpd_hours("Workshop any 3 hours extra") is None
+    print("parse_time_range / hours_from_range OK")
+
+
 if __name__ == "__main__":
     test_validator_rejects_impossible()
+    test_parse_time_range_and_hours()
     test_strip_hkgbc_badges()
     test_clamp_no_midword_200()
     test_hkgbc_parser()

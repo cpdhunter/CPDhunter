@@ -155,6 +155,88 @@ def parse_date(s):
             except: pass
     return None
 
+
+def parse_time_range(text):
+    """Parse a start–end clock range → ('HH:MM','HH:MM') or None.
+    Supports 9:30 – 17:30, 09:30-17:30, 0900 - 1700, 9:30am - 6:30pm,
+    1:30pm - 5:00pm, en/em dashes.
+    """
+    if not text:
+        return None
+    t = re.sub(r"\s+", " ", str(text)).strip()
+    # Compact military-style HHMM - HHMM (no colon)
+    m4 = re.match(r"^(\d{2})(\d{2})\s*[-–—]\s*(\d{2})(\d{2})$", t)
+    if m4:
+        sh, sm, eh, em = (int(m4.group(i)) for i in range(1, 5))
+        if 0 <= sh <= 23 and 0 <= sm <= 59 and 0 <= eh <= 23 and 0 <= em <= 59:
+            return f"{sh:02d}:{sm:02d}", f"{eh:02d}:{em:02d}"
+        return None
+    m = re.match(
+        r"^(\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?)?\s*[-–—]\s*"
+        r"(\d{1,2})(?::(\d{2}))?\s*(a\.?m\.?|p\.?m\.?)?$",
+        t,
+        re.I,
+    )
+    if not m:
+        return None
+    sh, sm, sap, eh, em, eap = m.groups()
+    # Require minutes on both sides when no am/pm (avoid matching bare date fragments)
+    if not sap and not eap and (sm is None or em is None):
+        return None
+
+    def _hhmm(h, mi, ap, peer_ap=None):
+        h = int(h)
+        mi = int(mi or 0)
+        ap = (ap or peer_ap or "").lower().replace(".", "")
+        if ap.startswith("p") and h != 12:
+            h += 12
+        elif ap.startswith("a") and h == 12:
+            h = 0
+        if not (0 <= h <= 23 and 0 <= mi <= 59):
+            return None
+        return f"{h:02d}:{mi:02d}"
+
+    # If only one side has am/pm, reuse it for the other when that side looks 12h-ish
+    start = _hhmm(sh, sm, sap, eap if not sap else None)
+    end = _hhmm(eh, em, eap, sap if not eap else None)
+    if not start or not end:
+        return None
+    return start, end
+
+
+def hours_from_range(start, end):
+    """Minutes end-start (overnight if end < start); accept 20..720; round to nearest 0.5h."""
+    if not start or not end:
+        return None
+    try:
+        s = dt.datetime.strptime(str(start).strip(), "%H:%M")
+        e = dt.datetime.strptime(str(end).strip(), "%H:%M")
+    except Exception:
+        return None
+    mins = (e - s).total_seconds() / 60.0
+    if mins < 0:
+        mins += 24 * 60
+    if 20 <= mins <= 720:
+        return round(mins / 30) / 2
+    return None
+
+
+def stated_cpd_hours(text):
+    """Organiser-stated duration like 'any 3 hours' or a clear 'N hours' line."""
+    if not text:
+        return None
+    t = re.sub(r"\s+", " ", str(text)).strip()
+    m = re.match(r"(?i)^any\s+(\d+(?:\.\d+)?)\s*hours?$", t)
+    if m:
+        v = float(m.group(1))
+        return v if 0 < v < 50 else None
+    m = re.match(r"(?i)^(\d+(?:\.\d+)?)\s*hours?$", t)
+    if m:
+        v = float(m.group(1))
+        return v if 0 < v < 50 else None
+    return None
+
+
 def extract_oshc(soup, base):
     out = []
     # Prefer explicit activity links from OSHC seminars JS helpers
@@ -207,6 +289,9 @@ def extract_hkie_cpd(soup, base):
             continue
         title = None
         date_s = None
+        start_t = None
+        end_t = None
+        cpd_h = None
         # Prefer explicit heading
         for h in card.select("h1, h2, h3, h4, .elementor-heading-title"):
             ht = re.sub(r"\s+", " ", h.get_text(" ", strip=True)).strip()
@@ -214,7 +299,7 @@ def extract_hkie_cpd(soup, base):
                 continue
             if re.match(r"^CPD\d", ht, re.I):
                 continue
-            if is_date_only_title(ht) or is_time_only_title(ht):
+            if is_date_only_title(ht) or is_time_only_title(ht) or parse_time_range(ht) or stated_cpd_hours(ht) is not None:
                 continue
             if len(ht) >= 15:
                 title = ht
@@ -223,7 +308,14 @@ def extract_hkie_cpd(soup, base):
         for ln in lines:
             if re.match(r"^CPD\d", ln, re.I):
                 continue
-            if is_time_only_title(ln):
+            sh = stated_cpd_hours(ln)
+            if sh is not None:
+                cpd_h = sh
+                continue
+            tr = parse_time_range(ln)
+            if tr or is_time_only_title(ln):
+                if tr:
+                    start_t, end_t = tr
                 continue
             if is_date_only_title(ln) or parse_date(ln):
                 if date_s is None and parse_date(ln):
@@ -233,14 +325,20 @@ def extract_hkie_cpd(soup, base):
                 title = ln
         if not title or not date_s:
             continue
-        if is_date_only_title(title) or is_time_only_title(title):
+        if is_date_only_title(title) or is_time_only_title(title) or parse_time_range(title) or stated_cpd_hours(title) is not None:
             continue
         d = parse_date(date_s)
         if not d:
             continue
         a = card.find("a", href=True)
         url = urljoin(base, a["href"]) if a else base
-        out.append({"title": title, "date": d, "url": url, "organizer": "HKIE"})
+        ev = {"title": title, "date": d, "url": url, "organizer": "HKIE"}
+        if start_t and end_t:
+            ev["start_time"] = start_t
+            ev["end_time"] = end_t
+        if cpd_h is not None:
+            ev["cpd_hours"] = cpd_h
+        out.append(ev)
     # Dedup by date+title
     seen = set()
     uniq = []
@@ -274,10 +372,10 @@ def extract_labour(soup, base):
             if date_s is None and parse_date(ln):
                 date_s = ln
                 continue
-            if time_s is None and is_time_only_title(ln):
+            if time_s is None and (is_time_only_title(ln) or parse_time_range(ln)):
                 time_s = ln
                 continue
-            if is_time_only_title(ln) or is_date_only_title(ln):
+            if is_time_only_title(ln) or parse_time_range(ln) or is_date_only_title(ln):
                 continue
             # Venue heuristics — stop collecting title once venue-like line appears
             if re.search(r"圖書館|演講廳|講座室|診所|太空館|港鐵|銅鑼灣|尖沙咀|粉嶺|中央", ln):
@@ -302,10 +400,9 @@ def extract_labour(soup, base):
             continue
         ev = {"title": title, "date": d, "url": base, "organizer": "Labour Dept"}
         if time_s:
-            m = re.match(r"(\d{1,2}:\d{2})\s*[-–—]\s*(\d{1,2}:\d{2})", time_s)
-            if m:
-                ev["start_time"] = m.group(1)
-                ev["end_time"] = m.group(2)
+            tr = parse_time_range(time_s)
+            if tr:
+                ev["start_time"], ev["end_time"] = tr
         out.append(ev)
     # Fallback: line-scan but NEVER accept time-only as title; stay within block
     if not out:
@@ -323,7 +420,7 @@ def extract_labour(soup, base):
                 ln = lines[j].strip()
                 if parse_date(ln) and j > i + 1:
                     break
-                if is_time_only_title(ln):
+                if is_time_only_title(ln) or parse_time_range(ln):
                     if time_s is None:
                         time_s = ln
                     j += 1
@@ -340,10 +437,9 @@ def extract_labour(soup, base):
             if title and not is_time_only_title(title) and len(title) >= 4:
                 ev = {"title": title, "date": d, "url": base, "organizer": "Labour Dept"}
                 if time_s:
-                    m = re.match(r"(\d{1,2}:\d{2})\s*[-–—]\s*(\d{1,2}:\d{2})", time_s)
-                    if m:
-                        ev["start_time"] = m.group(1)
-                        ev["end_time"] = m.group(2)
+                    tr = parse_time_range(time_s)
+                    if tr:
+                        ev["start_time"], ev["end_time"] = tr
                 out.append(ev)
             i = j if j > i + 1 else i + 1
     seen = set()
@@ -754,14 +850,25 @@ def clean(e, src, rejects):
         hrs = hrs if isinstance(hrs, (int, float)) and 0 < hrs < 50 else None
         est = False
         s_hkt, e_hkt = e.get("start_time"), e.get("end_time")
+        # If start/end missing, try raw time-ish fields (organiser listing text)
+        if not (s_hkt and e_hkt):
+            for raw in (e.get("time"), e.get("time_raw"), e.get("time_s")):
+                tr = parse_time_range(raw) if raw else None
+                if tr:
+                    s_hkt, e_hkt = tr
+                    break
+        if hrs is None:
+            for raw in (e.get("time"), e.get("time_raw"), e.get("duration"), e.get("hours_text")):
+                sh = stated_cpd_hours(raw) if raw else None
+                if sh is not None:
+                    hrs = sh
+                    est = False
+                    break
         if hrs is None and s_hkt and e_hkt:
-            try:
-                mins = (dt.datetime.strptime(e_hkt, "%H:%M") - dt.datetime.strptime(s_hkt, "%H:%M")).seconds / 60
-                if 20 <= mins <= 480:
-                    hrs = round(mins / 30) / 2
-                    est = True
-            except Exception:
-                pass
+            h = hours_from_range(s_hkt, e_hkt)
+            if h is not None:
+                hrs = h
+                est = True
         out = {
             "id": "a" + hashlib.sha1((re.sub(r"[^a-z0-9\u4e00-\u9fff]", "", title.lower()) + "|" + e["date"]).encode()).hexdigest()[:12],
             "name": clamp_title(title),
@@ -1004,6 +1111,21 @@ def dedup_events(events):
         used.add(i)
     return out
 
+
+def backfill_hrs_from_time(events):
+    """Fill missing hrs from stored HH:MM-HH:MM time (e.g. stale rows / raised duration cap)."""
+    for e in events:
+        if e.get("hrs") is not None:
+            continue
+        tr = parse_time_range(e.get("time") or "")
+        if not tr:
+            continue
+        h = hours_from_range(tr[0], tr[1])
+        if h is not None:
+            e["hrs"] = h
+            e["hrs_est"] = True
+    return events
+
 def main():
     sources = load(SOURCES, [])
     old = load(OUT, {}).get("events", [])
@@ -1134,6 +1256,7 @@ def main():
         log(f"Google Forms enrichment: {gstats}")
     except Exception as ex:
         log(f"Google Forms enrichment skipped: {type(ex).__name__}: {ex}")
+    backfill_hrs_from_time(events)
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump({"updated": dt.datetime.now(HKT).isoformat(timespec="minutes"), "status": status, "events": events}, f, ensure_ascii=False, indent=1)
     log("\n========== SUMMARY ==========")

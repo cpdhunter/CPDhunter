@@ -322,7 +322,34 @@ const $=id=>document.getElementById(id);
 const today=new Date(Date.now()+8*3600e3).toISOString().slice(0,10);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const kc=c=>"k-"+c.replace("&","");
-const hrsTxt=e=>e.hrs?(e.hrs_est?"~":"")+e.hrs+"h":"–";
+function parseTimeRangeClient(t){
+  if(!t)return null;
+  const s=String(t).trim().replace(/\s+/g," ");
+  let m4=s.match(/^(\d{2})(\d{2})\s*[-–—]\s*(\d{2})(\d{2})$/);
+  if(m4){const a=m4[1]+":"+m4[2],b=m4[3]+":"+m4[4];const ok=x=>{const[h,mi]=x.split(":").map(Number);return h>=0&&h<=23&&mi>=0&&mi<=59};return (ok(a)&&ok(b))?[a,b]:null}
+  let m=s.match(/^(\d{1,2}):(\d{2})\s*(a\.?m\.?|p\.?m\.?)?\s*[-–—]\s*(\d{1,2}):(\d{2})\s*(a\.?m\.?|p\.?m\.?)?$/i);
+  if(!m)return null;
+  const to24=(h,mi,ap,peer)=>{
+    let H=+h,M=+mi;const a=(ap||peer||"").toLowerCase().replace(/\./g,"");
+    if(a.startsWith("p")&&H!==12)H+=12;if(a.startsWith("a")&&H===12)H=0;
+    if(H<0||H>23||M<0||M>59)return null;return String(H).padStart(2,"0")+":"+String(M).padStart(2,"0");
+  };
+  const a=to24(m[1],m[2],m[3],m[6]),b=to24(m[4],m[5],m[6],m[3]);
+  return (a&&b)?[a,b]:null;
+}
+function hoursFromRangeClient(a,b){
+  if(!a||!b)return null;
+  const [ah,am]=a.split(":").map(Number),[bh,bm]=b.split(":").map(Number);
+  let mins=(bh*60+bm)-(ah*60+am);if(mins<0)mins+=24*60;
+  if(mins<20||mins>720)return null;return Math.round(mins/30)/2;
+}
+function effectiveHrs(e){
+  if(e&&e.hrs!=null&&e.hrs!==""&&!Number.isNaN(Number(e.hrs)))return{hrs:Number(e.hrs),est:!!e.hrs_est};
+  const tr=parseTimeRangeClient(e&&e.time||"");
+  if(tr){const h=hoursFromRangeClient(tr[0],tr[1]);if(h!=null)return{hrs:h,est:true}}
+  return null;
+}
+const hrsTxt=e=>{const h=effectiveHrs(e);return h?(h.est?"~":"")+h.hrs+"h":"–";};
 function toast(m){const t=$("toast");t.textContent=m;t.style.display="block";clearTimeout(t._t);t._t=setTimeout(()=>t.style.display="none",2200)}
 
 let DATA={events:[],status:[]},selCat="",curY=+today.slice(0,4),curM=+today.slice(5,7)-1,selDay=null;
@@ -473,7 +500,7 @@ function renderCal(){
   $("dayList").innerHTML=`<div class="datehd">${title}</div>`+(show.length?groupList(show,!one):'<div class="meta">冇活動</div>');
 }
 function pickDay(d){selDay=selDay===d?null:d;renderCal()}
-function item(e){return `<div class="item ${kc(e.cat)}" onclick="showEv('${e.id}')"><div class="hrs">${e.hrs?(e.hrs_est?"~":"")+e.hrs:"–"}<small>CPD 小時</small></div><div><div class="nm clamp" title="${esc(e.name)}">${esc(e.name)}</div><span class="tag cat">${e.cat}</span></div></div>`}
+function item(e){const _h=effectiveHrs(e);return `<div class="item ${kc(e.cat)}" onclick="showEv('${e.id}')"><div class="hrs">${_h?(_h.est?"~":"")+_h.hrs:"–"}<small>CPD 小時</small></div><div><div class="nm clamp" title="${esc(e.name)}">${esc(e.name)}</div><span class="tag cat">${e.cat}</span></div></div>`}
 function groupList(list,withDate){
   if(!withDate)return list.map(item).join("");
   let h="",last="";
@@ -500,7 +527,7 @@ function addToCalendar(id){
     // Official URL only — never Google prefill / never Registration Profile PII
     CPDCalendarExport.downloadICS({
       id:e.id,name:e.name,date:e.date,time:e.time||"",org:e.org||"",venue:e.venue||"",
-      hrs:e.hrs,hrs_est:!!e.hrs_est,url:e.url||"",cat:e.cat
+      hrs:(()=>{const h=effectiveHrs(e);return h?h.hrs:e.hrs})(),hrs_est:(()=>{const h=effectiveHrs(e);return h?h.est:!!e.hrs_est})(),url:e.url||"",cat:e.cat
     },{category:e.cat});
     toast("已下載 .ics（請用 Outlook／Apple／Google 行事曆匯入）");
   }catch(err){toast("無法產生行事曆："+(err&&err.message||err))}
@@ -519,7 +546,7 @@ function showEv(id){
     <h3 class="clamp" style="margin-top:8px" title="${esc(e.name)}">${esc(e.name)}</h3>
     <div class="meta">${esc(e.org)}</div>
     <div class="meta">📅 ${e.date} ${esc(e.time||"")}${e.time?" (HKT)":""}</div>
-    <div class="meta">⏱ CPD：${e.hrs?e.hrs+" 小時"+(e.hrs_est?"（按活動時長估算，未經主辦方確認）":""):"未註明"}</div>
+    <div class="meta">⏱ CPD：${(()=>{const h=effectiveHrs(e);return h?h.hrs+" 小時"+(h.est?"（按活動時長估算，未經主辦方確認）":""):"未註明"})()}</div>
     <div><span class="tag">${e.region==="HK"?"香港":"海外"}</span>${e.online?'<span class="tag">網上</span>':""}${e.free===true?'<span class="tag" style="background:#e8f5e9;color:#2e7d32">免費</span>':'<span class="tag" style="background:#fff3e0;color:#e65100">收費未註明</span>'}</div>
     <a class="btn" href="${esc(e.url)}" target="_blank" rel="noopener">主辦方網頁 ↗</a>
     ${calBtn}
@@ -538,8 +565,8 @@ function attendedManual(id){
   const L=LS("logs")||[];
   const has=(typeof CPDLogAdapter!=="undefined"&&CPDLogAdapter.hasEventLog)?CPDLogAdapter.hasEventLog(L,id):L.some(l=>l.evId===id||l.eventId===id);
   if(has){toast("已經記錄咗");return}
-  let h=+e.hrs;
-  if(!h||e.hrs_est){h=+prompt("呢個活動有幾多 CPD 小時？",e.hrs||"1.5");if(!h)return}
+  const _eh=effectiveHrs(e);let h=_eh?+_eh.hrs:+e.hrs;
+  if(!h||(_eh?_eh.est:e.hrs_est)){h=+prompt("呢個活動有幾多 CPD 小時？",(_eh&&_eh.hrs)||e.hrs||"1.5");if(!h)return}
   L.push({id:Date.now(),evId:id,name:e.name,date:e.date,hrs:h,cat:e.cat,mode:"Structured"});
   SS("logs",L);render();toast(`已記錄 ${h} 小時（${e.cat}）`);
 }
@@ -582,10 +609,10 @@ function openAttendReview(id){
   box.appendChild(catSel);
   const hrsLab=document.createElement("label");hrsLab.textContent="CPD 時數 Hours";box.appendChild(hrsLab);
   const hrsIn=document.createElement("input");hrsIn.id="attHrs";hrsIn.type="number";hrsIn.step="0.5";hrsIn.min="0.5";hrsIn.max="24";
-  if(e.hrs)hrsIn.value=String(e.hrs);box.appendChild(hrsIn);
+  const _eh=effectiveHrs(e);if(_eh)hrsIn.value=String(_eh.hrs);box.appendChild(hrsIn);
   const status=document.createElement("div");status.className="meta";
-  if(!e.hrs)status.textContent="時數未註明 — 必須自行填寫有效時數。";
-  else if(e.hrs_est){status.className="est-warn";status.textContent="This value is estimated. Verify it before adding.";}
+  if(!_eh)status.textContent="時數未註明 — 必須自行填寫有效時數。";
+  else if(_eh.est){status.className="est-warn";status.textContent="This value is estimated. Verify it before adding.";}
   else status.textContent="官方時數（可按實況修改）。";
   box.appendChild(status);
   const tip=document.createElement("div");tip.className="meta";tip.textContent="按「確認加入」先會寫入 CPD 紀錄同標記出席。";box.appendChild(tip);
@@ -614,7 +641,7 @@ function confirmAttendAdd(id){
 
 // ---- 來源統計 ----
 function renderSources(){
-  const g={};allEvents().filter(e=>e.date>=today).forEach(e=>{const k=e.group||e.source;g[k]=g[k]||{n:0,f:0,h:0};g[k].n++;if(e.free===true)g[k].f++;g[k].h+=e.hrs||0});
+  const g={};allEvents().filter(e=>e.date>=today).forEach(e=>{const k=e.group||e.source;g[k]=g[k]||{n:0,f:0,h:0};g[k].n++;if(e.free===true)g[k].f++;g[k].h+=(effectiveHrs(e)||{}).hrs||0});
   const rows=Object.entries(g).sort((a,b)=>b[1].f-a[1].f||b[1].n-a[1].n);
   $("srcTbl").innerHTML=rows.length?`<table><tr><th>機構</th><th>活動</th><th>確認免費</th><th>時數</th></tr>${rows.map(([k,v])=>`<tr><td>${esc(k)}</td><td>${v.n}</td><td>${v.f}</td><td>${Math.round(v.h*10)/10}h</td></tr>`).join("")}</table>`
     +((DATA.status||[]).some(s=>!s.ok)?`<div class="meta" style="margin-top:8px">今日未能收集：${DATA.status.filter(s=>!s.ok).map(s=>esc(s.source)).join("、")}</div>`:""):'<div class="meta">未有資料</div>';
@@ -752,7 +779,7 @@ function fillRegPrep(e){
     ["活動 / Event",e.name],
     ["主辦 / Organiser",e.org||""],
     ["日期時間 / Date & time",e.date+(e.time?" "+e.time+" (HKT)":"")],
-    ["CPD 時數 / Hours",e.hrs?(String(e.hrs)+(e.hrs_est?"（估算）":"")):"未註明"],
+    ["CPD 時數 / Hours",(()=>{const h=effectiveHrs(e);return h?String(h.hrs)+(h.est?"（估算）":""):"未註明"})()],
     ["官方報名網址 / Official URL",e.url||""]
   ];
   rows.forEach(([lab,val])=>{
@@ -919,7 +946,7 @@ function myEventCard(e,regLabel){
     <div class="nm clamp" title="${esc(e.name)}">${esc(e.name)}</div>
     <div class="meta">${e.date} ${esc(e.time||"")}${e.time?" (HKT)":""} · ${esc(e.org||"")}</div>
     <div><span class="tag cat ${kc(e.cat)}">${esc(e.cat)}</span>
-      <span class="tag">${e.hrs?(e.hrs_est?"~":"")+e.hrs+"h":"時數未註明"}</span>
+      <span class="tag">${(()=>{const h=effectiveHrs(e);return h?(h.est?"~":"")+h.hrs+"h":"時數未註明"})()}</span>
       <span class="regbadge ${regLabel.cls}">${esc(regLabel.text)}</span></div>
     ${showCal?`<button class="${calCls}" type="button" onclick="event.stopPropagation();addToCalendar('${esc(e.id)}')">加入行事曆</button>`:""}
     ${attendHtml}
@@ -1073,7 +1100,7 @@ function renderReco(){
     card.appendChild(meta);
     const tags=document.createElement("div");
     const cat=document.createElement("span");cat.className="tag cat "+kc(s.cat);cat.textContent=s.cat+" "+(CAT_NAME[s.cat]||"");tags.appendChild(cat);
-    if(e.hrs){const t=document.createElement("span");t.className="tag";t.textContent=(e.hrs_est?"~":"")+e.hrs+"h"+(e.hrs_est?" 估算":" 官方");tags.appendChild(t)}
+    {const _h=effectiveHrs(e);if(_h){const t=document.createElement("span");t.className="tag";t.textContent=(_h.est?"~":"")+_h.hrs+"h"+(_h.est?" 估算":" 官方");tags.appendChild(t)}}
     if(e.free===true){const t=document.createElement("span");t.className="tag";t.style.background="#e8f5e9";t.style.color="#2e7d32";t.textContent="免費";tags.appendChild(t)}
     else{const t=document.createElement("span");t.className="tag";t.style.background="#fff3e0";t.style.color="#e65100";t.textContent="收費未註明";tags.appendChild(t)}
     if(e.online===true){const t=document.createElement("span");t.className="tag";t.textContent="網上";tags.appendChild(t)}
