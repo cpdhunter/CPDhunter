@@ -54,7 +54,7 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 4,
+  "consecutive_fail": 5,
   "last_success": "2026-11-09",
   "updated": "2026-11-10"
  },
@@ -65,7 +65,7 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 16,
+  "consecutive_fail": 17,
   "last_success": null,
   "updated": "2026-11-10"
  },
@@ -135,7 +135,7 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 16,
+  "consecutive_fail": 17,
   "last_success": null,
   "updated": "2026-11-10"
  },
@@ -146,21 +146,18 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 16,
+  "consecutive_fail": 17,
   "last_success": null,
   "updated": "2026-11-10"
  },
  "HKIS CPD": {
-  "last_status": "OK_WITH_EVENTS",
-  "last_n": 14,
-  "last_method": "generic",
-  "last_error": null,
-  "raw_candidates": 20,
-  "rejects": {
-   "social": 1,
-   "date_range": 5
-  },
-  "consecutive_fail": 0,
+  "last_status": "FAIL",
+  "last_n": 0,
+  "last_method": null,
+  "last_error": "讀取網頁失敗：HTTP 403（網站封鎖咗雲端伺服器）",
+  "raw_candidates": null,
+  "rejects": null,
+  "consecutive_fail": 1,
   "last_success": "2026-11-10",
   "updated": "2026-11-10"
  },
@@ -184,29 +181,34 @@
   "last_error": "Playwright 失敗：Error",
   "raw_candidates": null,
   "rejects": null,
-  "consecutive_fail": 16,
+  "consecutive_fail": 17,
   "last_success": null,
   "updated": "2026-11-10"
  },
  "ICE Upcoming Events": {
-  "last_status": "FAIL",
-  "last_n": 0,
-  "last_method": null,
-  "last_error": "讀取網頁失敗：HTTP 403（網站封鎖咗雲端伺服器）",
-  "raw_candidates": null,
-  "rejects": null,
-  "consecutive_fail": 1,
+  "last_status": "OK_WITH_EVENTS",
+  "last_n": 4,
+  "last_method": "ice-cards",
+  "last_error": null,
+  "raw_candidates": 12,
+  "rejects": {
+   "overseas_physical": 8
+  },
+  "consecutive_fail": 0,
   "last_success": "2026-11-10",
   "updated": "2026-11-10"
  },
  "ICE Lectures": {
-  "last_status": "FAIL",
+  "last_status": "VERIFIED_EMPTY",
   "last_n": 0,
-  "last_method": null,
-  "last_error": "讀取網頁失敗：HTTP 403（網站封鎖咗雲端伺服器）",
-  "raw_candidates": null,
-  "rejects": null,
-  "consecutive_fail": 1,
+  "last_method": "ice-cards",
+  "last_error": null,
+  "raw_candidates": 12,
+  "rejects": {
+   "date_range": 1,
+   "overseas_physical": 11
+  },
+  "consecutive_fail": 0,
   "last_success": null,
   "updated": "2026-11-10"
  },
@@ -230,7 +232,7 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 16,
+  "consecutive_fail": 17,
   "last_success": null,
   "updated": "2026-11-10"
  },
