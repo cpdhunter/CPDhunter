@@ -1,7 +1,8 @@
 """Conservative attendance-mode classification.
 
-Absence of online evidence is UNKNOWN, not face-to-face.
 online is False is not physical evidence by itself.
+A real physical address/venue with no online evidence is FACE_TO_FACE.
+District or organisation names alone remain UNKNOWN.
 Do not use AI to infer mode.
 """
 from __future__ import annotations
@@ -52,6 +53,25 @@ FACE_PATTERNS = [
     re.compile(r"現場(?:參與|出席|講座)?"),
 ]
 
+STREET_NUMBER_RE = re.compile(r"[道街路里巷]\s*\d+\s*號|\d+\s*號")
+ENGLISH_STREET_RE = re.compile(
+    r"\d+\s+[A-Za-z][\w.'-]*(?:\s+[A-Za-z][\w.'-]*)*\s+"
+    r"(?:Street|Road|Avenue|Drive|Lane|Boulevard|Place|Square|Highway|"
+    r"Rd\.?|St\.?|Ave\.?|Dr\.?|Ln\.?|Blvd\.?)\b",
+    re.I,
+)
+NAMED_PLACE_RE = re.compile(
+    r"演講廳|講座室|職業健康診所|太空館|圖書館|會議展覽中心|會展中心|"
+    r"\bconvention\s+cent(?:re|er)\b|\bexhibition\s+cent(?:re|er)\b|"
+    r"\bauditorium\b|\blecture\s+(?:room|theatre|theater|hall)\b",
+    re.I,
+)
+LECTURE_ROOM_RE = re.compile(
+    r"\b(?:lecture\s+(?:room|theatre|theater|hall)|room)\s+[A-Z0-9]",
+    re.I,
+)
+FLOOR_OR_BLOCK_RE = re.compile(r"\d+\s*/\s*F|\d+\s*樓|\b(?:floor|block|campus)\b", re.I)
+
 
 def _clean(value: Any) -> str:
     return re.sub(r"\s+", " ", str(value or "")).strip()
@@ -77,6 +97,24 @@ def _any(patterns: Iterable[re.Pattern], text: str) -> bool:
     return any(p.search(text) for p in patterns)
 
 
+def has_physical_address(event: Optional[Dict[str, Any]]) -> bool:
+    """True only for a real physical address/venue, not a district or org name."""
+    if not event or not isinstance(event, dict):
+        return False
+    text = " | ".join(
+        _clean(p) for p in (event.get("venue"), event.get("location")) if _clean(p)
+    )
+    if not text:
+        return False
+    if STREET_NUMBER_RE.search(text) or ENGLISH_STREET_RE.search(text):
+        return True
+    if NAMED_PLACE_RE.search(text):
+        return True
+    if LECTURE_ROOM_RE.search(text) and FLOOR_OR_BLOCK_RE.search(text):
+        return True
+    return False
+
+
 def infer_mode(event: Optional[Dict[str, Any]]) -> Dict[str, str]:
     if not event or not isinstance(event, dict):
         return {"mode": MODE_UNKNOWN, "confidence": "LOW", "reason": "no_event"}
@@ -91,7 +129,8 @@ def infer_mode(event: Optional[Dict[str, Any]]) -> Dict[str, str]:
 
     online = _any(ONLINE_PATTERNS, text)
     face = _any(FACE_PATTERNS, text)
-    if online and face:
+    physical = has_physical_address(event)
+    if online and (face or physical):
         return {"mode": MODE_HYBRID, "confidence": "HIGH", "reason": "online_and_face_evidence"}
     if online:
         return {"mode": MODE_ONLINE, "confidence": "HIGH", "reason": "explicit_online_text"}
@@ -100,6 +139,13 @@ def infer_mode(event: Optional[Dict[str, Any]]) -> Dict[str, str]:
 
     if event.get("online") is True or event.get("is_online") is True:
         return {"mode": MODE_ONLINE, "confidence": "MEDIUM", "reason": "legacy_online_true"}
+
+    if physical:
+        return {
+            "mode": MODE_FACE_TO_FACE,
+            "confidence": "HIGH",
+            "reason": "physical_address_no_online",
+        }
 
     online_flag = event.get("online")
     if online_flag is None:
@@ -116,7 +162,7 @@ def mode_of(event: Optional[Dict[str, Any]]) -> str:
 
 
 def attach_mode(event: Dict[str, Any]) -> Dict[str, Any]:
-    """Stamp mode only when evidence is reliable. Never invent FACE_TO_FACE from online=false."""
+    """Stamp mode only when evidence is reliable. Never invent FACE_TO_FACE from online=false alone."""
     inferred = infer_mode(event)
     if inferred["mode"] != MODE_UNKNOWN:
         event["mode"] = inferred["mode"]

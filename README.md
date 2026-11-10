@@ -26,7 +26,7 @@ See [MAINTENANCE.md](MAINTENANCE.md) for architecture, source management, health
   - `EMPTY_UNVERIFIED`
   - `FAIL`
 - **Local features in the live frontend:** CPD progress tracking and CSV export, Registration Profile + Prepare Registration, recommendations, local ICS calendar export, and attendance→CPD confirmation (browser `localStorage` only; no OAuth / no auto-submit).
-- **Attendance mode:** every event is labelled Online, Face to Face, Hybrid, or Mode not confirmed. `online === false` is **not** treated as Face to Face. Upcoming lists sort Online first; recommendations use mode weights +25 / +18 / 0 / −3. Mode filters and recommendation mode preferences stay in the browser.
+- **Attendance mode:** every event is labelled Online, Face to Face, Hybrid, or Mode not confirmed. `online === false` is **not** treated as Face to Face. A physical address or named venue with no online evidence is Face to Face; a district or organisation name alone remains Mode not confirmed. Upcoming lists sort Online first; recommendations use mode weights +25 / +18 / 0 / −3. Mode filters and recommendation mode preferences stay in the browser.
 
 ## What is NOT live
 
