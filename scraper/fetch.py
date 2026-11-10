@@ -89,7 +89,7 @@ def allowed(url):
         _robots[base] = rp
     return _robots[base].can_fetch(BOT, url)
 
-def fetch_html(url, use_playwright=False):
+def fetch_html(url, use_playwright=False, session=None):
     if not allowed(url):
         raise StepError("robots.txt 唔准讀取")
     if use_playwright and PLAYWRIGHT_OK:
@@ -106,9 +106,10 @@ def fetch_html(url, use_playwright=False):
         except Exception as ex:
             raise StepError(f"Playwright 失敗：{type(ex).__name__}")
     last = None
+    http = session or requests
     for attempt in range(2):
         try:
-            r = requests.get(url, headers=HEADERS, timeout=40, verify=True)
+            r = http.get(url, headers=HEADERS, timeout=40, verify=True)
         except requests.exceptions.SSLError:
             raise StepError("讀取網頁失敗：SSL 憑證問題")
         except requests.exceptions.Timeout:
@@ -570,6 +571,8 @@ def enrich_labour_talk_details(events, fetch_detail):
             continue
         detail = parse_labour_talk_detail(html)
         detail_venue = (detail.get("venue") or "").strip()
+        if not detail_venue:
+            log(f"  labour detail has no labelled 講座地點: {url}")
         if detail_venue:
             item["venueSource"] = "event_detail"
             if not item.get("venue"):
@@ -1087,8 +1090,14 @@ def process_source(src):
     use_pw = False
     if "localevents.theiet" in url or "istructe" in url:
         use_pw = True
+    # OSHSREG talk views need the listing JSESSIONID; a bare GET of selectedTalkHdr
+    # returns the listing chrome without 講座地點.
+    labour_session = None
+    if "oshsreg.gov.hk" in url:
+        labour_session = requests.Session()
+        labour_session.headers.update(HEADERS)
     try:
-        html = fetch_html(url, use_playwright=use_pw)
+        html = fetch_html(url, use_playwright=use_pw, session=labour_session)
     except StepError:
         # HKGBC listing often times out from cloud IPs — one Playwright retry.
         if (not use_pw) and PLAYWRIGHT_OK and "hkgbc" in url:
@@ -1134,7 +1143,8 @@ def process_source(src):
         if "oshsreg.gov.hk" in url:
             try:
                 raw = enrich_labour_talk_details(
-                    raw, lambda u: fetch_html(u, use_playwright=False)
+                    raw,
+                    lambda u: fetch_html(u, use_playwright=False, session=labour_session),
                 )
                 method = "labour-list+detail"
             except Exception as ex:

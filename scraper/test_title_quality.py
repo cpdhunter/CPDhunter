@@ -204,6 +204,17 @@ def test_labour_detail_mode():
         lambda u: hybrid_html,
     )
     assert hybrid[0].get("mode") == "HYBRID", hybrid[0]
+    sessionless = open(
+        os.path.join(FIX, "labour/talk_detail_sessionless.html"), encoding="utf-8"
+    ).read()
+    bare = parse_labour_talk_detail(sessionless)
+    assert not (bare.get("venue") or ""), bare
+    no_mode = enrich_labour_talk_details(
+        [dict(raw[0])],
+        lambda u: sessionless,
+    )
+    assert no_mode[0].get("mode") != "FACE_TO_FACE", no_mode[0]
+    assert no_mode[0].get("venueSource") != "event_detail", no_mode[0]
     print("labour detail mode OK", first.get("mode"), hybrid[0].get("mode"))
 
 
