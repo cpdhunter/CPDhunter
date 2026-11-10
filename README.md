@@ -26,6 +26,7 @@ See [MAINTENANCE.md](MAINTENANCE.md) for architecture, source management, health
   - `EMPTY_UNVERIFIED`
   - `FAIL`
 - **Local features in the live frontend:** CPD progress tracking and CSV export, Registration Profile + Prepare Registration, recommendations, local ICS calendar export, and attendance→CPD confirmation (browser `localStorage` only; no OAuth / no auto-submit).
+- **Attendance mode:** every event is labelled Online, Face to Face, Hybrid, or Mode not confirmed. `online === false` is **not** treated as Face to Face. Upcoming lists sort Online first; recommendations use mode weights +25 / +18 / 0 / −3. Mode filters and recommendation mode preferences stay in the browser.
 
 ## What is NOT live
 
@@ -57,6 +58,8 @@ Do not treat planned private-beta features in [PRIVATE_BETA.md](PRIVATE_BETA.md)
 | 檔案 | 用途 |
 |---|---|
 | `index.html` | 主網站（月曆、列表、我的進度、設定；已連接本機報名準備） |
+| `event_mode.js` | 保守活動形式分類（Online / Face to Face / Hybrid / 形式未確認） |
+| `recommendations.js` | 本機個人化推薦（含活動形式權重） |
 | `registration.js` | 本機 Registration Profile / registration-state + Google Forms partial prefill adapter |
 | `scraper/reg_discover.py` | 報名目的地發現（非個人資料；每日 scraper 跑） |
 | `scraper/gforms.py` | Google Forms 公開 schema 擷取（非個人資料） |
