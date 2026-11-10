@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-10T17:29+08:00",
+ "updated": "2026-11-10T17:41+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -150,12 +150,12 @@
    "source": "HKGBC 綠建環評",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 24,
+   "n": 23,
    "method": "hkgbc",
    "page_title": "Events & Trainings | HKGBC",
    "raw_candidates": 40,
    "rejects": {
-    "date_range": 16
+    "date_range": 17
    }
   },
   {
@@ -246,10 +246,15 @@
   },
   {
    "source": "TQM Consultants Training",
-   "status": "FAIL",
-   "ok": false,
-   "n": 0,
-   "err": "讀取網頁失敗：HTTP 202"
+   "status": "OK_WITH_EVENTS",
+   "ok": true,
+   "n": 5,
+   "method": "tqm-list+detail",
+   "page_title": "Upcoming | TQM Consultants Co. Limited",
+   "raw_candidates": 7,
+   "rejects": {
+    "date_range": 2
+   }
   }
  ],
  "events": [
@@ -1888,6 +1893,97 @@
    }
   },
   {
+   "id": "a320e118347f3",
+   "name": "Six Sigma Green Belt Training – Day 2 (of 4)",
+   "org": "TQM Consultants",
+   "date": "2026-11-13",
+   "time": "09:30-17:00",
+   "hrs": 7.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://tqm.com.hk/course/6sigma-greenbelt-2/",
+   "region": "HK",
+   "online": null,
+   "free": false,
+   "source": "TQM Consultants Training",
+   "group": "TQM",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSfjCkv-8D3wO9_t1q9G31YWgvqm0mtb1h7CK9z1dPRAX2fB9A/viewform",
+    "formId": "1FAIpQLSfjCkv-8D3wO9_t1q9G31YWgvqm0mtb1h7CK9z1dPRAX2fB9A",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.545664848",
+      "profileField": "organisation",
+      "label": "Company Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1007484970",
+      "profileField": null,
+      "label": "Participant Name(s) (Printed on Certificate)",
+      "type": "PARAGRAPH",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1736159923",
+      "profileField": null,
+      "label": "Salutation",
+      "type": "DROPDOWN",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.640835039",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.150201030",
+      "profileField": "phone",
+      "label": "Contact Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.231818007",
+      "profileField": "hkieNumber",
+      "label": "Please provide your HKIE membership no. for CPD record",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1338818222",
+      "profileField": null,
+      "label": "Please choose the course you would like to register.",
+      "type": "CHECKBOX",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.492224450",
+      "profileField": "email",
+      "label": "Email",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   },
+   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
+   "venueSource": "event_detail",
+   "mode": "FACE_TO_FACE"
+  },
+  {
    "id": "a7f35abcd1fe7",
    "name": "Technical Visit to MiMEP Design and Manufacturing Centre",
    "org": "HKIE Events",
@@ -2776,6 +2872,97 @@
    }
   },
   {
+   "id": "ad82ca8cdd568",
+   "name": "Six Sigma Green Belt Training – Day 3 (of 4)",
+   "org": "TQM Consultants",
+   "date": "2026-11-20",
+   "time": "09:30-17:00",
+   "hrs": 7.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://tqm.com.hk/course/6sigma-greenbelt-3/",
+   "region": "HK",
+   "online": null,
+   "free": false,
+   "source": "TQM Consultants Training",
+   "group": "TQM",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSfjCkv-8D3wO9_t1q9G31YWgvqm0mtb1h7CK9z1dPRAX2fB9A/viewform",
+    "formId": "1FAIpQLSfjCkv-8D3wO9_t1q9G31YWgvqm0mtb1h7CK9z1dPRAX2fB9A",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.545664848",
+      "profileField": "organisation",
+      "label": "Company Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1007484970",
+      "profileField": null,
+      "label": "Participant Name(s) (Printed on Certificate)",
+      "type": "PARAGRAPH",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1736159923",
+      "profileField": null,
+      "label": "Salutation",
+      "type": "DROPDOWN",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.640835039",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.150201030",
+      "profileField": "phone",
+      "label": "Contact Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.231818007",
+      "profileField": "hkieNumber",
+      "label": "Please provide your HKIE membership no. for CPD record",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1338818222",
+      "profileField": null,
+      "label": "Please choose the course you would like to register.",
+      "type": "CHECKBOX",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.492224450",
+      "profileField": "email",
+      "label": "Email",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   },
+   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
+   "venueSource": "event_detail",
+   "mode": "FACE_TO_FACE"
+  },
+  {
    "id": "a1621fbbd960d",
    "name": "Event 123 - Testing",
    "org": "HKIE Events",
@@ -3520,6 +3707,97 @@
     "confidence": "LOW",
     "discoveryMethod": "hkgbc_detail_no_reg"
    }
+  },
+  {
+   "id": "abcefb823861c",
+   "name": "Six Sigma Green Belt Training – Day 4 (of 4)",
+   "org": "TQM Consultants",
+   "date": "2026-11-27",
+   "time": "09:30-17:00",
+   "hrs": 7.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://tqm.com.hk/course/6sigma-greenbelt-4/",
+   "region": "HK",
+   "online": null,
+   "free": false,
+   "source": "TQM Consultants Training",
+   "group": "TQM",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSfjCkv-8D3wO9_t1q9G31YWgvqm0mtb1h7CK9z1dPRAX2fB9A/viewform",
+    "formId": "1FAIpQLSfjCkv-8D3wO9_t1q9G31YWgvqm0mtb1h7CK9z1dPRAX2fB9A",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.545664848",
+      "profileField": "organisation",
+      "label": "Company Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1007484970",
+      "profileField": null,
+      "label": "Participant Name(s) (Printed on Certificate)",
+      "type": "PARAGRAPH",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1736159923",
+      "profileField": null,
+      "label": "Salutation",
+      "type": "DROPDOWN",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.640835039",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.150201030",
+      "profileField": "phone",
+      "label": "Contact Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.231818007",
+      "profileField": "hkieNumber",
+      "label": "Please provide your HKIE membership no. for CPD record",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1338818222",
+      "profileField": null,
+      "label": "Please choose the course you would like to register.",
+      "type": "CHECKBOX",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.492224450",
+      "profileField": "email",
+      "label": "Email",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   },
+   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
+   "venueSource": "event_detail",
+   "mode": "FACE_TO_FACE"
   },
   {
    "id": "a582b25aebf2b",
@@ -4486,6 +4764,97 @@
    }
   },
   {
+   "id": "ac1a98cce88e6",
+   "name": "CPD1212/2026 Sustainable Development Planning and ESG for Engineers",
+   "org": "TQM Consultants",
+   "date": "2026-12-11",
+   "time": "13:30-17:00",
+   "hrs": 3.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://tqm.com.hk/course/cpd1212-2026-sustainable-development-planning-and-esg-workshop/",
+   "region": "HK",
+   "online": null,
+   "free": false,
+   "source": "TQM Consultants Training",
+   "group": "TQM",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSfjCkv-8D3wO9_t1q9G31YWgvqm0mtb1h7CK9z1dPRAX2fB9A/viewform",
+    "formId": "1FAIpQLSfjCkv-8D3wO9_t1q9G31YWgvqm0mtb1h7CK9z1dPRAX2fB9A",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.545664848",
+      "profileField": "organisation",
+      "label": "Company Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1007484970",
+      "profileField": null,
+      "label": "Participant Name(s) (Printed on Certificate)",
+      "type": "PARAGRAPH",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1736159923",
+      "profileField": null,
+      "label": "Salutation",
+      "type": "DROPDOWN",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.640835039",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.150201030",
+      "profileField": "phone",
+      "label": "Contact Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.231818007",
+      "profileField": "hkieNumber",
+      "label": "Please provide your HKIE membership no. for CPD record",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1338818222",
+      "profileField": null,
+      "label": "Please choose the course you would like to register.",
+      "type": "CHECKBOX",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.492224450",
+      "profileField": "email",
+      "label": "Email",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   },
+   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
+   "venueSource": "event_detail",
+   "mode": "FACE_TO_FACE"
+  },
+  {
    "id": "ada122eb690dd",
    "name": "From Tower to Sky – Construction and Aviation Safety Experience",
    "org": "HKICM",
@@ -4758,6 +5127,97 @@
     "confidence": "LOW",
     "discoveryMethod": "page_no_candidate"
    }
+  },
+  {
+   "id": "aca2d0f8d1af6",
+   "name": "CPD1213/2026 Project Management and Impactful Communication",
+   "org": "TQM Consultants",
+   "date": "2026-12-18",
+   "time": "09:30-17:00",
+   "hrs": 7.5,
+   "hrs_est": true,
+   "type": "GPM",
+   "disc": [
+    "General"
+   ],
+   "url": "https://tqm.com.hk/course/cpd1213-2026-project-management-and-impactful-communication/",
+   "region": "HK",
+   "online": null,
+   "free": false,
+   "source": "TQM Consultants Training",
+   "group": "TQM",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSfjCkv-8D3wO9_t1q9G31YWgvqm0mtb1h7CK9z1dPRAX2fB9A/viewform",
+    "formId": "1FAIpQLSfjCkv-8D3wO9_t1q9G31YWgvqm0mtb1h7CK9z1dPRAX2fB9A",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.545664848",
+      "profileField": "organisation",
+      "label": "Company Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1007484970",
+      "profileField": null,
+      "label": "Participant Name(s) (Printed on Certificate)",
+      "type": "PARAGRAPH",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1736159923",
+      "profileField": null,
+      "label": "Salutation",
+      "type": "DROPDOWN",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.640835039",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.150201030",
+      "profileField": "phone",
+      "label": "Contact Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.231818007",
+      "profileField": "hkieNumber",
+      "label": "Please provide your HKIE membership no. for CPD record",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1338818222",
+      "profileField": null,
+      "label": "Please choose the course you would like to register.",
+      "type": "CHECKBOX",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.492224450",
+      "profileField": "email",
+      "label": "Email",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   },
+   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
+   "venueSource": "event_detail",
+   "mode": "FACE_TO_FACE"
   },
   {
    "id": "a76a97ad66abb",
