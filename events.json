@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-10T16:26+08:00",
+ "updated": "2026-11-10T17:29+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -150,12 +150,12 @@
    "source": "HKGBC 綠建環評",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 22,
+   "n": 24,
    "method": "hkgbc",
    "page_title": "Events & Trainings | HKGBC",
    "raw_candidates": 40,
    "rejects": {
-    "date_range": 18
+    "date_range": 16
    }
   },
   {
@@ -243,6 +243,13 @@
    "page_title": "Events | Construction Industry Council",
    "raw_candidates": 1,
    "rejects": {}
+  },
+  {
+   "source": "TQM Consultants Training",
+   "status": "FAIL",
+   "ok": false,
+   "n": 0,
+   "err": "讀取網頁失敗：HTTP 202"
   }
  ],
  "events": [
@@ -4053,6 +4060,34 @@
    }
   },
   {
+   "id": "a56d68d4ceb7c",
+   "name": "HKUST & HKUST(GZ) - Two-City Conference - Building Sustainable Cities: Northern Metropolis Development",
+   "org": "HKGBC",
+   "date": "2026-12-04",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1099",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true,
+   "registration": {
+    "mechanism": "OTHER_PUBLIC_FORM",
+    "destination": "https://minerals.hk/twocityconf/enrolment/",
+    "status": "OPEN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "hkgbc_detail_pos_text,in_detail,title_close"
+   }
+  },
+  {
    "id": "a0bfe972335a4",
    "name": "Global BIM Coordinator Professional Training Course",
    "org": "HKIE",
@@ -4539,6 +4574,34 @@
    }
   },
   {
+   "id": "a48b6c61ccd17",
+   "name": "SCCT-HKCI - Joint SCCT-HKCI International Conference on Concrete Technologies 2026",
+   "org": "HKGBC",
+   "date": "2026-12-16",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1100",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_no_detail_for_date"
+   }
+  },
+  {
    "id": "a7af32bc72e67",
    "name": "Technical Seminar on KTN 24 Dedicated Rehousing Estate Project: Successful Implementation of Advanced MiC Solutions in the Northern Metropolis",
    "org": "HKICM",
@@ -4561,8 +4624,107 @@
     "mechanism": "GOOGLE_FORMS",
     "destination": "https://docs.google.com/forms/d/e/1FAIpQLSegfzOVwyPqjKskPm5iiTv3sR8UN1RkC4WNI2q9Dx_RZu4OoQ/viewform",
     "formId": "1FAIpQLSegfzOVwyPqjKskPm5iiTv3sR8UN1RkC4WNI2q9Dx_RZu4OoQ",
-    "status": "CLOSED",
-    "fields": [],
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.1183364918",
+      "profileField": null,
+      "label": "Membership",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.15244053",
+      "profileField": "hkieNumber",
+      "label": "Membership No.",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1540395286",
+      "profileField": null,
+      "label": "Membership Class",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1596056943",
+      "profileField": "englishName",
+      "label": "English Full Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1405328043",
+      "profileField": "chineseName",
+      "label": "Chinese Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.2049775845",
+      "profileField": "phone",
+      "label": "Telephone / Mobile Contact",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1424028824",
+      "profileField": "email",
+      "label": "Email Address",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.91740810",
+      "profileField": "organisation",
+      "label": "Company / Institute",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.602237502",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.973402102",
+      "profileField": null,
+      "label": "Registration Fee",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.648365312",
+      "profileField": null,
+      "label": "Venue",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.60776683",
+      "profileField": null,
+      "label": "Important Notes",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1757752833",
+      "profileField": null,
+      "label": "Undertaking",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1234603961",
+      "profileField": null,
+      "label": "Remarks",
+      "type": "PARAGRAPH",
+      "safePrefill": false
+     }
+    ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
     "confidence": "HIGH",
