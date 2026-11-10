@@ -15,6 +15,7 @@ import urllib.robotparser
 import requests
 from bs4 import BeautifulSoup
 
+from event_mode import attach_mode
 from title_quality import (
     clamp_title,
     is_date_only_title,
@@ -913,6 +914,19 @@ def clean(e, src, rejects):
                 "discoveryMethod": "source_parser",
                 "requiresManualCompletion": True,
             }
+        # Optional evidence fields for conservative mode classification (non-PII).
+        for key, limit in (
+            ("venue", 160),
+            ("location", 200),
+            ("modeText", 200),
+            ("attendanceMode", 80),
+            ("description", 2000),
+        ):
+            raw = e.get(key)
+            if isinstance(raw, str) and raw.strip():
+                out[key] = raw.strip()[:limit]
+        # Stamp mode only with reliable evidence. online=false is not Face to Face.
+        attach_mode(out)
         return out
     except Exception:
         rejects["exception"] = rejects.get("exception", 0) + 1
