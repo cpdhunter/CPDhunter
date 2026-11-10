@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-10T06:48+08:00",
+ "updated": "2026-11-10T08:19+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -141,10 +141,16 @@
   },
   {
    "source": "HKIS CPD",
-   "status": "FAIL",
-   "ok": false,
-   "n": 0,
-   "err": "讀取網頁失敗：HTTP 403（網站封鎖咗雲端伺服器）"
+   "status": "OK_WITH_EVENTS",
+   "ok": true,
+   "n": 14,
+   "method": "generic",
+   "page_title": "THE HONG KONG INSTITUTE OF SURVEYORS :: CPD",
+   "raw_candidates": 20,
+   "rejects": {
+    "social": 1,
+    "date_range": 5
+   }
   },
   {
    "source": "HKGBC 綠建環評",
@@ -189,28 +195,17 @@
   },
   {
    "source": "ICE Upcoming Events",
-   "status": "OK_WITH_EVENTS",
-   "ok": true,
-   "n": 5,
-   "method": "ice-cards",
-   "page_title": "Latest Events at ICE | Institution of Civil Engineers (ICE)",
-   "raw_candidates": 12,
-   "rejects": {
-    "overseas_physical": 7
-   }
+   "status": "FAIL",
+   "ok": false,
+   "n": 0,
+   "err": "讀取網頁失敗：HTTP 403（網站封鎖咗雲端伺服器）"
   },
   {
    "source": "ICE Lectures",
-   "status": "VERIFIED_EMPTY",
+   "status": "FAIL",
    "ok": false,
    "n": 0,
-   "method": "ice-cards",
-   "page_title": "Lectures | Institution of Civil Engineers (ICE)",
-   "raw_candidates": 12,
-   "rejects": {
-    "date_range": 1,
-    "overseas_physical": 11
-   }
+   "err": "讀取網頁失敗：HTTP 403（網站封鎖咗雲端伺服器）"
   },
   {
    "source": "IStructE Events",
@@ -230,7 +225,7 @@
    "ok": false,
    "n": 0,
    "method": "generic",
-   "page_title": "IET events and courses search",
+   "page_title": "",
    "raw_candidates": 0,
    "rejects": {}
   },
@@ -406,12 +401,12 @@
    "group": "ICE",
    "auto": true,
    "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "mechanism": "CAPTCHA_BLOCKED",
     "destination": null,
     "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "ice_no_reg_link"
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "HIGH",
+    "discoveryMethod": "ice_cloudflare_or_403"
    }
   },
   {
@@ -448,8 +443,8 @@
    "org": "IET Hong Kong",
    "date": "2026-11-06",
    "time": "09:00-17:30",
-   "hrs": null,
-   "hrs_est": false,
+   "hrs": 8.5,
+   "hrs_est": true,
    "type": "Technical",
    "disc": [
     "General"
@@ -826,12 +821,12 @@
    "group": "HKIS",
    "auto": true,
    "registration": {
-    "mechanism": "CAPTCHA_BLOCKED",
+    "mechanism": "OTHER_PUBLIC_FORM",
     "destination": "https://www.hkis.org.hk/uploads/editor/Standard_Reservation_Form%20(2026)_r3.pdf",
-    "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "status": "OPEN",
+    "sourceUrlClass": "UNKNOWN",
     "confidence": "MEDIUM",
-    "discoveryMethod": "page_captcha_blocked"
+    "discoveryMethod": "page_scan_pdf,pos_text"
    }
   },
   {
@@ -854,12 +849,12 @@
    "group": "ICE",
    "auto": true,
    "registration": {
-    "mechanism": "EVENTBRITE",
+    "mechanism": "CAPTCHA_BLOCKED",
     "destination": "https://www.eventbrite.com/e/top-tips-for-spending-less-online-tickets-1988558868105?aff=oddtdtcreator",
-    "status": "OPEN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "ice_no_reg_link"
+    "status": "UNKNOWN",
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "HIGH",
+    "discoveryMethod": "ice_cloudflare_or_403"
    }
   },
   {
@@ -882,12 +877,12 @@
    "group": "HKIS",
    "auto": true,
    "registration": {
-    "mechanism": "CAPTCHA_BLOCKED",
+    "mechanism": "OTHER_PUBLIC_FORM",
     "destination": "https://www.hkis.org.hk/uploads/editor/Standard_Reservation_Form%20(2026).pdf",
-    "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "status": "OPEN",
+    "sourceUrlClass": "UNKNOWN",
     "confidence": "MEDIUM",
-    "discoveryMethod": "page_captcha_blocked"
+    "discoveryMethod": "page_scan_pdf,pos_text"
    }
   },
   {
@@ -910,12 +905,12 @@
    "group": "ICE",
    "auto": true,
    "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "mechanism": "CAPTCHA_BLOCKED",
     "destination": null,
     "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "ice_no_reg_link"
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "HIGH",
+    "discoveryMethod": "ice_cloudflare_or_403"
    }
   },
   {
@@ -1084,6 +1079,62 @@
    }
   },
   {
+   "id": "a0854b2694d8a",
+   "name": "[Rescheduled] “Day Tour—Discover Discovery Bay: Embrace a green community and experience a unique way of life” 【愉景灣探索一日遊 : —起走進綠色社區，感受獨特生活】",
+   "org": "HKIS CPD",
+   "date": "2026-11-10",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6782",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
+   "id": "a6f0e0c0e22b2",
+   "name": "Artificial Intelligence (AI) Empowering the Professional Evolution of Surveyors",
+   "org": "HKIS CPD",
+   "date": "2026-11-10",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6866",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "OTHER_PUBLIC_FORM",
+    "destination": "https://www.hkis.org.hk/uploads/editor/Standard_Reservation_Form%20(2026)_r3.pdf",
+    "status": "OPEN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "page_scan_pdf,pos_text"
+   }
+  },
+  {
    "id": "a36eed4399493",
    "name": "Environment and Conservation Fund Green Building Education and Capacity Building Programmes - Micro-credential Topical Course",
    "org": "HKGBC",
@@ -1131,12 +1182,12 @@
    "group": "ICE",
    "auto": true,
    "registration": {
-    "mechanism": "OTHER_PUBLIC_FORM",
+    "mechanism": "CAPTCHA_BLOCKED",
     "destination": "https://events.teams.microsoft.com/event/069a7fcf-b29f-4f70-9074-0911a0b7c1b8@114d2b23-fca7-4089-9fd7-23ab03af1a7a?source=copyLinkLegacyShareLinkDialog",
-    "status": "OPEN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "MEDIUM",
-    "discoveryMethod": "ice_page_pos_text,in_detail"
+    "status": "UNKNOWN",
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "HIGH",
+    "discoveryMethod": "ice_cloudflare_or_403"
    }
   },
   {
@@ -1159,12 +1210,12 @@
    "group": "ICE",
    "auto": true,
    "registration": {
-    "mechanism": "OTHER_PUBLIC_FORM",
+    "mechanism": "CAPTCHA_BLOCKED",
     "destination": "https://events.zoom.us/ev/AmI485NkWFIck4gFdcEUtdeltC94XGCKGVg2cYBBftyIz8Tbz8ep~An-lqS84gWOsSfFw8kphk1c-KO0686Meyhh9QAymUwQwNr2IhvgGPKKZ4Q",
-    "status": "OPEN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "MEDIUM",
-    "discoveryMethod": "ice_page_pos_text,in_detail"
+    "status": "UNKNOWN",
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "HIGH",
+    "discoveryMethod": "ice_cloudflare_or_403"
    }
   },
   {
@@ -1187,40 +1238,12 @@
    "group": "ICE",
    "auto": true,
    "registration": {
-    "mechanism": "MICROSOFT_FORMS",
-    "destination": "https://forms.office.com/e/ENhEHqRT1R",
-    "status": "OPEN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "HIGH",
-    "discoveryMethod": "ice_page_microsoft_forms,pos_text,in_detail"
-   }
-  },
-  {
-   "id": "a0854b2694d8a",
-   "name": "[Rescheduled] “Day Tour—Discover Discovery Bay: Embrace a green community and experience a unique way of life” 【愉景灣探索一日遊 : —起走進綠色社區，感受獨特生活】",
-   "org": "HKIS CPD",
-   "date": "2026-11-10",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6782",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIS CPD",
-   "group": "HKIS",
-   "auto": true,
-   "registration": {
     "mechanism": "CAPTCHA_BLOCKED",
-    "destination": null,
+    "destination": "https://forms.office.com/e/ENhEHqRT1R",
     "status": "UNKNOWN",
     "sourceUrlClass": "CAPTCHA_BLOCKED",
-    "confidence": "MEDIUM",
-    "discoveryMethod": "page_captcha_blocked"
+    "confidence": "HIGH",
+    "discoveryMethod": "ice_cloudflare_or_403"
    }
   },
   {
@@ -1513,8 +1536,8 @@
    "org": "IET Hong Kong",
    "date": "2026-11-11",
    "time": "06:45-17:00",
-   "hrs": null,
-   "hrs_est": false,
+   "hrs": 10.0,
+   "hrs_est": true,
    "type": "Technical",
    "disc": [
     "General"
@@ -1837,12 +1860,12 @@
    "group": "ICE",
    "auto": true,
    "registration": {
-    "mechanism": "EVENTBRITE",
+    "mechanism": "CAPTCHA_BLOCKED",
     "destination": "https://www.eventbrite.co.uk/e/ice-west-midlands-bewdley-flood-risk-scheme-solving-a-historic-problem-tickets-2003713096811?aff=oddtdtcreator",
-    "status": "OPEN",
-    "sourceUrlClass": "LISTING_PAGE",
+    "status": "UNKNOWN",
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
     "confidence": "HIGH",
-    "discoveryMethod": "ice_page_eventbrite,pos_text,in_detail"
+    "discoveryMethod": "ice_cloudflare_or_403"
    }
   },
   {
@@ -2082,12 +2105,12 @@
    "group": "HKIS",
    "auto": true,
    "registration": {
-    "mechanism": "CAPTCHA_BLOCKED",
+    "mechanism": "OTHER_PUBLIC_FORM",
     "destination": "https://www.hkis.org.hk/uploads/editor/CPD%E6%B4%BB%E5%8A%A8%E6%8A%A5%E5%90%8D%E6%B5%81%E7%A8%8B%E5%8F%8AZOOM%E8%AE%B2%E5%BA%A7%E6%93%8D%E4%BD%9C.pdf",
-    "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "status": "OPEN",
+    "sourceUrlClass": "UNKNOWN",
     "confidence": "MEDIUM",
-    "discoveryMethod": "page_captcha_blocked"
+    "discoveryMethod": "page_scan_pdf,pos_text"
    }
   },
   {
@@ -2338,12 +2361,12 @@
    "group": "HKIS",
    "auto": true,
    "registration": {
-    "mechanism": "CAPTCHA_BLOCKED",
+    "mechanism": "OTHER_PUBLIC_FORM",
     "destination": "https://www.hkis.org.hk/uploads/editor/Standard_Reservation_Form%20(2026)_r3.pdf",
-    "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "status": "OPEN",
+    "sourceUrlClass": "UNKNOWN",
     "confidence": "MEDIUM",
-    "discoveryMethod": "page_captcha_blocked"
+    "discoveryMethod": "page_scan_pdf,pos_text"
    }
   },
   {
@@ -2366,12 +2389,12 @@
    "group": "HKIS",
    "auto": true,
    "registration": {
-    "mechanism": "CAPTCHA_BLOCKED",
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
     "destination": null,
     "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
-    "confidence": "MEDIUM",
-    "discoveryMethod": "page_captcha_blocked"
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -2518,12 +2541,12 @@
    "group": "HKIS",
    "auto": true,
    "registration": {
-    "mechanism": "CAPTCHA_BLOCKED",
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
     "destination": null,
     "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
-    "confidence": "MEDIUM",
-    "discoveryMethod": "page_captcha_blocked"
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -3439,6 +3462,62 @@
    }
   },
   {
+   "id": "aa0549543b32f",
+   "name": "Seminar on HK GeoCode x Geospatial Intelligence",
+   "org": "HKIS CPD",
+   "date": "2026-11-28",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6889",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "OTHER_PUBLIC_FORM",
+    "destination": "https://www.hkis.org.hk/uploads/editor/Standard_Reservation_Form%20(2026)_r3.pdf",
+    "status": "OPEN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "page_scan_pdf,pos_text"
+   }
+  },
+  {
+   "id": "acd5467354121",
+   "name": "Visit to Loop at Hong Kong-Shenzhen Innovation and Technology Park (HSITP)",
+   "org": "HKIS CPD",
+   "date": "2026-11-28",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6842",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
    "id": "a582b25aebf2b",
    "name": "環境及自然保育基金資助 綠建教育與能力建設計劃 「綠色建築基礎證書課程」( 2026年11月28日及12月12日 ) (Chinese Only)",
    "org": "HKGBC",
@@ -3464,62 +3543,6 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
     "discoveryMethod": "hkgbc_detail_microsoft_forms,pos_text,in_detail"
-   }
-  },
-  {
-   "id": "aa0549543b32f",
-   "name": "Seminar on HK GeoCode x Geospatial Intelligence",
-   "org": "HKIS CPD",
-   "date": "2026-11-28",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6889",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIS CPD",
-   "group": "HKIS",
-   "auto": true,
-   "registration": {
-    "mechanism": "CAPTCHA_BLOCKED",
-    "destination": "https://www.hkis.org.hk/uploads/editor/Standard_Reservation_Form%20(2026)_r3.pdf",
-    "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
-    "confidence": "MEDIUM",
-    "discoveryMethod": "page_captcha_blocked"
-   }
-  },
-  {
-   "id": "acd5467354121",
-   "name": "Visit to Loop at Hong Kong-Shenzhen Innovation and Technology Park (HSITP)",
-   "org": "HKIS CPD",
-   "date": "2026-11-28",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6842",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIS CPD",
-   "group": "HKIS",
-   "auto": true,
-   "registration": {
-    "mechanism": "CAPTCHA_BLOCKED",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
-    "confidence": "MEDIUM",
-    "discoveryMethod": "page_captcha_blocked"
    }
   },
   {
@@ -3612,7 +3635,7 @@
    "org": "HKIE",
    "date": "2026-12-01",
    "time": "",
-   "hrs": null,
+   "hrs": 3.0,
    "hrs_est": false,
    "type": "Technical",
    "disc": [
@@ -3640,7 +3663,7 @@
    "org": "HKIE",
    "date": "2026-12-01",
    "time": "",
-   "hrs": null,
+   "hrs": 3.0,
    "hrs_est": false,
    "type": "GPM",
    "disc": [
@@ -3668,7 +3691,7 @@
    "org": "HKIE",
    "date": "2026-12-01",
    "time": "",
-   "hrs": null,
+   "hrs": 3.0,
    "hrs_est": false,
    "type": "Technical",
    "disc": [
@@ -3831,6 +3854,34 @@
    }
   },
   {
+   "id": "a95be1d232f49",
+   "name": "From Site Supervision to Smart Safety: Practical Safety Management for Building Works and Minor Works",
+   "org": "HKIS CPD",
+   "date": "2026-12-02",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6865",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
    "id": "ad42b8a88672d",
    "name": "EIHK - Certified Carbon Auditor Training Course 26th intake (2-5 Dec 2026)",
    "org": "HKGBC",
@@ -3856,34 +3907,6 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "MEDIUM",
     "discoveryMethod": "hkgbc_detail_pdf,in_detail,title_close"
-   }
-  },
-  {
-   "id": "a95be1d232f49",
-   "name": "From Site Supervision to Smart Safety: Practical Safety Management for Building Works and Minor Works",
-   "org": "HKIS CPD",
-   "date": "2026-12-02",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "H&S",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6865",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIS CPD",
-   "group": "HKIS",
-   "auto": true,
-   "registration": {
-    "mechanism": "CAPTCHA_BLOCKED",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
-    "confidence": "MEDIUM",
-    "discoveryMethod": "page_captcha_blocked"
    }
   },
   {
@@ -3975,9 +3998,9 @@
    "name": "Global BIM Coordinator Professional Training Course",
    "org": "HKIE",
    "date": "2026-12-04",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
+   "time": "09:30-18:30",
+   "hrs": 9.0,
+   "hrs_est": true,
    "type": "Technical",
    "disc": [
     "General"
@@ -3996,6 +4019,34 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "MEDIUM",
     "discoveryMethod": "page_scan_pos_text,in_detail"
+   }
+  },
+  {
+   "id": "a4b376c37e583",
+   "name": "Visit to TGT Smart Data Centre: AIoT Powering Hong Kong’s Digital Future",
+   "org": "HKIS CPD",
+   "date": "2026-12-06",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6897",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -4111,34 +4162,6 @@
    }
   },
   {
-   "id": "a30d451c38ea9",
-   "name": "5-week course: finance",
-   "org": "ICE",
-   "date": "2026-12-08",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.ice.org.uk/events/upcoming-events/5-week-course-finance-09-nov-26",
-   "region": "Overseas",
-   "online": true,
-   "free": null,
-   "source": "ICE Upcoming Events",
-   "group": "ICE",
-   "auto": true,
-   "registration": {
-    "mechanism": "EVENTBRITE",
-    "destination": "https://www.eventbrite.co.uk/e/tickets-2003143777963#tickets",
-    "status": "OPEN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "HIGH",
-    "discoveryMethod": "ice_page_eventbrite,pos_text,in_detail"
-   }
-  },
-  {
    "id": "a86a78ba9ee7d",
    "name": "AI 令建築師及測量師失業兼要 AI (捱) 世界 ?",
    "org": "HKIS CPD",
@@ -4158,19 +4181,19 @@
    "group": "HKIS",
    "auto": true,
    "registration": {
-    "mechanism": "CAPTCHA_BLOCKED",
+    "mechanism": "OTHER_PUBLIC_FORM",
     "destination": "https://www.hkis.org.hk/en/pdf/Standard_Reservation_Form_2026.pdf",
-    "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "status": "OPEN",
+    "sourceUrlClass": "UNKNOWN",
     "confidence": "MEDIUM",
-    "discoveryMethod": "page_captcha_blocked"
+    "discoveryMethod": "page_scan_pdf,pos_text"
    }
   },
   {
-   "id": "a10273c20faeb",
-   "name": "Organizational Level Greenhouse Gas Accounting and Verification – ISO 14064 Introductory and Implementation Course",
-   "org": "HKIE",
-   "date": "2026-12-09",
+   "id": "a30d451c38ea9",
+   "name": "5-week course: finance",
+   "org": "ICE",
+   "date": "2026-12-08",
    "time": "",
    "hrs": null,
    "hrs_est": false,
@@ -4178,20 +4201,20 @@
    "disc": [
     "General"
    ],
-   "url": "https://hkie.org.hk/cpd-courses/organizational-level-greenhouse-gas-accounting-and-verification-iso-14064-introductory-and-implementation-course/",
-   "region": "HK",
-   "online": null,
+   "url": "https://www.ice.org.uk/events/upcoming-events/5-week-course-finance-09-nov-26",
+   "region": "Overseas",
+   "online": true,
    "free": null,
-   "source": "HKIE CPD Calendar",
-   "group": "HKIE",
+   "source": "ICE Upcoming Events",
+   "group": "ICE",
    "auto": true,
    "registration": {
-    "mechanism": "OTHER_PUBLIC_FORM",
-    "destination": "https://learning.sgs.com/lmt/clmsCatalogDetails.prMain?in_sessionId=21844554555020&in_from_module=CLMSCOURSECALENDAR.PRMAIN&in_offeringId=185233174",
-    "status": "OPEN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "MEDIUM",
-    "discoveryMethod": "page_scan_pos_text,in_detail"
+    "mechanism": "CAPTCHA_BLOCKED",
+    "destination": "https://www.eventbrite.co.uk/e/tickets-2003143777963#tickets",
+    "status": "UNKNOWN",
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "HIGH",
+    "discoveryMethod": "ice_cloudflare_or_403"
    }
   },
   {
@@ -4223,18 +4246,18 @@
    }
   },
   {
-   "id": "ada976c21a817",
-   "name": "Sustainable Development Planning and ESG for Engineers",
+   "id": "a10273c20faeb",
+   "name": "Organizational Level Greenhouse Gas Accounting and Verification – ISO 14064 Introductory and Implementation Course",
    "org": "HKIE",
-   "date": "2026-12-11",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
+   "date": "2026-12-09",
+   "time": "09:30-17:30",
+   "hrs": 8.0,
+   "hrs_est": true,
    "type": "Technical",
    "disc": [
     "General"
    ],
-   "url": "https://hkie.org.hk/cpd-courses/sustainable-development-planning-and-esg-for-engineers-6/",
+   "url": "https://hkie.org.hk/cpd-courses/organizational-level-greenhouse-gas-accounting-and-verification-iso-14064-introductory-and-implementation-course/",
    "region": "HK",
    "online": null,
    "free": null,
@@ -4242,12 +4265,12 @@
    "group": "HKIE",
    "auto": true,
    "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
+    "mechanism": "OTHER_PUBLIC_FORM",
+    "destination": "https://learning.sgs.com/lmt/clmsCatalogDetails.prMain?in_sessionId=21844554555020&in_from_module=CLMSCOURSECALENDAR.PRMAIN&in_offeringId=185233174",
+    "status": "OPEN",
     "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
+    "confidence": "MEDIUM",
+    "discoveryMethod": "page_scan_pos_text,in_detail"
    }
   },
   {
@@ -4255,9 +4278,9 @@
    "name": "Essentials of NEC4 Engineering Construction Contract (ECC)",
    "org": "HKIE",
    "date": "2026-12-11",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
+   "time": "09:00-17:00",
+   "hrs": 8.0,
+   "hrs_est": true,
    "type": "GPM",
    "disc": [
     "General"
@@ -4339,6 +4362,34 @@
    }
   },
   {
+   "id": "ada976c21a817",
+   "name": "Sustainable Development Planning and ESG for Engineers",
+   "org": "HKIE",
+   "date": "2026-12-11",
+   "time": "13:30-17:00",
+   "hrs": 3.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/cpd-courses/sustainable-development-planning-and-esg-for-engineers-6/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE CPD Calendar",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
    "id": "ada122eb690dd",
    "name": "From Tower to Sky – Construction and Aviation Safety Experience",
    "org": "HKICM",
@@ -4374,9 +4425,9 @@
    "name": "Global BIM Manager Professional Training Course",
    "org": "HKIE",
    "date": "2026-12-14",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
+   "time": "09:30-18:30",
+   "hrs": 9.0,
+   "hrs_est": true,
    "type": "Technical",
    "disc": [
     "General"
@@ -4560,9 +4611,9 @@
    "name": "Project Management and Impactful Communication",
    "org": "HKIE",
    "date": "2026-12-18",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
+   "time": "09:30-17:00",
+   "hrs": 7.5,
+   "hrs_est": true,
    "type": "GPM",
    "disc": [
     "General"
@@ -4616,9 +4667,9 @@
    "name": "Integrated ASNT PT & MT NDT Level (1) ASNT Professional Course",
    "org": "HKIE",
    "date": "2026-12-28",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
+   "time": "09:00-17:00",
+   "hrs": 8.0,
+   "hrs_est": true,
    "type": "Technical",
    "disc": [
     "General"
@@ -4693,6 +4744,34 @@
     "sourceUrlClass": "LISTING_PAGE",
     "confidence": "LOW",
     "discoveryMethod": "labour_oshsreg_listing_no_per_event_link"
+   }
+  },
+  {
+   "id": "ae78722a328c9",
+   "name": "Making Construction Better through Installation safety & Quality Assurance",
+   "org": "HKIS CPD",
+   "date": "2027-01-11",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6895",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -4858,6 +4937,34 @@
     "sourceUrlClass": "LISTING_PAGE",
     "confidence": "LOW",
     "discoveryMethod": "labour_oshsreg_listing_no_per_event_link"
+   }
+  },
+  {
+   "id": "a1663330eedf3",
+   "name": "Visit to Christ The King Chapel (基督君王小堂)",
+   "org": "HKIS CPD",
+   "date": "2027-01-25",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6896",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   }
  ]
