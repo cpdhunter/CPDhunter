@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-10T10:43+08:00",
+ "updated": "2026-11-10T16:12+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -28,7 +28,7 @@
    "status": "OK_WITH_EVENTS",
    "ok": true,
    "n": 5,
-   "method": "labour-list",
+   "method": "labour-list+detail",
    "page_title": "勞工處 - 職業健康公開講座網上報名",
    "raw_candidates": 5,
    "rejects": {}
@@ -150,12 +150,12 @@
    "source": "HKGBC 綠建環評",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 19,
+   "n": 22,
    "method": "hkgbc",
    "page_title": "Events & Trainings | HKGBC",
    "raw_candidates": 40,
    "rejects": {
-    "date_range": 21
+    "date_range": 18
    }
   },
   {
@@ -406,7 +406,7 @@
    "group": "ICE",
    "auto": true,
    "registration": {
-    "mechanism": "CAPTCHA_BLOCKED",
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
     "destination": null,
     "status": "UNKNOWN",
     "sourceUrlClass": "LISTING_PAGE",
@@ -854,7 +854,7 @@
    "group": "ICE",
    "auto": true,
    "registration": {
-    "mechanism": "CAPTCHA_BLOCKED",
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
     "destination": "https://www.eventbrite.com/e/top-tips-for-spending-less-online-tickets-1988558868105?aff=oddtdtcreator",
     "status": "UNKNOWN",
     "sourceUrlClass": "LISTING_PAGE",
@@ -910,7 +910,7 @@
    "group": "ICE",
    "auto": true,
    "registration": {
-    "mechanism": "CAPTCHA_BLOCKED",
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
     "destination": null,
     "status": "UNKNOWN",
     "sourceUrlClass": "LISTING_PAGE",
@@ -2098,6 +2098,34 @@
    }
   },
   {
+   "id": "acb64e41d7252",
+   "name": "HKIUD - Discussion Forum at NM Fishpond",
+   "org": "HKGBC",
+   "date": "2026-11-15",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1097",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_detail_no_reg"
+   }
+  },
+  {
    "id": "a6d65524ca365",
    "name": "存量物業的綠色升級與價值提升——城市更新、運營改善與綠色金融",
    "org": "HKIS CPD",
@@ -2605,13 +2633,15 @@
    "disc": [
     "General"
    ],
-   "url": "https://www1.oshsreg.gov.hk/ocrs/talk/search.xhtml?regType=Individual",
+   "url": "https://www1.oshsreg.gov.hk/ocrs/talk/view.xhtml?selectedTalkHdr=234",
    "region": "HK",
    "online": null,
    "free": true,
    "source": "勞工處 職業健康公開講座",
    "group": "Labour Dept",
    "auto": true,
+   "venue": "香港中央圖書館演講廳 香港銅鑼灣高士威道66號 (維多利亞公園對面/ 港鐵天后站B出口)",
+   "description": "勞工處轄下的職業健康服務，每月均舉辦職業健康公開講座，以提高僱主及僱員對職業健康的認識。所有公開講座均以廣東話進行， 費用全免 。 報名形式： 個人報名： 每次可選取多個不同的公開講座，一併報名。 公司報名 ：以公司名義集體報名，每次只可選取一個公開講座，視乎場地座位而定，報名人數最多可為30名。 申請參加者姓名必須與香港身份證相同。 必須提供電郵地址。當遞交報名表後，你會收到確認電郵，你必須在 24小時內確認報名表上的電郵地址 。當你的申請被確認、取消或未能成功等，均會以電郵通知。 個人 公司",
    "registration": {
     "mechanism": "REGISTRATION_LINK_NOT_FOUND",
     "destination": null,
@@ -3859,13 +3889,15 @@
    "disc": [
     "General"
    ],
-   "url": "https://www1.oshsreg.gov.hk/ocrs/talk/search.xhtml?regType=Individual",
+   "url": "https://www1.oshsreg.gov.hk/ocrs/talk/view.xhtml?selectedTalkHdr=235",
    "region": "HK",
    "online": null,
    "free": true,
    "source": "勞工處 職業健康公開講座",
    "group": "Labour Dept",
    "auto": true,
+   "venue": "香港中央圖書館演講廳 香港銅鑼灣高士威道66號 (維多利亞公園對面/ 港鐵天后站B出口)",
+   "description": "勞工處轄下的職業健康服務，每月均舉辦職業健康公開講座，以提高僱主及僱員對職業健康的認識。所有公開講座均以廣東話進行， 費用全免 。 報名形式： 個人報名： 每次可選取多個不同的公開講座，一併報名。 公司報名 ：以公司名義集體報名，每次只可選取一個公開講座，視乎場地座位而定，報名人數最多可為30名。 申請參加者姓名必須與香港身份證相同。 必須提供電郵地址。當遞交報名表後，你會收到確認電郵，你必須在 24小時內確認報名表上的電郵地址 。當你的申請被確認、取消或未能成功等，均會以電郵通知。 個人 公司",
    "registration": {
     "mechanism": "REGISTRATION_LINK_NOT_FOUND",
     "destination": null,
@@ -4525,107 +4557,8 @@
     "mechanism": "GOOGLE_FORMS",
     "destination": "https://docs.google.com/forms/d/e/1FAIpQLSegfzOVwyPqjKskPm5iiTv3sR8UN1RkC4WNI2q9Dx_RZu4OoQ/viewform",
     "formId": "1FAIpQLSegfzOVwyPqjKskPm5iiTv3sR8UN1RkC4WNI2q9Dx_RZu4OoQ",
-    "status": "OPEN",
-    "fields": [
-     {
-      "entryId": "entry.1183364918",
-      "profileField": null,
-      "label": "Membership",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.15244053",
-      "profileField": "hkieNumber",
-      "label": "Membership No.",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1540395286",
-      "profileField": null,
-      "label": "Membership Class",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1596056943",
-      "profileField": "englishName",
-      "label": "English Full Name",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1405328043",
-      "profileField": "chineseName",
-      "label": "Chinese Name",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.2049775845",
-      "profileField": "phone",
-      "label": "Telephone / Mobile Contact",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1424028824",
-      "profileField": "email",
-      "label": "Email Address",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.91740810",
-      "profileField": "organisation",
-      "label": "Company / Institute",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.602237502",
-      "profileField": "position",
-      "label": "Position",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.973402102",
-      "profileField": null,
-      "label": "Registration Fee",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.648365312",
-      "profileField": null,
-      "label": "Venue",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.60776683",
-      "profileField": null,
-      "label": "Important Notes",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1757752833",
-      "profileField": null,
-      "label": "Undertaking",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1234603961",
-      "profileField": null,
-      "label": "Remarks",
-      "type": "PARAGRAPH",
-      "safePrefill": false
-     }
-    ],
+    "status": "CLOSED",
+    "fields": [],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
     "confidence": "HIGH",
@@ -4672,13 +4605,15 @@
    "disc": [
     "General"
    ],
-   "url": "https://www1.oshsreg.gov.hk/ocrs/talk/search.xhtml?regType=Individual",
+   "url": "https://www1.oshsreg.gov.hk/ocrs/talk/view.xhtml?selectedTalkHdr=236",
    "region": "HK",
    "online": null,
    "free": true,
    "source": "勞工處 職業健康公開講座",
    "group": "Labour Dept",
    "auto": true,
+   "venue": "勞工處粉嶺職業健康診所 講座室 新界粉嶺璧峰路2號 粉嶺健康中心7樓 (港鐵粉嶺站A1或C出口)",
+   "description": "勞工處轄下的職業健康服務，每月均舉辦職業健康公開講座，以提高僱主及僱員對職業健康的認識。所有公開講座均以廣東話進行， 費用全免 。 報名形式： 個人報名： 每次可選取多個不同的公開講座，一併報名。 公司報名 ：以公司名義集體報名，每次只可選取一個公開講座，視乎場地座位而定，報名人數最多可為30名。 申請參加者姓名必須與香港身份證相同。 必須提供電郵地址。當遞交報名表後，你會收到確認電郵，你必須在 24小時內確認報名表上的電郵地址 。當你的申請被確認、取消或未能成功等，均會以電郵通知。 個人 公司",
    "registration": {
     "mechanism": "REGISTRATION_LINK_NOT_FOUND",
     "destination": null,
@@ -4756,13 +4691,15 @@
    "disc": [
     "General"
    ],
-   "url": "https://www1.oshsreg.gov.hk/ocrs/talk/search.xhtml?regType=Individual",
+   "url": "https://www1.oshsreg.gov.hk/ocrs/talk/view.xhtml?selectedTalkHdr=237",
    "region": "HK",
    "online": null,
    "free": true,
    "source": "勞工處 職業健康公開講座",
    "group": "Labour Dept",
    "auto": true,
+   "venue": "香港太空館演講廳 九龍尖沙咀梳士巴利道10號 (港鐵尖沙咀站E出口)",
+   "description": "勞工處轄下的職業健康服務，每月均舉辦職業健康公開講座，以提高僱主及僱員對職業健康的認識。所有公開講座均以廣東話進行， 費用全免 。 報名形式： 個人報名： 每次可選取多個不同的公開講座，一併報名。 公司報名 ：以公司名義集體報名，每次只可選取一個公開講座，視乎場地座位而定，報名人數最多可為30名。 申請參加者姓名必須與香港身份證相同。 必須提供電郵地址。當遞交報名表後，你會收到確認電郵，你必須在 24小時內確認報名表上的電郵地址 。當你的申請被確認、取消或未能成功等，均會以電郵通知。 個人 公司",
    "registration": {
     "mechanism": "REGISTRATION_LINK_NOT_FOUND",
     "destination": null,
@@ -4949,13 +4886,15 @@
    "disc": [
     "General"
    ],
-   "url": "https://www1.oshsreg.gov.hk/ocrs/talk/search.xhtml?regType=Individual",
+   "url": "https://www1.oshsreg.gov.hk/ocrs/talk/view.xhtml?selectedTalkHdr=238",
    "region": "HK",
    "online": null,
    "free": true,
    "source": "勞工處 職業健康公開講座",
    "group": "Labour Dept",
    "auto": true,
+   "venue": "香港中央圖書館演講廳 香港銅鑼灣高士威道66號 (維多利亞公園對面/ 港鐵天后站B出口)",
+   "description": "勞工處轄下的職業健康服務，每月均舉辦職業健康公開講座，以提高僱主及僱員對職業健康的認識。所有公開講座均以廣東話進行， 費用全免 。 報名形式： 個人報名： 每次可選取多個不同的公開講座，一併報名。 公司報名 ：以公司名義集體報名，每次只可選取一個公開講座，視乎場地座位而定，報名人數最多可為30名。 申請參加者姓名必須與香港身份證相同。 必須提供電郵地址。當遞交報名表後，你會收到確認電郵，你必須在 24小時內確認報名表上的電郵地址 。當你的申請被確認、取消或未能成功等，均會以電郵通知。 個人 公司",
    "registration": {
     "mechanism": "REGISTRATION_LINK_NOT_FOUND",
     "destination": null,
@@ -4991,6 +4930,62 @@
     "sourceUrlClass": "CAPTCHA_BLOCKED",
     "confidence": "MEDIUM",
     "discoveryMethod": "page_captcha_blocked"
+   }
+  },
+  {
+   "id": "a8238b916ed80",
+   "name": "CSXC - CapitaLand Sustainability X Challenge 5th Edition [Registration Deadline: 31 Jan 2027]",
+   "org": "HKGBC",
+   "date": "2027-01-31",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1098",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_detail_no_reg"
+   }
+  },
+  {
+   "id": "af35a2dec0c9b",
+   "name": "ARHC - ARHC 2027 (17-19 Mar 2027)",
+   "org": "HKGBC",
+   "date": "2027-03-17",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1096",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_detail_no_reg"
    }
   }
  ]
