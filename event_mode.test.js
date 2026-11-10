@@ -32,26 +32,36 @@ const cases = [
   [{}, "UNKNOWN"],
   [{ venue: "Hong Kong" }, "UNKNOWN"],
   [{ venue: "銅鑼灣" }, "UNKNOWN"],
+  // Frontend must not infer FACE_TO_FACE from a listing/raw venue.
   [
     {
       venue: "香港中央圖書館演講廳 香港銅鑼灣高士威道66號 (維多利亞公園對面/港鐵天后站B出口)"
     },
-    "FACE_TO_FACE"
+    "UNKNOWN"
   ],
   [
     {
       venue:
         "Hong Kong Metropolitan University, Lecture Room E0311, 3/F, Block E"
     },
-    "FACE_TO_FACE"
+    "UNKNOWN"
   ],
-  [{ venue: "Hong Kong Convention Centre" }, "FACE_TO_FACE"],
+  [{ venue: "Hong Kong Convention Centre" }, "UNKNOWN"],
+  // Zoom keyword still applies; listing address does not create HYBRID in the frontend.
   [
     {
       venue: "香港中央圖書館演講廳 香港銅鑼灣高士威道66號",
       description: "Also available on Zoom webinar"
     },
-    "HYBRID"
+    "ONLINE"
+  ],
+  // Scraper-stamped mode is honoured.
+  [
+    {
+      mode: "FACE_TO_FACE",
+      venue: "香港中央圖書館演講廳 香港銅鑼灣高士威道66號"
+    },
+    "FACE_TO_FACE"
   ]
 ];
 
@@ -107,16 +117,9 @@ assert.equal(
   M.inferMode({
     venue: "香港中央圖書館演講廳 香港銅鑼灣高士威道66號"
   }).reason,
-  "physical_address_no_online"
+  "insufficient_evidence"
 );
 
-assert(!M.hasPhysicalAddress({ venue: "Kowloon Bay" }));
-assert(!M.hasPhysicalAddress({ venue: "HKIE HQ" }));
-assert(!M.hasPhysicalAddress({ online: false }));
-assert(
-  M.hasPhysicalAddress({
-    venue: "香港太空館演講廳 九龍尖沙咀梳士巴利道10號"
-  })
-);
+assert.equal(typeof M.hasPhysicalAddress, "undefined");
 
 console.log("event_mode tests PASS");

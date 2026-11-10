@@ -104,26 +104,27 @@ describe('event-mode UX integration', () => {
     assert.equal(M.modeOf({ venue: 'HKIE HQ' }), 'UNKNOWN');
     assert.equal(M.modeOf({ venue: 'Hong Kong' }), 'UNKNOWN');
   });
-  it('7b. physical address without online evidence is FACE_TO_FACE', () => {
-    assert.equal(M.modeOf({ venue: 'Hong Kong Convention Centre' }), 'FACE_TO_FACE');
+  it('7b. listing or raw physical venue is not classified by the frontend', () => {
+    assert.equal(M.modeOf({ venue: 'Hong Kong Convention Centre' }), 'UNKNOWN');
     assert.equal(
       M.modeOf({
         venue: '香港中央圖書館演講廳 香港銅鑼灣高士威道66號'
       }),
-      'FACE_TO_FACE'
-    );
-    assert.equal(
-      M.inferMode({
-        venue: '香港中央圖書館演講廳 香港銅鑼灣高士威道66號'
-      }).reason,
-      'physical_address_no_online'
+      'UNKNOWN'
     );
     assert.equal(
       M.modeOf({
         venue: '香港中央圖書館演講廳 香港銅鑼灣高士威道66號',
         description: 'Also available on Zoom webinar'
       }),
-      'HYBRID'
+      'ONLINE'
+    );
+    assert.equal(
+      M.modeOf({
+        mode: 'FACE_TO_FACE',
+        venue: '香港中央圖書館演講廳 香港銅鑼灣高士威道66號'
+      }),
+      'FACE_TO_FACE'
     );
   });
   it('8. Zoom becomes ONLINE', () => {
@@ -312,12 +313,10 @@ describe('event-mode UX integration', () => {
     assert.ok(future.length > 0);
     assert.equal(Object.values(counts).reduce((a, b) => a + b, 0), future.length);
     future.forEach((e) => {
-      if (e.online === false) {
+      if (e.online === false && !e.mode) {
         const sample = { online: false, venue: e.venue, name: 'x' };
-        // online=false alone is not Face to Face; a real physical address may be.
-        if (!M.hasPhysicalAddress(sample)) {
-          assert.notEqual(M.modeOf(sample), 'FACE_TO_FACE');
-        }
+        // Frontend does not infer FACE_TO_FACE from online=false or a listing venue.
+        assert.notEqual(M.modeOf(sample), 'FACE_TO_FACE');
       }
     });
   });

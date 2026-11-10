@@ -20,10 +20,12 @@ from title_quality import (
 from event_mode import attach_mode, mode_of
 from fetch import (
     clean,
+    enrich_labour_talk_details,
     extract_cic,
     extract_hkgbc,
     extract_hkie_cpd,
     extract_labour,
+    parse_labour_talk_detail,
     generic_extract,
     hours_from_range,
     parse_time_range,
@@ -167,11 +169,42 @@ def test_labour_parser():
         assert "高士威道" not in title, e
         assert "演講廳" not in title, e
         assert "66號" not in title, e
+        # Listing venue alone must not classify the event (test 10)
         stamped = dict(e)
         attach_mode(stamped)
-        assert stamped.get("mode") == "FACE_TO_FACE", stamped
-        assert mode_of(e) == "FACE_TO_FACE", e
+        assert stamped.get("mode") != "FACE_TO_FACE", stamped
+        assert mode_of(e) != "FACE_TO_FACE", e
     print("labour parser OK", len(raw), raw[0])
+
+
+def test_labour_detail_mode():
+    html = open(os.path.join(FIX, "labour/talk_detail_234.html"), encoding="utf-8").read()
+    detail = parse_labour_talk_detail(html)
+    assert "中央圖書館演講廳" in (detail.get("venue") or ""), detail
+    # Registration chrome must not be treated as an online joining option
+    assert "網上報名" not in (detail.get("description") or "")
+    soup = _soup("labour/talks.html")
+    raw = extract_labour(soup, "https://www1.oshsreg.gov.hk/ocrs/talk/search.xhtml")
+    fixtures = {
+        "https://www1.oshsreg.gov.hk/ocrs/talk/view.xhtml?selectedTalkHdr=234": html,
+    }
+    enriched = enrich_labour_talk_details(raw, lambda u: fixtures.get(u))
+    first = next(e for e in enriched if "selectedTalkHdr=234" in (e.get("url") or ""))
+    assert first.get("venueSource") == "event_detail", first
+    assert first.get("mode") == "FACE_TO_FACE", first
+    # Other listing talks have no detail html in this map — remain unclassified
+    others = [e for e in enriched if "selectedTalkHdr=234" not in (e.get("url") or "")]
+    assert others, enriched
+    assert all(e.get("mode") != "FACE_TO_FACE" for e in others), others
+    hybrid_html = open(
+        os.path.join(FIX, "labour/talk_detail_234_hybrid_zoom.html"), encoding="utf-8"
+    ).read()
+    hybrid = enrich_labour_talk_details(
+        [dict(raw[0])],
+        lambda u: hybrid_html,
+    )
+    assert hybrid[0].get("mode") == "HYBRID", hybrid[0]
+    print("labour detail mode OK", first.get("mode"), hybrid[0].get("mode"))
 
 
 def test_cic_parser():
@@ -344,6 +377,7 @@ if __name__ == "__main__":
     test_hkgbc_parser()
     test_hkgbc_og_fallback()
     test_labour_parser()
+    test_labour_detail_mode()
     test_cic_parser()
     test_hkie_cpd_parser()
     test_generic_cic_uk()

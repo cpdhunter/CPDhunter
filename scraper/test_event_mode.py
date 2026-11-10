@@ -1,7 +1,20 @@
-"""Conservative event-mode classification — mirrors event_mode.js rules."""
+"""Conservative event-mode classification — scraper rules, detail-page physical venue."""
 import unittest
 
-from event_mode import infer_mode, mode_of, attach_mode, has_physical_address, MODE_UNKNOWN
+from event_mode import (
+    infer_mode,
+    mode_of,
+    attach_mode,
+    has_physical_address,
+    from_event_detail,
+    MODE_UNKNOWN,
+)
+
+LABOUR_DETAIL_VENUE = "香港中央圖書館演講廳"
+LABOUR_LISTING_VENUE = (
+    "香港中央圖書館演講廳 香港銅鑼灣高士威道66號 (維多利亞公園對面/港鐵天后站B出口)"
+)
+DETAIL = {"venueSource": "event_detail"}
 
 
 class EventModeTests(unittest.TestCase):
@@ -40,43 +53,96 @@ class EventModeTests(unittest.TestCase):
         attach_mode(ev2)
         self.assertEqual(ev2["mode"], "ONLINE")
 
-    def test_does_not_infer_face_from_district_or_org(self):
-        self.assertEqual(mode_of({"venue": "Kowloon Bay"}), "UNKNOWN")
-        self.assertEqual(mode_of({"venue": "銅鑼灣"}), "UNKNOWN")
-        self.assertEqual(mode_of({"venue": "Hong Kong"}), "UNKNOWN")
-        self.assertEqual(mode_of({"org": "HKIE", "source": "HKIE Events"}), "UNKNOWN")
-        self.assertEqual(mode_of({"online": False, "name": "Annual Seminar"}), "UNKNOWN")
-        self.assertFalse(has_physical_address({"venue": "HKIE HQ"}))
-        self.assertFalse(has_physical_address({"online": False}))
+    def test_01_detail_physical_venue_no_online_is_face_to_face(self):
+        ev = {"venue": LABOUR_DETAIL_VENUE, **DETAIL}
+        self.assertEqual(mode_of(ev), "FACE_TO_FACE")
+        self.assertEqual(infer_mode(ev)["reason"], "physical_address_no_online")
+        stamped = {"venue": LABOUR_DETAIL_VENUE, **DETAIL}
+        attach_mode(stamped)
+        self.assertEqual(stamped["mode"], "FACE_TO_FACE")
 
-    def test_physical_address_without_online_is_face_to_face(self):
-        labour = {
-            "venue": "香港中央圖書館演講廳 香港銅鑼灣高士威道66號 (維多利亞公園對面/港鐵天后站B出口)"
-        }
-        self.assertEqual(mode_of(labour), "FACE_TO_FACE")
-        self.assertEqual(infer_mode(labour)["reason"], "physical_address_no_online")
+    def test_02_detail_physical_venue_plus_zoom_is_hybrid(self):
         self.assertEqual(
             mode_of({
-                "venue": "Hong Kong Metropolitan University, Lecture Room E0311, 3/F, Block E"
-            }),
-            "FACE_TO_FACE",
-        )
-        self.assertEqual(mode_of({"venue": "Hong Kong Convention Centre"}), "FACE_TO_FACE")
-        ev = {
-            "title": "體力處理操作及預防背部勞損",
-            "venue": "勞工處粉嶺職業健康診所 講座室 新界粉嶺璧峰路2號 粉嶺健康中心7樓",
-        }
-        attach_mode(ev)
-        self.assertEqual(ev["mode"], "FACE_TO_FACE")
-
-    def test_online_plus_physical_address_is_hybrid(self):
-        self.assertEqual(
-            mode_of({
-                "venue": "香港中央圖書館演講廳 香港銅鑼灣高士威道66號",
-                "description": "Also available on Zoom webinar",
+                "venue": LABOUR_DETAIL_VENUE,
+                "description": "Also available on Zoom",
+                **DETAIL,
             }),
             "HYBRID",
         )
+
+    def test_03_detail_physical_venue_plus_teams_is_hybrid(self):
+        self.assertEqual(
+            mode_of({
+                "venue": LABOUR_DETAIL_VENUE,
+                "description": "Join on Microsoft Teams",
+                **DETAIL,
+            }),
+            "HYBRID",
+        )
+
+    def test_04_detail_address_plus_word_online_is_hybrid(self):
+        self.assertEqual(
+            mode_of({
+                "venue": "香港中央圖書館演講廳 香港銅鑼灣高士威道66號",
+                "description": "Online attendance is also offered",
+                **DETAIL,
+            }),
+            "HYBRID",
+        )
+
+    def test_05_organisation_name_only_is_unknown(self):
+        self.assertEqual(mode_of({"venue": "HKIE"}), "UNKNOWN")
+        self.assertEqual(mode_of({"venue": "HKIE HQ", **DETAIL}), "UNKNOWN")
+        self.assertEqual(mode_of({"org": "OSHC", "source": "OSHC Seminars & Conferences"}), "UNKNOWN")
+        self.assertFalse(has_physical_address({"venue": "CIC"}))
+
+    def test_06_district_only_is_unknown(self):
+        self.assertEqual(mode_of({"venue": "Kowloon Bay"}), "UNKNOWN")
+        self.assertEqual(mode_of({"venue": "銅鑼灣", **DETAIL}), "UNKNOWN")
+        self.assertEqual(mode_of({"venue": "Hong Kong", **DETAIL}), "UNKNOWN")
+
+    def test_07_online_false_only_is_unknown(self):
+        self.assertEqual(mode_of({"online": False}), "UNKNOWN")
+        self.assertEqual(mode_of({"online": False, "name": "Annual Seminar"}), "UNKNOWN")
+        self.assertEqual(infer_mode({"online": False})["reason"], "legacy_false_insufficient")
+
+    def test_08_explicit_webinar_no_address_is_online(self):
+        self.assertEqual(mode_of({"name": "Safety webinar"}), "ONLINE")
+
+    def test_09_explicit_face_to_face_is_face_to_face(self):
+        self.assertEqual(mode_of({"description": "Face-to-face workshop"}), "FACE_TO_FACE")
+
+    def test_10_listing_page_address_must_not_classify(self):
+        listing = {"venue": LABOUR_LISTING_VENUE}
+        self.assertEqual(mode_of(listing), "UNKNOWN")
+        self.assertFalse(from_event_detail(listing))
+        attached = dict(listing)
+        attach_mode(attached)
+        self.assertNotIn("mode", attached)
+        # CIPHE-style calendar listing venue must not stamp FACE_TO_FACE
+        ciphe = {
+            "venue": "Hong Kong Metropolitan University, Lecture Room E0311, 3/F, Block E, Jockey Club Campus, 81 Chung Hau Street, Ho Man Tin, Kowloon"
+        }
+        self.assertEqual(mode_of(ciphe), "UNKNOWN")
+        self.assertEqual(mode_of({"venue": "Hong Kong Convention Centre"}), "UNKNOWN")
+
+    def test_11_event_detail_labelled_venue_and_address_is_face_to_face(self):
+        ev = {
+            "venue": "香港中央圖書館演講廳 香港銅鑼灣高士威道66號",
+            "modeText": "講座地點 香港中央圖書館演講廳",
+            **DETAIL,
+        }
+        self.assertEqual(mode_of(ev), "FACE_TO_FACE")
+        self.assertTrue(from_event_detail(ev))
+
+    def test_12_event_detail_venue_plus_online_option_is_hybrid(self):
+        ev = {
+            "venue": LABOUR_DETAIL_VENUE,
+            "description": "This talk is also a webinar",
+            **DETAIL,
+        }
+        self.assertEqual(mode_of(ev), "HYBRID")
 
 
 if __name__ == "__main__":
