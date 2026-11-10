@@ -351,6 +351,14 @@ def extract_hkie_cpd(soup, base):
     return uniq[:40]
 
 
+def _labour_venue_line(ln):
+    return bool(re.search(r"圖書館|演講廳|講座室|診所|太空館|港鐵|銅鑼灣|尖沙咀|粉嶺|中央", ln or ""))
+
+
+def _clean_labour_venue(text):
+    return re.sub(r"\s+", " ", (text or "").replace("\xa0", " ")).strip()
+
+
 def extract_labour(soup, base):
     """Parse Labour OSH talk datatable rows: date/time/topic from SAME row."""
     out = []
@@ -366,6 +374,7 @@ def extract_labour(soup, base):
         date_s = None
         time_s = None
         title_parts = []
+        venue_parts = []
         venue_started = False
         for ln in lines:
             if ln in ("現正接受報名", "報名", "講座題目", "講座地點", "Accepting registration"):
@@ -379,9 +388,10 @@ def extract_labour(soup, base):
             if is_time_only_title(ln) or parse_time_range(ln) or is_date_only_title(ln):
                 continue
             # Venue heuristics — stop collecting title once venue-like line appears
-            if re.search(r"圖書館|演講廳|講座室|診所|太空館|港鐵|銅鑼灣|尖沙咀|粉嶺|中央", ln):
+            if _labour_venue_line(ln):
                 venue_started = True
             if venue_started:
+                venue_parts.append(ln)
                 continue
             if parse_date(ln):
                 continue
@@ -389,9 +399,12 @@ def extract_labour(soup, base):
         if not date_s:
             continue
         title = re.sub(r"\s+", " ", " ".join(title_parts)).strip()
-        # Prefer structured topic nodes when present
-        for sel in [".courseAndTalkContent", ".talkTitle", ".title", "td"]:
-            pass
+        # Prefer structured topic link text when present (keeps venue out of title)
+        link = tr.select_one("a[href*='view.xhtml'], a.spinner-trigger[href]")
+        if link:
+            link_title = re.sub(r"\s+", " ", link.get_text(" ", strip=True)).strip()
+            if link_title and not is_time_only_title(link_title) and not is_date_only_title(link_title) and len(link_title) >= 4:
+                title = link_title
         if not title or is_time_only_title(title) or is_date_only_title(title) or is_filter_or_badge_title(title):
             continue
         if len(title) < 4:
@@ -399,11 +412,21 @@ def extract_labour(soup, base):
         d = parse_date(date_s)
         if not d:
             continue
-        ev = {"title": title, "date": d, "url": base, "organizer": "Labour Dept"}
+        url = base
+        if link and link.get("href"):
+            url = urljoin(base, link["href"])
+        ev = {"title": title, "date": d, "url": url, "organizer": "Labour Dept"}
+        venue_el = tr.select_one(".talkVenue")
+        if venue_el:
+            venue = _clean_labour_venue(venue_el.get_text(" ", strip=True))
+        else:
+            venue = _clean_labour_venue(" ".join(venue_parts))
+        if venue:
+            ev["venue"] = venue
         if time_s:
-            tr = parse_time_range(time_s)
-            if tr:
-                ev["start_time"], ev["end_time"] = tr
+            times = parse_time_range(time_s)
+            if times:
+                ev["start_time"], ev["end_time"] = times
         out.append(ev)
     # Fallback: line-scan but NEVER accept time-only as title; stay within block
     if not out:
@@ -416,6 +439,7 @@ def extract_labour(soup, base):
                 continue
             time_s = None
             title_parts = []
+            venue = ""
             j = i + 1
             while j < len(lines) and j < i + 10:
                 ln = lines[j].strip()
@@ -429,7 +453,19 @@ def extract_labour(soup, base):
                 if ln in ("現正接受報名", "報名"):
                     j += 1
                     break
-                if re.search(r"圖書館|演講廳|講座室|診所|太空館|港鐵", ln):
+                if _labour_venue_line(ln):
+                    venue_parts = [ln]
+                    j += 1
+                    while j < len(lines) and j < i + 20:
+                        ln2 = lines[j].strip()
+                        if parse_date(ln2) and j > i + 1:
+                            break
+                        if ln2 in ("現正接受報名", "報名"):
+                            break
+                        if ln2:
+                            venue_parts.append(ln2)
+                        j += 1
+                    venue = _clean_labour_venue(" ".join(venue_parts))
                     break
                 if ln and not is_date_only_title(ln):
                     title_parts.append(ln)
@@ -437,10 +473,12 @@ def extract_labour(soup, base):
             title = re.sub(r"\s+", " ", " ".join(title_parts)).strip()
             if title and not is_time_only_title(title) and len(title) >= 4:
                 ev = {"title": title, "date": d, "url": base, "organizer": "Labour Dept"}
+                if venue:
+                    ev["venue"] = venue
                 if time_s:
-                    tr = parse_time_range(time_s)
-                    if tr:
-                        ev["start_time"], ev["end_time"] = tr
+                    times = parse_time_range(time_s)
+                    if times:
+                        ev["start_time"], ev["end_time"] = times
                 out.append(ev)
             i = j if j > i + 1 else i + 1
     seen = set()
