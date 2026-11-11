@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-11T06:45+08:00",
+ "updated": "2026-11-12T06:54+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -15,10 +15,10 @@
    "source": "OSHC Seminars & Conferences",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 10,
+   "n": 11,
    "method": "oshc-table",
    "page_title": "Seminars & Conferences",
-   "raw_candidates": 583,
+   "raw_candidates": 584,
    "rejects": {
     "date_range": 573
    }
@@ -101,12 +101,12 @@
    "source": "HKIE Events",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 18,
+   "n": 17,
    "method": "playwright+generic",
    "page_title": "Events - HKIE",
    "raw_candidates": 20,
    "rejects": {
-    "date_range": 2
+    "date_range": 3
    }
   },
   {
@@ -152,12 +152,12 @@
    "source": "HKGBC 綠建環評",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 22,
+   "n": 24,
    "method": "hkgbc",
    "page_title": "Events & Trainings | HKGBC",
    "raw_candidates": 40,
    "rejects": {
-    "date_range": 18
+    "date_range": 16
    }
   },
   {
@@ -169,14 +169,14 @@
   },
   {
    "source": "CIPHE Hong Kong Events",
-   "status": "OK_WITH_EVENTS",
-   "ok": true,
-   "n": 1,
+   "status": "VERIFIED_EMPTY",
+   "ok": false,
+   "n": 0,
    "method": "ciphe",
    "page_title": "CIPHE",
    "raw_candidates": 26,
    "rejects": {
-    "date_range": 25
+    "date_range": 26
    }
   },
   {
@@ -193,13 +193,12 @@
    "source": "ICE Upcoming Events",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 3,
+   "n": 4,
    "method": "ice-cards",
    "page_title": "Latest Events at ICE | Institution of Civil Engineers (ICE)",
    "raw_candidates": 12,
    "rejects": {
-    "overseas_physical": 8,
-    "date_range": 1
+    "overseas_physical": 8
    }
   },
   {
@@ -239,12 +238,12 @@
   },
   {
    "source": "CIC (UK) Events",
-   "status": "OK_WITH_EVENTS",
-   "ok": true,
-   "n": 1,
+   "status": "EMPTY_UNVERIFIED",
+   "ok": false,
+   "n": 0,
    "method": "generic",
    "page_title": "Events | Construction Industry Council",
-   "raw_candidates": 1,
+   "raw_candidates": 0,
    "rejects": {}
   },
   {
@@ -1148,9 +1147,9 @@
    "auto": true,
    "mode": "ONLINE",
    "registration": {
-    "mechanism": "OTHER_PUBLIC_FORM",
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
     "destination": "https://events.teams.microsoft.com/event/069a7fcf-b29f-4f70-9074-0911a0b7c1b8@114d2b23-fca7-4089-9fd7-23ab03af1a7a?source=copyLinkLegacyShareLinkDialog",
-    "status": "OPEN",
+    "status": "UNKNOWN",
     "sourceUrlClass": "LISTING_PAGE",
     "confidence": "LOW",
     "discoveryMethod": "ice_no_reg_link"
@@ -1177,9 +1176,9 @@
    "auto": true,
    "mode": "ONLINE",
    "registration": {
-    "mechanism": "OTHER_PUBLIC_FORM",
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
     "destination": "https://events.zoom.us/ev/AmI485NkWFIck4gFdcEUtdeltC94XGCKGVg2cYBBftyIz8Tbz8ep~An-lqS84gWOsSfFw8kphk1c-KO0686Meyhh9QAymUwQwNr2IhvgGPKKZ4Q",
-    "status": "OPEN",
+    "status": "UNKNOWN",
     "sourceUrlClass": "LISTING_PAGE",
     "confidence": "LOW",
     "discoveryMethod": "ice_no_reg_link"
@@ -1206,9 +1205,9 @@
    "auto": true,
    "mode": "ONLINE",
    "registration": {
-    "mechanism": "MICROSOFT_FORMS",
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
     "destination": "https://forms.office.com/e/ENhEHqRT1R",
-    "status": "OPEN",
+    "status": "UNKNOWN",
     "sourceUrlClass": "LISTING_PAGE",
     "confidence": "LOW",
     "discoveryMethod": "ice_no_reg_link"
@@ -1881,7 +1880,7 @@
    "url": "https://www.ice.org.uk/events/upcoming-events/bewdley-flood-risk-scheme",
    "region": "Overseas",
    "online": true,
-   "free": true,
+   "free": null,
    "source": "ICE Upcoming Events",
    "group": "ICE",
    "auto": true,
@@ -1951,6 +1950,35 @@
     "sourceUrlClass": "LISTING_PAGE",
     "confidence": "HIGH",
     "discoveryMethod": "ice_page_microsoft_forms,pos_text,in_detail"
+   }
+  },
+  {
+   "id": "a66cc9e8ce64a",
+   "name": "Infrastructure engineer – start your journey",
+   "org": "ICE",
+   "date": "2026-11-13",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.ice.org.uk/events/professional-qualification-training/infrastructure-engineer-start-your-journey-13-nov-26",
+   "region": "Overseas",
+   "online": true,
+   "free": true,
+   "source": "ICE Upcoming Events",
+   "group": "ICE",
+   "auto": true,
+   "mode": "ONLINE",
+   "registration": {
+    "mechanism": "OTHER_PUBLIC_FORM",
+    "destination": "https://events.teams.microsoft.com/event/cf38f95c-c73f-45a9-8034-6b5c345d5780@114d2b23-fca7-4089-9fd7-23ab03af1a7a?source=copyLinkLegacyShareLinkDialog",
+    "status": "OPEN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "ice_page_pos_text,in_detail"
    }
   },
   {
@@ -2039,10 +2067,7 @@
     "sourceUrlClass": "UNKNOWN",
     "confidence": "LOW",
     "discoveryMethod": "page_no_candidate"
-   },
-   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
-   "venueSource": "event_detail",
-   "mode": "FACE_TO_FACE"
+   }
   },
   {
    "id": "a7f35abcd1fe7",
@@ -2548,6 +2573,87 @@
    }
   },
   {
+   "id": "a61aea65202a8",
+   "name": "Technical Seminar: Enhancing River Biodiversity by Nature-based Solutions",
+   "org": "HKIE Events",
+   "date": "2026-11-17",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6af41b361f1d426669c4579d/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSdO6nHPipAk2FO2NU_rlM4cGts1xhaj6tNwfVyOL2rFqidlKw/viewform",
+    "formId": "1FAIpQLSdO6nHPipAk2FO2NU_rlM4cGts1xhaj6tNwfVyOL2rFqidlKw",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.877086558",
+      "profileField": null,
+      "label": "Surname",
+      "type": "PARAGRAPH",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1633070132",
+      "profileField": null,
+      "label": "First Name",
+      "type": "PARAGRAPH",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1498135098",
+      "profileField": "email",
+      "label": "Email",
+      "type": "PARAGRAPH",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1424661284",
+      "profileField": "organisation",
+      "label": "Organization",
+      "type": "PARAGRAPH",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.2606285",
+      "profileField": null,
+      "label": "Membership",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.253460959",
+      "profileField": null,
+      "label": "Membership Grade",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.990121559",
+      "profileField": null,
+      "label": "Would you attend in person or online?",
+      "type": "RADIO",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   }
+  },
+  {
    "id": "a8599f0e5b478",
    "name": "Curtain Wall Inspection Methodology",
    "org": "HKIS CPD",
@@ -2933,6 +3039,34 @@
    }
   },
   {
+   "id": "a89bbe0bfcd00",
+   "name": "Technical Seminar - From Emergency Response to Safety Resilience: Managing Climate-Related OH&S Risks through ISO/PAS 45007:2026",
+   "org": "HKIE Events",
+   "date": "2026-11-20",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6af3c44d1f1d426669c43343/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_no_reg_link"
+   }
+  },
+  {
    "id": "ad82ca8cdd568",
    "name": "Six Sigma Green Belt Training – Day 3 (of 4)",
    "org": "TQM Consultants",
@@ -3018,10 +3152,7 @@
     "sourceUrlClass": "UNKNOWN",
     "confidence": "LOW",
     "discoveryMethod": "page_no_candidate"
-   },
-   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
-   "venueSource": "event_detail",
-   "mode": "FACE_TO_FACE"
+   }
   },
   {
    "id": "a1621fbbd960d",
@@ -3682,7 +3813,7 @@
     "status": "UNKNOWN",
     "sourceUrlClass": "LISTING_PAGE",
     "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
+    "discoveryMethod": "http_404"
    }
   },
   {
@@ -3767,6 +3898,34 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "LOW",
     "discoveryMethod": "hkgbc_detail_no_reg"
+   }
+  },
+  {
+   "id": "a039b185e9402",
+   "name": "BEC - BEC EnviroSeries Conference Nov 2026",
+   "org": "HKGBC",
+   "date": "2026-11-27",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1101",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_ambiguous_date_match"
    }
   },
   {
@@ -3855,10 +4014,7 @@
     "sourceUrlClass": "UNKNOWN",
     "confidence": "LOW",
     "discoveryMethod": "page_no_candidate"
-   },
-   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
-   "venueSource": "event_detail",
-   "mode": "FACE_TO_FACE"
+   }
   },
   {
    "id": "a582b25aebf2b",
@@ -4910,10 +5066,7 @@
     "sourceUrlClass": "UNKNOWN",
     "confidence": "LOW",
     "discoveryMethod": "page_no_candidate"
-   },
-   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
-   "venueSource": "event_detail",
-   "mode": "FACE_TO_FACE"
+   }
   },
   {
    "id": "ada122eb690dd",
@@ -5028,7 +5181,7 @@
     "status": "UNKNOWN",
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "LOW",
-    "discoveryMethod": "hkgbc_no_detail_for_date"
+    "discoveryMethod": "hkgbc_detail_no_reg"
    }
   },
   {
