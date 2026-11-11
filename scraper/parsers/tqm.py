@@ -245,6 +245,14 @@ def parse_tqm_course_detail(html: str) -> Dict[str, Any]:
     description = visible
     if title and description.startswith(title):
         description = _clean(description[len(title) :])
+    # Optional labelled Venue / Mode / Registration fields (live TQM pages
+    # currently omit these labels; synthetic fixtures cover the distinction).
+    from event_mode import parse_labelled_fields  # type: ignore
+
+    labelled = parse_labelled_fields(visible, description)
+    labelled_venue = _clean(labelled.get("venue") or "")
+    if not venue and labelled_venue and _looks_like_header_venue(labelled_venue):
+        venue = labelled_venue
     return {
         "title": title,
         "venue": venue,
@@ -253,6 +261,8 @@ def parse_tqm_course_detail(html: str) -> Dict[str, Any]:
         "price": price_s,
         "description": description[:2000],
         "registration_destination": enroll,
+        "modeText": _clean(labelled.get("mode") or ""),
+        "registrationText": _clean(labelled.get("registration") or ""),
     }
 
 
@@ -297,6 +307,7 @@ def enrich_tqm_course_details(
             "venue": detail_venue or None,
             "description": desc or None,
             "venueSource": "event_detail" if detail_venue else "",
+            "modeText": (detail.get("modeText") or "").strip() or None,
         }
         inferred = infer_mode(evidence)
         if inferred["mode"] != MODE_UNKNOWN:

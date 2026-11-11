@@ -230,6 +230,38 @@ def test_public_source_url_scope():
     print("public source URL scope OK")
 
 
+def test_labelled_mode_online_registration_is_face_to_face():
+    """Synthetic TQM-like page: Mode Face to Face + Online Registration stays FACE_TO_FACE."""
+    ev = {
+        "title": "Six Sigma Green Belt Training – Day 2 (of 4)",
+        "date": "2026-11-13",
+        "url": DETAIL_DAY2,
+        "organizer": "TQM Consultants",
+        "registration_destination": GFORM,
+    }
+    enriched = enrich_tqm_course_details(
+        [ev], lambda u: _html("course_labelled_mode_online_registration.html")
+    )
+    assert enriched[0]["venue"] == VENUE
+    assert enriched[0]["venueSource"] == "event_detail"
+    assert enriched[0]["mode"] == "FACE_TO_FACE"
+    assert infer_mode({
+        "venue": enriched[0]["venue"],
+        "description": "Mode: Face to Face\nRegistration: Online Registration\nEnroll Now",
+        "venueSource": "event_detail",
+    })["mode"] == "FACE_TO_FACE"
+    # Live-style buttons alone must not flip a detail venue to ONLINE.
+    assert mode_of({
+        "venue": VENUE,
+        "description": "Enroll Now Apply Now",
+        "venueSource": "event_detail",
+        "registration": {"modeText": "Online Registration"},
+    }) == "FACE_TO_FACE"
+    print("labelled Mode + Online Registration -> FACE_TO_FACE OK")
+
+
+
+
 if __name__ == "__main__":
     test_listing_extracts_seven_courses()
     test_listing_and_footer_must_not_classify_mode()
@@ -242,4 +274,5 @@ if __name__ == "__main__":
     test_month_first_dates_parse()
     test_public_source_url_scope()
     test_fetch_html_accepts_202_with_full_html()
+    test_labelled_mode_online_registration_is_face_to_face()
     print("All TQM tests passed")

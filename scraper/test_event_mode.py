@@ -145,5 +145,93 @@ class EventModeTests(unittest.TestCase):
         self.assertEqual(mode_of(ev), "HYBRID")
 
 
+TQM_DETAIL_VENUE = (
+    "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong"
+)
+
+
+class RegistrationChannelTests(unittest.TestCase):
+    """Registration wording is a channel, not attendance mode."""
+
+    def test_01_mode_face_to_face_online_registration(self):
+        ev = {"description": "Mode: Face to Face\nRegistration: Online Registration"}
+        self.assertEqual(mode_of(ev), "FACE_TO_FACE")
+        self.assertEqual(infer_mode(ev)["mode_evidence"], "explicit_mode_field")
+
+    def test_02_detail_venue_online_registration_no_attendance_is_face(self):
+        ev = {
+            "description": (
+                "Venue: " + TQM_DETAIL_VENUE + "\n"
+                "Registration: Online Registration"
+            ),
+            **DETAIL,
+        }
+        self.assertEqual(mode_of(ev), "FACE_TO_FACE")
+        self.assertEqual(infer_mode(ev)["reason"], "physical_address_no_online")
+        self.assertEqual(infer_mode(ev)["mode_evidence"], "physical_address_no_online")
+
+    def test_03_mode_online_plus_online_registration(self):
+        ev = {"description": "Mode: Online\nRegistration: Online Registration"}
+        self.assertEqual(mode_of(ev), "ONLINE")
+        self.assertEqual(infer_mode(ev)["mode_evidence"], "explicit_mode_field")
+
+    def test_04_mode_hybrid_plus_online_registration(self):
+        ev = {"description": "Mode: Hybrid\nRegistration: Online Registration"}
+        self.assertEqual(mode_of(ev), "HYBRID")
+        self.assertEqual(infer_mode(ev)["mode_evidence"], "explicit_mode_field")
+
+    def test_05_online_registration_only_is_unknown(self):
+        ev = {"description": "Registration: Online Registration"}
+        self.assertEqual(mode_of(ev), "UNKNOWN")
+        self.assertEqual(infer_mode(ev)["mode_evidence"], "unknown")
+        self.assertEqual(
+            mode_of({"registration": {"modeText": "Online Registration"}}),
+            "UNKNOWN",
+        )
+        self.assertEqual(mode_of({"description": "Online Enrolment"}), "UNKNOWN")
+        self.assertEqual(mode_of({"description": "Online Enrollment"}), "UNKNOWN")
+        self.assertEqual(mode_of({"description": "Online Application"}), "UNKNOWN")
+        self.assertEqual(mode_of({"description": "網上報名"}), "UNKNOWN")
+        self.assertEqual(mode_of({"description": "網上登記"}), "UNKNOWN")
+        self.assertEqual(mode_of({"description": "線上報名"}), "UNKNOWN")
+
+    def test_06_register_online_only_is_unknown(self):
+        self.assertEqual(mode_of({"name": "Register Online"}), "UNKNOWN")
+        self.assertEqual(mode_of({"description": "Register Online"}), "UNKNOWN")
+
+    def test_07_online_webinar_register_online_is_online(self):
+        ev = {"name": "Online Webinar - Register Online"}
+        self.assertEqual(mode_of(ev), "ONLINE")
+        self.assertEqual(infer_mode(ev)["mode_evidence"], "explicit_online_text")
+
+    def test_08_detail_physical_venue_plus_zoom_is_hybrid(self):
+        ev = {
+            "venue": TQM_DETAIL_VENUE,
+            "description": "Join via Zoom",
+            **DETAIL,
+        }
+        self.assertEqual(mode_of(ev), "HYBRID")
+        self.assertEqual(infer_mode(ev)["mode_evidence"], "explicit_attendance_text")
+
+    def test_09_detail_physical_address_only_is_face_to_face(self):
+        ev = {"venue": TQM_DETAIL_VENUE, **DETAIL}
+        self.assertEqual(mode_of(ev), "FACE_TO_FACE")
+        self.assertEqual(infer_mode(ev)["reason"], "physical_address_no_online")
+
+    def test_10_listing_organisation_address_is_unknown(self):
+        self.assertEqual(mode_of({"venue": "HKIE HQ"}), "UNKNOWN")
+        self.assertEqual(mode_of({"venue": "TQM Consultants"}), "UNKNOWN")
+        listing = {
+            "venue": (
+                "Hong Kong Metropolitan University, Lecture Room E0311, 3/F, "
+                "Block E, Jockey Club Campus, 81 Chung Hau Street, Ho Man Tin, Kowloon"
+            )
+        }
+        self.assertEqual(mode_of(listing), "UNKNOWN")
+        self.assertFalse(from_event_detail(listing))
+
+
+
+
 if __name__ == "__main__":
     unittest.main()
