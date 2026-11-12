@@ -1,26 +1,26 @@
 {
- "updated": "2026-11-12T06:54+08:00",
+ "updated": "2026-11-13T06:48+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 5,
+   "n": 4,
    "method": "oshc-activity",
    "page_title": "OSHC",
-   "raw_candidates": 5,
+   "raw_candidates": 4,
    "rejects": {}
   },
   {
    "source": "OSHC Seminars & Conferences",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 11,
+   "n": 10,
    "method": "oshc-table",
    "page_title": "Seminars & Conferences",
    "raw_candidates": 584,
    "rejects": {
-    "date_range": 573
+    "date_range": 574
    }
   },
   {
@@ -37,23 +37,25 @@
    "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 9,
+   "n": 7,
    "method": "csb-table",
    "page_title": "Civil Service Bureau -  COMING EVENTS",
    "raw_candidates": 14,
    "rejects": {
-    "date_range": 5
+    "date_range": 7
    }
   },
   {
    "source": "CIC 建造業議會 Events",
-   "status": "EMPTY_UNVERIFIED",
-   "ok": false,
-   "n": 0,
-   "method": "cic-list",
+   "status": "OK_WITH_EVENTS",
+   "ok": true,
+   "n": 6,
+   "method": "playwright+cic-list",
    "page_title": "Events | Construction Industry Council",
-   "raw_candidates": 0,
-   "rejects": {}
+   "raw_candidates": 12,
+   "rejects": {
+    "date_range": 6
+   }
   },
   {
    "source": "CIC BIM Events",
@@ -101,12 +103,12 @@
    "source": "HKIE Events",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 17,
+   "n": 18,
    "method": "playwright+generic",
    "page_title": "Events - HKIE",
    "raw_candidates": 20,
    "rejects": {
-    "date_range": 3
+    "date_range": 2
    }
   },
   {
@@ -152,12 +154,12 @@
    "source": "HKGBC 綠建環評",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 24,
+   "n": 25,
    "method": "hkgbc",
    "page_title": "Events & Trainings | HKGBC",
    "raw_candidates": 40,
    "rejects": {
-    "date_range": 16
+    "date_range": 15
    }
   },
   {
@@ -191,37 +193,26 @@
   },
   {
    "source": "ICE Upcoming Events",
-   "status": "OK_WITH_EVENTS",
-   "ok": true,
-   "n": 4,
-   "method": "ice-cards",
-   "page_title": "Latest Events at ICE | Institution of Civil Engineers (ICE)",
-   "raw_candidates": 12,
-   "rejects": {
-    "overseas_physical": 8
-   }
+   "status": "FAIL",
+   "ok": false,
+   "n": 0,
+   "err": "讀取網頁失敗：HTTP 403（網站封鎖咗雲端伺服器）"
   },
   {
    "source": "ICE Lectures",
-   "status": "VERIFIED_EMPTY",
+   "status": "FAIL",
    "ok": false,
    "n": 0,
-   "method": "ice-cards",
-   "page_title": "Lectures | Institution of Civil Engineers (ICE)",
-   "raw_candidates": 12,
-   "rejects": {
-    "date_range": 1,
-    "overseas_physical": 11
-   }
+   "err": "讀取網頁失敗：HTTP 403（網站封鎖咗雲端伺服器）"
   },
   {
    "source": "IStructE Events",
-   "status": "VERIFIED_EMPTY",
-   "ok": false,
-   "n": 0,
+   "status": "OK_WITH_EVENTS",
+   "ok": true,
+   "n": 4,
    "method": "generic",
    "page_title": "Events - The Institution of Structural Engineers",
-   "raw_candidates": 1,
+   "raw_candidates": 5,
    "rejects": {
     "date_range": 1
    }
@@ -232,7 +223,7 @@
    "ok": false,
    "n": 0,
    "method": "generic",
-   "page_title": "IET events and courses search",
+   "page_title": "",
    "raw_candidates": 0,
    "rejects": {}
   },
@@ -420,12 +411,12 @@
    "group": "ICE",
    "auto": true,
    "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "mechanism": "CAPTCHA_BLOCKED",
     "destination": null,
     "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "ice_no_reg_link"
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "HIGH",
+    "discoveryMethod": "ice_cloudflare_or_403"
    }
   },
   {
@@ -448,12 +439,12 @@
    "group": "IStructE",
    "auto": true,
    "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "mechanism": "CAPTCHA_BLOCKED",
     "destination": null,
     "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "http_404"
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "page_captcha_blocked"
    }
   },
   {
@@ -868,12 +859,12 @@
    "group": "ICE",
    "auto": true,
    "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "mechanism": "CAPTCHA_BLOCKED",
     "destination": "https://www.eventbrite.com/e/top-tips-for-spending-less-online-tickets-1988558868105?aff=oddtdtcreator",
     "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "ice_no_reg_link"
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "HIGH",
+    "discoveryMethod": "ice_cloudflare_or_403"
    }
   },
   {
@@ -924,12 +915,12 @@
    "group": "ICE",
    "auto": true,
    "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "mechanism": "CAPTCHA_BLOCKED",
     "destination": null,
     "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "ice_no_reg_link"
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "HIGH",
+    "discoveryMethod": "ice_cloudflare_or_403"
    }
   },
   {
@@ -1147,12 +1138,12 @@
    "auto": true,
    "mode": "ONLINE",
    "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "mechanism": "CAPTCHA_BLOCKED",
     "destination": "https://events.teams.microsoft.com/event/069a7fcf-b29f-4f70-9074-0911a0b7c1b8@114d2b23-fca7-4089-9fd7-23ab03af1a7a?source=copyLinkLegacyShareLinkDialog",
     "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "ice_no_reg_link"
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "HIGH",
+    "discoveryMethod": "ice_cloudflare_or_403"
    }
   },
   {
@@ -1176,12 +1167,12 @@
    "auto": true,
    "mode": "ONLINE",
    "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "mechanism": "CAPTCHA_BLOCKED",
     "destination": "https://events.zoom.us/ev/AmI485NkWFIck4gFdcEUtdeltC94XGCKGVg2cYBBftyIz8Tbz8ep~An-lqS84gWOsSfFw8kphk1c-KO0686Meyhh9QAymUwQwNr2IhvgGPKKZ4Q",
     "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "ice_no_reg_link"
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "HIGH",
+    "discoveryMethod": "ice_cloudflare_or_403"
    }
   },
   {
@@ -1205,12 +1196,12 @@
    "auto": true,
    "mode": "ONLINE",
    "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "mechanism": "CAPTCHA_BLOCKED",
     "destination": "https://forms.office.com/e/ENhEHqRT1R",
     "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "ice_no_reg_link"
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "HIGH",
+    "discoveryMethod": "ice_cloudflare_or_403"
    }
   },
   {
@@ -1695,142 +1686,8 @@
     "mechanism": "GOOGLE_FORMS",
     "destination": "https://docs.google.com/forms/d/e/1FAIpQLSfopEQnpYSptqIi6XxSrwgBm4H-q9kWymV6sKFEVOWuJk7h8g/viewform",
     "formId": "1FAIpQLSfopEQnpYSptqIi6XxSrwgBm4H-q9kWymV6sKFEVOWuJk7h8g",
-    "status": "OPEN",
-    "fields": [
-     {
-      "entryId": "entry.1415670162",
-      "profileField": "englishName",
-      "label": "Full Name in English (e.g. Chan Tai Man Raymond)",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.222152007",
-      "profileField": null,
-      "label": "Member of",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.933449764",
-      "profileField": null,
-      "label": "Name of Institute (Member of HKIFM, HKIE or CIHAPB may skip this question)",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.2036976976",
-      "profileField": "hkieNumber",
-      "label": "Membership Number",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1495405939",
-      "profileField": "email",
-      "label": "Email Address (for sending confirmation)",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.136344036",
-      "profileField": "phone",
-      "label": "Mobile Phone Number (for whatapps / phone use)",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1376754329",
-      "profileField": "organisation",
-      "label": "Present Employment Company Name",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.105856659",
-      "profileField": "position",
-      "label": "Job Title",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.527089649",
-      "profileField": null,
-      "label": "Emergency Contact Name",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1902127501",
-      "profileField": null,
-      "label": "Emergency Contact Number",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1812409548",
-      "profileField": null,
-      "label": "Relationship to Emergency Contact",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1648921151",
-      "profileField": null,
-      "label": "Running Experience",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1910540023",
-      "profileField": null,
-      "label": "Typical Running Distance",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1527857622",
-      "profileField": null,
-      "label": "Have you participated in public running events before?",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.417980442",
-      "profileField": null,
-      "label": "Which upcoming activities would you like to attend?",
-      "type": "CHECKBOX",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.318522814",
-      "profileField": null,
-      "label": "Preferred Running Distance",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1802619135",
-      "profileField": null,
-      "label": "Would you be interested in participating in a charity run or public running event in 2026/2027?",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.893788006",
-      "profileField": null,
-      "label": "Photography and Publicity Consent:\nI agree that photographs and videos taken during HKIFM Running & Wellness Community activities may be used by HKIFM, HKIE & CIHAPB for:\n- Website \n- Social Media \n- Newsletter \n- Annual Report \n- Marketing and Promotional Materials",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.62562350",
-      "profileField": null,
-      "label": "Participant Declaration\n- I acknowledge that HKIFM, HKIE & CIHAPB does not provide personal accident or medical insurance for participants.\n\n- I hereby warrant and confirm to the HKIFM, HKIE & CIHAPB/the Event Organizer that I am physically fit to participate in and complete the Event without any medical or other assistance; and I also agree to indemnify and hold harmless the HKIFM, HKIE & CIHAPB/the Event Organizer from any injury or death suffered by me or any other persons and any damage to property as a result of me not being physically fit to participate in and complete the Event. For the avoidance of doubt, I have been advised, and I shall take up my own personal or other insurance policies to cover the event.",
-      "type": "RADIO",
-      "safePrefill": false
-     }
-    ],
+    "status": "CLOSED",
+    "fields": [],
     "requiresManualCompletion": true,
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
@@ -1886,12 +1743,12 @@
    "auto": true,
    "mode": "ONLINE",
    "registration": {
-    "mechanism": "EVENTBRITE",
+    "mechanism": "CAPTCHA_BLOCKED",
     "destination": "https://www.eventbrite.co.uk/e/ice-west-midlands-bewdley-flood-risk-scheme-solving-a-historic-problem-tickets-2003713096811?aff=oddtdtcreator",
-    "status": "OPEN",
-    "sourceUrlClass": "LISTING_PAGE",
+    "status": "UNKNOWN",
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
     "confidence": "HIGH",
-    "discoveryMethod": "ice_page_eventbrite,pos_text,in_detail"
+    "discoveryMethod": "ice_cloudflare_or_403"
    }
   },
   {
@@ -1915,12 +1772,12 @@
    "auto": true,
    "mode": "ONLINE",
    "registration": {
-    "mechanism": "EVENTBRITE",
+    "mechanism": "CAPTCHA_BLOCKED",
     "destination": "https://www.eventbrite.com/e/lets-talk-about-the-sweet-stuff-tickets-1988557848054?aff=oddtdtcreator",
-    "status": "OPEN",
-    "sourceUrlClass": "LISTING_PAGE",
+    "status": "UNKNOWN",
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
     "confidence": "HIGH",
-    "discoveryMethod": "ice_page_eventbrite,pos_text,in_detail"
+    "discoveryMethod": "ice_cloudflare_or_403"
    }
   },
   {
@@ -1944,12 +1801,12 @@
    "auto": true,
    "mode": "ONLINE",
    "registration": {
-    "mechanism": "MICROSOFT_FORMS",
+    "mechanism": "CAPTCHA_BLOCKED",
     "destination": "https://forms.cloud.microsoft/e/KeAETsc6aM",
-    "status": "OPEN",
-    "sourceUrlClass": "LISTING_PAGE",
+    "status": "UNKNOWN",
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
     "confidence": "HIGH",
-    "discoveryMethod": "ice_page_microsoft_forms,pos_text,in_detail"
+    "discoveryMethod": "ice_cloudflare_or_403"
    }
   },
   {
@@ -1973,12 +1830,12 @@
    "auto": true,
    "mode": "ONLINE",
    "registration": {
-    "mechanism": "OTHER_PUBLIC_FORM",
+    "mechanism": "CAPTCHA_BLOCKED",
     "destination": "https://events.teams.microsoft.com/event/cf38f95c-c73f-45a9-8034-6b5c345d5780@114d2b23-fca7-4089-9fd7-23ab03af1a7a?source=copyLinkLegacyShareLinkDialog",
-    "status": "OPEN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "MEDIUM",
-    "discoveryMethod": "ice_page_pos_text,in_detail"
+    "status": "UNKNOWN",
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "HIGH",
+    "discoveryMethod": "ice_cloudflare_or_403"
    }
   },
   {
@@ -2065,6 +1922,37 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
+    "confidence": "HIGH",
+    "discoveryMethod": "page_scan_google_forms,pos_text"
+   },
+   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
+   "venueSource": "event_detail",
+   "mode": "FACE_TO_FACE"
+  },
+  {
+   "id": "aab866f38a4a2",
+   "name": "ITCTS Recruitment Day",
+   "org": "CIC",
+   "date": "2026-11-14",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events/detail.page-20261114",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
     "confidence": "LOW",
     "discoveryMethod": "page_no_candidate"
    }
@@ -2981,6 +2869,63 @@
    }
   },
   {
+   "id": "ae4705712716f",
+   "name": "ITCTS Recruitment Day",
+   "org": "CIC",
+   "date": "2026-11-20",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events/detail.page-20261120",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
+   "id": "a07aa00679669",
+   "name": "Webinar on “Construction Workers Registration Ordinance” (CWRO)",
+   "org": "CIC",
+   "date": "2026-11-20",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/eform/cwrbriefingsession/regform.aspx?lang=en-US",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "mode": "ONLINE",
+   "registration": {
+    "mechanism": "CAPTCHA_BLOCKED",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "page_captcha_blocked"
+   }
+  },
+  {
    "id": "a51c8d2e44cba",
    "name": "Webinar on The Emerging Space Economy: Opportunities and Challenges",
    "org": "HKIE Events",
@@ -3150,9 +3095,12 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
+    "confidence": "HIGH",
+    "discoveryMethod": "page_scan_google_forms,pos_text"
+   },
+   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
+   "venueSource": "event_detail",
+   "mode": "FACE_TO_FACE"
   },
   {
    "id": "a1621fbbd960d",
@@ -3401,34 +3349,6 @@
    }
   },
   {
-   "id": "a153070c1c33f",
-   "name": "IAMC & HKU - International Conference on Modular Construction 2026",
-   "org": "HKGBC",
-   "date": "2026-11-21",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1082",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "LOW",
-    "discoveryMethod": "hkgbc_detail_no_reg"
-   }
-  },
-  {
    "id": "a86ae34fc03fc",
    "name": "Where Cultures Meet and Dice Roll 文化相遇處・骰子啟航時",
    "org": "HKIE Events",
@@ -3591,6 +3511,62 @@
    }
   },
   {
+   "id": "a153070c1c33f",
+   "name": "IAMC & HKU - International Conference on Modular Construction 2026",
+   "org": "HKGBC",
+   "date": "2026-11-21",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1082",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_detail_no_reg"
+   }
+  },
+  {
+   "id": "aa90ded4f6271",
+   "name": "Construction Innovation Expo 2026 (CIExpo 2026)",
+   "org": "CIC",
+   "date": "2026-11-23",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events/detail.page-20261123",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
    "id": "a00c208d03564",
    "name": "DEVB & CSTID & CIC - CIExpo 2026 (23-25 Nov 2026)",
    "org": "HKGBC",
@@ -3645,6 +3621,34 @@
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
     "discoveryMethod": "event_url_oshc_activity"
+   }
+  },
+  {
+   "id": "a13a6cc220813",
+   "name": "Asia-Pacific Energy Transition Think Tank Forum 2026",
+   "org": "HKIE Events",
+   "date": "2026-11-24",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ac4510a5f713be0150a2617/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_no_reg_link"
    }
   },
   {
@@ -3758,6 +3762,34 @@
     "sourceUrlClass": "PDF_FLYER",
     "confidence": "HIGH",
     "discoveryMethod": "event_url_pdf_flyer"
+   }
+  },
+  {
+   "id": "a6bd958331076",
+   "name": "[By Labours Department / Occupation Safety & Health Council] 28th Boilers & Pressure Vessels Safety Seminar",
+   "org": "HKIE Events",
+   "date": "2026-11-25",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6adff5cd5f713be015149831/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_no_reg_link"
    }
   },
   {
@@ -4012,9 +4044,12 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
+    "confidence": "HIGH",
+    "discoveryMethod": "page_scan_google_forms,pos_text"
+   },
+   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
+   "venueSource": "event_detail",
+   "mode": "FACE_TO_FACE"
   },
   {
    "id": "a582b25aebf2b",
@@ -4098,6 +4133,34 @@
     "sourceUrlClass": "CAPTCHA_BLOCKED",
     "confidence": "MEDIUM",
     "discoveryMethod": "page_captcha_blocked"
+   }
+  },
+  {
+   "id": "a03559f0a46f9",
+   "name": "2026 Construction Workers Carnival",
+   "org": "CIC",
+   "date": "2026-11-29",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cwf.cic.hk/en/Home",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -4298,6 +4361,34 @@
    }
   },
   {
+   "id": "a471e23839860",
+   "name": "AI in structural engineering: practical use cases, opportunities and limitations",
+   "org": "IStructE Events",
+   "date": "2026-12-01",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.istructe.org/events/hq/2026/ai-in-structural-engineering/",
+   "region": "Overseas",
+   "online": null,
+   "free": null,
+   "source": "IStructE Events",
+   "group": "IStructE",
+   "auto": true,
+   "registration": {
+    "mechanism": "CAPTCHA_BLOCKED",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "page_captcha_blocked"
+   }
+  },
+  {
    "id": "a6b93008dcf84",
    "name": "eLearning series: Mastering AI Tools for Professional Technical Writing",
    "org": "HKIE",
@@ -4470,6 +4561,34 @@
    }
   },
   {
+   "id": "a9c92b856a9ba",
+   "name": "ITCTS Recruitment Day",
+   "org": "CIC",
+   "date": "2026-12-03",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events/detail.page-20261203",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
    "id": "a2ff55574083e",
    "name": "RCx CPD Webinar - Unlocking Building Performance Through Data-Driven RCx and ASHRAE Best Practices",
    "org": "HKGBC",
@@ -4496,6 +4615,34 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
     "discoveryMethod": "hkgbc_detail_microsoft_forms,pos_text,in_detail"
+   }
+  },
+  {
+   "id": "ad496e0b5adf4",
+   "name": "fibUK: Developments in structural concrete conference 2026",
+   "org": "IStructE Events",
+   "date": "2026-12-03",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.istructe.org/events/hq/2026/fibuk-developments-in-structural-concrete/",
+   "region": "Overseas",
+   "online": null,
+   "free": null,
+   "source": "IStructE Events",
+   "group": "IStructE",
+   "auto": true,
+   "registration": {
+    "mechanism": "CAPTCHA_BLOCKED",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "page_captcha_blocked"
    }
   },
   {
@@ -4552,6 +4699,34 @@
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
     "discoveryMethod": "event_url_oshc_activity"
+   }
+  },
+  {
+   "id": "a42981dde141e",
+   "name": "Environment and Conservation Fund Green Building Education and Capacity Building Programmes - Micro-credential Topical Course - Biodiversity and Nature-based Solutions",
+   "org": "HKGBC",
+   "date": "2026-12-04",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1094",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true,
+   "registration": {
+    "mechanism": "MICROSOFT_FORMS",
+    "destination": "https://forms.cloud.microsoft/r/sdFJdLK58L",
+    "status": "OPEN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkgbc_detail_microsoft_forms,pos_text,in_detail"
    }
   },
   {
@@ -4800,12 +4975,12 @@
    "group": "ICE",
    "auto": true,
    "registration": {
-    "mechanism": "EVENTBRITE",
+    "mechanism": "CAPTCHA_BLOCKED",
     "destination": "https://www.eventbrite.co.uk/e/tickets-2003143777963#tickets",
-    "status": "OPEN",
-    "sourceUrlClass": "LISTING_PAGE",
+    "status": "UNKNOWN",
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
     "confidence": "HIGH",
-    "discoveryMethod": "ice_page_eventbrite,pos_text,in_detail"
+    "discoveryMethod": "ice_cloudflare_or_403"
    }
   },
   {
@@ -4834,6 +5009,34 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "LOW",
     "discoveryMethod": "hkgbc_detail_no_reg"
+   }
+  },
+  {
+   "id": "a4e45ee07996c",
+   "name": "Festive fireside conversations shaping structural engineering",
+   "org": "IStructE Events",
+   "date": "2026-12-09",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.istructe.org/events/hq/2026/festive-fireside-conversations/",
+   "region": "Overseas",
+   "online": null,
+   "free": null,
+   "source": "IStructE Events",
+   "group": "IStructE",
+   "auto": true,
+   "registration": {
+    "mechanism": "CAPTCHA_BLOCKED",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "page_captcha_blocked"
    }
   },
   {
@@ -5064,9 +5267,12 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
+    "confidence": "HIGH",
+    "discoveryMethod": "page_scan_google_forms,pos_text"
+   },
+   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
+   "venueSource": "event_detail",
+   "mode": "FACE_TO_FACE"
   },
   {
    "id": "ada122eb690dd",
@@ -5207,107 +5413,8 @@
     "mechanism": "GOOGLE_FORMS",
     "destination": "https://docs.google.com/forms/d/e/1FAIpQLSegfzOVwyPqjKskPm5iiTv3sR8UN1RkC4WNI2q9Dx_RZu4OoQ/viewform",
     "formId": "1FAIpQLSegfzOVwyPqjKskPm5iiTv3sR8UN1RkC4WNI2q9Dx_RZu4OoQ",
-    "status": "OPEN",
-    "fields": [
-     {
-      "entryId": "entry.1183364918",
-      "profileField": null,
-      "label": "Membership",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.15244053",
-      "profileField": "hkieNumber",
-      "label": "Membership No.",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1540395286",
-      "profileField": null,
-      "label": "Membership Class",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1596056943",
-      "profileField": "englishName",
-      "label": "English Full Name",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1405328043",
-      "profileField": "chineseName",
-      "label": "Chinese Name",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.2049775845",
-      "profileField": "phone",
-      "label": "Telephone / Mobile Contact",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1424028824",
-      "profileField": "email",
-      "label": "Email Address",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.91740810",
-      "profileField": "organisation",
-      "label": "Company / Institute",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.602237502",
-      "profileField": "position",
-      "label": "Position",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.973402102",
-      "profileField": null,
-      "label": "Registration Fee",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.648365312",
-      "profileField": null,
-      "label": "Venue",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.60776683",
-      "profileField": null,
-      "label": "Important Notes",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1757752833",
-      "profileField": null,
-      "label": "Undertaking",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1234603961",
-      "profileField": null,
-      "label": "Remarks",
-      "type": "PARAGRAPH",
-      "safePrefill": false
-     }
-    ],
+    "status": "CLOSED",
+    "fields": [],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
     "confidence": "HIGH",
@@ -5426,9 +5533,12 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
+    "confidence": "HIGH",
+    "discoveryMethod": "page_scan_google_forms,pos_text"
+   },
+   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
+   "venueSource": "event_detail",
+   "mode": "FACE_TO_FACE"
   },
   {
    "id": "a76a97ad66abb",

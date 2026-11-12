@@ -1,27 +1,27 @@
 {
  "OSHC 職安局 研討會": {
   "last_status": "OK_WITH_EVENTS",
-  "last_n": 5,
+  "last_n": 4,
   "last_method": "oshc-activity",
   "last_error": null,
-  "raw_candidates": 5,
+  "raw_candidates": 4,
   "rejects": {},
   "consecutive_fail": 0,
-  "last_success": "2026-11-12",
-  "updated": "2026-11-12"
+  "last_success": "2026-11-13",
+  "updated": "2026-11-13"
  },
  "OSHC Seminars & Conferences": {
   "last_status": "OK_WITH_EVENTS",
-  "last_n": 11,
+  "last_n": 10,
   "last_method": "oshc-table",
   "last_error": null,
   "raw_candidates": 584,
   "rejects": {
-   "date_range": 573
+   "date_range": 574
   },
   "consecutive_fail": 0,
-  "last_success": "2026-11-12",
-  "updated": "2026-11-12"
+  "last_success": "2026-11-13",
+  "updated": "2026-11-13"
  },
  "勞工處 職業健康公開講座": {
   "last_status": "OK_WITH_EVENTS",
@@ -31,32 +31,34 @@
   "raw_candidates": 5,
   "rejects": {},
   "consecutive_fail": 0,
-  "last_success": "2026-11-12",
-  "updated": "2026-11-12"
+  "last_success": "2026-11-13",
+  "updated": "2026-11-13"
  },
  "公務員事務局 職安健活動 (勞工處/OSHC)": {
   "last_status": "OK_WITH_EVENTS",
-  "last_n": 9,
+  "last_n": 7,
   "last_method": "csb-table",
   "last_error": null,
   "raw_candidates": 14,
   "rejects": {
-   "date_range": 5
+   "date_range": 7
   },
   "consecutive_fail": 0,
-  "last_success": "2026-11-12",
-  "updated": "2026-11-12"
+  "last_success": "2026-11-13",
+  "updated": "2026-11-13"
  },
  "CIC 建造業議會 Events": {
-  "last_status": "EMPTY_UNVERIFIED",
-  "last_n": 0,
-  "last_method": "cic-list",
+  "last_status": "OK_WITH_EVENTS",
+  "last_n": 6,
+  "last_method": "playwright+cic-list",
   "last_error": null,
-  "raw_candidates": 0,
-  "rejects": {},
-  "consecutive_fail": 11,
-  "last_success": "2026-11-09",
-  "updated": "2026-11-12"
+  "raw_candidates": 12,
+  "rejects": {
+   "date_range": 6
+  },
+  "consecutive_fail": 0,
+  "last_success": "2026-11-13",
+  "updated": "2026-11-13"
  },
  "CIC BIM Events": {
   "last_status": "EMPTY_UNVERIFIED",
@@ -65,9 +67,9 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 23,
+  "consecutive_fail": 24,
   "last_success": null,
-  "updated": "2026-11-12"
+  "updated": "2026-11-13"
  },
  "CIC CITAC Upcoming Events": {
   "last_status": "VERIFIED_EMPTY",
@@ -78,7 +80,7 @@
   "rejects": {},
   "consecutive_fail": 0,
   "last_success": null,
-  "updated": "2026-11-12"
+  "updated": "2026-11-13"
  },
  "CIC RSTCS 工作坊": {
   "last_status": "VERIFIED_EMPTY",
@@ -91,7 +93,7 @@
   },
   "consecutive_fail": 0,
   "last_success": null,
-  "updated": "2026-11-12"
+  "updated": "2026-11-13"
  },
  "HKIE CPD Calendar": {
   "last_status": "OK_WITH_EVENTS",
@@ -101,21 +103,21 @@
   "raw_candidates": 10,
   "rejects": {},
   "consecutive_fail": 0,
-  "last_success": "2026-11-12",
-  "updated": "2026-11-12"
+  "last_success": "2026-11-13",
+  "updated": "2026-11-13"
  },
  "HKIE Events": {
   "last_status": "OK_WITH_EVENTS",
-  "last_n": 17,
+  "last_n": 18,
   "last_method": "playwright+generic",
   "last_error": null,
   "raw_candidates": 20,
   "rejects": {
-   "date_range": 3
+   "date_range": 2
   },
   "consecutive_fail": 0,
-  "last_success": "2026-11-12",
-  "updated": "2026-11-12"
+  "last_success": "2026-11-13",
+  "updated": "2026-11-13"
  },
  "HKIE Building Division": {
   "last_status": "VERIFIED_EMPTY",
@@ -128,7 +130,7 @@
   },
   "consecutive_fail": 0,
   "last_success": null,
-  "updated": "2026-11-12"
+  "updated": "2026-11-13"
  },
  "HKIE Structural Division": {
   "last_status": "EMPTY_UNVERIFIED",
@@ -137,9 +139,9 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 23,
+  "consecutive_fail": 24,
   "last_success": null,
-  "updated": "2026-11-12"
+  "updated": "2026-11-13"
  },
  "HKIE Fire Division": {
   "last_status": "EMPTY_UNVERIFIED",
@@ -148,9 +150,9 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 23,
+  "consecutive_fail": 24,
   "last_success": null,
-  "updated": "2026-11-12"
+  "updated": "2026-11-13"
  },
  "HKIS CPD": {
   "last_status": "FAIL",
@@ -159,22 +161,22 @@
   "last_error": "讀取網頁失敗：HTTP 403（網站封鎖咗雲端伺服器）",
   "raw_candidates": null,
   "rejects": null,
-  "consecutive_fail": 7,
+  "consecutive_fail": 8,
   "last_success": "2026-11-10",
-  "updated": "2026-11-12"
+  "updated": "2026-11-13"
  },
  "HKGBC 綠建環評": {
   "last_status": "OK_WITH_EVENTS",
-  "last_n": 24,
+  "last_n": 25,
   "last_method": "hkgbc",
   "last_error": null,
   "raw_candidates": 40,
   "rejects": {
-   "date_range": 16
+   "date_range": 15
   },
   "consecutive_fail": 0,
-  "last_success": "2026-11-12",
-  "updated": "2026-11-12"
+  "last_success": "2026-11-13",
+  "updated": "2026-11-13"
  },
  "IET Hong Kong": {
   "last_status": "FAIL",
@@ -183,49 +185,44 @@
   "last_error": "Playwright 失敗：Error",
   "raw_candidates": null,
   "rejects": null,
-  "consecutive_fail": 23,
+  "consecutive_fail": 24,
   "last_success": null,
-  "updated": "2026-11-12"
+  "updated": "2026-11-13"
  },
  "ICE Upcoming Events": {
-  "last_status": "OK_WITH_EVENTS",
-  "last_n": 4,
-  "last_method": "ice-cards",
-  "last_error": null,
-  "raw_candidates": 12,
-  "rejects": {
-   "overseas_physical": 8
-  },
-  "consecutive_fail": 0,
+  "last_status": "FAIL",
+  "last_n": 0,
+  "last_method": null,
+  "last_error": "讀取網頁失敗：HTTP 403（網站封鎖咗雲端伺服器）",
+  "raw_candidates": null,
+  "rejects": null,
+  "consecutive_fail": 1,
   "last_success": "2026-11-12",
-  "updated": "2026-11-12"
+  "updated": "2026-11-13"
  },
  "ICE Lectures": {
-  "last_status": "VERIFIED_EMPTY",
+  "last_status": "FAIL",
   "last_n": 0,
-  "last_method": "ice-cards",
-  "last_error": null,
-  "raw_candidates": 12,
-  "rejects": {
-   "date_range": 1,
-   "overseas_physical": 11
-  },
-  "consecutive_fail": 0,
+  "last_method": null,
+  "last_error": "讀取網頁失敗：HTTP 403（網站封鎖咗雲端伺服器）",
+  "raw_candidates": null,
+  "rejects": null,
+  "consecutive_fail": 1,
   "last_success": null,
-  "updated": "2026-11-12"
+  "updated": "2026-11-13"
  },
  "IStructE Events": {
-  "last_status": "VERIFIED_EMPTY",
-  "last_n": 0,
+  "last_status": "OK_WITH_EVENTS",
+  "last_n": 4,
   "last_method": "generic",
   "last_error": null,
-  "raw_candidates": 1,
+  "raw_candidates": 5,
   "rejects": {
    "date_range": 1
   },
   "consecutive_fail": 0,
-  "last_success": "2026-11-06",
-  "updated": "2026-11-12"
+  "last_success": "2026-11-13",
+  "updated": "2026-11-13"
  },
  "IET Online Events": {
   "last_status": "EMPTY_UNVERIFIED",
@@ -234,9 +231,9 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 23,
+  "consecutive_fail": 24,
   "last_success": null,
-  "updated": "2026-11-12"
+  "updated": "2026-11-13"
  },
  "CIC (UK) Events": {
   "last_status": "EMPTY_UNVERIFIED",
@@ -245,9 +242,9 @@
   "last_error": null,
   "raw_candidates": 0,
   "rejects": {},
-  "consecutive_fail": 1,
+  "consecutive_fail": 2,
   "last_success": "2026-11-11",
-  "updated": "2026-11-12"
+  "updated": "2026-11-13"
  },
  "CIPHE Hong Kong Events": {
   "last_status": "VERIFIED_EMPTY",
@@ -260,7 +257,7 @@
   },
   "consecutive_fail": 0,
   "last_success": "2026-11-11",
-  "updated": "2026-11-12"
+  "updated": "2026-11-13"
  },
  "HKICM Learning / CPD": {
   "last_status": "OK_WITH_EVENTS",
@@ -270,8 +267,8 @@
   "raw_candidates": 2,
   "rejects": {},
   "consecutive_fail": 0,
-  "last_success": "2026-11-12",
-  "updated": "2026-11-12"
+  "last_success": "2026-11-13",
+  "updated": "2026-11-13"
  },
  "TQM Consultants Training": {
   "last_status": "OK_WITH_EVENTS",
@@ -283,7 +280,7 @@
    "date_range": 2
   },
   "consecutive_fail": 0,
-  "last_success": "2026-11-12",
-  "updated": "2026-11-12"
+  "last_success": "2026-11-13",
+  "updated": "2026-11-13"
  }
 }
