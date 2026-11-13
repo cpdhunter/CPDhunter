@@ -1,14 +1,14 @@
 {
- "updated": "2026-11-13T06:48+08:00",
+ "updated": "2026-11-14T06:47+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 4,
+   "n": 3,
    "method": "oshc-activity",
    "page_title": "OSHC",
-   "raw_candidates": 4,
+   "raw_candidates": 3,
    "rejects": {}
   },
   {
@@ -47,15 +47,13 @@
   },
   {
    "source": "CIC 建造業議會 Events",
-   "status": "OK_WITH_EVENTS",
-   "ok": true,
-   "n": 6,
-   "method": "playwright+cic-list",
+   "status": "EMPTY_UNVERIFIED",
+   "ok": false,
+   "n": 0,
+   "method": "cic-list",
    "page_title": "Events | Construction Industry Council",
-   "raw_candidates": 12,
-   "rejects": {
-    "date_range": 6
-   }
+   "raw_candidates": 0,
+   "rejects": {}
   },
   {
    "source": "CIC BIM Events",
@@ -103,13 +101,11 @@
    "source": "HKIE Events",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 18,
+   "n": 20,
    "method": "playwright+generic",
    "page_title": "Events - HKIE",
    "raw_candidates": 20,
-   "rejects": {
-    "date_range": 2
-   }
+   "rejects": {}
   },
   {
    "source": "HKIE Building Division",
@@ -193,17 +189,28 @@
   },
   {
    "source": "ICE Upcoming Events",
-   "status": "FAIL",
-   "ok": false,
-   "n": 0,
-   "err": "讀取網頁失敗：HTTP 403（網站封鎖咗雲端伺服器）"
+   "status": "OK_WITH_EVENTS",
+   "ok": true,
+   "n": 4,
+   "method": "ice-cards",
+   "page_title": "Latest Events at ICE | Institution of Civil Engineers (ICE)",
+   "raw_candidates": 12,
+   "rejects": {
+    "overseas_physical": 7,
+    "date_range": 1
+   }
   },
   {
    "source": "ICE Lectures",
-   "status": "FAIL",
+   "status": "VERIFIED_EMPTY",
    "ok": false,
    "n": 0,
-   "err": "讀取網頁失敗：HTTP 403（網站封鎖咗雲端伺服器）"
+   "method": "ice-cards",
+   "page_title": "Lectures | Institution of Civil Engineers (ICE)",
+   "raw_candidates": 12,
+   "rejects": {
+    "overseas_physical": 12
+   }
   },
   {
    "source": "IStructE Events",
@@ -223,7 +230,7 @@
    "ok": false,
    "n": 0,
    "method": "generic",
-   "page_title": "",
+   "page_title": "IET events and courses search",
    "raw_candidates": 0,
    "rejects": {}
   },
@@ -239,15 +246,10 @@
   },
   {
    "source": "TQM Consultants Training",
-   "status": "OK_WITH_EVENTS",
-   "ok": true,
-   "n": 5,
-   "method": "tqm-list+detail",
-   "page_title": "Upcoming | TQM Consultants Co. Limited",
-   "raw_candidates": 7,
-   "rejects": {
-    "date_range": 2
-   }
+   "status": "FAIL",
+   "ok": false,
+   "n": 0,
+   "err": "Playwright 失敗：Error"
   }
  ],
  "events": [
@@ -414,9 +416,9 @@
     "mechanism": "CAPTCHA_BLOCKED",
     "destination": null,
     "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
-    "confidence": "HIGH",
-    "discoveryMethod": "ice_cloudflare_or_403"
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "ice_no_reg_link"
    }
   },
   {
@@ -442,9 +444,9 @@
     "mechanism": "CAPTCHA_BLOCKED",
     "destination": null,
     "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
-    "confidence": "MEDIUM",
-    "discoveryMethod": "page_captcha_blocked"
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "http_404"
    }
   },
   {
@@ -862,9 +864,9 @@
     "mechanism": "CAPTCHA_BLOCKED",
     "destination": "https://www.eventbrite.com/e/top-tips-for-spending-less-online-tickets-1988558868105?aff=oddtdtcreator",
     "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
-    "confidence": "HIGH",
-    "discoveryMethod": "ice_cloudflare_or_403"
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "ice_no_reg_link"
    }
   },
   {
@@ -918,9 +920,9 @@
     "mechanism": "CAPTCHA_BLOCKED",
     "destination": null,
     "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
-    "confidence": "HIGH",
-    "discoveryMethod": "ice_cloudflare_or_403"
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "ice_no_reg_link"
    }
   },
   {
@@ -1141,9 +1143,9 @@
     "mechanism": "CAPTCHA_BLOCKED",
     "destination": "https://events.teams.microsoft.com/event/069a7fcf-b29f-4f70-9074-0911a0b7c1b8@114d2b23-fca7-4089-9fd7-23ab03af1a7a?source=copyLinkLegacyShareLinkDialog",
     "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
-    "confidence": "HIGH",
-    "discoveryMethod": "ice_cloudflare_or_403"
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "ice_no_reg_link"
    }
   },
   {
@@ -1170,9 +1172,9 @@
     "mechanism": "CAPTCHA_BLOCKED",
     "destination": "https://events.zoom.us/ev/AmI485NkWFIck4gFdcEUtdeltC94XGCKGVg2cYBBftyIz8Tbz8ep~An-lqS84gWOsSfFw8kphk1c-KO0686Meyhh9QAymUwQwNr2IhvgGPKKZ4Q",
     "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
-    "confidence": "HIGH",
-    "discoveryMethod": "ice_cloudflare_or_403"
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "ice_no_reg_link"
    }
   },
   {
@@ -1199,9 +1201,9 @@
     "mechanism": "CAPTCHA_BLOCKED",
     "destination": "https://forms.office.com/e/ENhEHqRT1R",
     "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
-    "confidence": "HIGH",
-    "discoveryMethod": "ice_cloudflare_or_403"
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "ice_no_reg_link"
    }
   },
   {
@@ -1746,9 +1748,9 @@
     "mechanism": "CAPTCHA_BLOCKED",
     "destination": "https://www.eventbrite.co.uk/e/ice-west-midlands-bewdley-flood-risk-scheme-solving-a-historic-problem-tickets-2003713096811?aff=oddtdtcreator",
     "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
-    "confidence": "HIGH",
-    "discoveryMethod": "ice_cloudflare_or_403"
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "ice_no_reg_link"
    }
   },
   {
@@ -1775,9 +1777,9 @@
     "mechanism": "CAPTCHA_BLOCKED",
     "destination": "https://www.eventbrite.com/e/lets-talk-about-the-sweet-stuff-tickets-1988557848054?aff=oddtdtcreator",
     "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
-    "confidence": "HIGH",
-    "discoveryMethod": "ice_cloudflare_or_403"
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "ice_no_reg_link"
    }
   },
   {
@@ -1804,9 +1806,9 @@
     "mechanism": "CAPTCHA_BLOCKED",
     "destination": "https://forms.cloud.microsoft/e/KeAETsc6aM",
     "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
-    "confidence": "HIGH",
-    "discoveryMethod": "ice_cloudflare_or_403"
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "ice_no_reg_link"
    }
   },
   {
@@ -1833,9 +1835,9 @@
     "mechanism": "CAPTCHA_BLOCKED",
     "destination": "https://events.teams.microsoft.com/event/cf38f95c-c73f-45a9-8034-6b5c345d5780@114d2b23-fca7-4089-9fd7-23ab03af1a7a?source=copyLinkLegacyShareLinkDialog",
     "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
-    "confidence": "HIGH",
-    "discoveryMethod": "ice_cloudflare_or_403"
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "ice_no_reg_link"
    }
   },
   {
@@ -1922,40 +1924,12 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "HIGH",
-    "discoveryMethod": "page_scan_google_forms,pos_text"
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    },
    "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
    "venueSource": "event_detail",
    "mode": "FACE_TO_FACE"
-  },
-  {
-   "id": "aab866f38a4a2",
-   "name": "ITCTS Recruitment Day",
-   "org": "CIC",
-   "date": "2026-11-14",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events/detail.page-20261114",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
   },
   {
    "id": "a7f35abcd1fe7",
@@ -2172,6 +2146,34 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
     "discoveryMethod": "hkie_eventdetail_gform"
+   }
+  },
+  {
+   "id": "aab866f38a4a2",
+   "name": "ITCTS Recruitment Day",
+   "org": "CIC",
+   "date": "2026-11-14",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events/detail.page-20261114",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -2403,35 +2405,6 @@
    }
   },
   {
-   "id": "a119423674472",
-   "name": "Online Open Seminar on \"Exploring the Applications of Generative Artificial Intelligence (GenAI) in Occupational Health and Safety\"",
-   "org": "Occupational Safety and Health Council",
-   "date": "2026-11-17",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "H&S",
-   "disc": [
-    "General"
-   ],
-   "url": "https://sms.oshc.hk/online/activityE.aspx?activityid=9905",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
-   "group": "Labour Dept",
-   "auto": true,
-   "mode": "ONLINE",
-   "registration": {
-    "mechanism": "OSHC_PORTAL",
-    "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9905",
-    "status": "OPEN",
-    "sourceUrlClass": "DIRECT_REGISTRATION",
-    "confidence": "HIGH",
-    "discoveryMethod": "event_url_oshc_activity"
-   }
-  },
-  {
    "id": "a36ffb58d06b0",
    "name": "Online Seminar on \"Office Pracatitioners: Effective Strategies for Managing Workplace Verbal Abuse\"",
    "org": "Occupational Safety and Health Council",
@@ -2454,6 +2427,35 @@
    "registration": {
     "mechanism": "OSHC_PORTAL",
     "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9921",
+    "status": "OPEN",
+    "sourceUrlClass": "DIRECT_REGISTRATION",
+    "confidence": "HIGH",
+    "discoveryMethod": "event_url_oshc_activity"
+   }
+  },
+  {
+   "id": "a119423674472",
+   "name": "Online Open Seminar on \"Exploring the Applications of Generative Artificial Intelligence (GenAI) in Occupational Health and Safety\"",
+   "org": "Occupational Safety and Health Council",
+   "date": "2026-11-17",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://sms.oshc.hk/online/activityE.aspx?activityid=9905",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
+   "group": "Labour Dept",
+   "auto": true,
+   "mode": "ONLINE",
+   "registration": {
+    "mechanism": "OSHC_PORTAL",
+    "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9905",
     "status": "OPEN",
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
@@ -2539,6 +2541,93 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
     "discoveryMethod": "hkie_eventdetail_gform"
+   }
+  },
+  {
+   "id": "a7303947888d6",
+   "name": "Your professional review application: start the journey",
+   "org": "ICE",
+   "date": "2026-11-17",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.ice.org.uk/events/professional-qualification-training/your-professional-review-application-start-the-journey-17-nov-26",
+   "region": "Overseas",
+   "online": true,
+   "free": true,
+   "source": "ICE Upcoming Events",
+   "group": "ICE",
+   "auto": true,
+   "mode": "ONLINE",
+   "registration": {
+    "mechanism": "OTHER_PUBLIC_FORM",
+    "destination": "https://events.teams.microsoft.com/event/0a6e5614-0956-454e-9dd0-5e888ad48e8a@114d2b23-fca7-4089-9fd7-23ab03af1a7a?source=copyLinkLegacyShareLinkDialog",
+    "status": "OPEN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "ice_page_pos_text,in_detail"
+   }
+  },
+  {
+   "id": "a65157991646a",
+   "name": "Side road zebras in Wales: policy, practice and Westminster trials",
+   "org": "ICE",
+   "date": "2026-11-17",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.ice.org.uk/events/upcoming-events/side-road-zebras-in-wales-policy-practice-and-westminster-trials",
+   "region": "Overseas",
+   "online": true,
+   "free": true,
+   "source": "ICE Upcoming Events",
+   "group": "ICE",
+   "auto": true,
+   "mode": "ONLINE",
+   "registration": {
+    "mechanism": "OTHER_PUBLIC_FORM",
+    "destination": "https://www.ciht.org.uk/event/side-road-zebras-in-wales-policy-practice-and-westminster-trials/",
+    "status": "OPEN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "ice_page_pos_text,in_detail"
+   }
+  },
+  {
+   "id": "a129f62ad4c98",
+   "name": "Multi-cultural celebration for global delivery teams",
+   "org": "ICE",
+   "date": "2026-11-17",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.ice.org.uk/events/upcoming-events/fir-multi-cultural-celebration-for-global-delivery-teams",
+   "region": "Overseas",
+   "online": true,
+   "free": true,
+   "source": "ICE Upcoming Events",
+   "group": "ICE",
+   "auto": true,
+   "mode": "ONLINE",
+   "registration": {
+    "mechanism": "EVENTBRITE",
+    "destination": "https://www.eventbrite.co.uk/e/multi-cultural-celebration-for-global-delivery-teams-tickets-2003395370483?aff=oddtdtcreator",
+    "status": "OPEN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "HIGH",
+    "discoveryMethod": "ice_page_eventbrite,pos_text,in_detail"
    }
   },
   {
@@ -2651,72 +2740,8 @@
     "mechanism": "GOOGLE_FORMS",
     "destination": "https://docs.google.com/forms/d/e/1FAIpQLScDRL4QH_6sV4h68QduhefW_-ZMWOQSdbjeSfP0p9SrAWr97A/viewform",
     "formId": "1FAIpQLScDRL4QH_6sV4h68QduhefW_-ZMWOQSdbjeSfP0p9SrAWr97A",
-    "status": "OPEN",
-    "fields": [
-     {
-      "entryId": "entry.1954009582",
-      "profileField": null,
-      "label": "Participation mode",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.23470369",
-      "profileField": "englishName",
-      "label": "Full Name (for CPD Certificate Issuance)",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1442262263",
-      "profileField": "email",
-      "label": "Email Address",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1461319273",
-      "profileField": "phone",
-      "label": "Contact Number",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1343079659",
-      "profileField": "organisation",
-      "label": "Company Name",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.454715711",
-      "profileField": "position",
-      "label": "Job Position",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.119185228",
-      "profileField": null,
-      "label": "Membership",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.218194727",
-      "profileField": "hkieNumber",
-      "label": "Please fill in your membership number.",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.635061191",
-      "profileField": null,
-      "label": "Application will be accepted on a first-come-first-served basis and priority will be given to members of ASHRAE-HKC, CIBSE-HKB and HKIE-BSD. Successful applicants will be informed by a confirmation email on or before 13 November 2026.",
-      "type": "RADIO",
-      "safePrefill": false
-     }
-    ],
+    "status": "CLOSED",
+    "fields": [],
     "requiresManualCompletion": true,
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
@@ -2869,63 +2894,6 @@
    }
   },
   {
-   "id": "ae4705712716f",
-   "name": "ITCTS Recruitment Day",
-   "org": "CIC",
-   "date": "2026-11-20",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events/detail.page-20261120",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
-   "id": "a07aa00679669",
-   "name": "Webinar on “Construction Workers Registration Ordinance” (CWRO)",
-   "org": "CIC",
-   "date": "2026-11-20",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/eform/cwrbriefingsession/regform.aspx?lang=en-US",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "mode": "ONLINE",
-   "registration": {
-    "mechanism": "CAPTCHA_BLOCKED",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
-    "confidence": "MEDIUM",
-    "discoveryMethod": "page_captcha_blocked"
-   }
-  },
-  {
    "id": "a51c8d2e44cba",
    "name": "Webinar on The Emerging Space Economy: Opportunities and Challenges",
    "org": "HKIE Events",
@@ -3012,6 +2980,63 @@
    }
   },
   {
+   "id": "ae4705712716f",
+   "name": "ITCTS Recruitment Day",
+   "org": "CIC",
+   "date": "2026-11-20",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events/detail.page-20261120",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
+   "id": "a07aa00679669",
+   "name": "Webinar on “Construction Workers Registration Ordinance” (CWRO)",
+   "org": "CIC",
+   "date": "2026-11-20",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/eform/cwrbriefingsession/regform.aspx?lang=en-US",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "mode": "ONLINE",
+   "registration": {
+    "mechanism": "CAPTCHA_BLOCKED",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "page_captcha_blocked"
+   }
+  },
+  {
    "id": "ad82ca8cdd568",
    "name": "Six Sigma Green Belt Training – Day 3 (of 4)",
    "org": "TQM Consultants",
@@ -3095,8 +3120,8 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "HIGH",
-    "discoveryMethod": "page_scan_google_forms,pos_text"
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    },
    "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
    "venueSource": "event_detail",
@@ -3539,34 +3564,6 @@
    }
   },
   {
-   "id": "aa90ded4f6271",
-   "name": "Construction Innovation Expo 2026 (CIExpo 2026)",
-   "org": "CIC",
-   "date": "2026-11-23",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events/detail.page-20261123",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
    "id": "a00c208d03564",
    "name": "DEVB & CSTID & CIC - CIExpo 2026 (23-25 Nov 2026)",
    "org": "HKGBC",
@@ -3592,6 +3589,34 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "LOW",
     "discoveryMethod": "hkgbc_detail_no_reg"
+   }
+  },
+  {
+   "id": "aa90ded4f6271",
+   "name": "Construction Innovation Expo 2026 (CIExpo 2026)",
+   "org": "CIC",
+   "date": "2026-11-23",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events/detail.page-20261123",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -3790,6 +3815,91 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "LOW",
     "discoveryMethod": "hkie_eventdetail_no_reg_link"
+   }
+  },
+  {
+   "id": "a85c2c3e1dd0f",
+   "name": "The HKIEGS Chairman Cup 2026",
+   "org": "HKIE Events",
+   "date": "2026-11-25",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ad82da65f713be015117576/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_no_reg_link"
+   }
+  },
+  {
+   "id": "ad10ddb1d8e0f",
+   "name": "Veneree Club Monthly Talk (25 November 2026)",
+   "org": "HKIE Events",
+   "date": "2026-11-25",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ae2ab2f235f6d220136dd82/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6ae2ab2f235f6d220136dd82&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
+   }
+  },
+  {
+   "id": "a9b2553337d58",
+   "name": "Wales National Flood Conference 2026",
+   "org": "ICE",
+   "date": "2026-11-25",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.ice.org.uk/events/upcoming-events/wales-national-flooding-conference-2026",
+   "region": "Overseas",
+   "online": true,
+   "free": null,
+   "source": "ICE Upcoming Events",
+   "group": "ICE",
+   "auto": true,
+   "mode": "ONLINE",
+   "registration": {
+    "mechanism": "OTHER_PUBLIC_FORM",
+    "destination": "https://members.ciwem.org/civicrm/event/register?reset=1&id=432",
+    "status": "OPEN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "ice_page_pos_text,in_detail"
    }
   },
   {
@@ -4044,8 +4154,8 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "HIGH",
-    "discoveryMethod": "page_scan_google_forms,pos_text"
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    },
    "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
    "venueSource": "event_detail",
@@ -4136,34 +4246,6 @@
    }
   },
   {
-   "id": "a03559f0a46f9",
-   "name": "2026 Construction Workers Carnival",
-   "org": "CIC",
-   "date": "2026-11-29",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cwf.cic.hk/en/Home",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
    "id": "ae60e9459c208",
    "name": "建造業議會 - 2026建造工友嘉年華 (Chinese only)",
    "org": "HKGBC",
@@ -4189,6 +4271,34 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "LOW",
     "discoveryMethod": "hkgbc_detail_no_reg"
+   }
+  },
+  {
+   "id": "a03559f0a46f9",
+   "name": "2026 Construction Workers Carnival",
+   "org": "CIC",
+   "date": "2026-11-29",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cwf.cic.hk/en/Home",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -4380,12 +4490,12 @@
    "group": "IStructE",
    "auto": true,
    "registration": {
-    "mechanism": "CAPTCHA_BLOCKED",
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
     "destination": null,
     "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
-    "confidence": "MEDIUM",
-    "discoveryMethod": "page_captcha_blocked"
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -4561,34 +4671,6 @@
    }
   },
   {
-   "id": "a9c92b856a9ba",
-   "name": "ITCTS Recruitment Day",
-   "org": "CIC",
-   "date": "2026-12-03",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events/detail.page-20261203",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
    "id": "a2ff55574083e",
    "name": "RCx CPD Webinar - Unlocking Building Performance Through Data-Driven RCx and ASHRAE Best Practices",
    "org": "HKGBC",
@@ -4637,12 +4719,40 @@
    "group": "IStructE",
    "auto": true,
    "registration": {
-    "mechanism": "CAPTCHA_BLOCKED",
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
     "destination": null,
     "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
-    "confidence": "MEDIUM",
-    "discoveryMethod": "page_captcha_blocked"
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
+   "id": "a9c92b856a9ba",
+   "name": "ITCTS Recruitment Day",
+   "org": "CIC",
+   "date": "2026-12-03",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events/detail.page-20261203",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -4975,12 +5085,12 @@
    "group": "ICE",
    "auto": true,
    "registration": {
-    "mechanism": "CAPTCHA_BLOCKED",
+    "mechanism": "EVENTBRITE",
     "destination": "https://www.eventbrite.co.uk/e/tickets-2003143777963#tickets",
-    "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "status": "OPEN",
+    "sourceUrlClass": "LISTING_PAGE",
     "confidence": "HIGH",
-    "discoveryMethod": "ice_cloudflare_or_403"
+    "discoveryMethod": "ice_page_eventbrite,pos_text,in_detail"
    }
   },
   {
@@ -5031,12 +5141,12 @@
    "group": "IStructE",
    "auto": true,
    "registration": {
-    "mechanism": "CAPTCHA_BLOCKED",
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
     "destination": null,
     "status": "UNKNOWN",
-    "sourceUrlClass": "CAPTCHA_BLOCKED",
-    "confidence": "MEDIUM",
-    "discoveryMethod": "page_captcha_blocked"
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -5267,8 +5377,8 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "HIGH",
-    "discoveryMethod": "page_scan_google_forms,pos_text"
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    },
    "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
    "venueSource": "event_detail",
@@ -5533,8 +5643,8 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "HIGH",
-    "discoveryMethod": "page_scan_google_forms,pos_text"
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    },
    "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
    "venueSource": "event_detail",
