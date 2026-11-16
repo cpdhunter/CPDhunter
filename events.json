@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-16T16:45+08:00",
+ "updated": "2026-11-16T17:17+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -103,11 +103,13 @@
    "source": "HKIE Events",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 20,
-   "method": "playwright+generic+detail",
+   "n": 50,
+   "method": "hkie-eventlist+detail",
    "page_title": "Events - HKIE",
-   "raw_candidates": 20,
-   "rejects": {}
+   "raw_candidates": 52,
+   "rejects": {
+    "social": 2
+   }
   },
   {
    "source": "HKIE Building Division",
@@ -243,15 +245,10 @@
   },
   {
    "source": "TQM Consultants Training",
-   "status": "OK_WITH_EVENTS",
-   "ok": true,
-   "n": 4,
-   "method": "tqm-list+detail",
-   "page_title": "Upcoming | TQM Consultants Co. Limited",
-   "raw_candidates": 6,
-   "rejects": {
-    "date_range": 2
-   }
+   "status": "FAIL",
+   "ok": false,
+   "n": 0,
+   "err": "Playwright 失敗：Error"
   }
  ],
  "events": [
@@ -2237,7 +2234,7 @@
   {
    "id": "ade4c69a74c66",
    "name": "Hong Kong Airworthiness Course",
-   "org": "HKIE Events",
+   "org": "Aircraft Division",
    "date": "2026-11-16",
    "time": "",
    "hrs": null,
@@ -2300,7 +2297,7 @@
   {
    "id": "a2f3918835b55",
    "name": "Technical Visit to the Route 6- Central Kowloon Bypass (Kowloon Bay Section)",
-   "org": "HKIE Events",
+   "org": "Geotechnical Division",
    "date": "2026-11-16",
    "time": "14:00-16:00",
    "hrs": 2.0,
@@ -2657,7 +2654,7 @@
   {
    "id": "a61aea65202a8",
    "name": "Technical Seminar: Enhancing River Biodiversity by Nature-based Solutions",
-   "org": "HKIE Events",
+   "org": "Civil Division",
    "date": "2026-11-17",
    "time": "19:00-20:00",
    "hrs": 1.0,
@@ -2803,7 +2800,7 @@
   {
    "id": "ad8fa708c4fa0",
    "name": "Joint Technical Seminar on Case Study Sharing: Active Chilled Beam and AI-Based Waterside & Airside Energy Optimization",
-   "org": "HKIE Events",
+   "org": "Building Services Division",
    "date": "2026-11-18",
    "time": "18:45-20:00",
    "hrs": 1.0,
@@ -3134,7 +3131,7 @@
   {
    "id": "a4d23f5651b2a",
    "name": "Seminar/Webinar on Firestop Systems for M&E Services",
-   "org": "HKIE Events",
+   "org": "Mechanical, Marine, Naval Architecture & Chemical Division",
    "date": "2026-11-20",
    "time": "18:30-20:00",
    "hrs": 1.5,
@@ -3171,7 +3168,7 @@
   {
    "id": "a51c8d2e44cba",
    "name": "Webinar on The Emerging Space Economy: Opportunities and Challenges",
-   "org": "HKIE Events",
+   "org": "Aircraft Division",
    "date": "2026-11-20",
    "time": "18:30-20:30",
    "hrs": 2.0,
@@ -3206,7 +3203,7 @@
   {
    "id": "a89bbe0bfcd00",
    "name": "Technical Seminar - From Emergency Response to Safety Resilience: Managing Climate-Related OH&S Risks through ISO/PAS 45007:2026",
-   "org": "HKIE Events",
+   "org": "Electrical Division",
    "date": "2026-11-20",
    "time": "19:00-20:30",
    "hrs": 1.5,
@@ -3238,7 +3235,7 @@
   {
    "id": "a1621fbbd960d",
    "name": "Event 123 - Testing",
-   "org": "HKIE Events",
+   "org": "The Hong Kong Institution of Engineers",
    "date": "2026-11-21",
    "time": "",
    "hrs": null,
@@ -3298,7 +3295,7 @@
   {
    "id": "aea695487f353",
    "name": "Technical Seminar on Trusted Resilience Powering Global Maritime Trade",
-   "org": "HKIE Events",
+   "org": "Mechanical, Marine, Naval Architecture & Chemical Division",
    "date": "2026-11-21",
    "time": "09:00-12:15",
    "hrs": 3.0,
@@ -3395,7 +3392,7 @@
   {
    "id": "a3f1e77f29697",
    "name": "International Conference on Modular Construction 2026",
-   "org": "HKIE Events",
+   "org": "Other Organiser(s)",
    "date": "2026-11-21",
    "time": "09:00-17:45",
    "hrs": 9.0,
@@ -3428,7 +3425,7 @@
   {
    "id": "a218e3082dc4b",
    "name": "Technical Visit: Linde HKO Ltd",
-   "org": "HKIE Events",
+   "org": "Environmental Division",
    "date": "2026-11-21",
    "time": "09:30-12:30",
    "hrs": 3.0,
@@ -3536,7 +3533,7 @@
   {
    "id": "a86ae34fc03fc",
    "name": "Where Cultures Meet and Dice Roll 文化相遇處・骰子啟航時",
-   "org": "HKIE Events",
+   "org": "Young Members Committee",
    "date": "2026-11-21",
    "time": "15:00-18:00",
    "hrs": 3.0,
@@ -3931,7 +3928,7 @@
   {
    "id": "a13a6cc220813",
    "name": "Asia-Pacific Energy Transition Think Tank Forum 2026",
-   "org": "HKIE Events",
+   "org": "Other Organiser(s)",
    "date": "2026-11-24",
    "time": "13:30-18:30",
    "hrs": 5.0,
@@ -4020,7 +4017,7 @@
   {
    "id": "a6bd958331076",
    "name": "[By Labours Department / Occupation Safety & Health Council] 28th Boilers & Pressure Vessels Safety Seminar",
-   "org": "HKIE Events",
+   "org": "Mechanical, Marine, Naval Architecture & Chemical Division",
    "date": "2026-11-25",
    "time": "08:45-17:00",
    "hrs": 8.0,
@@ -4057,7 +4054,7 @@
   {
    "id": "a85c2c3e1dd0f",
    "name": "The HKIEGS Chairman Cup 2026",
-   "org": "HKIE Events",
+   "org": "Golf Society",
    "date": "2026-11-25",
    "time": "09:15-21:00",
    "hrs": 12.0,
@@ -4089,7 +4086,7 @@
   {
    "id": "ad10ddb1d8e0f",
    "name": "Veneree Club Monthly Talk (25 November 2026)",
-   "org": "HKIE Events",
+   "org": "Veneree Club",
    "date": "2026-11-25",
    "time": "10:00-12:00",
    "hrs": 2.0,
@@ -4124,7 +4121,7 @@
   {
    "id": "a685323cd4558",
    "name": "Public Speaking Workshop (Jointly Organised with HKIE CPDC)",
-   "org": "HKIE Events",
+   "org": "Young Members Committee",
    "date": "2026-11-25",
    "time": "19:00-20:30",
    "hrs": 1.5,
@@ -4246,7 +4243,7 @@
   {
    "id": "a44d6a2f9a37e",
    "name": "Technical Seminar: Infrastructure Construction using Fibre Reinforced Concrete",
-   "org": "HKIE Events",
+   "org": "Civil Division",
    "date": "2026-11-26",
    "time": "19:00-20:00",
    "hrs": 1.0,
@@ -4335,7 +4332,7 @@
   {
    "id": "a3ba2e784f523",
    "name": "BEAM Society Knowledge Sharing Symposium 2026",
-   "org": "HKIE Events",
+   "org": "Environmental Division",
    "date": "2026-11-27",
    "time": "",
    "hrs": null,
@@ -4454,7 +4451,7 @@
   {
    "id": "a6de651c4f20a",
    "name": "BEC EnviroSeries Conference November 2026",
-   "org": "HKIE Events",
+   "org": "Other Organiser(s)",
    "date": "2026-11-27",
    "time": "09:30-16:50",
    "hrs": 7.5,
@@ -4578,6 +4575,40 @@
    "mode": "FACE_TO_FACE"
   },
   {
+   "id": "aac2ad90a976f",
+   "name": "[HKIE-MMNC x HKUEAA] Technical Visit to Integrated Wheelset Maintenance Centre",
+   "org": "Mechanical, Marine, Naval Architecture & Chemical Division",
+   "date": "2026-11-27",
+   "time": "16:00-17:00",
+   "hrs": 1.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Mechanical",
+    "Marine & Naval Architecture",
+    "Chemical"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6af75bfe1f1d426669c58ffe/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Hung Hom (Exact location to be sent to successful participants)",
+   "description": "Programme Highlights This technical visit provides participants with an opportunity to visit the Integrated Wheelset Maintenance Centre in Hung Hom and gain an understanding of wheelset maintenance activities and facilities associated with railway operations. During the visit, participants will be introduced to the wheelset maintenance process, including inspection, maintenance and related engineering practices adopted to support the safe and reliable operation of railway rolling stock. The visit will also provide an opportunity for participants to exchange technical knowledge with the Centre's representatives and enhance their understanding of railway wheelset maintenance, engineering requirements and maintenance management. Registration & Enquiries This technical visit is free of charge and prior registration is required. The number of participants is limited to 20 . Applications will be accepted on a first-come-first-served basis with priority given to members of HKIE-MMNC and HKUEAA. Only online registration https://hkie.org.hk/mc/events/event-detail/6af75bfe1f1d426669c58ffe/ shall be accepted. Attendance certificates will be issued after the event.",
+   "venueSource": "event_detail",
+   "division": "Mechanical, Marine, Naval Architecture & Chemical Division",
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6af75bfe1f1d426669c58ffe&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
+   }
+  },
+  {
    "id": "aa0549543b32f",
    "name": "Seminar on HK GeoCode x Geospatial Intelligence",
    "org": "HKIS CPD",
@@ -4662,6 +4693,178 @@
    }
   },
   {
+   "id": "a82ac0b765d1d",
+   "name": "Joint Technical Visit to Shun Cheong MiMEP Factory in Dongguan",
+   "org": "Building Services Division",
+   "date": "2026-11-28",
+   "time": "09:00-17:30",
+   "hrs": 8.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Building Services"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6af515671f1d426669c4b469/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSdt0VAvURzteIaObfRqrLwh3MAstDmsyaBs02A1h8b2vUlepQ/viewform",
+    "formId": "1FAIpQLSdt0VAvURzteIaObfRqrLwh3MAstDmsyaBs02A1h8b2vUlepQ",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.311611423",
+      "profileField": null,
+      "label": "Title",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.126013665",
+      "profileField": null,
+      "label": "Surname (e.g. Chan)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1882341507",
+      "profileField": null,
+      "label": "First Name (e.g. Tai Man, Peter)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1070577827",
+      "profileField": "hkieNumber",
+      "label": "Membership No.",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.340454270",
+      "profileField": "organisation",
+      "label": "Company",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.873550834",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1343225921",
+      "profileField": "email",
+      "label": "Email Address:",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.821229015",
+      "profileField": "phone",
+      "label": "Mobile No.:",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1327828315",
+      "profileField": null,
+      "label": "Emergency Contact Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1952212531",
+      "profileField": null,
+      "label": "Emergency Contact Person",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.772327639",
+      "profileField": null,
+      "label": "Relationship to Participant",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.762538058",
+      "profileField": null,
+      "label": "Are you member of the Organizers?",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1087650441",
+      "profileField": null,
+      "label": "Note 1: All successful participants should be required their own valid passport, entry permit or visa, Home Return Permit during the time of the visit",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.658884543",
+      "profileField": null,
+      "label": "Important Note:  I confirm my consent to follow any and all safety instructions given by the organizer (s) and/or the owner of the premises/sites and to well equip myself with necessary safety gear for participation in the event.  I understand that neither the Institution nor the parties concerned would accept any liability in connection with the above event.  The information provided will only be used for the purpose of communicating with you on matters related to the activity. You have rights of access and correction with respect to your personal data held by us. If you wish to exercise these rights, please contact the Division/ Committee concerned or the HKIE Secretariat. The personal information collected is solely for the arrangement on this event and they will be destroyed after the event.",
+      "type": "RADIO",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "MiMEP Factory in Dongguan, Guangdong, China",
+   "description": "Joint Technical Visit to Shun Cheong MiMEP Factory in Dongguan Date: 28 November 2026 (Saturday) Time: 9:00am – 5:30pm (Registration: 8:45am, assembly at Kowloon Tong Station) Venue: MiMEP Factory in Dongguan, Guangdong, China Programme Highlights: In this technical visit, members would be guided to have an insider visit at MIMEP factory of Shun Cheong Engineering Group in Dongguan. During the visit, members would appreciate how the advanced MiMEPengineering transforms complex MEP systems into precision-engineered and prefabricated modules . The showcase of the overall manufacturing cycle of installation with the adoption of MiMEP from design to off-site fabrication and in-situ assembly , members will explore how MiMEP solution achieve the collective goal of enhancement of safety, construction waste management and project productivity. Members will gain the exposure to cutting-edge manufacturing lines, digital management tools, and proven project applications, including Pioneering MiMEP Fabrication , Signature Project Applications , Full-Cycle In-Situ Execution and Automated trunking Production . Application Fee: This technical visit is free of charge Language: Cantonese with English Terminology CPD Certificate: CPD attendance certificate (6-hour credit) will be distributed to the participants after the visit by email. The organizer reserves the right to disqualify and terminate those non-properly registered participants to attend the visit. Registration & Enquiry: The visit is free of charge and prior registration is required. For registration, please register via the enrolment website: https://forms.gle/3pF7DxRqvzAaRMzi9 The maximum number of participants is 30. Registration will be accepted on a first-come-first-served basis and priority will be given to members of organizers. Successful members will be informed by confirmation emails not later than 21 November 2026 . For any enquiries, please contact Ir Steven POON at 6074 1830 or email: hkiebsd.seminar@gmail.co",
+   "venueSource": "event_detail",
+   "division": "Building Services Division"
+  },
+  {
+   "id": "abc658131ecea",
+   "name": "CXC Visit - Safety by Design: Intelligent Technologies for Safer Construction Operations",
+   "org": "Safety Specialist Committee",
+   "date": "2026-11-28",
+   "time": "09:30-12:30",
+   "hrs": 3.0,
+   "hrs_est": true,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ac5ddec5f713be0150ac7a7/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSdo2xQiDbEWL67PJhRAZk5cqwJZHOqXLM4m1k3L4aQmHu9nfA/viewform",
+    "formId": "1FAIpQLSdo2xQiDbEWL67PJhRAZk5cqwJZHOqXLM4m1k3L4aQmHu9nfA",
+    "status": "CLOSED",
+    "fields": [],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "Hilti Customer Experience Center, Tuen Mun",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "Event Title: CXC Visit - Safety by Design: Intelligent Technologies for Safer Construction Operations Organizer: The Hong Kong Institution of Engineers (HKIE) – Safety Specialist Committee Date, Time & Venue: • Date: 28 November 2026 • Time: 09:30 - 12:30 • Venue: Hilti Customer Experience Center Programme Highlights: As cordless tools become increasingly common in construction and industrial applications, enhancing equipment safety, protecting worker health, and reducing jobsite risks have become key priorities for the industry. This workshop will focus on the latest developments in battery safety, intelligent protection systems, and occupational health technologies, exploring how innovation can contribute to safer and more productive working environments. Participants will gain insights into the multiple layers of safety features incorporated into modern battery systems. Topics include electronic component sealing technologies that help protect sensitive circuitry from dust, moisture, and harsh site conditions, as well as impact-resistant structural designs that reduce the risk of damage from accidental drops. The workshop will also introduce Battery Management Systems (BMS), which continuously monitor battery temperature and operating conditions to help prevent overcharging, over-discharging, and overheating, thereby enhancing safety, reliability, and service life. In addition, participants will learn how battery health monitoring functions can be used to quickly assess battery condition and identify potential safety concerns. The workshop will also explore the role of vibration reduction technologies in occupational health protection. Through advanced three-dimensional vibration control systems, tools can significantly reduce vibration transmitted to operators from multiple directions, helping improve user comfort and minimize long-term exposure risks associated with prolonged tool operation. Furthermore, participants will be introduced to a range of active safe",
+   "venueSource": "event_detail",
+   "division": "Safety Specialist Committee",
+   "mode": "FACE_TO_FACE"
+  },
+  {
    "id": "a03559f0a46f9",
    "name": "2026 Construction Workers Carnival",
    "org": "CIC",
@@ -4743,6 +4946,78 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "MEDIUM",
     "discoveryMethod": "hkgbc_detail_pdf,in_detail,title_close"
+   }
+  },
+  {
+   "id": "a0b39c66eb14e",
+   "name": "[NEC x HKIE-YMC x ICE HKA G&S] NEC PSC Hong Kong Edition Briefing Session",
+   "org": "Young Members Committee",
+   "date": "2026-11-30",
+   "time": "18:30-19:45",
+   "hrs": 1.0,
+   "hrs_est": true,
+   "type": "GPM",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ad883305f713be01511ab98/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLScgI3e-rvu1PD_CqbNBKEqJc2iwrx5kBLryYS1aT73_9-aGDg/viewform",
+    "formId": "1FAIpQLScgI3e-rvu1PD_CqbNBKEqJc2iwrx5kBLryYS1aT73_9-aGDg",
+    "status": "CLOSED",
+    "fields": [],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "HKIC, Lecture Theatre, 44 Tai Yip Street, Kowloon Bay",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "[NEC x HKIE-YMC x ICE HKA G&S] NEC PSC Hong Kong Edition Briefing Session Date & Time: 30 November 2026 (Monday), 18:30 – 19:45 Venue: HKIC, Lecture Theatre, 44 Tai Yip Street, Kowloon Bay Programme Highlights The purpose of the NEC Professional Service Contract (PSC) is for the appointment of professional consultants and service providers such as architects, quantity surveyors, engineers, project managers, designers, while promoting collaboration, clarity, and proactive risk management across a project lifecycle. This seminar provides a comprehensive comparison between NEC4 PSC against NEC HK PSC. Speaker: Tim Knee-Robinson is a Chartered Civil Engineer with over 30 years of experience across civil engineering, infrastructure, energy, and the built environment. A leading specialist with over 25 years in NEC contracts, Tim has managed, advised on, and delivered training for more than 400 NEC-procured projects across the UK and Hong Kong. As a key member of the NEC4 drafting team, he led the creation of all 24 NEC4 user guides, contributed to the core ECC contract, and developed the Works Information structure used for the 2012 Olympics. In Hong Kong, he has advised on major initiatives for DSD and CLP Power and currently works with the Development Bureau drafting regional NEC contract editions. Tim also provides contract assurance to UK government bodies and is retained by Thomas Telford Ltd to deliver official NEC training and consultancy. Language English Registration & Enquiries The number of participants is limited to 40. Applications will be accepted on a first-come, first-served basis, with priority given to HKIE and ICE Members. For registration, please complete this Google Form https://forms.gle/veWhHwxMKMyrfrFh8 by 20 November 2026 . Successful applicants will be notified individually via email. For enquiries, please contact Ir Vanessa Chiong by email: hkie.seminarsgroup@gmail.com .",
+   "venueSource": "event_detail",
+   "division": "Young Members Committee",
+   "mode": "FACE_TO_FACE"
+  },
+  {
+   "id": "a92657ffbd0f7",
+   "name": "CERTIFIED CARBON AUDITOR TRAINING COURSE",
+   "org": "Environmental Division",
+   "date": "2026-11-30",
+   "time": "19:00-19:00",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "Environmental"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6a704493c3a8fba9b931cce8/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Online",
+   "modeText": "ONLINE",
+   "attendanceMode": "ONLINE",
+   "venueSource": "event_detail",
+   "division": "Environmental Division",
+   "mode": "ONLINE",
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_no_reg_link"
    }
   },
   {
@@ -4999,6 +5274,70 @@
    }
   },
   {
+   "id": "af1ba630721d1",
+   "name": "NEC Asia Pacific Conference 2026",
+   "org": "Other Organiser(s)",
+   "date": "2026-12-01",
+   "time": "08:00-18:00",
+   "hrs": 10.0,
+   "hrs_est": true,
+   "type": "GPM",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ae93d611f1d426669bf9b80/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Cordis Hotel, Hong Kong",
+   "description": "Host: NEC Contracts Tel: +852 9858 3728 Email: necapac@neccontract.com Event Website: https://www.neccontract.com/apac-26",
+   "venueSource": "event_detail",
+   "division": "Other Organiser(s)",
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_no_reg_link"
+   }
+  },
+  {
+   "id": "a0ea27fb4bbd5",
+   "name": "PolyU Northern Metropolis Future Forum Season 4",
+   "org": "Other Organiser(s)",
+   "date": "2026-12-01",
+   "time": "09:00-13:00",
+   "hrs": 4.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6adb21e25f713be01512bce2/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Chiang Chen Studio Theatre, Chung Sze Yuen Building, The Hong Kong Polytechnic University, Hung Hom, Kowloon, Hong Kong",
+   "description": "Host: The Jockey Club Design Institute for Social Innovation of The Hong Kong Polytechnic University Tel: 3400 2839 Email: disi.enquiry@polyu.edu.hk Event Website: https://events.polyu.edu.hk/polyunmff4/home",
+   "venueSource": "event_detail",
+   "division": "Other Organiser(s)",
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_no_reg_link"
+   }
+  },
+  {
    "id": "af4ec016907f5",
    "name": "體力處理操作及預防背部勞損",
    "org": "Labour Dept",
@@ -5028,6 +5367,43 @@
     "sourceUrlClass": "LISTING_PAGE",
     "confidence": "LOW",
     "discoveryMethod": "labour_oshsreg_listing_no_per_event_link"
+   }
+  },
+  {
+   "id": "aa08f65fc93cd",
+   "name": "Technical Seminar on Electric Powertrain Conversion and Latest Technology Developments",
+   "org": "Mechanical, Marine, Naval Architecture & Chemical Division",
+   "date": "2026-12-01",
+   "time": "18:30-20:00",
+   "hrs": 1.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Mechanical",
+    "Marine & Naval Architecture",
+    "Chemical"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6af201571f1d426669c38003/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Chan Yat Mei Sophie Room, 9/F Island Beverley",
+   "modeText": "HYBRID",
+   "attendanceMode": "HYBRID",
+   "description": "Programme Highlights Electric powertrain conversion offers an engineering route to extending the service life of existing vehicles. This seminar will explore how an internal combustion engine vehicle can be converted to electric propulsion, with emphasis on system integration, safety and practical implementation. Refined Motor Co. (RMC) is a Hong Kong electric powertrain conversion specialist. Its supplied brochure describes a patented universal modular electric powertrain, applicable to classic and commercial vehicles. Angus is invited to present RMC’s latest technology developments and project experience, with current specifications and test results to be confirmed by RMC. The proposed presentation will cover: • Conversion architecture: motor, inverter, reduction gear and integration with existing vehicle systems. • Modular battery packaging, battery management, thermal management and charging integration. • Vehicle control, regenerative braking and high voltage safety considerations. • RMC case studies: packaging challenges, commissioning, testing and lessons learned. • Latest developments, approval considerations and the opportunities and limitations of conversion in supporting vehicle reuse. Speaker Angus L., Managing Director, Refined Motor Co. Registration & Enquiries This seminar is free of charge and prior registration is required, successful registration will be notified separately. Registrations will be accepted on a first-come-first-served basis with priority given to members of MMNC Division. Only on-line registration via https://hkie.org.hk/mc/events/event-detail/6af201571f1d426669c38003/ shall be accepted for registration. The number of participants is limited to 60. Attendance certificates will be issued through email by HKIE system after the event. For enquiries, please contact Ir Tim CHO at email kamkamwatim@gmail.com.",
+   "venueSource": "event_detail",
+   "division": "Mechanical, Marine, Naval Architecture & Chemical Division",
+   "mode": "HYBRID",
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6af201571f1d426669c38003&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
    }
   },
   {
@@ -5084,6 +5460,80 @@
     "sourceUrlClass": "UNKNOWN",
     "confidence": "LOW",
     "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
+   "id": "ada67c91dfb5a",
+   "name": "Innovative Movable Bridge Design in Hong Kong: Engineering beyond Waterfront Crossings",
+   "org": "Civil Division",
+   "date": "2026-12-02",
+   "time": "18:30-20:00",
+   "hrs": 1.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Civil"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ad88a0e5f713be01511b1b6/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSeA-CLVZq8Q-cFOwpATnYbeIGuK8tJpAOvCXdZSkJZEakqknQ/viewform",
+    "formId": "1FAIpQLSeA-CLVZq8Q-cFOwpATnYbeIGuK8tJpAOvCXdZSkJZEakqknQ",
+    "status": "CLOSED",
+    "fields": [],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "Chan Yat Mei Sophie Room, 9th Floor, Island Beverley, No 1 Great George Street, Causeway Bay",
+   "description": "Technical Seminar: Innovative Movable Bridge Design in Hong Kong: Engineering beyond Waterfront Crossings Organised by: HKIE Civil Division, and Chartered Institution of Highways & Transportation Date/Time: 2 December 2026 (Wednesday), 18:30-20:00 Venue: Sophie Chan Room, HKIE Headquarters, 9/F Island Beverley, No. 1 Great George Street, Causeway Bay Speaker: Ir Stephen Mak and Ir Daniel Leung Language: Cantonese with English presentation materials Fee: Free of Charge Programme Highlights: In this seminar, experience in the design and construction of innovative movable bridges in two local projects, namely the Improvement Works at Tai O - Phase 2 Stage 2 and the East Coast Boardwalk, will be shared. The speakers will share the comprehensive civil, structural, materials, and mechanical engineering solutions implemented across the projects’ lifecycle. Topics cover structural optimization, complex hydraulic mechanical drive integration, precision off-site fabrication, construction methods, and automated control and monitoring systems. The Improvement Works at Tai O – Phase 2, Stage 2 aims at enhancing local connectivity, emergency response capabilities, and public transport infrastructure without altering Tai O’s distinctive hydrogeological and sociocultural fabric. The project represents a comprehensive civil engineering designed to balance rural infrastructure modernization with environmental conservation and cultural heritage preservation. To overcome severe site constraints including lack of land-based logistics routes and the need to accommodate the Dragon Boat Water Parade, the project team developed innovative engineering solutions including Hong Kong’s first telescopic sliding footbridge, and an innovative horizontal swing footbridge. The East Coast Boardwalk is an iconic 2.2 km continuous pedestrian and cycle promenade constructed beneath the Island Eastern Corridor (IEC) viaducts, closing the long-standing waterfront connectivity gap between Fortress Hill and",
+   "venueSource": "event_detail",
+   "division": "Civil Division",
+   "civil_related": true,
+   "mode": "FACE_TO_FACE"
+  },
+  {
+   "id": "a60904ae1c97b",
+   "name": "Technical Seminar Series for “Power Generation” - Hybrid Cooling Tower at Black Point Power Station",
+   "org": "Mechanical, Marine, Naval Architecture & Chemical Division",
+   "date": "2026-12-02",
+   "time": "18:30-20:00",
+   "hrs": 1.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Mechanical",
+    "Marine & Naval Architecture",
+    "Chemical"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6af6d5fa1f1d426669c561e1/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Chun Wo & Hsin Chong Room, 10/F Island Beverley",
+   "modeText": "HYBRID",
+   "attendanceMode": "HYBRID",
+   "description": "Programme Highlights: This seminar introduces the hybrid cooling tower at Black Point Power Station's new Unit D2 combined-cycle gas turbine. It explains why cooling tower was selected over the conventional once-through seawater cooling system, and how the hybrid wet–dry design can minimise plumes. The seminar explains how the cooling tower will lessen environmental impacts by reducing heat rejection to the sea, cutting down seawater intake by about 95%, and avoiding major civil works such as dredging and tunnelling. It also covers how plume, drift, noise and corrosion are managed, the trade-offs in output and efficiency, and the regulatory approach. Participants will gain insights into sustainable cooling design for modern power stations. Speaker: Mr. Lee Hon Sun, Senior Project Adviser - Project Execution Team, CLP Power Hong Kong Limited Mr. Lee is a Charted Engineer and project professional with over 30 years of experience in power industry. He holds a Bachelor’s and a Master’s degree in Mechanical Engineering. Throughout his career, he has held various roles with CLP in engineering, project management, quality management and governance for local and oversea projects. He was also involved with the early development works of the D2 CCGT Project till project completion. Registration & Enquiries This seminar is free of charge and prior registration is required. The number of participants is limited to 30 (Seminar at HKIE HQ) and 500 (Webinar via Zoom) respectively. Applications will be accepted on a first-come-first-served basis with priority given to members of MMNC Division. Only on-line registration via https://hkie.org.hk/mc/events/event-detail/6af6d5fa1f1d426669c561e1/ shall be accepted for registration. Attendance certificates will be issued after the event.",
+   "venueSource": "event_detail",
+   "division": "Mechanical, Marine, Naval Architecture & Chemical Division",
+   "mode": "HYBRID",
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6af6d5fa1f1d426669c561e1&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
    }
   },
   {
@@ -5228,6 +5678,34 @@
    }
   },
   {
+   "id": "a56d68d4ceb7c",
+   "name": "HKUST & HKUST(GZ) - Two-City Conference - Building Sustainable Cities: Northern Metropolis Development",
+   "org": "HKGBC",
+   "date": "2026-12-04",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1099",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true,
+   "registration": {
+    "mechanism": "OTHER_PUBLIC_FORM",
+    "destination": "https://minerals.hk/twocityconf/enrolment/",
+    "status": "OPEN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "hkgbc_detail_pos_text,in_detail,title_close"
+   }
+  },
+  {
    "id": "af4b0c36e0e48",
    "name": "From Site Supervision to Smart Safety: Practical Safety Management for Building Works and Minor Works",
    "org": "HKIS CPD",
@@ -5284,34 +5762,6 @@
    }
   },
   {
-   "id": "a56d68d4ceb7c",
-   "name": "HKUST & HKUST(GZ) - Two-City Conference - Building Sustainable Cities: Northern Metropolis Development",
-   "org": "HKGBC",
-   "date": "2026-12-04",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1099",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "OTHER_PUBLIC_FORM",
-    "destination": "https://minerals.hk/twocityconf/enrolment/",
-    "status": "OPEN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "MEDIUM",
-    "discoveryMethod": "hkgbc_detail_pos_text,in_detail,title_close"
-   }
-  },
-  {
    "id": "a0bfe972335a4",
    "name": "Global BIM Coordinator Professional Training Course",
    "org": "HKIE",
@@ -5338,6 +5788,414 @@
     "confidence": "MEDIUM",
     "discoveryMethod": "page_scan_pos_text,in_detail"
    }
+  },
+  {
+   "id": "ab1fdb6e93f0a",
+   "name": "Technical Webinar: Hong Kong Operational Technology (OT) Cybersecurity Has Changed. Are We Ready?",
+   "org": "Control, Automation & Instrumentation Division",
+   "date": "2026-12-04",
+   "time": "18:30-20:00",
+   "hrs": 1.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Control, Automation & Instrumentation"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6af1d7251f1d426669c37040/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSfBI6AJE5mQJUEHOGsgOY6I-v8GLlUmBhCUJbTexthXao3wIA/viewform",
+    "formId": "1FAIpQLSfBI6AJE5mQJUEHOGsgOY6I-v8GLlUmBhCUJbTexthXao3wIA",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.953454236",
+      "profileField": null,
+      "label": "Title",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1091755925",
+      "profileField": null,
+      "label": "Last Name / Family Name (Chan, Cheung etc)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1400918716",
+      "profileField": null,
+      "label": "Organization / Company / Institution",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.686463895",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1230013422",
+      "profileField": "phone",
+      "label": "Mobile Number / Contact Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.372692134",
+      "profileField": "email",
+      "label": "Email Address",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.796591695",
+      "profileField": "hkieNumber",
+      "label": "HKIE Membership No.",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.931917774",
+      "profileField": null,
+      "label": "Please advise if you are member(s) of the following organisations / divisions",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1425038414",
+      "profileField": null,
+      "label": "An attendance certificate will be issued after completion of the seminar.",
+      "type": "RADIO",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "Hsin Chong Room at HKIE Headquarters and via Zoom (online)",
+   "modeText": "HYBRID",
+   "attendanceMode": "HYBRID",
+   "description": "Hong Kong is moving from OT cybersecurity awareness to implementation. This seminar explores the market shift and demonstrates how solution “SecureOT” helps turn scattered asset and vulnerability information into prioritised engineering action. Key topics include: • The Hong Kong OT Cybersecurity Market Is Moving The current regulatory and customer demand signals driving OT risk assessment, asset visibility, defensible architecture, recovery readiness and managed security services. • What Customers Need Now Why OT organisations need more than policy or a list of vulnerabilities: they need reliable asset context, operational prioritisation, clear ownership and repeatable evidence. • SecureOT: From Unknown Assets to Prioritised Action How a vendor-neutral OT platform connects asset identity, software and firmware, vulnerability information, criticality and existing controls to focus engineering attention. • From Risk Priority to Controlled Engineering Decision A practical advisory scenario showing how teams can decide whether to patch, apply compensating controls, monitor, or plan modernisation while retaining ownership and evidence. Speaker: Mr Ka Hei Au and Mr Patrick Ho Affiliation: Rockwell Automation Asia Pacific Limited Ka Hei Au is a Technical Consultant specialising in industrial automation, OT cybersecurity, ISA/IEC 62443, digital engineering and AI-enabled industrial solutions. His work connects control-system engineering with practical risk assessment, architecture and modernisation requirements for industrial and critical-infrastructure environments. Patrick Ho is a seasoned OT Cybersecurity leader with more than 20 years of international experience helping critical infrastructure, manufacturing, and industrial organisations strengthen operational resilience and cyber risk management. As OT Cybersecurity Consultant & Cybersecurity Sales Executive at Rockwell Automation, he advises executive leaders across Asia Pacific on cybersecurity strategy & roadmap, o",
+   "venueSource": "event_detail",
+   "division": "Control, Automation & Instrumentation Division",
+   "mode": "HYBRID"
+  },
+  {
+   "id": "a5789f9eee521",
+   "name": "HKIE Badminton and Table Tennis Tournament & Fun Day [Registration for Badminton]",
+   "org": "The Hong Kong Institution of Engineers",
+   "date": "2026-12-05",
+   "time": "09:00-15:00",
+   "hrs": 6.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ae953d71f1d426669bfa95e/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Main Hall, Lingnan Secondary School, Heng Fa Chuen (Address: 6 Shing Hong Lane, Heng Fa Chuen)",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "HKIE Badminton and Table Tennis Tournament & Fun Day Saturday, 5 December 2026 Organised by Task Force on Communal Sports and Social Service Dear members Following the enthusiastic response received last year, the HKIE Task Force on Communal Sports and Social Service (TFCSSS) is pleased to present the Table Tennis and Badminton Tournament & Fun Day once again this December, featuring a series of friendly tournaments and networking opportunities. We sincerely invite you to join us and help make this event a fun and memorable experience for everyone. Details are as follows: Date: 5 December 2026 (Sat) Time: 9:00am – 3:00pm (registration starts at 9:00am) Venue: Main Hall, Lingnan Secondary School (嶺南中學), 6 Shing Hong Lane, Heng Fa Chuen Game Format: Badminton / Table Tennis: Doubles only (Men's doubles / Women's doubles / Mixed doubles) Capacity: Badminton / Table Tennis: 16 teams each Rundown & Rules: Please refer to the link here . Enrolment Fee: 1. Badminton: $400/Team for participating in the tournament (only HKIE members are eligible) 2. Table Tennis: $200/Team for participating in the tournament(only HKIE members are eligible) 3. FREE ENTRY for members who wish to come and play table tennis without participating in the tournament (not applicable to badminton). Friends and family are welcome! Payment: - Must be made within 3 days after registration - Only accept online payment by credit card - Payment details will be sent to the email address you provided in the registration form Registration Link: Registration will be accepted on a first-come, first-served basis. - Badminton: https://shorturl.at/J7K7Y - Table Tennis: https://shorturl.at/7bA5L Registration Deadline: 17 November 2026 (Tue) Enquiries - Badminton: +852 9307 3890 (Mr Xavier CHENG) - Table tennis: +852 9194 9332 (Ir Dr KF CHEUNG) If you are interested in joining the Tournament & Fun Day, kindly register via the link above on or before Tuesday, 17 November 2026. Task Force on Communal Sports and Social",
+   "venueSource": "event_detail",
+   "division": "The Hong Kong Institution of Engineers",
+   "mode": "FACE_TO_FACE",
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6ae953d71f1d426669bfa95e&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
+   }
+  },
+  {
+   "id": "a435ff4376042",
+   "name": "HKIE Badminton and Table Tennis Tournament & Fun Day [Registration for Table Tennis]",
+   "org": "The Hong Kong Institution of Engineers",
+   "date": "2026-12-05",
+   "time": "09:00-15:00",
+   "hrs": 6.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ae955171f1d426669bfaa39/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Main Hall, Lingnan Secondary School (嶺南中學), 6 Shing Hong Lane, Heng Fa Chuen",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "HKIE Badminton and Table Tennis Tournament & Fun Day Saturday, 5 December 2026 Organised by Task Force on Communal Sports and Social Service Dear members Following the enthusiastic response received last year, the HKIE Task Force on Communal Sports and Social Service (TFCSSS) is pleased to present the Table Tennis and Badminton Tournament & Fun Day once again this December, featuring a series of friendly tournaments and networking opportunities. We sincerely invite you to join us and help make this event a fun and memorable experience for everyone. Details are as follows: Date: 5 December 2026 (Sat) Time: 9:00am – 3:00pm (registration starts at 9:00am) Venue: Main Hall, Lingnan Secondary School (嶺南中學), 6 Shing Hong Lane, Heng Fa Chuen Game Format: Badminton / Table Tennis: Doubles only (Men's doubles / Women's doubles / Mixed doubles) Capacity: Badminton / Table Tennis: 16 teams each Rundown & Rules: Please refer to the link here . Enrolment Fee: 1. Badminton: $400/Team for participating in the tournament (only HKIE members are eligible) 2. Table Tennis: $200/Team for participating in the tournament(only HKIE members are eligible) 3. FREE ENTRY for members who wish to come and play table tennis without participating in the tournament (not applicable to badminton). Friends and family are welcome! Payment: - Must be made within 3 days after registration - Only accept online payment by credit card - Payment details will be sent to the email address you provided in the registration form Registration Link: Registration will be accepted on a first-come, first-served basis. - Badminton: https://shorturl.at/J7K7Y - Table Tennis: https://shorturl.at/7bA5L Registration Deadline: 17 November 2026 (Tue) Enquiries - Badminton: +852 9307 3890 (Mr Xavier CHENG) - Table tennis: +852 9194 9332 (Ir Dr KF CHEUNG) If you are interested in joining the Tournament & Fun Day, kindly register via the link above on or before Tuesday, 17 November 2026. Task Force on Communal Sports and Social",
+   "venueSource": "event_detail",
+   "division": "The Hong Kong Institution of Engineers",
+   "mode": "FACE_TO_FACE",
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6ae955171f1d426669bfaa39&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
+   }
+  },
+  {
+   "id": "a80a18e4658aa",
+   "name": "Technical Visit to ATAL Design and Manufacture Center in Zhuhai",
+   "org": "Building Services Division",
+   "date": "2026-12-05",
+   "time": "09:00-17:30",
+   "hrs": 8.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Building Services"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6af669b41f1d426669c53285/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSd2mtRXS_9lG78oyjH-412TN57dtOjzOUwZaYDQI08St61q4A/viewform",
+    "formId": "1FAIpQLSd2mtRXS_9lG78oyjH-412TN57dtOjzOUwZaYDQI08St61q4A",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.496644700",
+      "profileField": null,
+      "label": "Title",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1132336415",
+      "profileField": null,
+      "label": "Surname (e.g. Chan)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.851936542",
+      "profileField": null,
+      "label": "First Name (e.g. Tai Man, Peter)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.250835396",
+      "profileField": "hkieNumber",
+      "label": "Membership No. (e.g. MW1234567)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.68367732",
+      "profileField": "organisation",
+      "label": "Company",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1282594964",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.362039857",
+      "profileField": "email",
+      "label": "Email Address:",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.796587776",
+      "profileField": "phone",
+      "label": "Mobile No.:",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1418760204",
+      "profileField": null,
+      "label": "Emergency Contact Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1468420194",
+      "profileField": null,
+      "label": "Emergency Contact Person",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1486594342",
+      "profileField": null,
+      "label": "Relationship to Participant",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.364241569",
+      "profileField": null,
+      "label": "Are you member of HKIE-BS Division?",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1222523107",
+      "profileField": null,
+      "label": "Note 1: All successful participants should be required their own valid passport, entry permit or visa, Home Return Permit during the time of the visit",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1947650448",
+      "profileField": null,
+      "label": "Important Note:  I confirm my consent to follow any and all safety instructions given by the organizer (s) and/or the owner of the premises/sites and to well equip myself with necessary safety gear for participation in the event.  I understand that neither the Institution nor the parties concerned would accept any liability in connection with the above event.  The information provided will only be used for the purpose of communicating with you on matters related to the activity. You have rights of access and correction with respect to your personal data held by us. If you wish to exercise these rights, please contact the Division/ Committee concerned or the HKIE Secretariat. The personal information collected is solely for the arrangement on this event and they will be destroyed after the event.",
+      "type": "RADIO",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "Factory in Jinwan District, Zhuhai, Guangdong, China",
+   "description": "Technical Visit to ATAL Design and Manufacture Center in Zhuhai Date: 5 December 2026 (Saturday) Time: 9:00am – 5:30pm (Registration: 8:45am, assembly at Kowloon Tong Station) Venue: Factory in Jinwan District, Zhuhai, Guangdong, China Programme Highlights: Hong Kong Government has been taking lead in adopting the advanced construction technologies including Multi-trade integrated Mechanical, Electrical and Plumbing (MiMEP) in the public works, and the MiMEP installation has now been extending to private projects. ATAL Building Services Engineering Limited is one of the pioneers in this field and established MiMEP Design & Manufacturing Centre as well as MiMEP High Productivity Research Centre in Zhuhai. The workshop has five production lines and ten functional areas, manufacturing the products in support of Hong Kong’s Modular Integrated Construction. During the visit, members will have the opportunity to see the production lines, and share the project experience with ATAL representatives on MiMEP technology and installation. Application Fee: This technical visit is free of charge Language: Cantonese with English Terminology CPD Certificate: CPD attendance certificate (6-hour credit) will be distributed to the participants after the visit by email. The organizer reserves the right to disqualify and terminate those non-properly registered participants to attend the visit. Registration & Enquiry: The visit is free of charge and prior registration is required. For registration, please register via the enrolment website: https://forms.gle/QFJz8Z5juDkk1WvcA The maximum number of participants is 30. Registration will be accepted on a first-come-first-served basis and priority will be given to members of organizers. Successful members will be informed by confirmation emails not later than 24 November 2026 . For any enquiries, please contact Mr. Rocky Fung at 9864 8797 or email: hkiebsd.seminar@gmail.com.",
+   "venueSource": "event_detail",
+   "division": "Building Services Division"
+  },
+  {
+   "id": "adcd2fbde63bb",
+   "name": "與嶺南派猛獁象牙雕吳志偉大師對話",
+   "org": "Control, Automation & Instrumentation Division",
+   "date": "2026-12-05",
+   "time": "10:30-12:00",
+   "hrs": 1.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Control, Automation & Instrumentation"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ae8a5fe1f1d426669bf5dda/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSf02IkOdmq6BqayKnkk4bAdvaOu1h9EXgMFhmpT1qod9o9Tfg/viewform",
+    "formId": "1FAIpQLSf02IkOdmq6BqayKnkk4bAdvaOu1h9EXgMFhmpT1qod9o9Tfg",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.809004896",
+      "profileField": null,
+      "label": "Title",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.966263185",
+      "profileField": null,
+      "label": "Last Name 姓氏",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.480284522",
+      "profileField": null,
+      "label": "First Name 名字",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1098562361",
+      "profileField": "hkieNumber",
+      "label": "Membership No. 會員編號",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1027331469",
+      "profileField": null,
+      "label": "Divisions 所屬分部",
+      "type": "CHECKBOX",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1415237904",
+      "profileField": "phone",
+      "label": "Contact Number 聯絡電話 (optional, 選填)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1013308435",
+      "profileField": "email",
+      "label": "Email Address 電郵地址",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1815405325",
+      "profileField": null,
+      "label": "Preferred Attendance Mode",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1526807062",
+      "profileField": null,
+      "label": "",
+      "type": "RADIO",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "Chun Wo & Hsin Cheong Rooms",
+   "modeText": "HYBRID",
+   "attendanceMode": "HYBRID",
+   "description": "講座: 與嶺南派猛獁象牙雕吳志偉大師對話 主辦機構: 香港工程師學會控制、自動化及儀器儀表分部 支持機構: 1. 英國特許計量及控制學會香港分會 2. 香港計量及自動化學會 日期及時間: 2026年12月5 日(星期六), 上午10時30 分至中午12 時 地點: 香港工程師學會俊和新昌會議室(Chun Wo & Hsin Cheong Rooms) 語言: 廣東話/普通話 講座背景(包括講者簡歷): 吳志偉大師 吳大師是一位備受尊祟的嶺南派猛獁象牙雕大師;他是史前猛獁象牙雕刻開拓者。 作為非物質文化遺產傳承人，吳大師採用冰河時期的猛獁象牙進行創作，成功將傳統象牙雕刻技藝與現代保育理念相結合。 他承襲了傳統的嶺南藝術風格，以細膩精巧、繁複入微且層次豐富的雕刻技法獨樹一幟，代表作品包括《玲瓏球》、《五百羅漢》及《三十三尊者》。 吳大師充分利用現有材料,配合有關文化及藝術智慧,再以精湛手藝及創新精神,精心雕琢每一件牙雕藝術作品。這包括了專業控自儀工程師應具備的重要元素。 吳大師從事牙雕藝術數十載，憑藉長年卓越的藝術成就，在內地及澳門特別行政區獲頒多項國家級稱號及殊榮。他獲授予正「高級工藝術美術大師」, 「中國工美行業藝術大師」 , 「廣東省工藝美術大師」 , 「廣東省民間文化技藝大師」, 澳「 門工藝美術大師」 , 國家級〝首批工藝美術大師傳承創新基地〞傳承人及 中山市第四屆〝十大工匠〞之一的稱號，並曾榮獲四項全國特別金獎、二十四項金獎，以及全國百鶴金鼎獎。 報名及查詢： 如欲參加本講座, 請登入下方連結報名, 費用全免。現場參與名額為30 人，線上參與名額為500 人，所有名額均以先到先得方式分配。網上報名連結為: https://forms.gle/mMVjTLgE9mGsEvyA8 。報名截止日期為2026 年11 月30 日。成功報名者將於2026 年12 月3 日或之前收到電郵通知。如有查詢，請透過電郵聯絡 陳詠儀工程師（crystal.chan.hkie@gmail.com）或 岑麗珊博士（drlsham.instmchk@gmail.com）。",
+   "venueSource": "event_detail",
+   "division": "Control, Automation & Instrumentation Division",
+   "mode": "HYBRID"
   },
   {
    "id": "a4b376c37e583",
@@ -5594,6 +6452,39 @@
    }
   },
   {
+   "id": "a5e34f4b4c8f9",
+   "name": "2026 HKGBC Regional Forum X WorldGBC AP Leadership Awards Showcase",
+   "org": "Other Organiser(s)",
+   "date": "2026-12-09",
+   "time": "09:00-17:40",
+   "hrs": 8.5,
+   "hrs_est": true,
+   "type": "GPM",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ad030f85f713be0150e96a0/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Meeting Room S221, Level 2, Hong Kong Convention and Exhibition Centre",
+   "description": "Host: The Hong Kong Green Building Council (HKGBC) Tel: 3994 8876 Email: marketing@hkgbc.org.hk Event Website: https://www.hkgbc.org.hk/eng/global-movement/international-conferences/2026-regional-forum/index.jsp",
+   "venueSource": "event_detail",
+   "division": "Other Organiser(s)",
+   "mode": "FACE_TO_FACE",
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_no_reg_link"
+   }
+  },
+  {
    "id": "a10273c20faeb",
    "name": "Organizational Level Greenhouse Gas Accounting and Verification – ISO 14064 Introductory and Implementation Course",
    "org": "HKIE",
@@ -5619,6 +6510,39 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "MEDIUM",
     "discoveryMethod": "page_scan_pos_text,in_detail"
+   }
+  },
+  {
+   "id": "a45f2ba4154ab",
+   "name": "The Tree Tour for the Veneree Club of HKIE",
+   "org": "Veneree Club",
+   "date": "2026-12-09",
+   "time": "10:15-12:00",
+   "hrs": 2.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6adb279d5f713be01512bfd1/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Kowloon Park, 22 Austin Road, Tsim Sha Tsui, Kowloon, Hong Kong",
+   "description": "The HKIE Veneree Club The Tree Tour for the Veneree Club of HKIE Wednesday, 9 December 2026 Please be advised that the Veneree Club will be visiting Kowloon Park, details are set out below: Date: Wednesday, 9 December 2026 Description: The tour will be guided by Mr Ken SO, Chief Executive of the Conservancy Association Run Down: No Time Event Note 1 10:15 – 10:30 Gather and registration at the entrance of the At the Arcade. Sign up and a brief introduction to the tour. 2 10:30 – 10:55 HK’s biggest urban Banyan Visiting the Urban Tree King and understanding how changing the growing environment would affect a tree. 3 10: 55 – 11:15 Understanding of Acacia in HK To learn about why Acacia confuse ( 台灣相思 ) is a tree species with highest failure rate under normal weather condition. 4 11:15 - 11:35 Introduction to Tree Risk Assessment (TRA) The principles for TRA and the applications of hand tools will be introduced. 5 11:35 – 11:55 Stone wall trees and OVTs in Hong Kong The background and characteristic of Old and Value Trees (OVTs) and Stone wall trees (SWTs) in Hong Kong will be introduced. 6 11:55 - 12:00 Debriefing and Q&A Completion of the tree tour. Assembly place: Gathering at 10:00 am at the Arcade: Address : Kowloon Park, 22 Austin Road, Tsim Sha Tsui, Kowloon, Hong Kong Time : 10:00 am - 12:00 nn Duration of the Visit : About 2 hours Quota: 30 person max. (first-come first-served) Fee: Free of charge Remarks:  Prior online registration is required. Notes for participants: Limited number of participants on first-come first-served basis for veneree club members. Should you wish to join the visit / tour , please register on or before Wednesday , 18 November 202 6 . Disclaimer: All information and views expressed by speaker and in his/her presentation materials do not reflect the official opinion and position of the HKIE. No responsibility is accepted by the HKIE for such information and views including his/her accuracy, correctness and veracity. https://event.hkie",
+   "venueSource": "event_detail",
+   "division": "Veneree Club",
+   "mode": "FACE_TO_FACE",
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6adb279d5f713be01512bfd1&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
    }
   },
   {
@@ -5857,6 +6781,148 @@
    "mode": "FACE_TO_FACE"
   },
   {
+   "id": "a7f2a91625f59",
+   "name": "Professional Assessment",
+   "org": "Veneree Club",
+   "date": "2026-12-12",
+   "time": "09:00-12:00",
+   "hrs": 3.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6acef21c5f713be0150e1bdb/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "HKIE Headquaters, 9/F",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "Date: Workshop 1 on mastering written communication skills (Essay/Technical Write-up): Saturday 12 December 2026 Workshop 2 on mastering interviewing techniques: Saturday 19 December 2026 Workshop 3 on mock professional assessment interview: Saturday 16 January 2027 Time: 9:00am - noon Venue: HKIE Headquaters, 9/F, Island Beverley, No 1 Great George Street, Causeway Bay, Hong Kong Registration Fee: HK$300 per workshop per participant To complete the registration, please post the cheque HK$300 (per workshop per participant) payabIe to \"The Hong Kong Institution of Engineers\" and please mark your name on the back of the cheque within 2 weeks to: Yume LEE Conference & Function Section The Hong Kong Institution of Engineers 9/F Island Beverley, No 1 Great George Street Causeway Bay Hong Kong Tel: (852) 2830 9071 Fax: (852) 2203 4133 Email: conf3@hkie.org.hk The workshops are jointly organised by HKIE Veneree Club and HKIE Toastmasters Club. The participant will be on a first-come first-served basis and successful applicants will be informed by email to attend the workshop. After successful application is confirmed, there will not be any refund of the HK$300 (per workshop per participant.). Deadline for application of the above workshop is on Wednesday 2 December 2026 If the registration is full, participants will be notified of the next available workshop date. Disclaimer: All information and views expressed by speaker and in his/her presentation materials do not reflect the official opinion and position of the HKIE. No responsibility is accepted by the HKIE for such information and views including his/her accuracy, correctness and veracity.",
+   "venueSource": "event_detail",
+   "division": "Veneree Club",
+   "mode": "FACE_TO_FACE",
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6acef21c5f713be0150e1bdb&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
+   }
+  },
+  {
+   "id": "a3453744f8809",
+   "name": "Handcrafted Christmas Tree Workshop",
+   "org": "Building Services Division",
+   "date": "2026-12-12",
+   "time": "09:45-11:45",
+   "hrs": 2.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Building Services"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6af517321f1d426669c4b58c/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSdN5tuqYV4RUoi1oFjNF6q2Ddu8unEeDfUBkNnTWnH1A3YpqA/viewform",
+    "formId": "1FAIpQLSdN5tuqYV4RUoi1oFjNF6q2Ddu8unEeDfUBkNnTWnH1A3YpqA",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.2035419448",
+      "profileField": null,
+      "label": "Title",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1175509800",
+      "profileField": null,
+      "label": "Surname (e.g. Chan)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.2035221255",
+      "profileField": null,
+      "label": "First Name (e.g. Tai Man, Peter)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1365633469",
+      "profileField": "hkieNumber",
+      "label": "Membership No.",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.36772632",
+      "profileField": "organisation",
+      "label": "Company",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1480843680",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1637791890",
+      "profileField": "email",
+      "label": "Email Address:",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.915126578",
+      "profileField": "phone",
+      "label": "Mobile No.:",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.972434801",
+      "profileField": null,
+      "label": "Are you member of HKIE-BSD?",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1289573460",
+      "profileField": null,
+      "label": "Important Note:  I confirm my consent to follow any and all safety instructions given by the organizer (s) and/or the owner of the premises/sites and to well equip myself with necessary safety gear for participation in the event.  I understand that neither the Institution nor the parties concerned would accept any liability in connection with the above event.  The information provided will only be used for the purpose of communicating with you on matters related to the activity. You have rights of access and correction with respect to your personal data held by us. If you wish to exercise these rights, please contact the Division/ Committee concerned or the HKIE Secretariat. The personal information collected is solely for the arrangement on this event and they will be destroyed after the event.",
+      "type": "RADIO",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "Paul Y Room, 10/F, Island Beverley, 1 Great George Street, Causeway Bay, Hong Kong",
+   "description": "Handcrafted Christmas Tree Workshop Date: 12 December 2026 (Saturday) Time: 09:45 am to 11:45 am Venue: Paul Y Room, 10/F, Island Beverley, 1 Great George Street, Causeway Bay, Hong Kong Programme Highlight: Get into the festive spirit with our Handcrafted Christmas Tree Workshop! Guided by an experienced instructor, participants will learn how to create a fresh Christmas tree decoration from scratch. You can personalize your cozy Christmas tree with a selection of provided ornaments. The workshop also includes a water spray bottle and packaging, making it easy to bring your beautiful creation home and care for it throughout the holiday season. The workshop fee includes all necessary materials and tools. Language: Cantonese with English Terminology CPD Certificate: CPD attendance certificate (2-hour credit) will be distributed to the participants after the activity by email. The organizer reserves the right to disqualify and terminate those non-properly registered participants. Fee: HK$60 for HKIE- Building Service Division members HK$150 for other HKIE Division members Prepayment required and payment method will be notified individually upon successful registration. Registration & Enquiry: The number of participants is limited to 16. For prior registration, please register at the enrolment website: https://forms.gle/J4Z3DHZvUfU2AkiM8 Application will be accepted on a first-come-first-served basis and priority will be given to members of HKIE Building Service Division. Successful members will be informed by a confirmation email on or before 30 November 2026. For any enquiries, please contact Ms Kayu Chiu at 6595 7623.",
+   "venueSource": "event_detail",
+   "division": "Building Services Division",
+   "mode": "FACE_TO_FACE"
+  },
+  {
    "id": "ada122eb690dd",
    "name": "From Tower to Sky – Construction and Aviation Safety Experience",
    "org": "HKICM",
@@ -5886,6 +6952,330 @@
     "confidence": "HIGH",
     "discoveryMethod": "page_scan_google_forms,pos_text"
    }
+  },
+  {
+   "id": "af7c3e22aff9a",
+   "name": "The HKIE Prize Presentation Ceremony cum New Members’ Reception",
+   "org": "The Hong Kong Institution of Engineers",
+   "date": "2026-12-12",
+   "time": "12:30-18:00",
+   "hrs": 5.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ab0d8c5a5c8f81c95095d3f/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Theatre 1, L1, Hong Kong Convention and Exhibition Centre, 1 Harbour Road, Wanchai, Hong Kong",
+   "venueSource": "event_detail",
+   "division": "The Hong Kong Institution of Engineers",
+   "mode": "FACE_TO_FACE",
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_no_reg_link"
+   }
+  },
+  {
+   "id": "ab6421dbf1b47",
+   "name": "Bouldering Fun Day",
+   "org": "Young Members Committee",
+   "date": "2026-12-12",
+   "time": "13:00-15:00",
+   "hrs": 2.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6af2d2f11f1d426669c3da24/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLScWDfo2C-R39tIsEtdIHVnOzjlond8N7VlVzshcpwxbFaJH0Q/viewform",
+    "formId": "1FAIpQLScWDfo2C-R39tIsEtdIHVnOzjlond8N7VlVzshcpwxbFaJH0Q",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.2092238618",
+      "profileField": null,
+      "label": "Surname (English)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1909904339",
+      "profileField": null,
+      "label": "Given Name (English)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.234246542",
+      "profileField": null,
+      "label": "Email",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1812506146",
+      "profileField": null,
+      "label": "Gender",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.848224007",
+      "profileField": null,
+      "label": "Year of Birth",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.377809025",
+      "profileField": "phone",
+      "label": "Mobile No.",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.273518598",
+      "profileField": "organisation",
+      "label": "Company / Organization",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1709685474",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1753222212",
+      "profileField": "hkieNumber",
+      "label": "HKIE Membership Number (e.g. GW1234567)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.797341359",
+      "profileField": null,
+      "label": "Emergency Contact Person",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1026415620",
+      "profileField": null,
+      "label": "Emergency Contact Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.100063151",
+      "profileField": null,
+      "label": "Please note the registration fee is $100 for this event and the payment method will be included in the confirmation email.",
+      "type": "RADIO",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "Quarry Bay",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "Bouldering Fun Day Date, Time & Venue 12 December 2026 (Saturday); 01:00 pm – 03:00 pm; Quarry Bay Programme Highlights Bouldering is one of the easiest ways to try climbing. No ropes or harnesses are needed—just climbing shoes, a padded floor, and a bit of courage. In this session, you will try short climbing routes and learn basic techniques such as foot placement, body positioning, balance and route reading. Bouldering is a great full-body workout that helps improve strength, flexibility, coordination and problem-solving skills. It is also a fun way to challenge yourself, build confidence and meet other members. No experience is required. Beginners are welcome, and climbing shoes will be provided. Both male and female members are encouraged to join. Come along, try something new and see how far you can climb! Fee $100 per participant Registration & Enquiries The number of participants is limited to 15. The applications will be accepted on a first-come first-serve basis and priority will be given to young members. For registration, please register online at https://forms.gle/SFBaRM7aRtv33Foa8 by 20 November 2026 . Successful applicants will be notified individually by email before the event. For enquiries, please contact Mr. Tyler Ho via e-mail: hkieymcsrg@gmail.com .",
+   "venueSource": "event_detail",
+   "division": "Young Members Committee",
+   "mode": "FACE_TO_FACE"
+  },
+  {
+   "id": "aaa061dfcff78",
+   "name": "Dragon's Back: \"Engine\" Light, \"Framing\" Trails 龍脊「機」遇・「築」光捕影 | Hiking & Photography Day 攝影打卡 x 遠足交流日",
+   "org": "Young Members Committee",
+   "date": "2026-12-13",
+   "time": "08:30-14:30",
+   "hrs": 6.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6aea975a1f1d426669c06579/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLScNeQxJooNBPbNbtJ54br-FQoiFdEUA-dCfQGiEyXtpwFE7Xg/viewform",
+    "formId": "1FAIpQLScNeQxJooNBPbNbtJ54br-FQoiFdEUA-dCfQGiEyXtpwFE7Xg",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.596836427",
+      "profileField": "email",
+      "label": "Re-type Email",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1948907952",
+      "profileField": "phone",
+      "label": "Mobile Phone Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.173346409",
+      "profileField": null,
+      "label": "Age",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1604757983",
+      "profileField": null,
+      "label": "Gender",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.99036598",
+      "profileField": null,
+      "label": "Title",
+      "type": "CHECKBOX",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.88192021",
+      "profileField": null,
+      "label": "Last Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1490241748",
+      "profileField": null,
+      "label": "First Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.487026138",
+      "profileField": null,
+      "label": "Company / Organization Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1178137832",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.504454828",
+      "profileField": null,
+      "label": "Professional Associations/Institutions",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.627615799",
+      "profileField": "hkieNumber",
+      "label": "HKIE Membership No.",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.396761149",
+      "profileField": "primaryDiscipline",
+      "label": "Discipline",
+      "type": "DROPDOWN",
+      "safePrefill": true,
+      "options": [
+       "Aircraft (ACE)",
+       "Biomedical (BME)",
+       "Building Services (BSS)",
+       "Building (BUD)",
+       "Control, Automation & Instrumentation (CAI)",
+       "Chemical (CML)",
+       "Civil (CVL)",
+       "Electrical (ELL)",
+       "Electronics (ENS)",
+       "Environmental (ENV)",
+       "Energy (ENY)",
+       "Fire (FRE)",
+       "Gas (GAS)",
+       "Geotechnical (GEL)",
+       "Information (INF)",
+       "Logistics & Transportation (LTE)",
+       "Materials (MAT)",
+       "Mechanical (MCL)",
+       "Manufacturing, Industrial & Systems (MIS)",
+       "Marine & Naval Architecture (MNA)",
+       "Nuclear (NUE)",
+       "Structural (STL)",
+       "Others"
+      ]
+     },
+     {
+      "entryId": "entry.1561352935",
+      "profileField": null,
+      "label": "Please let us know if you have any advanced questions about the topic that you would like to ask in the event.",
+      "type": "PARAGRAPH",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1262819182",
+      "profileField": null,
+      "label": "I confirm that I will be physically present to attend this event, and I will complete any payment (if applicable) before the deadline upon notice of successful registration.",
+      "type": "DROPDOWN",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1194592234",
+      "profileField": null,
+      "label": "I confirm my consent to follow any instructions given by the organizer(s) for participation in the above event. I understand that neither the Institution nor the parties concerned would accept any liability in connection with the above event.",
+      "type": "DROPDOWN",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "Shek O",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "Dragon's Back: \"Engine\" Light, \"Framing\" Trails 龍脊「機」遇・「築」光捕影 | Hiking & Photography Day 攝影打卡 x 遠足交流日 Date, Time & Venue 13 December 2026 (Sunday); 8:30 am – 2:30 pm; Shek O Programme Highlights Looking to enjoy the outdoors, connect with fellow engineering professionals, and showcase your photography skills? Join us for the HKIE YMC Dragon's Back Hiking & Photo Contest! Take in panoramic views of the Shek O Peninsula and coastline with a chance to win a small prize! 想趁週末親近大自然、結識工程界朋友，順便展現你的攝影天賦？快來參加 HKIE YMC 舉辦的龍脊行山暨攝影比賽！沿途飽覽石澳半島與壯麗海岸線，更有機會贏取小禮物！ Language English and Cantonese Registration & Enquiries The number of participants is limited to 10 and prior registration is required. The event is free of charge and application will be accepted on a first-come-first-served basis with priority given to members of YMC. For registration, please complete the online application form at https://forms.gle/EQsZmwkCYN2wKTGj9 by 27 November 2026 . Successful applicants will be notified by email. For enquiries, please contact Ir P Y Chan by email: scag.hkieymc@gmail.com .",
+   "venueSource": "event_detail",
+   "division": "Young Members Committee",
+   "mode": "FACE_TO_FACE"
   },
   {
    "id": "afeae72bf67f8",
@@ -5970,6 +7360,37 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "LOW",
     "discoveryMethod": "hkgbc_detail_no_reg"
+   }
+  },
+  {
+   "id": "af89953042e07",
+   "name": "Joint SCCT-HKCI International Conference on Concrete Technologies",
+   "org": "Environmental Division",
+   "date": "2026-12-16",
+   "time": "09:00-18:00",
+   "hrs": 9.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Environmental"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ae426a3235f6d22013773e0/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Chiang Chen Studio Theatre, HK PolyU",
+   "venueSource": "event_detail",
+   "division": "Environmental Division",
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_no_reg_link"
    }
   },
   {
@@ -6120,6 +7541,211 @@
    },
    "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
    "venueSource": "event_detail",
+   "mode": "FACE_TO_FACE"
+  },
+  {
+   "id": "ab6eea0845e3f",
+   "name": "AI × 5D BIM: The Next Leap in Hong Kong Quantity Surveying's Digital Transformation",
+   "org": "Civil Division",
+   "date": "2026-12-18",
+   "time": "18:30-20:00",
+   "hrs": 1.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Civil"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6af41c5c1f1d426669c45827/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSfVdkBcX2ShBf8p1ot84k2nu6CK9MKsklYp4bLWO0XDQl_CIA/viewform",
+    "formId": "1FAIpQLSfVdkBcX2ShBf8p1ot84k2nu6CK9MKsklYp4bLWO0XDQl_CIA",
+    "status": "CLOSED",
+    "fields": [],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "Chan Yat Mei Sophie Room, 9th Floor, Island Beverley, No 1 Great George Street, Causeway Bay",
+   "description": "Technical Seminar: AI × 5D BIM: The Next Leap in Hong Kong Quantity Surveying's Digital Transformation Date/Time: 18 December 2026 (Friday), 18:30-20:00 Venue: Chan Yat Mei Sophie Room, 9th Floor, Island Beverley, No 1 Great George Street, Causeway Bay Organised by: HKIE Civil Division Automated 5D BIM Quantity Take-off (QTO) has long been a key priority for digitalizing quantity surveying in Hong Kong. Yet conventional BIM-based modelling and quantity calculation face two core obstacles: highly complex local drawings—especially reinforcement detailing—that make manual interpretation and modelling extremely time-consuming, and a critical lack of integration between BIM models and QS measurement rules. With the explosive advancement of artificial intelligence technology, AI-empowered 5D BIM effectively addresses these industry pain points. It intelligently extracts key information from drawings, interprets design logic and automatically generates compliant BIM models, substantially reducing manual workload and labour costs. This presentation showcases the current capabilities of AI in the construction industry, demonstrates how to automate the integration of measurement rules such as SMM4/5 and BS8666 to deliver 5D BIM quantity surveying, and validates the application reliability of AI-driven intelligent quantity take-off with real-world performance results. It also discusses how AI-enabled 5D BIM digital workflows can optimise quantity surveying processes, reduce human errors, shorten project lead times, and comprehensively enhance the overall operational efficiency of all construction industry stakeholders. Language Cantonese Fee Free of Charge Speakers: King Wu is Director of Engineering Technology & Services at Glodon（HongKong）Software Limited . As a senior technical expert at Glodon — China's first A-share listed company in construction engineering informatization and a leading digital construction platform provider — Mr. Wu brings over a decade of experience in",
+   "venueSource": "event_detail",
+   "division": "Civil Division",
+   "civil_related": true,
+   "mode": "FACE_TO_FACE"
+  },
+  {
+   "id": "a255ad82b0b55",
+   "name": "ICAC - Integrity Capacity Building Workshop – Project Integrity Navigator (PIN) (CPD1201/2026)",
+   "org": "Continuing Professional Development Committee",
+   "date": "2026-12-18",
+   "time": "18:30-20:00",
+   "hrs": 1.5,
+   "hrs_est": true,
+   "type": "GPM",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ab32f40a5c8f81c950a8413/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Online (via Zoom)",
+   "modeText": "ONLINE",
+   "attendanceMode": "ONLINE",
+   "description": "INTRODUCTION : Corruption in the construction industry resulting in substandard works could pose serious threats to public safety and undermine public confidence in the quality of public works projects. To address the associated integrity risks, the ICAC proposed in the 2023 Policy Address a new initiative to develop a Project Integrity Management Framework (now known as the Project Integrity Navigator (PIN)). PIN aims to assist stakeholders in effectively managing corruption and other integrity risks during project implementation, while supporting the time, cost, quality objectives to be concurrently achievable goals. With engineers playing key roles among various project stakeholders (e.g. clients, consultants and contractors), the ICAC speaker will introduce PIN and its key components, and explain how engineers are involved in its implementation. OBJECTIVE : To facilitate participants to understand the integrity risks in management of works projects and provide them with the latest information about the development of PIN. CONTENTS : · ICAC’s role in safeguarding integrity of public works projects · Common integrity risks in procurement and construction stages of public works projects · Introduction of PIN (including its structure and key components) REMARKS : Course participants would be recommended to gain 2.5 CPD hours for (a) completion of the “Build on Integrity – E-learning Course on Professional Ethics and Corruption Prevention for Engineers in the Construction Industry” (recommended for 1 CPD hour) on https://psic.icac.org.hk/construction-elearning/engine.html before attending the seminar; and (b) attendance in this seminar (recommended for 1.5 CPD hours) Successful applicants will receive email confirmation on or before 12 December 2026. Please also check your junk / spam mailboxes for the confirmation email. E-attendance certificates will be sent to eligible participants via the registered email within four weeks after the event. The E-attendance certif",
+   "venueSource": "event_detail",
+   "division": "Continuing Professional Development Committee",
+   "mode": "ONLINE",
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6ab32f40a5c8f81c950a8413&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
+   }
+  },
+  {
+   "id": "a6519dcf7e6e5",
+   "name": "Connect from Campus to Career",
+   "org": "Young Members Committee",
+   "date": "2026-12-18",
+   "time": "20:30-22:00",
+   "hrs": 1.5,
+   "hrs_est": true,
+   "type": "GPM",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6af13fb31f1d426669c32c64/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSdeUOVgt8JUgyOvJLurHJdF3fEo1Ba47gu3jpkyvlN8O7rvQg/viewform",
+    "formId": "1FAIpQLSdeUOVgt8JUgyOvJLurHJdF3fEo1Ba47gu3jpkyvlN8O7rvQg",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.141620907",
+      "profileField": "email",
+      "label": "Re-type Email (Please enter the one you used for currently applying for the event)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1365467221",
+      "profileField": null,
+      "label": "Title",
+      "type": "DROPDOWN",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1409037090",
+      "profileField": null,
+      "label": "Surname",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.649516762",
+      "profileField": null,
+      "label": "First Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1279295704",
+      "profileField": null,
+      "label": "Preferred Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1697664958",
+      "profileField": "hkieNumber",
+      "label": "HKIE Membership Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1042890875",
+      "profileField": null,
+      "label": "Major / Discipline",
+      "type": "CHECKBOX",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1673129734",
+      "profileField": null,
+      "label": "Disclaimer",
+      "type": "RADIO",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "Tsim Sha Tsui",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "Connect from Campus to Career Supported by: Student Chapter - Hong Kong Metropolitan University Student Chapter - The University of Hong Kong Date, Time & Venue 18 Dec 2026 (Fri); 08:30 pm - 10:00 pm; Tsim Sha Tsui Programme Highlights Expand your professional network and connect with fellow young engineers, and students through an engaging evening of networking and knowledge exchange. This event provides a valuable platform to meet new people, share experiences and gain fresh perspectives from participants across different engineering disciplines. Through this event, participants can build meaningful connections beyond their usual academic or professional circles. Whether you are looking to broaden your network, exchange career insights, meet like-minded engineering professionals or simply enjoy an inspiring evening with the engineering community, this event offers an excellent opportunity to connect, communicate and grow together. Join us and turn new introductions into lasting professional connections. Fee Free-of-charge; YMC will not charge participants; all venue-related charges, e.g. entry fee, food & beverages or other consumption, are at participants’ own expense. Registration & Enquiries This event is free of charge and the number of participants is limited to 20 participants. Applications will be accepted on a first-come-first-served basis and priority will be given to Young Members. For registration, please complete the enrollment form https://forms.gle/8wtzhPRGNiCG8m1q9 on or before 27 Nov 2026 (Fri) 12:00 pm (Hong Kong Time) . Successful applicants will be notified individually by email/phone. For enquiries, please contact our representatives via e-mail: ymcspg@gmail.com.",
+   "venueSource": "event_detail",
+   "division": "Young Members Committee",
+   "mode": "FACE_TO_FACE"
+  },
+  {
+   "id": "ae9ee9e2ca741",
+   "name": "GBA Factory Tour & Exchange: Exploring MiC, Steel Structures, and Smart Woodworking Automation",
+   "org": "Young Members Committee",
+   "date": "2026-12-19",
+   "time": "09:30-18:00",
+   "hrs": 8.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6af9d0a01f1d426669c660fd/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSej7kpuPu00WzXKvcTDhaHY3nFD2brIoB9ZTe1Y8mDlx5LloQ/viewform",
+    "formId": "1FAIpQLSej7kpuPu00WzXKvcTDhaHY3nFD2brIoB9ZTe1Y8mDlx5LloQ",
+    "status": "LOGIN_REQUIRED",
+    "fields": [],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "Zhuhai Area",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "GBA Factory Tour & Exchange: Exploring MiC, Steel Structures, and Smart Woodworking Automation Date, Time & Venue 19 Dec 2026 (Sat); 09:30am-18:00pm; Zhuhai Area Programme Highlights This one-day technical tour helps young engineers equip themselves with cutting-edge industry knowledge and accelerate their path to becoming professional engineers across various disciplines. The participants may gain first-hand insights into: Next-Gen MiC: Tour the technology exhibition hall and inspect live concrete precast and steel structure production lines. Smart Woodworking: Explore fully automated manufacturing lines and learn the structural design of mainland fire-rated doors. Green Tech: Witness sustainable engineering in action, including water-based paint spraying and VOC emission reduction systems. Professional Growth: Bridge the gap between engineering theory and large-scale industrial automation while networking with industry experts. Join us for an enriching visit, where young engineers will gain valuable insights from the GBA regarding Hong Kong’s practices, standards, and challenges, offering a broader understanding of Macau Industry. Seize the opportunity for a meaningful cross-cultural interaction! Language Cantonese Fee: HKD$ 100 (Inclusive of one-way public transport from HK to Zhuhai and lunch) Participation: Max 30 people (first come first serve) Registration & Enquiries The number of participants is limited to 30. Prior registration is required. The applications will be accepted on a first-come first-served basis, with priority given to Young Members. For registration, please complete this google form. Registration Link: https://forms.gle/LAhv5ztnUcLeu8iEA Successful applicants will be notified individually of the payment arrangement. For enquiries, please contact Mr. Jerry CHAN or Dominic KWOK by e-mail: hkieymc.seg@gmail.com .",
+   "venueSource": "event_detail",
+   "division": "Young Members Committee",
    "mode": "FACE_TO_FACE"
   },
   {
@@ -6524,6 +8150,41 @@
    }
   },
   {
+   "id": "a043d1e9a61b8",
+   "name": "Engineering Exposition 2027",
+   "org": "Veneree Club",
+   "date": "2027-03-06",
+   "time": "08:45-12:30",
+   "hrs": 4.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6a042d4646e390c3527c4c4c/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Chan Yat Mei Sophie Room, 9/F, The HKIE Headquarters",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "Registration Fee: HK$ 100 per participant #Limited places only on first-come first-served basis. To complete the registration, please post the cheque HK$100 (per person) payabIe to \"The Hong Kong Institution of Engineers\" within 2 weeks and please mark your organisation / contact person's name on the back of the cheque. (Mailling Address: VenereeClub, The Hong Kong Institution of Engineers, 9/F Island Beverley, No. 1 Great George Street, Causeway Bay, Hong Kong ) Disclaimer: All information and views expressed by speaker and in his/her presentation materials do not reflect the official opinion and position of the HKIE. No responsibility is accepted by the HKIE for such information and views including his/her accuracy, correctness and veracity.",
+   "venueSource": "event_detail",
+   "division": "Veneree Club",
+   "mode": "FACE_TO_FACE",
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6a042d4646e390c3527c4c4c&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
+   }
+  },
+  {
    "id": "af35a2dec0c9b",
    "name": "ARHC - ARHC 2027 (17-19 Mar 2027)",
    "org": "HKGBC",
@@ -6549,6 +8210,41 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "LOW",
     "discoveryMethod": "hkgbc_detail_no_reg"
+   }
+  },
+  {
+   "id": "a9948ad56c092",
+   "name": "Overseas Delegation 2027 to Germany – Beyond Carbon: Connecting Green Technologies, Empowering Sustainable Tomorrow",
+   "org": "Young Members Committee",
+   "date": "2027-03-26",
+   "time": "09:00-09:00",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "GPM",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6abc5a1f5f713be015073df0/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Germany",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "Overseas Delegation 202 7 to Germany – Beyond Carbon: Connecting Green Technologies, Empowering Sustainable Tomorrow Date, Time & Venue 26 Mar 2027 ( Friday ) – 3 Apr 2027 ( Saturday ) ; Germany Programme Highlights The HKIE-YMC Overseas Delegation is a leadership development programme designed to arouse young engineers’ potential and motivate their vision to learn from overseas experiences and international practices. For the 2026–2027 session, YMC is set to organise an overseas delegation to Germany under the theme ‘ Beyond Carbon: Connecting Green Technologies, Empowering Sustainable Tomorrow ’ focusing on the vital role of engineers in driving decarbonisation through innovative technologies and sustainable frameworks. Germany serves as a compelling international benchmark, highlighted by its national Energiewende policy targeting a climate-neutral economy by 2045 and a minimum 80% share of renewables in gross electricity consumption by 2030. The country actively advances sustainable engineering through its statutory Energy Efficiency Law, heat pump integration, green hydrogen initiatives, passive house engineering, circular economy frameworks, and resilient district planning. Through a blend of technical visits, urban infrastructure studies, and institutional exchanges, the delegation will examine Germany’s holistic approach to low-carbon construction, energy transition, and smart urban infrastructure. Overall, this delegation will provide actionable insights and valuable perspectives that can be adapted to support Hong Kong’s evolving urban transition goals, while fostering bilateral professional links between Hong Kong and German engineering bodies. Delegation Fee HK$ 1 1 ,800 (Air tickets, insurance, accommodation (shared room), meals and local transportation inclusive) Registration & Enquiries Application is open to all HKIE Young Members and the number of delegates is limited to 16. All candidates joining the delegation will go through a screening interview",
+   "venueSource": "event_detail",
+   "division": "Young Members Committee",
+   "mode": "FACE_TO_FACE",
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_no_reg_link"
    }
   }
  ]
