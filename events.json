@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-16T17:17+08:00",
+ "updated": "2026-11-17T06:56+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -103,10 +103,10 @@
    "source": "HKIE Events",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 50,
+   "n": 49,
    "method": "hkie-eventlist+detail",
    "page_title": "Events - HKIE",
-   "raw_candidates": 52,
+   "raw_candidates": 51,
    "rejects": {
     "social": 2
    }
@@ -160,12 +160,12 @@
    "source": "HKGBC 綠建環評",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 24,
+   "n": 23,
    "method": "hkgbc",
    "page_title": "Events & Trainings | HKGBC",
    "raw_candidates": 40,
    "rejects": {
-    "date_range": 16
+    "date_range": 17
    }
   },
   {
@@ -245,10 +245,15 @@
   },
   {
    "source": "TQM Consultants Training",
-   "status": "FAIL",
-   "ok": false,
-   "n": 0,
-   "err": "Playwright 失敗：Error"
+   "status": "OK_WITH_EVENTS",
+   "ok": true,
+   "n": 4,
+   "method": "tqm-list+detail",
+   "page_title": "Upcoming | TQM Consultants Co. Limited",
+   "raw_candidates": 6,
+   "rejects": {
+    "date_range": 2
+   }
   }
  ],
  "events": [
@@ -1225,12 +1230,12 @@
    "group": "HKIS",
    "auto": true,
    "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "mechanism": "UNKNOWN",
     "destination": null,
     "status": "UNKNOWN",
     "sourceUrlClass": "UNKNOWN",
     "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
+    "discoveryMethod": "fetch_error:ConnectionError"
    }
   },
   {
@@ -2497,12 +2502,12 @@
    "group": "HKIS",
    "auto": true,
    "registration": {
-    "mechanism": "OTHER_PUBLIC_FORM",
-    "destination": "https://www.hkis.org.hk/uploads/editor/Standard_Reservation_Form%20(2026)_r3.pdf",
-    "status": "OPEN",
+    "mechanism": "UNKNOWN",
+    "destination": null,
+    "status": "UNKNOWN",
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "MEDIUM",
-    "discoveryMethod": "page_scan_pdf,pos_text"
+    "confidence": "LOW",
+    "discoveryMethod": "fetch_error:ConnectionError"
    }
   },
   {
@@ -3123,10 +3128,7 @@
     "sourceUrlClass": "UNKNOWN",
     "confidence": "LOW",
     "discoveryMethod": "page_no_candidate"
-   },
-   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
-   "venueSource": "event_detail",
-   "mode": "FACE_TO_FACE"
+   }
   },
   {
    "id": "a4d23f5651b2a",
@@ -3291,6 +3293,136 @@
     "confidence": "LOW",
     "discoveryMethod": "hkgbc_detail_no_reg"
    }
+  },
+  {
+   "id": "aa25a10d0ff01",
+   "name": "Seminar on Liquid Oxygen Energy Storage Rock Blasting Technology (液態氧儲能岩石破碎技術)",
+   "org": "Associate Members Committee",
+   "date": "2026-11-21",
+   "time": "09:00-12:00",
+   "hrs": 3.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6afaedea1f1d426669c6ec25/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLScPrW3i2BbAwrVNwADDKYGDiIHpbp8ViGAW8Ef5B0bbrB6OAQ/viewform",
+    "formId": "1FAIpQLScPrW3i2BbAwrVNwADDKYGDiIHpbp8ViGAW8Ef5B0bbrB6OAQ",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.1968107654",
+      "profileField": null,
+      "label": "Surname (Family name) (姓) in English e.g. CHAN, YEUNG",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.14004546",
+      "profileField": null,
+      "label": "Given Name (名) in English e.g. Tai Man, Shiu Lung",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.2039845248",
+      "profileField": null,
+      "label": "Physical attendance",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1979041707",
+      "profileField": null,
+      "label": "Please select",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1608460433",
+      "profileField": "hkieNumber",
+      "label": "HKIE Membership No.  (2個英文字母及7個數字)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.2145430396",
+      "profileField": "primaryDiscipline",
+      "label": "Discipline (for corporate member) or Division (for graduate member, affiliate and student member)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1240273288",
+      "profileField": null,
+      "label": "是否有興趣參加HKlE成為仲會員 (Associate member)",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1124900561",
+      "profileField": null,
+      "label": "Registration Fee:",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1180322018",
+      "profileField": "organisation",
+      "label": "Company FULL name (公司/ 機構 全名)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1966113115",
+      "profileField": "position",
+      "label": "Post (職位)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1831991240",
+      "profileField": "phone",
+      "label": "Mobile phone no. (手機號碼) 注意：香港地區不須要輸入852字頭",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1358087880",
+      "profileField": "email",
+      "label": "Email address (電子郵件地址)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.925732189",
+      "profileField": null,
+      "label": "I agree to provide the personal data to the HKIE and the AMC/EVD for internal use and promotion such as Institution/ Committee’s seminars, courses, visits and other related activities.",
+      "type": "CHECKBOX",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "James Chiu & Dragages Room, HKIE, 9/F, Island Beverley, No. 1 Great George Street, Causeway Bay, HK",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "Programme Highlights: Blasting technology primarily uses explosives in industries such as mining, highway, railway, and tunnel construction. However, the vibrations, flying rocks, and shock waves generated during blasting can pose safety hazards, easily damage the surrounding buildings and structures, and even cause casualties. In recent years, rock-breaking technology based on liquid oxygen energy storage has been developed as an alternative to traditional blasting methods. This seminar will introduce the principle of liquid oxygen energy storage type blasting method and the latest advancement in this non-explosive rock-breaking technology. The speaker will share some case studies with the audience. Guest Speaker: Dr Zhen Lei 雷振博士 Guizhou Institute of Technology貴州理工學院 Guangdong Zhongren Blasting Engineering Co. Ltd. 廣東中人爆破工程有限公司 Language: PowerPoint in English/Chinese and presentation in Potunghua, supplemented by Cantonese Registration & Enquiries: The number of the participants is 20 physical attendance. Free of charge for HKIE members and $50 registration fee for non-HKIE members. Priority will be given to associate members. Application will be accepted on a first-come, first-served basis, and will be closed on 16 November 2026. Attendance certificate will be delivered to the participants fulfilled attendance requirements not less than ¾ of the total duration. For registration, please complete the online enrollment form HERE . Successful applicants will be notified before the event. For enquiries, please email to amccpd@gmail.com . For further information, please visit AMC website http://amc.hkie.org.hk/ .",
+   "venueSource": "event_detail",
+   "division": "Associate Members Committee",
+   "mode": "FACE_TO_FACE"
   },
   {
    "id": "aea695487f353",
