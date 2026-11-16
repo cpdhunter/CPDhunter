@@ -11,7 +11,10 @@ if HERE not in sys.path:
 from test_adaptive import test_adaptive_drift_and_decoy  # noqa: E402
 from test_shadow_cic import test_cic_titles_from_fixture  # noqa: E402
 from test_shadow_guard import (  # noqa: E402
+    test_committed_baseline_and_log,
+    test_observation_refuses_to_overwrite_baseline,
     test_runtime_does_not_touch_catalog,
+    test_shadow_workflow_isolation,
     test_static_scan_no_production_writes,
 )
 from test_shadow_hkgbc import test_hkgbc_rejects_badges_and_keeps_titles  # noqa: E402
@@ -25,6 +28,9 @@ def main() -> int:
     test_adaptive_drift_and_decoy()
     test_static_scan_no_production_writes()
     test_runtime_does_not_touch_catalog()
+    test_shadow_workflow_isolation()
+    test_observation_refuses_to_overwrite_baseline()
+    test_committed_baseline_and_log()
     print("All Scrapling shadow tests passed")
     return 0
 

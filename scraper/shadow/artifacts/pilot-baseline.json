@@ -1,0 +1,425 @@
+{
+  "record_type": "pilot_baseline",
+  "schema": "scrapling-shadow-pilot-baseline/v1",
+  "pilot_start": "2026-11-16T09:13:50+08:00",
+  "observation_period_start": "2026-11-16",
+  "minimum_observation_days": 7,
+  "preferred_observation_days": 14,
+  "recorded_at": "2026-11-16T09:30:18+08:00",
+  "current_main_commit_at_pilot_start": "582a77958b57643a7a18387eb323de756bd82f40",
+  "scrapling_version": "0.5.1",
+  "python": {
+    "actions": "3.12",
+    "local_first_run": "3.13.5",
+    "note": "First shadow run was local on CPython 3.13.5. Production CI / Daily CPD and the isolated Scrapling Shadow workflow use 3.12."
+  },
+  "shadow_workflow": {
+    "file": ".github/workflows/scrapling-shadow.yml",
+    "name": "Scrapling Shadow Pilot",
+    "triggers": [
+      "schedule",
+      "workflow_dispatch"
+    ],
+    "schedule_cron_utc": "0 23 * * *",
+    "schedule_note": "07:00 HKT every day, after Daily CPD at 0 22 * * * UTC (06:00 HKT), so same-date events.json on main can be compared.",
+    "permissions": {
+      "contents": "read"
+    },
+    "concurrency_group": "scrapling-shadow",
+    "does_not_share_daily_cpd_concurrency": true,
+    "commits": false,
+    "pages_deploy": false,
+    "writes_events_json": false,
+    "writes_source_health_json": false,
+    "installs_scrapling_fetchers": false,
+    "isolated_from_daily_cpd": true,
+    "actions_runtime_at_baseline": null,
+    "actions_runtime_note": "First run was local (~25.684s total). Actions runtime is N/A until the first workflow run."
+  },
+  "production": {
+    "events_json_sha256": "cc710062b7fe8606701f2e4512f8872e39932cde0af56c13de81d7e0ea4e4b09",
+    "source_health_json_sha256": "8fb0a7136b8a7c53e25bdd4496e6eacc3105378be4e2e7cb6949302557e0697c",
+    "events_json_updated": "2026-11-16T06:44+08:00",
+    "events_total": 162,
+    "events_future": 113,
+    "events_future_as_of": "2026-11-16"
+  },
+  "workflow_runtime": {
+    "local_first_run_seconds": 25.684,
+    "actions_runtime": null,
+    "note": "First run was local, 25.684s total. Actions runtime is N/A until the first workflow run."
+  },
+  "first_run_artifact": "scraper/shadow/artifacts/scrapling-shadow.json",
+  "observation_log": "scraper/shadow/artifacts/observation-log.json",
+  "first_run": {
+    "record_type": "baseline",
+    "schema": "scrapling-shadow-observation/v1",
+    "run_at": "2026-11-16T09:13:50+08:00",
+    "timezone": "Asia/Hong_Kong",
+    "kind": "baseline",
+    "environment": "local",
+    "python_version": "3.13.5",
+    "python_actions": "3.12",
+    "scrapling_version": "0.5.1",
+    "main_commit": "582a77958b57643a7a18387eb323de756bd82f40",
+    "workflow_runtime_seconds": 25.684,
+    "actions_runtime": null,
+    "github_run_id": null,
+    "github_sha": null,
+    "production": {
+      "events_json_sha256": "cc710062b7fe8606701f2e4512f8872e39932cde0af56c13de81d7e0ea4e4b09",
+      "source_health_json_sha256": "8fb0a7136b8a7c53e25bdd4496e6eacc3105378be4e2e7cb6949302557e0697c",
+      "events_json_updated": "2026-11-16T06:44+08:00",
+      "events_total": 162,
+      "events_future": 113,
+      "events_future_as_of": "2026-11-16"
+    },
+    "sources": {
+      "cic": {
+        "production_catalog": {
+          "source_name": "CIC 建造業議會 Events",
+          "catalog_total": 6,
+          "catalog_future": 5,
+          "catalog_future_timed": 0,
+          "as_of": "2026-11-16"
+        },
+        "production_scrape_same_day": {
+          "last_status": "EMPTY_UNVERIFIED",
+          "last_n": 0,
+          "last_method": "cic-list",
+          "last_error": null,
+          "raw_candidates": 0,
+          "rejects": {},
+          "consecutive_fail": 3,
+          "last_success": "2026-11-13",
+          "updated": "2026-11-16",
+          "note": "Today's production scrape got 0 events (JS-rendered listing; shadow live also 0)."
+        },
+        "shadow_fixture": {
+          "production_count": 1,
+          "shadow_count": 1,
+          "matched_events": 1,
+          "production_only": 0,
+          "shadow_only": 0,
+          "title_matches": 1,
+          "title_mismatches": 0,
+          "date_matches": 1,
+          "date_mismatches": 0,
+          "url_matches": 1,
+          "false_positive_candidates": 0,
+          "suspected_false_positives": 0,
+          "confirmed_shadow_false_positives": 0,
+          "confirmed_production_misses": 0,
+          "title_accuracy": {
+            "matches": 1,
+            "denominator": 1,
+            "ratio": 1.0,
+            "label": "1/1"
+          },
+          "date_accuracy": {
+            "matches": 1,
+            "denominator": 1,
+            "ratio": 1.0,
+            "label": "1/1"
+          },
+          "url_accuracy": {
+            "matches": 1,
+            "denominator": 1,
+            "ratio": 1.0,
+            "label": "1/1"
+          }
+        },
+        "shadow_live": {
+          "production_count": 0,
+          "shadow_count": 0,
+          "matched_events": 0,
+          "production_only": 0,
+          "shadow_only": 0,
+          "title_matches": 0,
+          "title_mismatches": 0,
+          "date_matches": 0,
+          "date_mismatches": 0,
+          "url_matches": 0,
+          "false_positive_candidates": 0,
+          "suspected_false_positives": 0,
+          "confirmed_shadow_false_positives": 0,
+          "confirmed_production_misses": 0,
+          "title_accuracy": {
+            "matches": 0,
+            "denominator": 0,
+            "ratio": null,
+            "label": "n/a (denominator zero)"
+          },
+          "date_accuracy": {
+            "matches": 0,
+            "denominator": 0,
+            "ratio": null,
+            "label": "n/a (denominator zero)"
+          },
+          "url_accuracy": {
+            "matches": 0,
+            "denominator": 0,
+            "ratio": null,
+            "label": "n/a (denominator zero)"
+          },
+          "attempted": true,
+          "status": "http_ok",
+          "fetch_duration_ms": 664,
+          "parse_duration_ms": 3,
+          "browser_rendering_used": false,
+          "html_bytes": 140160
+        },
+        "adaptive": {
+          "drift": "AUTO_MATCH_RECOVERED",
+          "decoy": "AUTO_MATCH_FALSE_POSITIVE",
+          "recoveries": 1,
+          "failures": 0,
+          "false_positives": 1,
+          "correct_event_on_drift": true,
+          "drift_recovered_text": "Temporary Works Workshop 2026 20.11.2026 Temporary Works Workshop 2026",
+          "decoy_recovered_text": "Events Calendar CIC Events Calendar"
+        },
+        "timings": {
+          "fetch_duration_ms": 664,
+          "parse_duration_ms": 2,
+          "browser_rendering_used": false
+        },
+        "selector_strategy": "article.event-card, div.event-card"
+      },
+      "hkie_cpd": {
+        "production_catalog": {
+          "source_name": "HKIE CPD Calendar",
+          "catalog_total": 15,
+          "catalog_future": 15,
+          "catalog_future_timed": 7,
+          "as_of": "2026-11-16"
+        },
+        "production_scrape_same_day": {
+          "last_status": "OK_WITH_EVENTS",
+          "last_n": 10,
+          "last_method": "hkie-cpd",
+          "last_error": null,
+          "raw_candidates": 10,
+          "rejects": {},
+          "consecutive_fail": 0,
+          "last_success": "2026-11-16",
+          "updated": "2026-11-16"
+        },
+        "shadow_fixture": {
+          "production_count": 10,
+          "shadow_count": 10,
+          "matched_events": 10,
+          "production_only": 0,
+          "shadow_only": 0,
+          "title_matches": 10,
+          "title_mismatches": 0,
+          "date_matches": 10,
+          "date_mismatches": 0,
+          "url_matches": 10,
+          "false_positive_candidates": 0,
+          "suspected_false_positives": 0,
+          "confirmed_shadow_false_positives": 0,
+          "confirmed_production_misses": 0,
+          "title_accuracy": {
+            "matches": 10,
+            "denominator": 10,
+            "ratio": 1.0,
+            "label": "10/10"
+          },
+          "date_accuracy": {
+            "matches": 10,
+            "denominator": 10,
+            "ratio": 1.0,
+            "label": "10/10"
+          },
+          "url_accuracy": {
+            "matches": 10,
+            "denominator": 10,
+            "ratio": 1.0,
+            "label": "10/10"
+          }
+        },
+        "shadow_live": {
+          "production_count": 10,
+          "shadow_count": 10,
+          "matched_events": 10,
+          "production_only": 0,
+          "shadow_only": 0,
+          "title_matches": 10,
+          "title_mismatches": 0,
+          "date_matches": 10,
+          "date_mismatches": 0,
+          "url_matches": 10,
+          "false_positive_candidates": 0,
+          "suspected_false_positives": 0,
+          "confirmed_shadow_false_positives": 0,
+          "confirmed_production_misses": 0,
+          "title_accuracy": {
+            "matches": 10,
+            "denominator": 10,
+            "ratio": 1.0,
+            "label": "10/10"
+          },
+          "date_accuracy": {
+            "matches": 10,
+            "denominator": 10,
+            "ratio": 1.0,
+            "label": "10/10"
+          },
+          "url_accuracy": {
+            "matches": 10,
+            "denominator": 10,
+            "ratio": 1.0,
+            "label": "10/10"
+          },
+          "attempted": true,
+          "status": "http_ok",
+          "fetch_duration_ms": 1888,
+          "parse_duration_ms": 16,
+          "browser_rendering_used": false,
+          "html_bytes": 427994
+        },
+        "adaptive": {
+          "drift": "AUTO_MATCH_RECOVERED",
+          "decoy": "AUTO_MATCH_FAILED",
+          "recoveries": 1,
+          "failures": 1,
+          "false_positives": 0,
+          "correct_event_on_drift": true,
+          "drift_recovered_text": "CPD1216/2026 Organizational Level Greenhouse Gas Accounting and Verification – ISO 14064 Introductory and Implementation Course 9-11 Dec 2026 (Wed-Fri) 9:30 – 17:30",
+          "decoy_recovered_text": ""
+        },
+        "timings": {
+          "fetch_duration_ms": 1888,
+          "parse_duration_ms": 9,
+          "browser_rendering_used": false
+        },
+        "selector_strategy": ".e-loop-item"
+      },
+      "hkgbc": {
+        "production_catalog": {
+          "source_name": "HKGBC 綠建環評",
+          "catalog_total": 26,
+          "catalog_future": 24,
+          "catalog_future_timed": 0,
+          "as_of": "2026-11-16"
+        },
+        "production_scrape_same_day": {
+          "last_status": "OK_WITH_EVENTS",
+          "last_n": 24,
+          "last_method": "hkgbc",
+          "last_error": null,
+          "raw_candidates": 40,
+          "rejects": {
+            "date_range": 16
+          },
+          "consecutive_fail": 0,
+          "last_success": "2026-11-16",
+          "updated": "2026-11-16"
+        },
+        "shadow_fixture": {
+          "production_count": 7,
+          "shadow_count": 7,
+          "matched_events": 7,
+          "production_only": 0,
+          "shadow_only": 0,
+          "title_matches": 7,
+          "title_mismatches": 0,
+          "date_matches": 7,
+          "date_mismatches": 0,
+          "url_matches": 7,
+          "false_positive_candidates": 0,
+          "suspected_false_positives": 0,
+          "confirmed_shadow_false_positives": 0,
+          "confirmed_production_misses": 0,
+          "title_accuracy": {
+            "matches": 7,
+            "denominator": 7,
+            "ratio": 1.0,
+            "label": "7/7"
+          },
+          "date_accuracy": {
+            "matches": 7,
+            "denominator": 7,
+            "ratio": 1.0,
+            "label": "7/7"
+          },
+          "url_accuracy": {
+            "matches": 7,
+            "denominator": 7,
+            "ratio": 1.0,
+            "label": "7/7"
+          }
+        },
+        "shadow_live": {
+          "production_count": 40,
+          "shadow_count": 942,
+          "matched_events": 40,
+          "production_only": 0,
+          "shadow_only": 902,
+          "title_matches": 40,
+          "title_mismatches": 0,
+          "date_matches": 40,
+          "date_mismatches": 0,
+          "url_matches": 40,
+          "false_positive_candidates": 902,
+          "suspected_false_positives": 902,
+          "confirmed_shadow_false_positives": 0,
+          "confirmed_production_misses": 0,
+          "suspected_false_positives_note": "Live HKGBC over-extracted 902 extra unique title+date candidates vs production cap 40 — suspected false positives, not confirmed until reviewed.",
+          "title_accuracy": {
+            "matches": 40,
+            "denominator": 40,
+            "ratio": 1.0,
+            "label": "40/40"
+          },
+          "date_accuracy": {
+            "matches": 40,
+            "denominator": 40,
+            "ratio": 1.0,
+            "label": "40/40"
+          },
+          "url_accuracy": {
+            "matches": 40,
+            "denominator": 40,
+            "ratio": 1.0,
+            "label": "40/40"
+          },
+          "attempted": true,
+          "status": "http_ok",
+          "fetch_duration_ms": 21940,
+          "parse_duration_ms": 223,
+          "browser_rendering_used": false,
+          "html_bytes": 1002685
+        },
+        "adaptive": {
+          "drift": "AUTO_MATCH_FALSE_POSITIVE",
+          "decoy": "AUTO_MATCH_FALSE_POSITIVE",
+          "recoveries": 0,
+          "failures": 0,
+          "false_positives": 2,
+          "correct_event_on_drift": false,
+          "drift_recovered_text": "10 Nov 2026 | Supporting Event",
+          "decoy_recovered_text": "Menu HKGBC Event All HKGBC Events"
+        },
+        "timings": {
+          "fetch_duration_ms": 21940,
+          "parse_duration_ms": 2,
+          "browser_rendering_used": false
+        },
+        "selector_strategy": ".event-card, .eventpost"
+      }
+    }
+  },
+  "honest_assessment": "Worth keeping in shadow for DOM-resilience experiments, not ready to migrate production parsers. Adaptive relocate recovered the correct CIC and HKIE cards after a class/wrapper rename, but: (1) Scrapling stores only the first element's fingerprint, so it does not re-list sibling cards; (2) CIC and HKGBC adaptive matching can return a similar sidebar or a different event card (false positive, worse than failure); (3) live CIC still needs JS to see cards; (4) live HKGBC over-extracts versus the production cap. Registration-channel wording was not used as attendance mode.",
+  "notes": {
+    "production_writes": "none — shadow never writes events.json or source_health.json",
+    "live_observations": {
+      "cic": "HTTP 200 (~140 KB) but both production and shadow extracted 0 events without JS rendering. Consistent with a JS-rendered listing; production already has a Playwright retry. This pilot did not use a browser.",
+      "hkie_cpd": "HTTP 200; production and shadow both extracted 10 events with exact title/date/URL agreement.",
+      "hkgbc": "HTTP 200 (~1 MB, ~24s). Production parser caps at 40 events; all 40 matched shadow titles/dates/URLs. Shadow also produced 902 additional unique title+date candidates on the live listing that need review before any production use (fixture comparison remains 7/7 exact)."
+    },
+    "adaptive_limitation": "Scrapling auto_save stores the first element's fingerprint only; adaptive relocate recovers that intended node after class rename, it is not a drop-in replacement for listing every sibling card.",
+    "migration": "Do not migrate Scrapling into production during the observation period."
+  }
+}

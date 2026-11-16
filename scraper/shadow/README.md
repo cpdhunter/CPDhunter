@@ -62,6 +62,26 @@ scraper/shadow/.venv/bin/python scraper/shadow/scrapling_shadow.py   # tries one
 
 The report is written to `scraper/shadow/artifacts/scrapling-shadow.json`. It is diagnostic only.
 
+The committed observation baseline is `scraper/shadow/artifacts/pilot-baseline.json`. Scheduled runs must not overwrite that file in git. A per-run snippet may be written to `scraper/shadow/artifacts/observation-run.json` (Actions artifact only).
+
+## Observation workflow
+
+An isolated GitHub Actions workflow, `.github/workflows/scrapling-shadow.yml` (`Scrapling Shadow Pilot`), runs the comparison daily at **07:00 HKT** (`cron: 0 23 * * *` UTC), after Daily CPD at 06:00 HKT, plus `workflow_dispatch`.
+
+| Setting | Value |
+| --- | --- |
+| Permissions | `contents: read` only |
+| Concurrency group | `scrapling-shadow` (not Daily CPD's group) |
+| Commit / push | **No** |
+| Pages deploy | **No** |
+| Writes `events.json` / `source_health.json` | **No** (pre/post SHA256 assertion) |
+| Dependency install | `scraper/requirements.txt` + `scraper/shadow/requirements-shadow.txt` (parser-only Scrapling; not `scrapling[fetchers]`) |
+| Artifacts | `scrapling-shadow.json`, `observation-run.json`, and the committed baseline copy |
+
+Daily CPD (`.github/workflows/update.yml`) is **not** wired to this pilot. A failure of the shadow workflow cannot fail or cancel Daily CPD Update. Adaptive state is never auto-committed from a scheduled run.
+
+The observation period starts **2026-11-16** (first run `2026-11-16T09:13:50+08:00`). Collect every run, including failures and zero-result runs, via Actions artifacts. Do not migrate Scrapling into production during this pilot.
+
 ## Adaptive matching
 
 Scrapling's current API uses `auto_save` / `adaptive` (formerly automatch):

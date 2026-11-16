@@ -3,3 +3,6 @@
 __pycache__/
 elements_storage.db
 .scrapling_cache/
+# Per-run workflow outputs (Actions artifacts only; never commit)
+observation-run.json
+production-sha256.json

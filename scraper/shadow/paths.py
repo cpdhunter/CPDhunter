@@ -34,6 +34,23 @@ STATE_CIC = os.path.join(ADAPTIVE_STATE_DIR, "cic.json")
 STATE_HKIE = os.path.join(ADAPTIVE_STATE_DIR, "hkie_cpd.json")
 STATE_HKGBC = os.path.join(ADAPTIVE_STATE_DIR, "hkgbc.json")
 
+# Observation-period artefacts. Scheduled runs may overwrite SHADOW_REPORT
+# in a worktree; they must never overwrite PILOT_BASELINE, and must never
+# commit OBSERVATION_RUN.
+PILOT_BASELINE = os.path.join(ARTIFACTS_DIR, "pilot-baseline.json")
+OBSERVATION_LOG = os.path.join(ARTIFACTS_DIR, "observation-log.json")
+OBSERVATION_RUN = os.path.join(ARTIFACTS_DIR, "observation-run.json")
+
+# Official source labels in events.json / source_health.json (read-only).
+SOURCE_LABEL_CIC = "CIC 建造業議會 Events"
+SOURCE_LABEL_HKIE = "HKIE CPD Calendar"
+SOURCE_LABEL_HKGBC = "HKGBC 綠建環評"
+PILOT_SOURCE_LABELS = {
+    "cic": SOURCE_LABEL_CIC,
+    "hkie_cpd": SOURCE_LABEL_HKIE,
+    "hkgbc": SOURCE_LABEL_HKGBC,
+}
+
 CIC_URL = "https://www.cic.hk/en/events"
 HKIE_URL = "https://hkie.org.hk/professional-development/continuing-professional-development/cpd-calendar/"
 HKGBC_URL = "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events"

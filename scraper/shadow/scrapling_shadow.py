@@ -58,6 +58,12 @@ from scraper.shadow.paths import (  # noqa: E402
     STATE_HKGBC,
     STATE_HKIE,
 )
+from scraper.shadow.observation import (  # noqa: E402
+    build_run_record,
+    detect_commit,
+    detect_python_version,
+    write_observation_run,
+)
 from scraper.shadow.safety import (  # noqa: E402
     assert_production_unchanged,
     snapshot_production,
@@ -356,8 +362,30 @@ def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description="Experimental Scrapling shadow pilot")
     parser.add_argument("--no-live", action="store_true", help="Skip polite live HTTP fetches")
     parser.add_argument("--report", default=SHADOW_REPORT)
+    parser.add_argument(
+        "--observation-out",
+        default="",
+        help="Write a single-run observation record (never overwrites pilot-baseline.json)",
+    )
+    parser.add_argument(
+        "--environment",
+        default="local",
+        choices=("local", "github-actions"),
+        help="Where this run is executing (recorded in the observation snippet only)",
+    )
     args = parser.parse_args(argv)
     report = run_pilot(try_live=not args.no_live, report_path=args.report)
+    if args.observation_out:
+        record = build_run_record(
+            report,
+            kind="observation",
+            environment=args.environment,
+            python_version=detect_python_version(),
+            main_commit=detect_commit(),
+            actions_runtime=None,
+        )
+        write_observation_run(args.observation_out, record)
+        report["observation_record_written"] = args.observation_out
     print(json.dumps({k: report[k] for k in report if k != "sources"}, ensure_ascii=False, indent=2))
     for key, src in report["sources"].items():
         print(
