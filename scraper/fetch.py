@@ -1508,6 +1508,20 @@ def main():
         log(f"Google Forms enrichment: {gstats}")
     except Exception as ex:
         log(f"Google Forms enrichment skipped: {type(ex).__name__}: {ex}")
+    # Keep CLOSED events in the published dataset so My Events / eventById
+    # still work for already-registered users. Frontend hides them from the
+    # normal catalogue. Track the count as a rejection diagnostic only.
+    try:
+        from reg_discover import registration_closed_count
+        closed_n = registration_closed_count(events)
+    except Exception:
+        closed_n = sum(
+            1
+            for e in events
+            if isinstance(e.get("registration"), dict)
+            and e["registration"].get("status") == "CLOSED"
+        )
+    log(f"registration_closed: {closed_n}")
     backfill_hrs_from_time(events)
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump({"updated": dt.datetime.now(HKT).isoformat(timespec="minutes"), "status": status, "events": events}, f, ensure_ascii=False, indent=1)

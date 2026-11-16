@@ -315,6 +315,7 @@ footer{text-align:center;font-size:.75rem;color:var(--mut);padding:20px;line-hei
 <script src="calendar_export.js"></script>
 <script src="attendance.js"></script>
 <script src="cpd_bridge.js"></script>
+<script src="catalogue.js"></script>
 <script>
 const CATS=["DSTM","OTM","GPM","H&S"];
 const CAT_NAME={"DSTM":"本科技術","OTM":"其他技術","GPM":"一般專業","H&S":"健康安全"};
@@ -374,9 +375,12 @@ function catOf(e){
   if(r)return["DSTM","屬相關界別："+DN[r]];
   return["OTM",d.length?"屬"+d.map(x=>DN[x]||x).join("、"):"一般技術"];
 }
-function hasTimeSlot(e){return /\d{1,2}:\d{2}/.test(String(e.time||""))}
+function hasTimeSlot(e){return (typeof CPDCatalogue!=="undefined"&&CPDCatalogue.hasTimeSlot)?CPDCatalogue.hasTimeSlot(e):/\d{1,2}:\d{2}/.test(String(e.time||""))}
+function isRegistrationClosed(e){return (typeof CPDCatalogue!=="undefined"&&CPDCatalogue.isRegistrationClosed)?CPDCatalogue.isRegistrationClosed(e):!!(e&&e.registration&&e.registration.status==="CLOSED")}
 function decorateEvent(e){const[c,w]=catOf(e);return{...e,cat:c,why:w}}
 function allEvents(){return DATA.events.filter(hasTimeSlot).map(decorateEvent)}
+/** Timed events eligible for the public catalogue (CLOSED registration hidden). */
+function catalogueEvents(){return DATA.events.filter(e=>hasTimeSlot(e)&&!isRegistrationClosed(e)).map(decorateEvent)}
 /** Lookup by id in full catalog (incl. untimed) so attendance/showEv still work for existing regState. */
 function eventById(id){const e=DATA.events.find(x=>x.id===id);return e?decorateEvent(e):null}
 const ALL_MODES=["ONLINE","HYBRID","FACE_TO_FACE","UNKNOWN"];
@@ -414,7 +418,7 @@ function filtered(){
   const rg=$("fReg").value,src=$("fSrc").value,fy=$("fFree").value,q=$("fQ").value.trim().toLowerCase();
   const dayLimit=quickDays?(()=>{const d=new Date(today+"T00:00:00+08:00");d.setDate(d.getDate()+7);return d.toISOString().slice(0,10)})():null;
   const M=eventModeApi();
-  return allEvents().filter(e=>{
+  return catalogueEvents().filter(e=>{
     if(rg&&e.region!==rg)return false;
     if(src&&(e.group||e.source)!==src)return false;
     if(fy&&e.free!==true)return false;
@@ -698,7 +702,7 @@ function confirmAttendAdd(id){
 
 // ---- 來源統計 ----
 function renderSources(){
-  const g={};allEvents().filter(e=>e.date>=today).forEach(e=>{const k=e.group||e.source;g[k]=g[k]||{n:0,f:0,h:0};g[k].n++;if(e.free===true)g[k].f++;g[k].h+=(effectiveHrs(e)||{}).hrs||0});
+  const g={};catalogueEvents().filter(e=>e.date>=today).forEach(e=>{const k=e.group||e.source;g[k]=g[k]||{n:0,f:0,h:0};g[k].n++;if(e.free===true)g[k].f++;g[k].h+=(effectiveHrs(e)||{}).hrs||0});
   const rows=Object.entries(g).sort((a,b)=>b[1].f-a[1].f||b[1].n-a[1].n);
   $("srcTbl").innerHTML=rows.length?`<table><tr><th>機構</th><th>活動</th><th>確認免費</th><th>時數</th></tr>${rows.map(([k,v])=>`<tr><td>${esc(k)}</td><td>${v.n}</td><td>${v.f}</td><td>${Math.round(v.h*10)/10}h</td></tr>`).join("")}</table>`
     +((DATA.status||[]).some(s=>!s.ok)?`<div class="meta" style="margin-top:8px">今日未能收集：${DATA.status.filter(s=>!s.ok).map(s=>esc(s.source)).join("、")}</div>`:""):'<div class="meta">未有資料</div>';
@@ -821,6 +825,15 @@ function goRegProfile(missing){
 function fillRegPrep(e){
   const root=$("regPrepRoot");if(!root)return;
   while(root.firstChild)root.removeChild(root.firstChild);
+  const rstate=regStateOf(e.id);
+  if(isRegistrationClosed(e)||(typeof CPDCatalogue!=="undefined"&&CPDCatalogue.canStartPrepareRegistration&&!CPDCatalogue.canStartPrepareRegistration(e))){
+    // Official registration is closed: do not start Prepare Registration.
+    // Details / calendar / attendance remain available via the event modal and My Events.
+    const note=document.createElement("div");note.className="note";
+    note.textContent=(typeof CPDCatalogue!=="undefined"&&CPDCatalogue.registrationNowClosedLabel)?(CPDCatalogue.registrationNowClosedLabel(e,rstate)||"Registration closed."):(rstate==="opened"||rstate==="registered_manual"?"Registration now closed":"Registration closed.");
+    root.appendChild(note);
+    return;
+  }
   const h=document.createElement("h4");h.textContent="準備報名 / Prepare Registration";root.appendChild(h);
   const miss=missingRegFields();
   if(miss.length){
@@ -1005,7 +1018,7 @@ function myEventCard(e,regLabel){
     <div><span class="tag cat ${kc(e.cat)}">${esc(e.cat)}</span>
       <span class="tag mode-lab">${esc(eventModeLabel(e))}</span>
       <span class="tag">${(()=>{const h=effectiveHrs(e);return h?(h.est?"~":"")+h.hrs+"h":"時數未註明"})()}</span>
-      <span class="regbadge ${regLabel.cls}">${esc(regLabel.text)}</span></div>
+      <span class="regbadge ${regLabel.cls}">${esc(regLabel.text)}</span>${isRegistrationClosed(e)?`<span class="regbadge cancelled">${esc((typeof CPDCatalogue!=="undefined"&&CPDCatalogue.registrationNowClosedLabel&&CPDCatalogue.registrationNowClosedLabel(e,rstate))||"Registration now closed")}</span>`:""}</div>
     ${showCal?`<button class="${calCls}" type="button" onclick="event.stopPropagation();addToCalendar('${esc(e.id)}')">加入行事曆</button>`:""}
     ${attendHtml}
   </div>`;
@@ -1108,7 +1121,7 @@ function renderReco(){
   root.hidden=true;
   if(typeof CPDRecommendations==="undefined")return;
   const R=CPDRecommendations;
-  const future=DATA.events.filter(e=>e.date>=today&&hasTimeSlot(e));
+  const future=DATA.events.filter(e=>e.date>=today&&hasTimeSlot(e)&&!isRegistrationClosed(e));
   if(!future.length)return;
   const memberType=LS("mtype")||"corp";
   const logs=LS("logs")||[];

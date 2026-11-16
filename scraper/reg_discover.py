@@ -147,6 +147,78 @@ CLOSED_HINTS = re.compile(
     re.I,
 )
 
+# Deadline field labels (not a closed status by themselves).
+_DEADLINE_FIELD_RE = re.compile(
+    r"(?:截止報名(?:日期|日|時間)?|報名截止(?:日期|日|時間)?|closing(?:\s+date)?)"
+    r"\s*[:：]?\s*"
+    r"(?:\d{4}\s*年\s*\d{1,2}\s*月\s*\d{1,2}\s*日|"
+    r"\d{1,2}\s+[A-Za-z]+\s+\d{4}|"
+    r"\d{4}[-/.]\d{1,2}[-/.]\d{1,2})",
+    re.I,
+)
+
+# Strong explicit closed-registration wording only. Applied after deadline labels
+# are stripped so "截止報名 2026年11月12日" (a deadline field) is not treated as CLOSED.
+_CLOSED_STATUS_RE = re.compile(
+    r"(?:"
+    r"此講座會議已經截止報名|"
+    r"已經截止報名|"
+    r"已截止報名|"
+    r"報名已截止|"
+    r"報名截止|"
+    r"截止報名|"
+    r"名額已滿|"
+    r"已額滿|"
+    r"(?<!未)額滿(?!即止)|"
+    r"the application for the (?:seminar|conference|activity|event)"
+    r"(?:\s*/\s*(?:seminar|conference|activity|event))? has been closed|"
+    r"applications?\s+(?:(?:is|are|has been|have been)\s+)?closed|"
+    r"registration\s+is\s+closed|"
+    r"registration\s+closed|"
+    r"closed\s+for\s+registration|"
+    r"enrol+ments?\s+(?:(?:is|are|has been|have been)\s+)?closed|"
+    r"registration\s+ended|"
+    r"fully\s+booked|"
+    r"sold\s+out|"
+    r"no longer accepting|"
+    r"not accepting responses|"
+    r"activity is closed"
+    r")",
+    re.I,
+)
+
+
+def explicit_closed_registration(html: str) -> Optional[str]:
+    """Return matched official closed-registration wording, else None.
+
+    Conservative: missing links, CAPTCHA, login walls, inaccessible pages,
+    nearby dates, or a lone deadline field must not be treated as CLOSED.
+    """
+    if not html:
+        return None
+    soup = BeautifulSoup(html, "html.parser")
+    lb = soup.find(id="LbClosed")
+    if lb:
+        msg = lb.get_text(" ", strip=True)
+        if msg:
+            return msg
+    text = soup.get_text(" ", strip=True)
+    cleaned = _DEADLINE_FIELD_RE.sub(" ", text)
+    m = _CLOSED_STATUS_RE.search(cleaned)
+    if m:
+        return m.group(0)
+    return None
+
+
+def registration_closed_count(events: List[dict]) -> int:
+    """Count events with positively verified registration.status == CLOSED."""
+    n = 0
+    for ev in events or []:
+        reg = ev.get("registration") if isinstance(ev, dict) else None
+        if isinstance(reg, dict) and reg.get("status") == "CLOSED":
+            n += 1
+    return n
+
 
 def _norm(s: str) -> str:
     return re.sub(r"[^a-z0-9\u4e00-\u9fff]", "", (s or "").lower())
@@ -461,7 +533,7 @@ def discover_hkie(session: requests.Session, event: dict) -> Optional[dict]:
             "confidence": "HIGH",
             "discoveryMethod": "hkie_eventdetail_portal",
         }
-    if CLOSED_HINTS.search(html):
+    if explicit_closed_registration(html):
         return {
             "mechanism": "REGISTRATION_CLOSED",
             "destination": None,
@@ -730,9 +802,36 @@ def discover_oshc_family(session: requests.Session, event: dict, cache: dict) ->
     # Direct activity / PDF already on event.url
     eu = (event.get("url") or "").strip()
     if OSHC_HOST.search(eu):
+        dest = eu.split("#")[0]
+        # GET the official activity page and stamp CLOSED only on explicit wording.
+        # Inaccessible / blocked pages stay OPEN/UNKNOWN — never guessed CLOSED.
+        try:
+            pages = cache.setdefault("pages", {})
+            if dest not in pages:
+                if allowed(dest):
+                    final, html, code = _safe_get(session, dest)
+                    pages[dest] = (final, html, code)
+                    time.sleep(0.3)
+                else:
+                    pages[dest] = (dest, "", 0)
+            final, html, code = pages[dest]
+            block = _detect_page_blockers(html, code, final) if html else None
+            if not block:
+                evidence = explicit_closed_registration(html)
+                if evidence:
+                    return {
+                        "mechanism": "REGISTRATION_CLOSED",
+                        "destination": dest,
+                        "status": "CLOSED",
+                        "sourceUrlClass": "DIRECT_REGISTRATION",
+                        "confidence": "HIGH",
+                        "discoveryMethod": "oshc_activity_closed_text",
+                    }
+        except Exception:
+            pass
         return {
             "mechanism": "OSHC_PORTAL",
-            "destination": eu.split("#")[0],
+            "destination": dest,
             "status": "OPEN",
             "sourceUrlClass": "DIRECT_REGISTRATION",
             "confidence": "HIGH",
@@ -778,8 +877,8 @@ def discover_oshc_family(session: requests.Session, event: dict, cache: dict) ->
                     time.sleep(0.3)
                 else:
                     final, html, code = pages[dest]
-                hl = (html or "").lower()
-                if "registration closed" in hl or "報名已截止" in html or "activity is closed" in hl:
+                block = _detect_page_blockers(html, code, final)
+                if not block and explicit_closed_registration(html):
                     return {
                         "mechanism": "REGISTRATION_CLOSED",
                         "destination": dest,
@@ -984,6 +1083,16 @@ def discover_generic_page(session: requests.Session, event: dict, cache: dict) -
                 "confidence": "LOW",
                 "discoveryMethod": "low_confidence_candidate",
             }
+        # Official closed wording on the event page beats a leftover register link.
+        if explicit_closed_registration(html or ""):
+            return {
+                "mechanism": "REGISTRATION_CLOSED",
+                "destination": dest,
+                "status": "CLOSED",
+                "sourceUrlClass": src_class,
+                "confidence": "HIGH",
+                "discoveryMethod": "page_closed_text",
+            }
         return {
             "mechanism": mech,
             "destination": dest,
@@ -992,7 +1101,7 @@ def discover_generic_page(session: requests.Session, event: dict, cache: dict) -
             "confidence": conf,
             "discoveryMethod": "page_scan_" + ",".join(reasons[:3]),
         }
-    if CLOSED_HINTS.search(html or ""):
+    if explicit_closed_registration(html or ""):
         return {
             "mechanism": "REGISTRATION_CLOSED",
             "destination": None,
@@ -1179,6 +1288,7 @@ def enrich_registration_discovery(
         "scanned": 0,
         "with_destination": 0,
         "errors": 0,
+        "registration_closed": 0,
         "by_mechanism": {},
     }
     cache: dict = {}
@@ -1210,6 +1320,8 @@ def enrich_registration_discovery(
             stats["by_mechanism"][mech] = stats["by_mechanism"].get(mech, 0) + 1
             if merged.get("destination"):
                 stats["with_destination"] += 1
+            if merged.get("status") == "CLOSED":
+                stats["registration_closed"] += 1
             if sleep_s:
                 time.sleep(sleep_s)
         except Exception as ex:
