@@ -1,0 +1,68 @@
+# Isolated Scrapling Shadow Pilot. Diagnostic only.
+# Does NOT write events.json or source_health.json.
+# Does NOT deploy GitHub Pages.
+# Does NOT share Daily CPD's concurrency group.
+# Does NOT commit or push.
+# A failure of this workflow cannot cancel or fail Daily CPD Update.
+name: Scrapling Shadow Pilot
+
+on:
+  schedule:
+    # 07:00 HKT, after Daily CPD at 06:00 HKT (0 22 * * * UTC).
+    - cron: "0 23 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: scrapling-shadow
+  cancel-in-progress: false
+
+jobs:
+  shadow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Snapshot production checksums
+        run: |
+          python scraper/shadow/assert_production_frozen.py --save /tmp/prod-sha256.json --print
+
+      - name: Install shadow dependencies
+        run: |
+          pip install -r scraper/requirements.txt
+          pip install -r scraper/shadow/requirements-shadow.txt
+
+      - name: Run Scrapling shadow comparison
+        run: |
+          python scraper/shadow/scrapling_shadow.py \
+            --environment github-actions \
+            --observation-out scraper/shadow/artifacts/observation-run.json
+
+      - name: Assert production files unchanged
+        if: always()
+        run: |
+          python scraper/shadow/assert_production_frozen.py --check /tmp/prod-sha256.json --print
+          git diff --exit-code -- events.json source_health.json
+          test ! -f scraper/shadow/artifacts/pilot-baseline.json || \
+            git diff --exit-code -- scraper/shadow/artifacts/pilot-baseline.json
+
+      - name: Upload shadow artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: scrapling-shadow-${{ github.run_id }}
+          path: |
+            scraper/shadow/artifacts/scrapling-shadow.json
+            scraper/shadow/artifacts/observation-run.json
+            scraper/shadow/artifacts/pilot-baseline.json
+          if-no-files-found: warn
+          retention-days: 90
