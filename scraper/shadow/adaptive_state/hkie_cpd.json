@@ -1,0 +1,41 @@
+{
+  "records": {
+    "hkie.org.hk::hkie_cpd_course_card": {
+      "attributes": {
+        "class": "elementor elementor-187774 uc-post-231035 e-loop-item e-loop-item-231035 post-231035 post type-post status-publish format-standard hentry category-cpd-courses post_year-1670 post_month-1623 post_cpd-gpm",
+        "data-custom-edit-handle": "1",
+        "data-elementor-id": "187774",
+        "data-elementor-post-type": "elementor_library",
+        "data-elementor-type": "loop-item"
+      },
+      "children": [
+        "section"
+      ],
+      "parent_attribs": {
+        "class": "loop"
+      },
+      "parent_name": "div",
+      "parent_text": null,
+      "path": [
+        "html",
+        "body",
+        "div",
+        "div"
+      ],
+      "siblings": [
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div"
+      ],
+      "tag": "div",
+      "text": ""
+    }
+  },
+  "version": 1
+}

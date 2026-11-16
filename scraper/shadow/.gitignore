@@ -1,0 +1,5 @@
+.venv/
+*.db
+__pycache__/
+elements_storage.db
+.scrapling_cache/

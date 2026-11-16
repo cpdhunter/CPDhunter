@@ -1,0 +1,3 @@
+# Isolated shadow-pilot dependency. Do NOT add this to scraper/requirements.txt
+# or the Daily CPD workflow. Parser-only extras: no browsers, no stealth fetchers.
+scrapling==0.5.1

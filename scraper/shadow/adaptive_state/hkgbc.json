@@ -1,0 +1,31 @@
+{
+  "records": {
+    "hkgbc.org.hk::hkgbc_event_card": {
+      "attributes": {
+        "class": "event-card"
+      },
+      "children": [
+        "a"
+      ],
+      "parent_attribs": {},
+      "parent_name": "body",
+      "parent_text": "",
+      "path": [
+        "html",
+        "body",
+        "div"
+      ],
+      "siblings": [
+        "div",
+        "div",
+        "div",
+        "div",
+        "div",
+        "div"
+      ],
+      "tag": "div",
+      "text": ""
+    }
+  },
+  "version": 1
+}

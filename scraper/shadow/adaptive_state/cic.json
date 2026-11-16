@@ -1,0 +1,33 @@
+{
+  "records": {
+    "cic.hk::cic_event_card": {
+      "attributes": {
+        "class": "event-card"
+      },
+      "children": [
+        "h3",
+        "span",
+        "a"
+      ],
+      "parent_attribs": {
+        "class": "calendar"
+      },
+      "parent_name": "div",
+      "parent_text": "",
+      "path": [
+        "html",
+        "body",
+        "div",
+        "article"
+      ],
+      "siblings": [
+        "div",
+        "div",
+        "div"
+      ],
+      "tag": "article",
+      "text": null
+    }
+  },
+  "version": 1
+}
