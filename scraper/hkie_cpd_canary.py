@@ -28,6 +28,15 @@ import traceback
 from typing import Any, Dict, List, Optional, Tuple
 from urllib.parse import urlparse
 
+# python scraper/fetch.py puts only scraper/ on sys.path, so "import scraper"
+# fails in Actions unless the repo root is added. Tests may already set
+# PYTHONPATH; inserting is harmless if the path is already present.
+_SCRAPER_DIR = os.path.dirname(os.path.abspath(__file__))
+_REPO_ROOT = os.path.dirname(_SCRAPER_DIR)
+for _p in (_REPO_ROOT, _SCRAPER_DIR):
+    if _p not in sys.path:
+        sys.path.insert(0, _p)
+
 # --- Rollback / stage switches ------------------------------------------------
 # Turning HKIE_SCRAPLING_CANARY off restores legacy-only HKIE behaviour.
 HKIE_SCRAPLING_CANARY = True
