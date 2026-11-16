@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-16T16:22+08:00",
+ "updated": "2026-11-16T16:45+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -47,13 +47,15 @@
   },
   {
    "source": "CIC 建造業議會 Events",
-   "status": "EMPTY_UNVERIFIED",
-   "ok": false,
-   "n": 0,
-   "method": "cic-list",
+   "status": "OK_WITH_EVENTS",
+   "ok": true,
+   "n": 5,
+   "method": "playwright+cic-list",
    "page_title": "Events | Construction Industry Council",
-   "raw_candidates": 0,
-   "rejects": {}
+   "raw_candidates": 11,
+   "rejects": {
+    "date_range": 6
+   }
   },
   {
    "source": "CIC BIM Events",
@@ -102,7 +104,7 @@
    "status": "OK_WITH_EVENTS",
    "ok": true,
    "n": 20,
-   "method": "playwright+generic",
+   "method": "playwright+generic+detail",
    "page_title": "Events - HKIE",
    "raw_candidates": 20,
    "rejects": {}
@@ -225,7 +227,7 @@
    "ok": false,
    "n": 0,
    "method": "generic",
-   "page_title": "",
+   "page_title": "IET events and courses search",
    "raw_candidates": 0,
    "rejects": {}
   },
@@ -1924,8 +1926,8 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "HIGH",
-    "discoveryMethod": "page_scan_google_forms,pos_text"
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    },
    "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
    "venueSource": "event_detail",
@@ -2242,7 +2244,7 @@
    "hrs_est": false,
    "type": "Technical",
    "disc": [
-    "General"
+    "Aircraft"
    ],
    "url": "https://hkie.org.hk/events/event-detail/6ab0d3b8a5c8f81c9509596a/",
    "region": "HK",
@@ -2251,6 +2253,13 @@
    "source": "HKIE Events",
    "group": "HKIE",
    "auto": true,
+   "venue": "Cathay City, 8 Scenic Road, Hong Kong International Airport",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "Course Objectives & Learning Outcomes: The first week of this course is based on the foundation module of Cranfield University’s MSc Airworthiness. The second week will focus on the Hong Kong airworthiness requirements. The aim of the course is to provide a fundamental knowledge of the EASA and CAD requirements for airworthiness in aircraft design, production, operation and maintenance. On completion of this module, delegates will be able to: • Describe the legal basis which underpins airworthiness regulation in aircraft design, production, operation and maintenance; • Interpret the principles of airworthiness as applied to the process of aircraft and engine certification; • Communicate the importance of airworthiness requirements as they relate aircraft design, production, operation and maintenance; • Articulate the process for Continuing Airworthiness management for different types and sizes of operator. For details and registration, please refer to https://hkie.org.hk/ac/announcements/hong-kong-airworthiness-course/",
+   "venueSource": "event_detail",
+   "division": "Aircraft Division",
+   "mode": "FACE_TO_FACE",
    "registration": {
     "mechanism": "HKIE_PORTAL",
     "destination": "https://event.hkie.org.hk/events/share?id=6ab0d3b8a5c8f81c9509596a&companyCode=hkie",
@@ -2261,9 +2270,9 @@
    }
   },
   {
-   "id": "a2f3918835b55",
-   "name": "Technical Visit to the Route 6- Central Kowloon Bypass (Kowloon Bay Section)",
-   "org": "HKIE Events",
+   "id": "aef2b181c8663",
+   "name": "COSH、CIC、HKIHRM及OSHC - 香港無煙領先企業大獎2026 [截止報名日期：2026年11月16日] (Chinese only)",
+   "org": "HKGBC",
    "date": "2026-11-16",
    "time": "",
    "hrs": null,
@@ -2271,6 +2280,35 @@
    "type": "Technical",
    "disc": [
     "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1079",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_detail_no_reg"
+   }
+  },
+  {
+   "id": "a2f3918835b55",
+   "name": "Technical Visit to the Route 6- Central Kowloon Bypass (Kowloon Bay Section)",
+   "org": "HKIE Events",
+   "date": "2026-11-16",
+   "time": "14:00-16:00",
+   "hrs": 2.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Geotechnical",
+    "Civil"
    ],
    "url": "https://hkie.org.hk/events/event-detail/6aed9c7c1f1d426669c1d6bd/",
    "region": "HK",
@@ -2374,35 +2412,15 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
     "discoveryMethod": "hkie_eventdetail_gform"
-   }
-  },
-  {
-   "id": "aef2b181c8663",
-   "name": "COSH、CIC、HKIHRM及OSHC - 香港無煙領先企業大獎2026 [截止報名日期：2026年11月16日] (Chinese only)",
-   "org": "HKGBC",
-   "date": "2026-11-16",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1079",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "LOW",
-    "discoveryMethod": "hkgbc_detail_no_reg"
-   }
+   },
+   "venue": "Successful applicants will be advised of the assembly venue",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "Central Kowloon Bypass (Kowloon Bay Section), formerly The Trunk Road T2 and Cha Kwo Ling (CKL) Tunnel, forms the middle section of Route 6, connecting the Central Kowloon Route (CKR) to the west and the Tseung Kwan O–Lam Tin Tunnel (TKO-LTT) to the east. Route 6 is crucial for Hong Kong’s road network, linking West Kowloon to Tseung Kwan O (TKO) New Town with interchanges at Kai Tak and Lam Tin. It supports developments like the West Kowloon Cultural District, Kai Tak Development (KTD), and Kowloon East CBD. Upon completion of Route 6, peak hour travel time between Yau Ma Tei and Tseung Kwan O Town Centre will reduce from 65 minutes to 12 minutes. The project involves a 3.4 km dual two-lane trunk road, 3.1 km of which is in the form of tunnels, plus two ventilation buildings and associated works. Participants will gather at the assembly venue for a session on the project’s works and challenges, followed by a tour of Tunnel Boring Machine Bored Tunnel and Cross Passages to observe advanced design, construction technologies, and project management. With the Central Kowloon Bypass (Kowloon Bay Section) nearing completion, the Civil Engineering and Development Department’s Project Team invite the Hong Kong Institution of Engineers to visit the project site ahead of its scheduled opening on 6 December 2026. The visit will provide an opportunity to learn about the project and its construction. Upon completion of the entire Route 6, peak-hour journey time between Tseung Kwan O Town Centre and Yau Ma Tei is expected to fall from about 65 minutes to approximately 12 minutes. Registration and enquiries Prior registration is required. The number of participants is limited to 30. Applications will be accepted on a first-come first-served basis with priority being given to members of HKIE Civil/Geotechnical. Please register online via the following QR code: https://docs.google.com/forms/d/e/1FAIpQLSeyS4ofsCb77YbO_o_oBYDq-FwkF1YAcQzh1WK7KjDWnNaAGQ/viewform?usp=send_form The dead",
+   "venueSource": "event_detail",
+   "division": "Geotechnical Division",
+   "civil_related": true,
+   "mode": "FACE_TO_FACE"
   },
   {
    "id": "a36ffb58d06b0",
@@ -2460,87 +2478,6 @@
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
     "discoveryMethod": "oshc_activity_closed_text"
-   }
-  },
-  {
-   "id": "a61aea65202a8",
-   "name": "Technical Seminar: Enhancing River Biodiversity by Nature-based Solutions",
-   "org": "HKIE Events",
-   "date": "2026-11-17",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://hkie.org.hk/events/event-detail/6af41b361f1d426669c4579d/",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIE Events",
-   "group": "HKIE",
-   "auto": true,
-   "registration": {
-    "mechanism": "GOOGLE_FORMS",
-    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSdO6nHPipAk2FO2NU_rlM4cGts1xhaj6tNwfVyOL2rFqidlKw/viewform",
-    "formId": "1FAIpQLSdO6nHPipAk2FO2NU_rlM4cGts1xhaj6tNwfVyOL2rFqidlKw",
-    "status": "OPEN",
-    "fields": [
-     {
-      "entryId": "entry.877086558",
-      "profileField": null,
-      "label": "Surname",
-      "type": "PARAGRAPH",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1633070132",
-      "profileField": null,
-      "label": "First Name",
-      "type": "PARAGRAPH",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1498135098",
-      "profileField": "email",
-      "label": "Email",
-      "type": "PARAGRAPH",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1424661284",
-      "profileField": "organisation",
-      "label": "Organization",
-      "type": "PARAGRAPH",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.2606285",
-      "profileField": null,
-      "label": "Membership",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.253460959",
-      "profileField": null,
-      "label": "Membership Grade",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.990121559",
-      "profileField": null,
-      "label": "Would you attend in person or online?",
-      "type": "RADIO",
-      "safePrefill": false
-     }
-    ],
-    "requiresManualCompletion": true,
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "HIGH",
-    "discoveryMethod": "hkie_eventdetail_gform"
    }
   },
   {
@@ -2718,35 +2655,93 @@
    "mode": "ONLINE"
   },
   {
-   "id": "ad8fa708c4fa0",
-   "name": "Joint Technical Seminar on Case Study Sharing: Active Chilled Beam and AI-Based Waterside & Airside Energy Optimization",
+   "id": "a61aea65202a8",
+   "name": "Technical Seminar: Enhancing River Biodiversity by Nature-based Solutions",
    "org": "HKIE Events",
-   "date": "2026-11-18",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
+   "date": "2026-11-17",
+   "time": "19:00-20:00",
+   "hrs": 1.0,
+   "hrs_est": true,
    "type": "Technical",
    "disc": [
-    "General"
+    "Civil"
    ],
-   "url": "https://hkie.org.hk/events/event-detail/6ae43982235f6d2201377cdb/",
+   "url": "https://hkie.org.hk/events/event-detail/6af41b361f1d426669c4579d/",
    "region": "HK",
    "online": null,
-   "free": null,
+   "free": true,
    "source": "HKIE Events",
    "group": "HKIE",
    "auto": true,
    "registration": {
     "mechanism": "GOOGLE_FORMS",
-    "destination": "https://docs.google.com/forms/d/e/1FAIpQLScDRL4QH_6sV4h68QduhefW_-ZMWOQSdbjeSfP0p9SrAWr97A/viewform",
-    "formId": "1FAIpQLScDRL4QH_6sV4h68QduhefW_-ZMWOQSdbjeSfP0p9SrAWr97A",
-    "status": "CLOSED",
-    "fields": [],
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSdO6nHPipAk2FO2NU_rlM4cGts1xhaj6tNwfVyOL2rFqidlKw/viewform",
+    "formId": "1FAIpQLSdO6nHPipAk2FO2NU_rlM4cGts1xhaj6tNwfVyOL2rFqidlKw",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.877086558",
+      "profileField": null,
+      "label": "Surname",
+      "type": "PARAGRAPH",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1633070132",
+      "profileField": null,
+      "label": "First Name",
+      "type": "PARAGRAPH",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1498135098",
+      "profileField": "email",
+      "label": "Email",
+      "type": "PARAGRAPH",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1424661284",
+      "profileField": "organisation",
+      "label": "Organization",
+      "type": "PARAGRAPH",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.2606285",
+      "profileField": null,
+      "label": "Membership",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.253460959",
+      "profileField": null,
+      "label": "Membership Grade",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.990121559",
+      "profileField": null,
+      "label": "Would you attend in person or online?",
+      "type": "RADIO",
+      "safePrefill": false
+     }
+    ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
     "discoveryMethod": "hkie_eventdetail_gform"
-   }
+   },
+   "venue": "Chun Wo & Hsin Chong Room, 10/F, Island Beverley, No 1 Great George Street,Causeway Bay",
+   "modeText": "Hybrid with Webinar",
+   "attendanceMode": "Hybrid with Webinar",
+   "description": "Technical Seminar: Enhancing River Biodiversity by Nature-based Solutions Date/Time: 17 Nov 2026,07:00 PM - 08:00 PM (06:30 PM Registration) Venue: Chun Wo & Hsin Chong Room, 10/F, Island Beverley, No 1 Great George Street,Causeway Bay / Hybrid with Webinar Speaker: Ms Julia CHAN Wing Yin (Environment & Society Market Leader Asia of Mott MacDonald) Language: English & Cantonese Free of Charge Programme Highlights: Channelization of natural streams leads to: loss of original stream courses and their dynamics; a decline in natural flow regimes; and degradation in ecological habitats and overall species biodiversity. To balance preservation of natural streams with the need for flood prevention, a wide range of environmentally-friendly drainage channel designs have been implemented in Hong Kong in last two decades. To further enhance the water friendliness of the urban river and to promote river biodiversity in line with the Hong Kong Biodiversity Strategic Action Plan, the involvement of Ecologist, Landscape Architect, Botanist in the design process with consideration of nature-based solutions, will provide additional benefit on ecosystem services, climate resilience and improve in ecological connectivity of the river catchment. Julia will share the ecological enhancement features that are benefit to the aquatic fauna and flora adopted in various studies, and the positive social outcome. Speaker: Ms. Julia Chan is an environmental professional and aquatic ecologist, currently the Environment and Society Market Leader for Asia Unit of Mott MacDonald. She has over 27 years’ experience in environmental management, ecological monitoring and impact assessment. She is also specialised in biodiversity conservation and blue-green infrastructures design by nature-based solutions. She was the Project Manager for Eco-hydraulics Study on Green Channels Stage 1 and 2, Enhancement of Shek Sheung River Investigation Study and Enhancing of Existing River Sections Investigation Study f",
+   "venueSource": "event_detail",
+   "division": "Civil Division",
+   "civil_related": true,
+   "mode": "HYBRID"
   },
   {
    "id": "a1d9ccaa41695",
@@ -2804,6 +2799,44 @@
     "confidence": "HIGH",
     "discoveryMethod": "ice_cloudflare_or_403"
    }
+  },
+  {
+   "id": "ad8fa708c4fa0",
+   "name": "Joint Technical Seminar on Case Study Sharing: Active Chilled Beam and AI-Based Waterside & Airside Energy Optimization",
+   "org": "HKIE Events",
+   "date": "2026-11-18",
+   "time": "18:45-20:00",
+   "hrs": 1.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Building Services"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ae43982235f6d2201377cdb/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLScDRL4QH_6sV4h68QduhefW_-ZMWOQSdbjeSfP0p9SrAWr97A/viewform",
+    "formId": "1FAIpQLScDRL4QH_6sV4h68QduhefW_-ZMWOQSdbjeSfP0p9SrAWr97A",
+    "status": "CLOSED",
+    "fields": [],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "HKIE Headquarters, Chun Wo & Hsin Chong Room, 10/F Island Beverley, Causeway Bay, Hong Kong",
+   "modeText": "HYBRID / Zoom",
+   "attendanceMode": "HYBRID / Zoom",
+   "description": "Joint Technical Seminar on Case Study Sharing: Active Chilled Beam and AI-Based Waterside & Airside Energy Optimization Date: 18 November 2026 (Wednesday) Time: 06:45 pm – 08:00 pm (Registration start at 6:30 pm) Venue: (Online) Zoom; (Physical) HKIE Headquarters, Chun Wo & Hsin Chong Room, 10/F Island Beverley, Causeway Bay, Hong Kong Fee: Free of Charge Limited of Participants: 30 (Physical); 500 (Online) Seminar Overview This seminar explores the implementation of Active Chilled Beam technology at ATAL Tower and the application of AI-driven energy optimization in commercial buildings. Through practical case studies, participants will gain insights into Active Chilled Beam design, smart building integration, BMS and IoT applications, and AI-based airside and waterside optimization, together with practical strategies for improving energy efficiency, building performance and sustainability. Seminar Agenda & Speaker Profiles: 1. Smart Building Energy Optimization Framework at ATAL Tower Speaker: Ir Billy Cheung An overview of ATAL Tower’s smart building and energy optimization framework, covering BMS, IoT, analytics and energy management integration to enhance operational efficiency and building performance. Ir Billy Cheung, Sales & Service Director of Intelligent & Green Building Solutions at ATAL Engineering Group, has over 20 years of experience in smart buildings, digital engineering, building automation and energy management. He holds MHKIE (CAI & ENS), BEAM Pro (NB), EA-ZCRB, REA, CEM®, LEED AP (BD+C), SmartScore AP and WiredScore AP. 2. Active Chilled Beam System: Design and Implementation at ATAL Tower Speaker: Edmond Yeung A practical case study of the Active Chilled Beam system at ATAL Tower, covering operating principles, benefits, design considerations, implementation challenges and lessons learned. Edmond Yeung, Senior Sales Manager at ATAL Engineering Group, has over 20 years of building services engineering experience, specializing in HVAC, energy mana",
+   "venueSource": "event_detail",
+   "division": "Building Services Division",
+   "mode": "HYBRID"
   },
   {
    "id": "a3d3ddcd83f77",
@@ -2923,120 +2956,6 @@
    }
   },
   {
-   "id": "a51c8d2e44cba",
-   "name": "Webinar on The Emerging Space Economy: Opportunities and Challenges",
-   "org": "HKIE Events",
-   "date": "2026-11-20",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://hkie.org.hk/events/event-detail/6ad70fb75f713be015110308/",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIE Events",
-   "group": "HKIE",
-   "auto": true,
-   "mode": "ONLINE",
-   "registration": {
-    "mechanism": "HKIE_PORTAL",
-    "destination": "https://event.hkie.org.hk/events/share?id=6ad70fb75f713be015110308&companyCode=hkie",
-    "status": "LOGIN_REQUIRED",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "HIGH",
-    "discoveryMethod": "hkie_eventdetail_portal"
-   }
-  },
-  {
-   "id": "a4d23f5651b2a",
-   "name": "Seminar/Webinar on Firestop Systems for M&E Services",
-   "org": "HKIE Events",
-   "date": "2026-11-20",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://hkie.org.hk/events/event-detail/6ae14fb0235f6d2201364ef3/",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIE Events",
-   "group": "HKIE",
-   "auto": true,
-   "mode": "ONLINE",
-   "registration": {
-    "mechanism": "HKIE_PORTAL",
-    "destination": "https://event.hkie.org.hk/events/share?id=6ae14fb0235f6d2201364ef3&companyCode=hkie",
-    "status": "LOGIN_REQUIRED",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "HIGH",
-    "discoveryMethod": "hkie_eventdetail_portal"
-   }
-  },
-  {
-   "id": "a89bbe0bfcd00",
-   "name": "Technical Seminar - From Emergency Response to Safety Resilience: Managing Climate-Related OH&S Risks through ISO/PAS 45007:2026",
-   "org": "HKIE Events",
-   "date": "2026-11-20",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "H&S",
-   "disc": [
-    "General"
-   ],
-   "url": "https://hkie.org.hk/events/event-detail/6af3c44d1f1d426669c43343/",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIE Events",
-   "group": "HKIE",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "LOW",
-    "discoveryMethod": "hkie_eventdetail_no_reg_link"
-   }
-  },
-  {
-   "id": "adb0080058465",
-   "name": "存量物業的綠色升級與價值提升——城市更新、運營改善與綠色金融",
-   "org": "HKIS CPD",
-   "date": "2026-11-20",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6888",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIS CPD",
-   "group": "HKIS",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_CLOSED",
-    "destination": "https://www.hkis.org.hk/uploads/editor/CPD%E6%B4%BB%E5%8A%A8%E6%8A%A5%E5%90%8D%E6%B5%81%E7%A8%8B%E5%8F%8AZOOM%E8%AE%B2%E5%BA%A7%E6%93%8D%E4%BD%9C.pdf",
-    "status": "CLOSED",
-    "sourceUrlClass": "UNKNOWN",
-    "confidence": "HIGH",
-    "discoveryMethod": "page_closed_text"
-   }
-  },
-  {
    "id": "ae4705712716f",
    "name": "ITCTS Recruitment Day",
    "org": "CIC",
@@ -3091,6 +3010,34 @@
     "sourceUrlClass": "CAPTCHA_BLOCKED",
     "confidence": "MEDIUM",
     "discoveryMethod": "page_captcha_blocked"
+   }
+  },
+  {
+   "id": "adb0080058465",
+   "name": "存量物業的綠色升級與價值提升——城市更新、運營改善與綠色金融",
+   "org": "HKIS CPD",
+   "date": "2026-11-20",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6888",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_CLOSED",
+    "destination": "https://www.hkis.org.hk/uploads/editor/CPD%E6%B4%BB%E5%8A%A8%E6%8A%A5%E5%90%8D%E6%B5%81%E7%A8%8B%E5%8F%8AZOOM%E8%AE%B2%E5%BA%A7%E6%93%8D%E4%BD%9C.pdf",
+    "status": "CLOSED",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "HIGH",
+    "discoveryMethod": "page_closed_text"
    }
   },
   {
@@ -3177,12 +3124,116 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "HIGH",
-    "discoveryMethod": "page_scan_google_forms,pos_text"
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    },
    "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
    "venueSource": "event_detail",
    "mode": "FACE_TO_FACE"
+  },
+  {
+   "id": "a4d23f5651b2a",
+   "name": "Seminar/Webinar on Firestop Systems for M&E Services",
+   "org": "HKIE Events",
+   "date": "2026-11-20",
+   "time": "18:30-20:00",
+   "hrs": 1.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Mechanical",
+    "Marine & Naval Architecture",
+    "Chemical"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ae14fb0235f6d2201364ef3/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Chan Yat Mei Sophie Room, 9/F Island Beverley",
+   "modeText": "HYBRID",
+   "attendanceMode": "HYBRID",
+   "description": "Introduction Firestop systems are passive fire protection measures used to maintain the fire resistance rating of walls, floors, and other fire compartment barriers when penetrated by Mechanical & Electrical (M&E) services such as cables, cable trays, conduits, pipes, ducts, and busbars. During a fire, openings created for building services can allow the spread of flame, smoke, and hot gases between fire compartments. Firestop systems are specifically designed and tested to seal these penetrations and restore the fire performance of the compartment wall or floor. Agenda -> Fire Safety Concept & Design Standard -> Firestop Test -> Proper Installation & Quality check Speaker: Ms. Wong Lai Yan Lillian, Technical Engineering Manager of Engineering Department from Hilti Hong Kong Limited Lillian is the Technical Engineering Manager of Hilti Hong Kong Limited, brings over 14 years of experience in the construction sector. She holds a BEng (Hons) in Product Analysis and Engineering Design from The Hong Kong Polytechnic University and has spent the last 9 years driving complex project engineering, code compliance, and technical approvals at Hilti (HK) Limited.",
+   "venueSource": "event_detail",
+   "division": "Mechanical, Marine, Naval Architecture & Chemical Division",
+   "mode": "HYBRID",
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6ae14fb0235f6d2201364ef3&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
+   }
+  },
+  {
+   "id": "a51c8d2e44cba",
+   "name": "Webinar on The Emerging Space Economy: Opportunities and Challenges",
+   "org": "HKIE Events",
+   "date": "2026-11-20",
+   "time": "18:30-20:30",
+   "hrs": 2.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Aircraft"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ad70fb75f713be015110308/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Online zoom",
+   "modeText": "ONLINE",
+   "attendanceMode": "ONLINE",
+   "description": "Webinar on The Emerging Space Economy: Opportunities and Challenges Date, Time & Venue: · Friday, 20 th November 2026 ; 18:30 hrs to 20:30 hrs; · Webinar Webinar Highlights: The rapid expansion of the commercial aerospace economy presents transformative prospects for Hong Kong, China’s growing innovation and technology ecosystem. In this seminar, Professor Chih-Yung Wen explores how cutting-edge aerospace advancements - spanning cost-effective reusable rockets , high-density LEO satellite constellations, and next-generation space data centers - intersect with the global new-space race, contextualising their relevance for Hong Kong and the Greater Bay Area (GBA). Highlighting local research strengths, talent cultivation, and technology transfer, the presentation examines how Hong Kong can leverage its world-class academic institutions and advanced engineering capabilities to capture high-value space ventures. Professor Wen will also address key technological and operational challenges, charting a strategic roadmap for the region’s aerospace future. Speaker background: Professor Chih-Yung Wen joined The Hong Kong Polytechnic University in 2012 and has since held key academic leadership roles, including Associate Head of the Department of Mechanical Engineering and Head of the Department of Aeronautical and Aviation Engineering. Currently, he is the Chair Professor of Aeronautical Engineering at The Hong Kong Polytechnic University, where he also serves as the Director of both the Research Institute for Large Aircraft and the Research Centre for Unmanned Autonomous Systems . A world-class authority in hypersonics, high-speed aerodynamics, and fluid dynamics, Professor Wen has established a highly distinguished career marked by massive research funding success and consecutive placement among the World’s Top 2% of most-cited scientists globally. With a prolific academic footprint, Professor Wen has authored over 400 scientific publications—including more than 300 SCI jou",
+   "venueSource": "event_detail",
+   "division": "Aircraft Division",
+   "mode": "ONLINE",
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6ad70fb75f713be015110308&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
+   }
+  },
+  {
+   "id": "a89bbe0bfcd00",
+   "name": "Technical Seminar - From Emergency Response to Safety Resilience: Managing Climate-Related OH&S Risks through ISO/PAS 45007:2026",
+   "org": "HKIE Events",
+   "date": "2026-11-20",
+   "time": "19:00-20:30",
+   "hrs": 1.5,
+   "hrs_est": true,
+   "type": "H&S",
+   "disc": [
+    "Electrical"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6af3c44d1f1d426669c43343/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "W502g, The Hong Kong Polytechnic University",
+   "description": "[Event] Dear members Technical Seminar - From Emergency Response to Safety Resilience: Managing Climate-Related OH&S Risks through ISO/PAS 45007:2026 Jointly organised by IOSH Hong Kong Community, HKIE EL Division and Industrial Centre of The Hong Kong Polytechnic University 20 November 2026 Please note that the Technical Seminar - From Emergency Response to Safety Resilience: Managing Climate-Related OH&S Risks through ISO/PAS 45007:2026 will be held on 20 November 2026 from 7:00pm to 8:30pm at W502g, The Hong Kong Polytechnic University . The event is free of charge. Registration is required. The number of participants is limited to 30. Applications will be accepted on a first-come first-served basis. Priority will be given to members of EL Division. For details, please click here . For registration, please register online at https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Tj-JM5czq0y7PJIkv36vutF8FfD2vOZOv5HIVv2-RbNUNUMxSEdITVU3T05CQVY0UloyNFZFVDdLMi4u . The deadline for registration is 18 November 2026 . Successful applicants will be notified separately. For enquiries, please contact EL Division via Email: techprogramme.hkie.ele.div@gmail.com . Electrical Division Committee 2023 © HKIE",
+   "venueSource": "event_detail",
+   "division": "Electrical Division",
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_no_reg_link"
+   }
   },
   {
    "id": "a1621fbbd960d",
@@ -3203,6 +3254,10 @@
    "source": "HKIE Events",
    "group": "HKIE",
    "auto": true,
+   "venue": "HKIE HQ",
+   "description": "Content -1234 content -1324 ads alksdhjfk a akh asdkjfhjdshf asdkjfhjkdshfj",
+   "venueSource": "event_detail",
+   "division": "The Hong Kong Institution of Engineers",
    "registration": {
     "mechanism": "HKIE_PORTAL",
     "destination": "https://event.hkie.org.hk/events/share?id=6ae314c9235f6d2201370e92&companyCode=hkie",
@@ -3213,9 +3268,9 @@
    }
   },
   {
-   "id": "a3f1e77f29697",
-   "name": "International Conference on Modular Construction 2026",
-   "org": "HKIE Events",
+   "id": "a153070c1c33f",
+   "name": "IAMC & HKU - International Conference on Modular Construction 2026",
+   "org": "HKGBC",
    "date": "2026-11-21",
    "time": "",
    "hrs": null,
@@ -3224,12 +3279,12 @@
    "disc": [
     "General"
    ],
-   "url": "https://hkie.org.hk/events/event-detail/6ae97a901f1d426669bfc883/",
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1082",
    "region": "HK",
    "online": null,
    "free": null,
-   "source": "HKIE Events",
-   "group": "HKIE",
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
    "auto": true,
    "registration": {
     "mechanism": "REGISTRATION_LINK_NOT_FOUND",
@@ -3237,7 +3292,7 @@
     "status": "UNKNOWN",
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "LOW",
-    "discoveryMethod": "hkie_eventdetail_no_reg_link"
+    "discoveryMethod": "hkgbc_detail_no_reg"
    }
   },
   {
@@ -3245,12 +3300,14 @@
    "name": "Technical Seminar on Trusted Resilience Powering Global Maritime Trade",
    "org": "HKIE Events",
    "date": "2026-11-21",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
+   "time": "09:00-12:15",
+   "hrs": 3.0,
+   "hrs_est": true,
    "type": "Technical",
    "disc": [
-    "General"
+    "Mechanical",
+    "Marine & Naval Architecture",
+    "Chemical"
    ],
    "url": "https://hkie.org.hk/events/event-detail/6aeb537f1f1d426669c0c39b/",
    "region": "HK",
@@ -3326,6 +3383,46 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
     "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "Chan Yat Mei Sophie Room, 9/F Island Beverley, 1 Great George Street, Causeway Bay",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "PROGRAMME HIGHLIGHTS: Being part of the Hong Kong Maritime Week 2026 activities, the seminar with three topics on Trusted Resilience Powering Global Maritime Trade have been co-organised by the HKIMT, the HKJB of RINA & IMarEST and HKIE-MMNC Division. SESSION 1 “Pinglu Canal – the Mega-canal Project in China” by Prof. Zhanbin Meng Pinglu Canal is a project of the century in Guangxi Province, China, this direct river-to-sea new corridor officially opened to navigation in September 2026. This vital link for Southwest China to the Beibu Gulf dramatically optimizes the Inland-Sea trade, reduces the overall freight by slashing maritime transit distances, and changing the industry’s traditional ‘Eastern Detour’ through Guangdong Province to the sea. This will accelerate the logistics and economic integration between the inland Chinese markets and the ASEAN. This session will focus on the project's overview, summarizing the canal's operation for over two months. Prof. Meng will introduce the engineering feat in addressing the 65-metre elevation difference along the canal by constructing three(3) massive ship-lock complexes, and the six(6) key technologies / elements to achieve the goal: water-saving navigation locks, concrete durability, low-impact construction, collaboration in bridges reconstruction and demolition, earthwork resource utilization, and digital model technology for the canal. SESSION 2 “Review of Maritime Claim Cases and Challenges” by Mr. Robert Hodge & Ms. Maria Michael What happens when a technical decision is questioned following a casualty, equipment failure or unexpected performance issue? Marine engineers, naval architects and surveyors may find their advice, calculations, designs or inspections examined in detail, sometimes years after the work was completed. Through real claims handled by International Transport Intermediaries Management Co., Ltd. (“ITIC”), this presentation will explore how technical issues can develop into significant professiona",
+   "venueSource": "event_detail",
+   "division": "Mechanical, Marine, Naval Architecture & Chemical Division",
+   "mode": "FACE_TO_FACE"
+  },
+  {
+   "id": "a3f1e77f29697",
+   "name": "International Conference on Modular Construction 2026",
+   "org": "HKIE Events",
+   "date": "2026-11-21",
+   "time": "09:00-17:45",
+   "hrs": 9.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ae97a901f1d426669bfc883/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Meeting Room N101, Hong Kong Convention and Exhibition Centre (HKCEC)",
+   "description": "Host: International Association for Modular Construction (IAMC) and The University of Hong Kong (HKU) Email: civevent@hku.hk Event Website: https://iamc.ac/icmc-2026/",
+   "venueSource": "event_detail",
+   "division": "Other Organiser(s)",
+   "mode": "FACE_TO_FACE",
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_no_reg_link"
    }
   },
   {
@@ -3333,12 +3430,12 @@
    "name": "Technical Visit: Linde HKO Ltd",
    "org": "HKIE Events",
    "date": "2026-11-21",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
+   "time": "09:30-12:30",
+   "hrs": 3.0,
+   "hrs_est": true,
    "type": "Technical",
    "disc": [
-    "General"
+    "Environmental"
    ],
    "url": "https://hkie.org.hk/events/event-detail/6ae988f61f1d426669bfd5de/",
    "region": "HK",
@@ -3428,16 +3525,22 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
     "discoveryMethod": "hkie_eventdetail_gform"
-   }
+   },
+   "venue": "LINDE HKO Ltd",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "venueSource": "event_detail",
+   "division": "Environmental Division",
+   "mode": "FACE_TO_FACE"
   },
   {
    "id": "a86ae34fc03fc",
    "name": "Where Cultures Meet and Dice Roll 文化相遇處・骰子啟航時",
    "org": "HKIE Events",
    "date": "2026-11-21",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
+   "time": "15:00-18:00",
+   "hrs": 3.0,
+   "hrs_est": true,
    "type": "Technical",
    "disc": [
     "General"
@@ -3590,35 +3693,14 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
     "discoveryMethod": "hkie_eventdetail_gform"
-   }
-  },
-  {
-   "id": "a153070c1c33f",
-   "name": "IAMC & HKU - International Conference on Modular Construction 2026",
-   "org": "HKGBC",
-   "date": "2026-11-21",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1082",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "LOW",
-    "discoveryMethod": "hkgbc_detail_no_reg"
-   }
+   },
+   "venue": "Lai Chi Kok",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "Where Cultures Meet and Dice Roll 文化相遇處・骰子啟航時 Date, Time & Venue 21 November 2026 (Saturday); 3:00 pm – 6:00 pm; Lai Chi Kok Programme Highlights HKIE YMC invites you to embark on a multicultural journey through tabletop games from around the globe. Meet young engineers from different backgrounds, discover games that connect communities across cultures, and enjoy an afternoon of laughter, friendly competition, and meaningful conversations. From classic favorites to regional gems, each game originating from different countries offers a unique glimpse into the traditions and social customs of different parts of the world. Join us as we celebrate diversity, friendship, and cultural exchange through the universal language of play. Language English and Cantonese Registration & Enquiries The number of participants is limited to 10 and prior registration is required. The registration fee is HK$50. Application will be accepted on a first-come-first-served basis with priority given to members of YMC. For registration, please complete the online application form at https://forms.gle/HTft6FcnWkJjzq2R7 by 3 0 October 2026 . Successful applicants will be notified by email. For enquiries, please contact Ir P Y Chan by email: scag.hkieymc@gmail.com .",
+   "venueSource": "event_detail",
+   "division": "Young Members Committee",
+   "mode": "FACE_TO_FACE"
   },
   {
    "id": "ad548211c0553",
@@ -3644,6 +3726,34 @@
     "destination": null,
     "status": "UNKNOWN",
     "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
+   "id": "aa90ded4f6271",
+   "name": "Construction Innovation Expo 2026 (CIExpo 2026)",
+   "org": "CIC",
+   "date": "2026-11-23",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events/detail.page-20261123",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
     "confidence": "LOW",
     "discoveryMethod": "page_no_candidate"
    }
@@ -3677,34 +3787,6 @@
    }
   },
   {
-   "id": "aa90ded4f6271",
-   "name": "Construction Innovation Expo 2026 (CIExpo 2026)",
-   "org": "CIC",
-   "date": "2026-11-23",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events/detail.page-20261123",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
    "id": "ae8d9b546d4a1",
    "name": "Online Open Seminar on \"Code of Practice on Safety Management and the related Safety Regulations\"",
    "org": "Occupational Safety and Health Council",
@@ -3731,34 +3813,6 @@
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
     "discoveryMethod": "event_url_oshc_activity"
-   }
-  },
-  {
-   "id": "a13a6cc220813",
-   "name": "Asia-Pacific Energy Transition Think Tank Forum 2026",
-   "org": "HKIE Events",
-   "date": "2026-11-24",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://hkie.org.hk/events/event-detail/6ac4510a5f713be0150a2617/",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIE Events",
-   "group": "HKIE",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "LOW",
-    "discoveryMethod": "hkie_eventdetail_no_reg_link"
    }
   },
   {
@@ -3875,6 +3929,38 @@
    }
   },
   {
+   "id": "a13a6cc220813",
+   "name": "Asia-Pacific Energy Transition Think Tank Forum 2026",
+   "org": "HKIE Events",
+   "date": "2026-11-24",
+   "time": "13:30-18:30",
+   "hrs": 5.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ac4510a5f713be0150a2617/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Hong Kong Institute of Certified Public Accountants (27/F, Wu Chung House, 213 Queen’s Road East, Wan Chai, Hong Kong)",
+   "description": "Host: Our Hong Kong Foundation (OHKF), Global Sustainable Development Research Institute and Hong Kong Green Energy Week Secretariat Tel: 2603 3001 Email: events@ourhkfoundation.org.hk Event Website: https://www.ourhkfoundation.org.hk/en/events/%E4%BA%9E%E5%A4%AA%E8%83%BD%E6%BA%90%E8%BD%89%E5%9E%8B%E6%99%BA%E5%BA%AB%E8%AB%96%E5%A3%87-2026",
+   "venueSource": "event_detail",
+   "division": "Other Organiser(s)",
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_no_reg_link"
+   }
+  },
+  {
    "id": "ac93e8dcb4a2f",
    "name": "Seminar on \"Understanding and Responding to Verbal Violence (Part I: for frontline staff)\"",
    "org": "Civil Service Bureau",
@@ -3900,121 +3986,6 @@
     "sourceUrlClass": "PDF_FLYER",
     "confidence": "HIGH",
     "discoveryMethod": "event_url_pdf_flyer"
-   }
-  },
-  {
-   "id": "a6bd958331076",
-   "name": "[By Labours Department / Occupation Safety & Health Council] 28th Boilers & Pressure Vessels Safety Seminar",
-   "org": "HKIE Events",
-   "date": "2026-11-25",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "H&S",
-   "disc": [
-    "General"
-   ],
-   "url": "https://hkie.org.hk/events/event-detail/6adff5cd5f713be015149831/",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIE Events",
-   "group": "HKIE",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "LOW",
-    "discoveryMethod": "hkie_eventdetail_no_reg_link"
-   }
-  },
-  {
-   "id": "a85c2c3e1dd0f",
-   "name": "The HKIEGS Chairman Cup 2026",
-   "org": "HKIE Events",
-   "date": "2026-11-25",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://hkie.org.hk/events/event-detail/6ad82da65f713be015117576/",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIE Events",
-   "group": "HKIE",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "LOW",
-    "discoveryMethod": "hkie_eventdetail_no_reg_link"
-   }
-  },
-  {
-   "id": "ad10ddb1d8e0f",
-   "name": "Veneree Club Monthly Talk (25 November 2026)",
-   "org": "HKIE Events",
-   "date": "2026-11-25",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://hkie.org.hk/events/event-detail/6ae2ab2f235f6d220136dd82/",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIE Events",
-   "group": "HKIE",
-   "auto": true,
-   "registration": {
-    "mechanism": "HKIE_PORTAL",
-    "destination": "https://event.hkie.org.hk/events/share?id=6ae2ab2f235f6d220136dd82&companyCode=hkie",
-    "status": "LOGIN_REQUIRED",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "HIGH",
-    "discoveryMethod": "hkie_eventdetail_portal"
-   }
-  },
-  {
-   "id": "a685323cd4558",
-   "name": "Public Speaking Workshop (Jointly Organised with HKIE CPDC)",
-   "org": "HKIE Events",
-   "date": "2026-11-25",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://hkie.org.hk/events/event-detail/6ae17141235f6d220136617e/",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIE Events",
-   "group": "HKIE",
-   "auto": true,
-   "registration": {
-    "mechanism": "GOOGLE_FORMS",
-    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSdo6a9F77PhAwaFlDtg1O1mn963EZPvwUDC1vaghqt7932tqQ/viewform",
-    "formId": "1FAIpQLSdo6a9F77PhAwaFlDtg1O1mn963EZPvwUDC1vaghqt7932tqQ",
-    "status": "CLOSED",
-    "fields": [],
-    "requiresManualCompletion": true,
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "HIGH",
-    "discoveryMethod": "hkie_eventdetail_gform"
    }
   },
   {
@@ -4047,24 +4018,33 @@
    }
   },
   {
-   "id": "a44d6a2f9a37e",
-   "name": "Technical Seminar: Infrastructure Construction using Fibre Reinforced Concrete",
+   "id": "a6bd958331076",
+   "name": "[By Labours Department / Occupation Safety & Health Council] 28th Boilers & Pressure Vessels Safety Seminar",
    "org": "HKIE Events",
-   "date": "2026-11-26",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
+   "date": "2026-11-25",
+   "time": "08:45-17:00",
+   "hrs": 8.0,
+   "hrs_est": true,
+   "type": "H&S",
    "disc": [
-    "General"
+    "Mechanical",
+    "Marine & Naval Architecture",
+    "Chemical"
    ],
-   "url": "https://hkie.org.hk/events/event-detail/6af419991f1d426669c456b1/",
+   "url": "https://hkie.org.hk/events/event-detail/6adff5cd5f713be015149831/",
    "region": "HK",
    "online": null,
    "free": null,
    "source": "HKIE Events",
    "group": "HKIE",
    "auto": true,
+   "venue": "Crystal Ballroom, Holiday Inn Golden Mile B3/F, 50 Nathan Road, Tsim Sha Tsui, Kowloon, Hong Kong",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "[Organized by Labours Department / Occupation Safety & Health Council]",
+   "venueSource": "event_detail",
+   "division": "Mechanical, Marine, Naval Architecture & Chemical Division",
+   "mode": "FACE_TO_FACE",
    "registration": {
     "mechanism": "REGISTRATION_LINK_NOT_FOUND",
     "destination": null,
@@ -4073,6 +4053,111 @@
     "confidence": "LOW",
     "discoveryMethod": "hkie_eventdetail_no_reg_link"
    }
+  },
+  {
+   "id": "a85c2c3e1dd0f",
+   "name": "The HKIEGS Chairman Cup 2026",
+   "org": "HKIE Events",
+   "date": "2026-11-25",
+   "time": "09:15-21:00",
+   "hrs": 12.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ad82da65f713be015117576/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Yinli Foreign Businessmen Golf Club, Dongguan, China (東莞銀利外商高爾夫球俱樂部)",
+   "description": "For Event Details and Registration details, please refer to the HKIE Golf Society webpage: https://hkie.org.hk/membership/interest-groups/golf-society/ .",
+   "venueSource": "event_detail",
+   "division": "Golf Society",
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_no_reg_link"
+   }
+  },
+  {
+   "id": "ad10ddb1d8e0f",
+   "name": "Veneree Club Monthly Talk (25 November 2026)",
+   "org": "HKIE Events",
+   "date": "2026-11-25",
+   "time": "10:00-12:00",
+   "hrs": 2.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ae2ab2f235f6d220136dd82/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Chan Yat Mei Sophie Room, 9/F, The HKIE Headquarters",
+   "modeText": "HYBRID / online(Zoom)",
+   "attendanceMode": "HYBRID / online(Zoom)",
+   "description": "Date: Wednesday, 25 November 2026 Time: 10:0 0 am – 12:00nn Platforms: (a) Face-to-Face ( Chan Yat Mei Sophie Room , 9/F, The HKIE Headquarter s) (Limited number of seats on first-come first-served basis ) (b) Online (The ZOOM webinar link and information will be sent through email upon successful registration.) Talk: “ 馬術世界 - 人 、 馬與運動 The World of Equestrian Sports” Speaker: Mr Johnny M W LEE 李滿華先生 Mr Johnny M W LEE is a seasoned general management professional in power industry with substantial operational experience gained in Hong Kong, and China over 40 years with proven track records in executive management, and over 30 years on sports management. Johnny has extensive global experience on power and energy industries, power business, plant acquisition and merging, due diligence studies, asset management, coal procurement, environmental management, and energy optimization to profitable operation. Academically, Johnny is a professional engineer on Environmental Engineering, Mechanical Engineering and Electrical Engineering, and a holder of Master Degree of Business Administration. Regarding professional and industrial affiliation, Johnny was a Corporate Member of American Society of Mechanical Engineers (USA), Chartered Management Institute (UK), Institution of Plant Engineers (UK), Institution of Electrical and Electronic Engineers (USA), and Associated Member of Hong Kong Institution of Engineers. Athletically, Johnny commenced Equestrian Sports since 1986 and serving Federation of Equestrian International (FEI) and China Hong Kong Equestrian Federation (EFHKC) as Official on stewardship for Para-Dressage, Dressage, Jumping, and Eventing since 2006, Race Official of International Dragon Boat Federation (IDBF) and China Hong Kong Dragon Boat Association, Grade I Umpire and Intermediate Level Coach on Dragon Boating of China, NCCP Level III Coach of Canada. For Community Services, Johnny was appointed member of Rural Areas Committee, Traffic and Environment Affair",
+   "venueSource": "event_detail",
+   "division": "Veneree Club",
+   "mode": "HYBRID",
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6ae2ab2f235f6d220136dd82&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
+   }
+  },
+  {
+   "id": "a685323cd4558",
+   "name": "Public Speaking Workshop (Jointly Organised with HKIE CPDC)",
+   "org": "HKIE Events",
+   "date": "2026-11-25",
+   "time": "19:00-20:30",
+   "hrs": 1.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ae17141235f6d220136617e/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSdo6a9F77PhAwaFlDtg1O1mn963EZPvwUDC1vaghqt7932tqQ/viewform",
+    "formId": "1FAIpQLSdo6a9F77PhAwaFlDtg1O1mn963EZPvwUDC1vaghqt7932tqQ",
+    "status": "CLOSED",
+    "fields": [],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "HKIE Headquarters",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "Public Speaking Workshop (Jointly Organised with HKIE CPDC) Date, Time & Venue 25 November 2026 (Wed); 7:00pm-8:30pm; HKIE Headquarters Programme Highlights Public speaking is more than just a communication skill, but an essential tool for engineers looking to present ideas clearly and drive meaningful impact. This interactive workshop is designed to help participants enhance their practical presentation skills and gain confidence in applying them into real engineering scenarios. HKIE YMC therefore organises this workshop, which will cover: How to effectively structure a clear and persuasive speech Techniques to convey charisma and confidence on stage Practical tips for delivering presentations in a professional engineering environment Common public speaking pitfalls and strategies to avoid them Speaker(s): Hugo Lo – certified Everything DiSC® trainer, NLP Practitioner and NLP Coach Language: The workshop will be conducted in Cantonese. Registration & Enquiries This seminar is free of charge and the number of participants is limited to 35. The applications will be accepted on a first-come first-served basis with priority given to Young Members. For registration, please fill in the registration form at LINK by 23 November 2026. Successful applicants will be notified individually. For enquiries, please contact Ir CHUNG, Sze Ho by e-mail: hkiegpgymc@gmail.com . Participants will be required to fill in a short survey feedback form before getting the CPD certificate.",
+   "venueSource": "event_detail",
+   "division": "Young Members Committee",
+   "mode": "FACE_TO_FACE"
   },
   {
    "id": "ab161ac4c7edc",
@@ -4159,6 +4244,95 @@
    }
   },
   {
+   "id": "a44d6a2f9a37e",
+   "name": "Technical Seminar: Infrastructure Construction using Fibre Reinforced Concrete",
+   "org": "HKIE Events",
+   "date": "2026-11-26",
+   "time": "19:00-20:00",
+   "hrs": 1.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Civil"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6af419991f1d426669c456b1/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLScErtdzIwNadmPRQ8z11eece5xkizYKOstkxfoISuqQEWSCLw/viewform",
+    "formId": "1FAIpQLScErtdzIwNadmPRQ8z11eece5xkizYKOstkxfoISuqQEWSCLw",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.877086558",
+      "profileField": null,
+      "label": "Surname",
+      "type": "PARAGRAPH",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1633070132",
+      "profileField": null,
+      "label": "First Name",
+      "type": "PARAGRAPH",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1498135098",
+      "profileField": "email",
+      "label": "Email",
+      "type": "PARAGRAPH",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1424661284",
+      "profileField": "organisation",
+      "label": "Organization",
+      "type": "PARAGRAPH",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.2606285",
+      "profileField": null,
+      "label": "Membership",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.253460959",
+      "profileField": null,
+      "label": "Membership Grade",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.990121559",
+      "profileField": null,
+      "label": "Would you attend in person or online?",
+      "type": "RADIO",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "Chun Wo & Hsin Chong Room, 10/F, Island Beverley, No 1 Great George Street, Causeway Bay",
+   "modeText": "Hybrid with Webinar",
+   "attendanceMode": "Hybrid with Webinar",
+   "description": "Technical Seminar: Infrastructure Construction using Fibre Reinforced Concrete Organised by : HKIE Civil Division and IOM3(HK) Date/Time : 26 November 2026 , 07:00 - 08:00pm (Registration from 6:30pm) Venue: Chun Wo & Hsin Chong Room, 10/F, Island Beverley, No 1 Great George Street, Causeway Bay / Hybrid with Webinar (Link to be provided after registration before one day of the event) Speaker: Mr GAN Cheng Chian (Technical Manager, NV Bekaert SA) Language: English Free of Charge Programme Highlights: Fibre reinforced concrete (FRC) has been adopted for concrete applications in Singapore and parts of Southeast Asia since the publication of Singapore Standard SS 674: 2021 – Fibre concrete – Design of fibre concrete structures. This presentation will introduce the main properties of FRC and how to measure or calculate them. Some examples of applications of fibre reinforced concrete around Asia will also be introduced. It will conclude with the contribution of FRC in sustainable low-carbon concrete. Speaker: Mr. Gan has 37 years of civil engineering experience. Currently working for NV Bekaert SA as Technical Manager, Underground Solutions. 28 years working for Bekaert - involved in many prestigious underground and construction projects around Asia - including Qinling Railway & Highway Tunnel Xian, China; Mandai Underground Cavern Singapore, BMW Shenyang, China, Daimler Chrysler Beijing, China, Busan International Exhibition & Convention Center, South Korea and Jurong Rock Cavern Singapore. Involved in over 22 sprayed fibre concrete tunnel linings and over 20 fibre concrete precast segmental and cast concrete tunnel lining projects since 1998. Member of the Working Group on SS674-2021 Design of fibre concrete structures since Jan 2019. Domain Expert for Sprayed Concrete and Fibre Reinforced Concrete under Intelligent National Productivity and Quality Specification Singapore since Mar 2019. Registration & Enquiries: * Please complete the on-line registration at the follo",
+   "venueSource": "event_detail",
+   "division": "Civil Division",
+   "civil_related": true,
+   "mode": "HYBRID"
+  },
+  {
    "id": "a3ba2e784f523",
    "name": "BEAM Society Knowledge Sharing Symposium 2026",
    "org": "HKIE Events",
@@ -4168,7 +4342,7 @@
    "hrs_est": false,
    "type": "Technical",
    "disc": [
-    "General"
+    "Environmental"
    ],
    "url": "https://hkie.org.hk/events/event-detail/6abc9f3b5f713be0150762db/",
    "region": "HK",
@@ -4177,34 +4351,13 @@
    "source": "HKIE Events",
    "group": "HKIE",
    "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "LOW",
-    "discoveryMethod": "hkie_eventdetail_no_reg_link"
-   }
-  },
-  {
-   "id": "a6de651c4f20a",
-   "name": "BEC EnviroSeries Conference November 2026",
-   "org": "HKIE Events",
-   "date": "2026-11-27",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://hkie.org.hk/events/event-detail/6aeab2d41f1d426669c07864/",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIE Events",
-   "group": "HKIE",
-   "auto": true,
+   "venue": "Auditorium, G/F, Jockey Club Environmental Building, 77 Tat Chee Avenue, Kowloon Tong, Kowloon",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "HKIE EVD is a supporting organisation for the captioned event. The symposium serves as a key platform for industry stakeholders to exchange ideas and explore practical approaches to sustainable development. With the theme “Smart Moves for a Greener Future: AI, Carbon Reduction and Circularity in the Built Environment”, the event will explore circular economy practices, digital transformation, artificial intelligence applications across the building life cycle, and carbon-reduction strategies. See registration details at: https://portal.beamsociety.org.hk/index.php?filterby=training&word=Symposium",
+   "venueSource": "event_detail",
+   "division": "Environmental Division",
+   "mode": "FACE_TO_FACE",
    "registration": {
     "mechanism": "REGISTRATION_LINK_NOT_FOUND",
     "destination": null,
@@ -4299,6 +4452,41 @@
    }
   },
   {
+   "id": "a6de651c4f20a",
+   "name": "BEC EnviroSeries Conference November 2026",
+   "org": "HKIE Events",
+   "date": "2026-11-27",
+   "time": "09:30-16:50",
+   "hrs": 7.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6aeab2d41f1d426669c07864/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Silverbox Ballroom, Level 1, Hotel ICON",
+   "modeText": "Online",
+   "attendanceMode": "Online",
+   "description": "Host: Business Environment Council Limited (BEC) Tel: 2784 3958 Email: event@bec.org.hk Event Website: https://www.bec.org.hk/en/eventinfo?eid=565",
+   "venueSource": "event_detail",
+   "division": "Other Organiser(s)",
+   "mode": "HYBRID",
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_no_reg_link"
+   }
+  },
+  {
    "id": "abcefb823861c",
    "name": "Six Sigma Green Belt Training – Day 4 (of 4)",
    "org": "TQM Consultants",
@@ -4382,8 +4570,8 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "HIGH",
-    "discoveryMethod": "page_scan_google_forms,pos_text"
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    },
    "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
    "venueSource": "event_detail",
@@ -4474,34 +4662,6 @@
    }
   },
   {
-   "id": "ae60e9459c208",
-   "name": "建造業議會 - 2026建造工友嘉年華 (Chinese only)",
-   "org": "HKGBC",
-   "date": "2026-11-29",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1086",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "LOW",
-    "discoveryMethod": "hkgbc_detail_no_reg"
-   }
-  },
-  {
    "id": "a03559f0a46f9",
    "name": "2026 Construction Workers Carnival",
    "org": "CIC",
@@ -4527,6 +4687,34 @@
     "sourceUrlClass": "UNKNOWN",
     "confidence": "LOW",
     "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
+   "id": "ae60e9459c208",
+   "name": "建造業議會 - 2026建造工友嘉年華 (Chinese only)",
+   "org": "HKGBC",
+   "date": "2026-11-29",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1086",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_detail_no_reg"
    }
   },
   {
@@ -4899,6 +5087,34 @@
    }
   },
   {
+   "id": "a9c92b856a9ba",
+   "name": "ITCTS Recruitment Day",
+   "org": "CIC",
+   "date": "2026-12-03",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events/detail.page-20261203",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
    "id": "a2ff55574083e",
    "name": "RCx CPD Webinar - Unlocking Building Performance Through Data-Driven RCx and ASHRAE Best Practices",
    "org": "HKGBC",
@@ -4945,34 +5161,6 @@
    "free": null,
    "source": "IStructE Events",
    "group": "IStructE",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
-   "id": "a9c92b856a9ba",
-   "name": "ITCTS Recruitment Day",
-   "org": "CIC",
-   "date": "2026-12-03",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events/detail.page-20261203",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
    "auto": true,
    "registration": {
     "mechanism": "REGISTRATION_LINK_NOT_FOUND",
@@ -5661,8 +5849,8 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "HIGH",
-    "discoveryMethod": "page_scan_google_forms,pos_text"
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    },
    "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
    "venueSource": "event_detail",
@@ -5927,8 +6115,8 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "HIGH",
-    "discoveryMethod": "page_scan_google_forms,pos_text"
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    },
    "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
    "venueSource": "event_detail",
