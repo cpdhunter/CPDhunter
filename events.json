@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-16T11:38+08:00",
+ "updated": "2026-11-16T16:22+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -225,7 +225,7 @@
    "ok": false,
    "n": 0,
    "method": "generic",
-   "page_title": "IET events and courses search",
+   "page_title": "",
    "raw_candidates": 0,
    "rejects": {}
   },
@@ -357,12 +357,12 @@
    "group": "OSHC",
    "auto": true,
    "registration": {
-    "mechanism": "OSHC_PORTAL",
+    "mechanism": "REGISTRATION_CLOSED",
     "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9920",
-    "status": "OPEN",
+    "status": "CLOSED",
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
-    "discoveryMethod": "event_url_oshc_activity"
+    "discoveryMethod": "oshc_activity_closed_text"
    }
   },
   {
@@ -946,12 +946,12 @@
    "auto": true,
    "mode": "ONLINE",
    "registration": {
-    "mechanism": "OSHC_PORTAL",
+    "mechanism": "REGISTRATION_CLOSED",
     "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9904",
-    "status": "OPEN",
+    "status": "CLOSED",
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
-    "discoveryMethod": "event_url_oshc_activity"
+    "discoveryMethod": "oshc_activity_closed_text"
    }
   },
   {
@@ -974,12 +974,12 @@
    "group": "Labour Dept",
    "auto": true,
    "registration": {
-    "mechanism": "OSHC_PORTAL",
+    "mechanism": "REGISTRATION_CLOSED",
     "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9916",
-    "status": "OPEN",
+    "status": "CLOSED",
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
-    "discoveryMethod": "event_url_oshc_activity"
+    "discoveryMethod": "oshc_activity_closed_text"
    }
   },
   {
@@ -1629,12 +1629,12 @@
    "auto": true,
    "mode": "ONLINE",
    "registration": {
-    "mechanism": "OSHC_PORTAL",
+    "mechanism": "REGISTRATION_CLOSED",
     "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9907",
-    "status": "OPEN",
+    "status": "CLOSED",
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
-    "discoveryMethod": "event_url_oshc_activity"
+    "discoveryMethod": "oshc_activity_closed_text"
    }
   },
   {
@@ -1924,8 +1924,8 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
+    "confidence": "HIGH",
+    "discoveryMethod": "page_scan_google_forms,pos_text"
    },
    "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
    "venueSource": "event_detail",
@@ -2224,12 +2224,12 @@
    "group": "HKIS",
    "auto": true,
    "registration": {
-    "mechanism": "OTHER_PUBLIC_FORM",
+    "mechanism": "REGISTRATION_CLOSED",
     "destination": "https://www.hkis.org.hk/uploads/editor/CPD%E6%B4%BB%E5%8A%A8%E6%8A%A5%E5%90%8D%E6%B5%81%E7%A8%8B%E5%8F%8AZOOM%E8%AE%B2%E5%BA%A7%E6%93%8D%E4%BD%9C.pdf",
-    "status": "OPEN",
+    "status": "CLOSED",
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "MEDIUM",
-    "discoveryMethod": "page_scan_pdf,pos_text"
+    "confidence": "HIGH",
+    "discoveryMethod": "page_closed_text"
    }
   },
   {
@@ -2425,12 +2425,12 @@
    "auto": true,
    "mode": "ONLINE",
    "registration": {
-    "mechanism": "OSHC_PORTAL",
+    "mechanism": "REGISTRATION_CLOSED",
     "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9921",
-    "status": "OPEN",
+    "status": "CLOSED",
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
-    "discoveryMethod": "event_url_oshc_activity"
+    "discoveryMethod": "oshc_activity_closed_text"
    }
   },
   {
@@ -2454,12 +2454,12 @@
    "auto": true,
    "mode": "ONLINE",
    "registration": {
-    "mechanism": "OSHC_PORTAL",
+    "mechanism": "REGISTRATION_CLOSED",
     "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9905",
-    "status": "OPEN",
+    "status": "CLOSED",
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
-    "discoveryMethod": "event_url_oshc_activity"
+    "discoveryMethod": "oshc_activity_closed_text"
    }
   },
   {
@@ -2706,12 +2706,12 @@
    "group": "OSHC",
    "auto": true,
    "registration": {
-    "mechanism": "OSHC_PORTAL",
+    "mechanism": "REGISTRATION_CLOSED",
     "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9921",
-    "status": "OPEN",
+    "status": "CLOSED",
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
-    "discoveryMethod": "event_url_oshc_activity",
+    "discoveryMethod": "oshc_activity_closed_text",
     "requiresManualCompletion": true
    },
    "venue": "Online Seminar",
@@ -3028,12 +3028,12 @@
    "group": "HKIS",
    "auto": true,
    "registration": {
-    "mechanism": "OTHER_PUBLIC_FORM",
+    "mechanism": "REGISTRATION_CLOSED",
     "destination": "https://www.hkis.org.hk/uploads/editor/CPD%E6%B4%BB%E5%8A%A8%E6%8A%A5%E5%90%8D%E6%B5%81%E7%A8%8B%E5%8F%8AZOOM%E8%AE%B2%E5%BA%A7%E6%93%8D%E4%BD%9C.pdf",
-    "status": "OPEN",
+    "status": "CLOSED",
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "MEDIUM",
-    "discoveryMethod": "page_scan_pdf,pos_text"
+    "confidence": "HIGH",
+    "discoveryMethod": "page_closed_text"
    }
   },
   {
@@ -3177,9 +3177,12 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
+    "confidence": "HIGH",
+    "discoveryMethod": "page_scan_google_forms,pos_text"
+   },
+   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
+   "venueSource": "event_detail",
+   "mode": "FACE_TO_FACE"
   },
   {
    "id": "a1621fbbd960d",
@@ -3756,6 +3759,34 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "LOW",
     "discoveryMethod": "hkie_eventdetail_no_reg_link"
+   }
+  },
+  {
+   "id": "a5644b2c19021",
+   "name": "Debriefing Session on the BS APC – Practical Task November 2026",
+   "org": "HKIS CPD",
+   "date": "2026-11-24",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6900",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -4351,9 +4382,12 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
+    "confidence": "HIGH",
+    "discoveryMethod": "page_scan_google_forms,pos_text"
+   },
+   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
+   "venueSource": "event_detail",
+   "mode": "FACE_TO_FACE"
   },
   {
    "id": "aa0549543b32f",
@@ -4544,12 +4578,12 @@
    "auto": true,
    "mode": "ONLINE",
    "registration": {
-    "mechanism": "OSHC_PORTAL",
+    "mechanism": "REGISTRATION_CLOSED",
     "destination": "https://sms.oshc.hk/portal/enrollment/activityE.aspx?activityid=9326",
-    "status": "OPEN",
+    "status": "CLOSED",
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
-    "discoveryMethod": "event_url_oshc_activity"
+    "discoveryMethod": "oshc_activity_closed_text"
    }
   },
   {
@@ -4809,34 +4843,6 @@
    }
   },
   {
-   "id": "a95be1d232f49",
-   "name": "From Site Supervision to Smart Safety: Practical Safety Management for Building Works and Minor Works",
-   "org": "HKIS CPD",
-   "date": "2026-12-02",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "H&S",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6865",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIS CPD",
-   "group": "HKIS",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
    "id": "ad42b8a88672d",
    "name": "EIHK - Certified Carbon Auditor Training Course 26th intake (2-5 Dec 2026)",
    "org": "HKGBC",
@@ -4862,6 +4868,34 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "MEDIUM",
     "discoveryMethod": "hkgbc_detail_pdf,in_detail,title_close"
+   }
+  },
+  {
+   "id": "a95be1d232f49",
+   "name": "From Site Supervision to Smart Safety: Practical Safety Management for Building Works and Minor Works",
+   "org": "HKIS CPD",
+   "date": "2026-12-02",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6865",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -4997,12 +5031,40 @@
    "group": "OSHC",
    "auto": true,
    "registration": {
-    "mechanism": "OSHC_PORTAL",
+    "mechanism": "REGISTRATION_CLOSED",
     "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9924",
-    "status": "OPEN",
+    "status": "CLOSED",
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
-    "discoveryMethod": "event_url_oshc_activity"
+    "discoveryMethod": "oshc_activity_closed_text"
+   }
+  },
+  {
+   "id": "af4b0c36e0e48",
+   "name": "From Site Supervision to Smart Safety: Practical Safety Management for Building Works and Minor Works",
+   "org": "HKIS CPD",
+   "date": "2026-12-04",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6865",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -5138,12 +5200,12 @@
    "auto": true,
    "mode": "FACE_TO_FACE",
    "registration": {
-    "mechanism": "OSHC_PORTAL",
+    "mechanism": "REGISTRATION_CLOSED",
     "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9930",
-    "status": "OPEN",
+    "status": "CLOSED",
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
-    "discoveryMethod": "event_url_oshc_activity"
+    "discoveryMethod": "oshc_activity_closed_text"
    }
   },
   {
@@ -5223,12 +5285,12 @@
    "auto": true,
    "mode": "ONLINE",
    "registration": {
-    "mechanism": "OSHC_PORTAL",
+    "mechanism": "REGISTRATION_CLOSED",
     "destination": "https://sms.oshc.hk/portal/enrollment/activityE.aspx?activityid=8741",
-    "status": "OPEN",
+    "status": "CLOSED",
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
-    "discoveryMethod": "event_url_oshc_activity"
+    "discoveryMethod": "oshc_activity_closed_text"
    }
   },
   {
@@ -5599,8 +5661,8 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
+    "confidence": "HIGH",
+    "discoveryMethod": "page_scan_google_forms,pos_text"
    },
    "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
    "venueSource": "event_detail",
@@ -5686,12 +5748,12 @@
    "auto": true,
    "mode": "ONLINE",
    "registration": {
-    "mechanism": "OSHC_PORTAL",
+    "mechanism": "REGISTRATION_CLOSED",
     "destination": "https://sms.oshc.hk/portal/enrollment/activityE.aspx?activityid=7429",
-    "status": "OPEN",
+    "status": "CLOSED",
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
-    "discoveryMethod": "event_url_oshc_activity"
+    "discoveryMethod": "oshc_activity_closed_text"
    }
   },
   {
@@ -5865,9 +5927,12 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
+    "confidence": "HIGH",
+    "discoveryMethod": "page_scan_google_forms,pos_text"
+   },
+   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
+   "venueSource": "event_detail",
+   "mode": "FACE_TO_FACE"
   },
   {
    "id": "a76a97ad66abb",
