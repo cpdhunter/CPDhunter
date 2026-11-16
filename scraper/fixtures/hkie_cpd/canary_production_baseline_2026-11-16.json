@@ -1,0 +1,436 @@
+{
+  "recorded_at": "2026-11-16T11:17:42+08:00",
+  "timezone": "Asia/Hong_Kong",
+  "purpose": "HKIE CPD Scrapling production-canary baseline (Step 1). Snapshot only; events.json was not edited.",
+  "tip_commit": "421218b39b958fe2b97eb03e6fc155fb04dc63b4",
+  "tip_subject": "Add isolated Scrapling shadow observation workflow and pilot baseline",
+  "catalog_updated": "2026-11-16T06:44+08:00",
+  "sha256": {
+    "events.json": "cc710062b7fe8606701f2e4512f8872e39932cde0af56c13de81d7e0ea4e4b09",
+    "source_health.json": "8fb0a7136b8a7c53e25bdd4496e6eacc3105378be4e2e7cb6949302557e0697c",
+    "update.yml": "ba2b836c5e7b22b0208bfb6cf567cfe8d0820c2b04b06a842cc62f9fcd5e4b3c"
+  },
+  "catalog_totals": {
+    "events": 162,
+    "future_note": "162 events / 113 future as of 2026-11-16T06:44+08:00 Daily CPD",
+    "status_sources": 24
+  },
+  "hkie_cpd_source_health": {
+    "last_status": "OK_WITH_EVENTS",
+    "last_n": 10,
+    "last_method": "hkie-cpd",
+    "last_error": null,
+    "raw_candidates": 10,
+    "rejects": {},
+    "consecutive_fail": 0,
+    "last_success": "2026-11-16",
+    "updated": "2026-11-16"
+  },
+  "hkie_cpd_status_row": {
+    "source": "HKIE CPD Calendar",
+    "status": "OK_WITH_EVENTS",
+    "ok": true,
+    "n": 10,
+    "method": "hkie-cpd",
+    "page_title": "CPD Calendar - HKIE",
+    "raw_candidates": 10,
+    "rejects": {}
+  },
+  "hkie_cpd_production": {
+    "catalog_count": 15,
+    "todays_scrape_kept": 10,
+    "note": "Catalog has 15 future HKIE CPD rows (some are same title+date with/without hours). Today's scrape last_n is 10. Snapshot lists the 15 catalog rows as they stood before canary code changes.",
+    "events": [
+      {
+        "id": "aef528bd2afde",
+        "title": "eLearning series: Mastering AI Tools for Professional Technical Writing",
+        "date": "2026-12-01",
+        "start_end": null,
+        "detail_url": "https://hkie.org.hk/cpd-courses/elearning-series-mastering-ai-tools-for-professional-technical-writing-6/",
+        "hrs": 3.0,
+        "hrs_est": false,
+        "registration": {
+          "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+          "destination": null,
+          "status": "UNKNOWN",
+          "sourceUrlClass": "EVENT_DETAIL",
+          "confidence": "LOW",
+          "discoveryMethod": "page_no_candidate"
+        },
+        "mode": null,
+        "online": null,
+        "org": "HKIE",
+        "source": "HKIE CPD Calendar",
+        "type": "Technical"
+      },
+      {
+        "id": "aeaa33aaed0b3",
+        "title": "eLearning series: The financial side of project management",
+        "date": "2026-12-01",
+        "start_end": null,
+        "detail_url": "https://hkie.org.hk/cpd-courses/elearning-series-the-financial-side-of-project-management-12/",
+        "hrs": 3.0,
+        "hrs_est": false,
+        "registration": {
+          "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+          "destination": null,
+          "status": "UNKNOWN",
+          "sourceUrlClass": "EVENT_DETAIL",
+          "confidence": "LOW",
+          "discoveryMethod": "page_no_candidate"
+        },
+        "mode": null,
+        "online": null,
+        "org": "HKIE",
+        "source": "HKIE CPD Calendar",
+        "type": "GPM"
+      },
+      {
+        "id": "a28885122d740",
+        "title": "eLearning series: Mistakes to avoid in conversational English",
+        "date": "2026-12-01",
+        "start_end": null,
+        "detail_url": "https://hkie.org.hk/cpd-courses/elearning-series-mistakes-to-avoid-in-conversational-english-12/",
+        "hrs": 3.0,
+        "hrs_est": false,
+        "registration": {
+          "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+          "destination": null,
+          "status": "UNKNOWN",
+          "sourceUrlClass": "EVENT_DETAIL",
+          "confidence": "LOW",
+          "discoveryMethod": "page_no_candidate"
+        },
+        "mode": null,
+        "online": null,
+        "org": "HKIE",
+        "source": "HKIE CPD Calendar",
+        "type": "Technical"
+      },
+      {
+        "id": "a6b93008dcf84",
+        "title": "eLearning series: Mastering AI Tools for Professional Technical Writing",
+        "date": "2026-12-01",
+        "start_end": null,
+        "detail_url": "https://hkie.org.hk/cpd-courses/elearning-series-mastering-ai-tools-for-professional-technical-writing-6/",
+        "hrs": null,
+        "hrs_est": false,
+        "registration": {
+          "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+          "destination": null,
+          "status": "UNKNOWN",
+          "sourceUrlClass": "EVENT_DETAIL",
+          "confidence": "LOW",
+          "discoveryMethod": "page_no_candidate"
+        },
+        "mode": null,
+        "online": null,
+        "org": "HKIE",
+        "source": "HKIE CPD Calendar",
+        "type": "Technical"
+      },
+      {
+        "id": "a1ecd972ef46e",
+        "title": "eLearning series: The financial side of project management",
+        "date": "2026-12-01",
+        "start_end": null,
+        "detail_url": "https://hkie.org.hk/cpd-courses/elearning-series-the-financial-side-of-project-management-12/",
+        "hrs": null,
+        "hrs_est": false,
+        "registration": {
+          "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+          "destination": null,
+          "status": "UNKNOWN",
+          "sourceUrlClass": "EVENT_DETAIL",
+          "confidence": "LOW",
+          "discoveryMethod": "page_no_candidate"
+        },
+        "mode": null,
+        "online": null,
+        "org": "HKIE",
+        "source": "HKIE CPD Calendar",
+        "type": "GPM"
+      },
+      {
+        "id": "a11329f5a1fdc",
+        "title": "eLearning series: Mistakes to avoid in conversational English",
+        "date": "2026-12-01",
+        "start_end": null,
+        "detail_url": "https://hkie.org.hk/cpd-courses/elearning-series-mistakes-to-avoid-in-conversational-english-12/",
+        "hrs": null,
+        "hrs_est": false,
+        "registration": {
+          "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+          "destination": null,
+          "status": "UNKNOWN",
+          "sourceUrlClass": "EVENT_DETAIL",
+          "confidence": "LOW",
+          "discoveryMethod": "page_no_candidate"
+        },
+        "mode": null,
+        "online": null,
+        "org": "HKIE",
+        "source": "HKIE CPD Calendar",
+        "type": "Technical"
+      },
+      {
+        "id": "a0bfe972335a4",
+        "title": "Global BIM Coordinator Professional Training Course",
+        "date": "2026-12-04",
+        "start_end": "09:30-18:30",
+        "detail_url": "https://hkie.org.hk/cpd-courses/global-bim-coordinator-professional-training-course-11/",
+        "hrs": 9.0,
+        "hrs_est": true,
+        "registration": {
+          "mechanism": "OTHER_PUBLIC_FORM",
+          "destination": "https://www.bsigroup.com/en-HK/products-and-services/training-courses-and-qualifications/iso-19650-and-bim-training-online-courses/",
+          "status": "OPEN",
+          "sourceUrlClass": "EVENT_DETAIL",
+          "confidence": "MEDIUM",
+          "discoveryMethod": "page_scan_pos_text,in_detail"
+        },
+        "mode": null,
+        "online": null,
+        "org": "HKIE",
+        "source": "HKIE CPD Calendar",
+        "type": "Technical"
+      },
+      {
+        "id": "a5b2f2074e51b",
+        "title": "Global BIM Coordinator Professional Training Course",
+        "date": "2026-12-07",
+        "start_end": null,
+        "detail_url": "https://hkie.org.hk/cpd-courses/global-bim-coordinator-professional-training-course-11/",
+        "hrs": null,
+        "hrs_est": false,
+        "registration": {
+          "mechanism": "OTHER_PUBLIC_FORM",
+          "destination": "https://www.bsigroup.com/en-HK/products-and-services/training-courses-and-qualifications/iso-19650-and-bim-training-online-courses/",
+          "status": "OPEN",
+          "sourceUrlClass": "EVENT_DETAIL",
+          "confidence": "MEDIUM",
+          "discoveryMethod": "page_scan_pos_text,in_detail"
+        },
+        "mode": null,
+        "online": null,
+        "org": "HKIE",
+        "source": "HKIE CPD Calendar",
+        "type": "Technical"
+      },
+      {
+        "id": "a10273c20faeb",
+        "title": "Organizational Level Greenhouse Gas Accounting and Verification – ISO 14064 Introductory and Implementation Course",
+        "date": "2026-12-09",
+        "start_end": "09:30-17:30",
+        "detail_url": "https://hkie.org.hk/cpd-courses/organizational-level-greenhouse-gas-accounting-and-verification-iso-14064-introductory-and-implementation-course/",
+        "hrs": 8.0,
+        "hrs_est": true,
+        "registration": {
+          "mechanism": "OTHER_PUBLIC_FORM",
+          "destination": "https://learning.sgs.com/lmt/clmsCatalogDetails.prMain?in_sessionId=21844554555020&in_from_module=CLMSCOURSECALENDAR.PRMAIN&in_offeringId=185233174",
+          "status": "OPEN",
+          "sourceUrlClass": "EVENT_DETAIL",
+          "confidence": "MEDIUM",
+          "discoveryMethod": "page_scan_pos_text,in_detail"
+        },
+        "mode": null,
+        "online": null,
+        "org": "HKIE",
+        "source": "HKIE CPD Calendar",
+        "type": "Technical"
+      },
+      {
+        "id": "a634fdd0ebba2",
+        "title": "Essentials of NEC4 Engineering Construction Contract (ECC)",
+        "date": "2026-12-11",
+        "start_end": "09:00-17:00",
+        "detail_url": "https://hkie.org.hk/cpd-courses/essentials-of-nec4-engineering-construction-contract-ecc-4/",
+        "hrs": 8.0,
+        "hrs_est": true,
+        "registration": {
+          "mechanism": "GOOGLE_FORMS",
+          "destination": "https://docs.google.com/forms/d/e/1FAIpQLSeePTX0FOAtykLZya98GGUnHNJ6Qep2vSFutiZq7H1TLTyNkQ/viewform",
+          "formId": "1FAIpQLSeePTX0FOAtykLZya98GGUnHNJ6Qep2vSFutiZq7H1TLTyNkQ",
+          "status": "OPEN",
+          "fields": [
+            {
+              "entryId": "entry.1848171669",
+              "profileField": "englishName",
+              "label": "English Name (same as appeared on the certificate)",
+              "type": "SHORT_TEXT",
+              "safePrefill": true
+            },
+            {
+              "entryId": "entry.269026720",
+              "profileField": "organisation",
+              "label": "Company",
+              "type": "SHORT_TEXT",
+              "safePrefill": true
+            },
+            {
+              "entryId": "entry.1605964021",
+              "profileField": "position",
+              "label": "Position",
+              "type": "SHORT_TEXT",
+              "safePrefill": true
+            },
+            {
+              "entryId": "entry.726516072",
+              "profileField": null,
+              "label": "Address",
+              "type": "PARAGRAPH",
+              "safePrefill": false
+            },
+            {
+              "entryId": "entry.1185874682",
+              "profileField": "phone",
+              "label": "Mobile",
+              "type": "SHORT_TEXT",
+              "safePrefill": true
+            },
+            {
+              "entryId": "entry.505595179",
+              "profileField": null,
+              "label": "",
+              "type": "RADIO",
+              "safePrefill": false
+            },
+            {
+              "entryId": "entry.111158153",
+              "profileField": null,
+              "label": "Have you participated in other workshops organized by the organizer?",
+              "type": "RADIO",
+              "safePrefill": false
+            },
+            {
+              "entryId": "entry.848084745",
+              "profileField": null,
+              "label": "How did you know about this workshop?",
+              "type": "RADIO",
+              "safePrefill": false
+            }
+          ],
+          "requiresManualCompletion": true,
+          "sourceUrlClass": "EVENT_DETAIL",
+          "confidence": "HIGH",
+          "discoveryMethod": "page_scan_google_forms,in_detail"
+        },
+        "mode": null,
+        "online": null,
+        "org": "HKIE",
+        "source": "HKIE CPD Calendar",
+        "type": "GPM"
+      },
+      {
+        "id": "ada976c21a817",
+        "title": "Sustainable Development Planning and ESG for Engineers",
+        "date": "2026-12-11",
+        "start_end": "13:30-17:00",
+        "detail_url": "https://hkie.org.hk/cpd-courses/sustainable-development-planning-and-esg-for-engineers-6/",
+        "hrs": 3.5,
+        "hrs_est": true,
+        "registration": {
+          "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+          "destination": null,
+          "status": "UNKNOWN",
+          "sourceUrlClass": "EVENT_DETAIL",
+          "confidence": "LOW",
+          "discoveryMethod": "page_no_candidate"
+        },
+        "mode": null,
+        "online": null,
+        "org": "HKIE",
+        "source": "HKIE CPD Calendar",
+        "type": "Technical"
+      },
+      {
+        "id": "afeae72bf67f8",
+        "title": "Global BIM Manager Professional Training Course",
+        "date": "2026-12-14",
+        "start_end": "09:30-18:30",
+        "detail_url": "https://hkie.org.hk/cpd-courses/global-bim-manager-professional-training-course-11/",
+        "hrs": 9.0,
+        "hrs_est": true,
+        "registration": {
+          "mechanism": "OTHER_PUBLIC_FORM",
+          "destination": "https://www.bsigroup.com/en-HK/products-and-services/training-courses-and-qualifications/",
+          "status": "OPEN",
+          "sourceUrlClass": "EVENT_DETAIL",
+          "confidence": "MEDIUM",
+          "discoveryMethod": "page_scan_pos_text,in_detail"
+        },
+        "mode": null,
+        "online": null,
+        "org": "HKIE",
+        "source": "HKIE CPD Calendar",
+        "type": "Technical"
+      },
+      {
+        "id": "aa1db7eb3df72",
+        "title": "Project Management and Impactful Communication",
+        "date": "2026-12-18",
+        "start_end": "09:30-17:00",
+        "detail_url": "https://hkie.org.hk/cpd-courses/project-management-and-impactful-communication-2/",
+        "hrs": 7.5,
+        "hrs_est": true,
+        "registration": {
+          "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+          "destination": null,
+          "status": "UNKNOWN",
+          "sourceUrlClass": "EVENT_DETAIL",
+          "confidence": "LOW",
+          "discoveryMethod": "page_no_candidate"
+        },
+        "mode": null,
+        "online": null,
+        "org": "HKIE",
+        "source": "HKIE CPD Calendar",
+        "type": "GPM"
+      },
+      {
+        "id": "a3885400434a0",
+        "title": "Integrated ASNT PT & MT NDT Level (1) ASNT Professional Course",
+        "date": "2026-12-28",
+        "start_end": "09:00-17:00",
+        "detail_url": "https://hkie.org.hk/cpd-courses/integrated-asnt-pt-mt-ndt-level-1-asnt-professional-course-2/",
+        "hrs": 8.0,
+        "hrs_est": true,
+        "registration": {
+          "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+          "destination": null,
+          "status": "UNKNOWN",
+          "sourceUrlClass": "EVENT_DETAIL",
+          "confidence": "LOW",
+          "discoveryMethod": "page_no_candidate"
+        },
+        "mode": null,
+        "online": null,
+        "org": "HKIE",
+        "source": "HKIE CPD Calendar",
+        "type": "Technical"
+      },
+      {
+        "id": "ab130258f34a5",
+        "title": "Integrated ASNT PT & MT NDT Level (1) ASNT Professional Course",
+        "date": "2026-12-29",
+        "start_end": null,
+        "detail_url": "https://hkie.org.hk/cpd-courses/integrated-asnt-pt-mt-ndt-level-1-asnt-professional-course-2/",
+        "hrs": null,
+        "hrs_est": false,
+        "registration": {
+          "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+          "destination": null,
+          "status": "UNKNOWN",
+          "sourceUrlClass": "EVENT_DETAIL",
+          "confidence": "LOW",
+          "discoveryMethod": "page_no_candidate"
+        },
+        "mode": null,
+        "online": null,
+        "org": "HKIE",
+        "source": "HKIE CPD Calendar",
+        "type": "Technical"
+      }
+    ]
+  }
+}
