@@ -6,3 +6,5 @@ elements_storage.db
 # Per-run workflow outputs (Actions artifacts only; never commit)
 observation-run.json
 production-sha256.json
+hkie-canary.json
+hkie-canary-state.json

@@ -1185,8 +1185,16 @@ def process_source(src):
             except Exception as ex:
                 log(f"  labour detail enrich skipped: {type(ex).__name__}")
     elif "hkie.org.hk" in url and "cpd-calendar" in url:
-        raw = extract_hkie_cpd(soup, url)
-        method = "hkie-cpd"
+        # HKIE CPD Scrapling canary: dual-extract + gates. Stage 1 always
+        # returns the legacy set. Failures fall back to legacy and must not
+        # abort Daily CPD. CIC / HKGBC are not on this path.
+        try:
+            from hkie_cpd_canary import extract_hkie_cpd_with_canary
+            raw, method = extract_hkie_cpd_with_canary(soup, url, html=html)
+        except Exception as ex:
+            log(f"  HKIE canary hook failed, using legacy: {type(ex).__name__}: {ex}")
+            raw = extract_hkie_cpd(soup, url)
+            method = "hkie-cpd"
     elif "hkie" in url and ("bd.hkie" in url or "hkie-st" in url or "hkie-fe" in url):
         raw = extract_hkie_div(soup, url)
         method = "hkie-div"
@@ -1238,7 +1246,15 @@ def process_source(src):
         try:
             html2 = fetch_html(url, use_playwright=True)
             soup2 = BeautifulSoup(html2, "html.parser")
-            if "hkie.org.hk" in url and "cpd" in url:
+            if "hkie.org.hk" in url and "cpd-calendar" in url:
+                try:
+                    from hkie_cpd_canary import extract_hkie_cpd_with_canary
+                    raw, method = extract_hkie_cpd_with_canary(soup2, url, html=html2)
+                except Exception as ex:
+                    log(f"  HKIE canary hook failed, using legacy: {type(ex).__name__}: {ex}")
+                    raw = extract_hkie_cpd(soup2, url)
+                    method = "hkie-cpd"
+            elif "hkie.org.hk" in url and "cpd" in url:
                 raw = extract_hkie_cpd(soup2, url)
             elif "ice" in url:
                 raw = extract_ice(soup2, url)
@@ -1416,6 +1432,13 @@ def main():
             "last_success": today_iso if s["status"] == "OK_WITH_EVENTS" else prev.get("last_success"),
             "updated": today_iso,
         }
+    # Compact HKIE canary diagnostics only. Does not change status, counts,
+    # consecutive_fail, or Issue rules.
+    try:
+        from hkie_cpd_canary import attach_health_diagnostic
+        attach_health_diagnostic(health)
+    except Exception as ex:
+        log(f"HKIE canary health attach skipped: {ex}")
     with open(HEALTH, "w", encoding="utf-8") as f:
         json.dump(health, f, ensure_ascii=False, indent=1)
 
