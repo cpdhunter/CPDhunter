@@ -17,7 +17,9 @@ from urllib.parse import unquote
 
 from bs4 import BeautifulSoup
 
-MAX_DETAIL_FETCHES = 40
+# Safety cap only — must cover a full +180d HKIE Events discovery set.
+# This is not a discovery ceiling.
+MAX_DETAIL_FETCHES = 250
 HKIE_EVENT_DETAIL_RE = re.compile(
     r"https?://(?:www\.)?hkie\.org\.hk/(?:tc/)?events/event-detail/([A-Za-z0-9]+)/?",
     re.I,

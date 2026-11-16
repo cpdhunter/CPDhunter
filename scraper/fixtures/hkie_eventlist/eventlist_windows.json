@@ -1,0 +1,523 @@
+{
+  "recorded": "2026-11-16",
+  "source": "POST https://hkie.org.hk/hkie_api/index.php action=eventlist lang=en site=main listgroup=all",
+  "windows": [
+    {
+      "daterange": "16/11/2026 - 16/12/2026",
+      "result": 0,
+      "msg": "Select Successful",
+      "data": [
+        {
+          "id": "6ab0d3b8a5c8f81c9509596a",
+          "title": "Hong Kong Airworthiness Course",
+          "date": "16 November 2026",
+          "date_from": "2026-11-16",
+          "date_to": "2026-11-27",
+          "group_name": "Aircraft Division",
+          "type_name": "Course"
+        },
+        {
+          "id": "6aed9c7c1f1d426669c1d6bd",
+          "title": "Technical Visit to the Route 6- Central Kowloon Bypass (Kowloon Bay Section) ",
+          "date": "16 November 2026",
+          "date_from": "2026-11-16",
+          "date_to": "2026-11-16",
+          "group_name": "Geotechnical Division",
+          "type_name": ""
+        },
+        {
+          "id": "6af41b361f1d426669c4579d",
+          "title": "Technical Seminar: Enhancing River Biodiversity by Nature-based Solutions",
+          "date": "17 November 2026",
+          "date_from": "2026-11-17",
+          "date_to": "2026-11-17",
+          "group_name": "Civil Division",
+          "type_name": ""
+        },
+        {
+          "id": "6ae43982235f6d2201377cdb",
+          "title": "Joint Technical Seminar on Case Study Sharing: Active Chilled Beam and AI-Based Waterside & Airside Energy Optimization ",
+          "date": "18 November 2026",
+          "date_from": "2026-11-18",
+          "date_to": "2026-11-18",
+          "group_name": "Building Services Division",
+          "type_name": ""
+        },
+        {
+          "id": "6ad70fb75f713be015110308",
+          "title": "Webinar on The Emerging Space Economy: Opportunities and Challenges",
+          "date": "20 November 2026",
+          "date_from": "2026-11-20",
+          "date_to": "2026-11-20",
+          "group_name": "Aircraft Division",
+          "type_name": ""
+        },
+        {
+          "id": "6ae14fb0235f6d2201364ef3",
+          "title": "Seminar/Webinar on Firestop Systems for M&E Services",
+          "date": "20 November 2026",
+          "date_from": "2026-11-20",
+          "date_to": "2026-11-20",
+          "group_name": "Mechanical, Marine, Naval Architecture & Chemical Division",
+          "type_name": ""
+        },
+        {
+          "id": "6af3c44d1f1d426669c43343",
+          "title": "Technical Seminar - From Emergency Response to Safety Resilience: Managing Climate-Related OH&S Risks through ISO/PAS 45007:2026",
+          "date": "20 November 2026",
+          "date_from": "2026-11-20",
+          "date_to": "2026-11-20",
+          "group_name": "Electrical Division",
+          "type_name": ""
+        },
+        {
+          "id": "6ae314c9235f6d2201370e92",
+          "title": "Event 123 - Testing",
+          "date": "21 November 2026",
+          "date_from": "2026-11-21",
+          "date_to": "2026-11-21",
+          "group_name": "The Hong Kong Institution of Engineers",
+          "type_name": ""
+        },
+        {
+          "id": "6ae97a901f1d426669bfc883",
+          "title": " International Conference on Modular Construction 2026",
+          "date": "21 November 2026",
+          "date_from": "2026-11-21",
+          "date_to": "2026-11-21",
+          "group_name": "Other Organiser(s)",
+          "type_name": ""
+        },
+        {
+          "id": "6aeb537f1f1d426669c0c39b",
+          "title": "Technical Seminar on Trusted Resilience Powering Global Maritime Trade ",
+          "date": "21 November 2026",
+          "date_from": "2026-11-21",
+          "date_to": "2026-11-21",
+          "group_name": "Mechanical, Marine, Naval Architecture & Chemical Division",
+          "type_name": ""
+        },
+        {
+          "id": "6ae988f61f1d426669bfd5de",
+          "title": "Technical Visit: Linde HKO Ltd",
+          "date": "21 November 2026",
+          "date_from": "2026-11-21",
+          "date_to": "2026-11-21",
+          "group_name": "Environmental Division",
+          "type_name": ""
+        },
+        {
+          "id": "6acc36325f713be0150d06e3",
+          "title": "Where Cultures Meet and Dice Roll 文化相遇處・骰子啟航時",
+          "date": "21 November 2026",
+          "date_from": "2026-11-21",
+          "date_to": "2026-11-21",
+          "group_name": "Young Members Committee",
+          "type_name": ""
+        },
+        {
+          "id": "6ac4510a5f713be0150a2617",
+          "title": "Asia-Pacific Energy Transition Think Tank Forum 2026",
+          "date": "24 November 2026",
+          "date_from": "2026-11-24",
+          "date_to": "2026-11-24",
+          "group_name": "Other Organiser(s)",
+          "type_name": ""
+        },
+        {
+          "id": "6adff5cd5f713be015149831",
+          "title": "[By Labours Department / Occupation Safety & Health Council] 28th Boilers & Pressure Vessels Safety Seminar",
+          "date": "25 November 2026",
+          "date_from": "2026-11-25",
+          "date_to": "2026-11-25",
+          "group_name": "Mechanical, Marine, Naval Architecture & Chemical Division",
+          "type_name": ""
+        },
+        {
+          "id": "6ad82da65f713be015117576",
+          "title": "The HKIEGS Chairman Cup 2026",
+          "date": "25 November 2026",
+          "date_from": "2026-11-25",
+          "date_to": "2026-11-25",
+          "group_name": "Golf Society",
+          "type_name": ""
+        },
+        {
+          "id": "6ae2ab2f235f6d220136dd82",
+          "title": "Veneree Club Monthly Talk (25 November 2026)  ",
+          "date": "25 November 2026",
+          "date_from": "2026-11-25",
+          "date_to": "2026-11-25",
+          "group_name": "Veneree Club",
+          "type_name": ""
+        },
+        {
+          "id": "6ae17141235f6d220136617e",
+          "title": " Public Speaking Workshop (Jointly Organised with HKIE CPDC)",
+          "date": "25 November 2026",
+          "date_from": "2026-11-25",
+          "date_to": "2026-11-25",
+          "group_name": "Young Members Committee",
+          "type_name": ""
+        },
+        {
+          "id": "6af419991f1d426669c456b1",
+          "title": "Technical Seminar: Infrastructure Construction using Fibre Reinforced Concrete",
+          "date": "26 November 2026",
+          "date_from": "2026-11-26",
+          "date_to": "2026-11-26",
+          "group_name": "Civil Division",
+          "type_name": ""
+        },
+        {
+          "id": "6abc9f3b5f713be0150762db",
+          "title": " BEAM Society Knowledge Sharing Symposium 2026",
+          "date": "27 November 2026",
+          "date_from": "2026-11-27",
+          "date_to": "2026-11-27",
+          "group_name": "Environmental Division",
+          "type_name": ""
+        },
+        {
+          "id": "6aeab2d41f1d426669c07864",
+          "title": "BEC EnviroSeries Conference November 2026",
+          "date": "27 November 2026",
+          "date_from": "2026-11-27",
+          "date_to": "2026-11-27",
+          "group_name": "Other Organiser(s)",
+          "type_name": ""
+        },
+        {
+          "id": "6af75bfe1f1d426669c58ffe",
+          "title": "[HKIE-MMNC x HKUEAA] Technical Visit to Integrated Wheelset Maintenance Centre",
+          "date": "27 November 2026",
+          "date_from": "2026-11-27",
+          "date_to": "2026-11-27",
+          "group_name": "Mechanical, Marine, Naval Architecture & Chemical Division",
+          "type_name": ""
+        },
+        {
+          "id": "6af515671f1d426669c4b469",
+          "title": "Joint Technical Visit to Shun Cheong MiMEP Factory in Dongguan",
+          "date": "28 November 2026",
+          "date_from": "2026-11-28",
+          "date_to": "2026-11-28",
+          "group_name": "Building Services Division",
+          "type_name": ""
+        },
+        {
+          "id": "6ac5ddec5f713be0150ac7a7",
+          "title": "CXC Visit - Safety by Design: Intelligent Technologies for Safer Construction Operations",
+          "date": "28 November 2026",
+          "date_from": "2026-11-28",
+          "date_to": "2026-11-28",
+          "group_name": "Safety Specialist Committee",
+          "type_name": ""
+        },
+        {
+          "id": "6ad883305f713be01511ab98",
+          "title": "[NEC x HKIE-YMC x ICE HKA G&S] NEC PSC Hong Kong Edition Briefing Session",
+          "date": "30 November 2026",
+          "date_from": "2026-11-30",
+          "date_to": "2026-11-30",
+          "group_name": "Young Members Committee",
+          "type_name": ""
+        },
+        {
+          "id": "6a704493c3a8fba9b931cce8",
+          "title": "CERTIFIED CARBON AUDITOR  TRAINING COURSE ",
+          "date": "30 November 2026",
+          "date_from": "2026-11-30",
+          "date_to": "2026-12-05",
+          "group_name": "Environmental Division",
+          "type_name": ""
+        },
+        {
+          "id": "6ae93d611f1d426669bf9b80",
+          "title": "NEC Asia Pacific Conference 2026",
+          "date": "1 December 2026",
+          "date_from": "2026-12-01",
+          "date_to": "2026-12-01",
+          "group_name": "Other Organiser(s)",
+          "type_name": ""
+        },
+        {
+          "id": "6adb21e25f713be01512bce2",
+          "title": "PolyU Northern Metropolis Future Forum Season 4",
+          "date": "1 December 2026",
+          "date_from": "2026-12-01",
+          "date_to": "2026-12-01",
+          "group_name": "Other Organiser(s)",
+          "type_name": ""
+        },
+        {
+          "id": "6af201571f1d426669c38003",
+          "title": "Technical Seminar on Electric Powertrain Conversion and Latest Technology Developments",
+          "date": "1 December 2026",
+          "date_from": "2026-12-01",
+          "date_to": "2026-12-01",
+          "group_name": "Mechanical, Marine, Naval Architecture & Chemical Division",
+          "type_name": ""
+        },
+        {
+          "id": "6ad88a0e5f713be01511b1b6",
+          "title": "Innovative Movable Bridge Design in Hong Kong: Engineering beyond Waterfront Crossings",
+          "date": "2 December 2026",
+          "date_from": "2026-12-02",
+          "date_to": "2026-12-02",
+          "group_name": "Civil Division",
+          "type_name": ""
+        },
+        {
+          "id": "6af6d5fa1f1d426669c561e1",
+          "title": "Technical Seminar Series for “Power Generation” - Hybrid Cooling Tower at Black Point Power Station",
+          "date": "2 December 2026",
+          "date_from": "2026-12-02",
+          "date_to": "2026-12-02",
+          "group_name": "Mechanical, Marine, Naval Architecture & Chemical Division",
+          "type_name": ""
+        },
+        {
+          "id": "6ab61fb95f713be015050852",
+          "title": "HKUST–HKUST(GZ) Two-city Conference – Building Sustainable Cities: Northern Metropolis Development",
+          "date": "4 December 2026",
+          "date_from": "2026-12-04",
+          "date_to": "2026-12-04",
+          "group_name": "Other Organiser(s)",
+          "type_name": ""
+        },
+        {
+          "id": "6af1d7251f1d426669c37040",
+          "title": "Technical Webinar: Hong Kong Operational Technology (OT) Cybersecurity Has Changed. Are We Ready? ",
+          "date": "4 December 2026",
+          "date_from": "2026-12-04",
+          "date_to": "2026-12-04",
+          "group_name": "Control, Automation & Instrumentation Division",
+          "type_name": ""
+        },
+        {
+          "id": "6ae953d71f1d426669bfa95e",
+          "title": "HKIE Badminton and Table Tennis Tournament & Fun Day [Registration for Badminton]",
+          "date": "5 December 2026",
+          "date_from": "2026-12-05",
+          "date_to": "2026-12-05",
+          "group_name": "The Hong Kong Institution of Engineers",
+          "type_name": ""
+        },
+        {
+          "id": "6ae955171f1d426669bfaa39",
+          "title": "HKIE Badminton and Table Tennis Tournament & Fun Day [Registration for Table Tennis]",
+          "date": "5 December 2026",
+          "date_from": "2026-12-05",
+          "date_to": "2026-12-05",
+          "group_name": "The Hong Kong Institution of Engineers",
+          "type_name": ""
+        },
+        {
+          "id": "6af669b41f1d426669c53285",
+          "title": "Technical Visit to ATAL Design and Manufacture Center in Zhuhai",
+          "date": "5 December 2026",
+          "date_from": "2026-12-05",
+          "date_to": "2026-12-05",
+          "group_name": "Building Services Division",
+          "type_name": ""
+        },
+        {
+          "id": "6ae8a5fe1f1d426669bf5dda",
+          "title": "與嶺南派猛獁象牙雕吳志偉大師對話",
+          "date": "5 December 2026",
+          "date_from": "2026-12-05",
+          "date_to": "2026-12-05",
+          "group_name": "Control, Automation & Instrumentation Division",
+          "type_name": ""
+        },
+        {
+          "id": "6ac300d75f713be015099948",
+          "title": "Construction Industry Sports Day and Charity Fun Day 2026",
+          "date": "6 December 2026",
+          "date_from": "2026-12-06",
+          "date_to": "2026-12-06",
+          "group_name": "Young Members Committee",
+          "type_name": ""
+        },
+        {
+          "id": "6ad030f85f713be0150e96a0",
+          "title": "2026 HKGBC Regional Forum X WorldGBC AP Leadership Awards Showcase",
+          "date": "9 December 2026",
+          "date_from": "2026-12-09",
+          "date_to": "2026-12-10",
+          "group_name": "Other Organiser(s)",
+          "type_name": ""
+        },
+        {
+          "id": "6adb279d5f713be01512bfd1",
+          "title": "The Tree Tour for the Veneree Club of HKIE",
+          "date": "9 December 2026",
+          "date_from": "2026-12-09",
+          "date_to": "2026-12-09",
+          "group_name": "Veneree Club",
+          "type_name": ""
+        },
+        {
+          "id": "6acef21c5f713be0150e1bdb",
+          "title": "Professional Assessment",
+          "date": "12 December 2026",
+          "date_from": "2026-12-12",
+          "date_to": "2027-01-16",
+          "group_name": "Veneree Club",
+          "type_name": ""
+        },
+        {
+          "id": "6af517321f1d426669c4b58c",
+          "title": "Handcrafted Christmas Tree Workshop",
+          "date": "12 December 2026",
+          "date_from": "2026-12-12",
+          "date_to": "2026-12-12",
+          "group_name": "Building Services Division",
+          "type_name": ""
+        },
+        {
+          "id": "6ab0d8c5a5c8f81c95095d3f",
+          "title": "The HKIE Prize Presentation Ceremony cum New Members’ Reception",
+          "date": "12 December 2026",
+          "date_from": "2026-12-12",
+          "date_to": "2026-12-12",
+          "group_name": "The Hong Kong Institution of Engineers",
+          "type_name": ""
+        },
+        {
+          "id": "6af2d2f11f1d426669c3da24",
+          "title": "Bouldering Fun Day",
+          "date": "12 December 2026",
+          "date_from": "2026-12-12",
+          "date_to": "2026-12-12",
+          "group_name": "Young Members Committee",
+          "type_name": ""
+        },
+        {
+          "id": "6aea975a1f1d426669c06579",
+          "title": "Dragon's Back: \"Engine\" Light, \"Framing\" Trails 龍脊「機」遇・「築」光捕影 | Hiking & Photography Day 攝影打卡 x 遠足交流日",
+          "date": "13 December 2026",
+          "date_from": "2026-12-13",
+          "date_to": "2026-12-13",
+          "group_name": "Young Members Committee",
+          "type_name": ""
+        },
+        {
+          "id": "6ae426a3235f6d22013773e0",
+          "title": "Joint SCCT-HKCI International Conference on Concrete Technologies",
+          "date": "16 December 2026",
+          "date_from": "2026-12-16",
+          "date_to": "2026-12-16",
+          "group_name": "Environmental Division",
+          "type_name": ""
+        }
+      ]
+    },
+    {
+      "daterange": "16/12/2026 - 15/01/2027",
+      "result": 0,
+      "msg": "Select Successful",
+      "data": [
+        {
+          "id": "6ae426a3235f6d22013773e0",
+          "title": "Joint SCCT-HKCI International Conference on Concrete Technologies",
+          "date": "16 December 2026",
+          "date_from": "2026-12-16",
+          "date_to": "2026-12-16",
+          "group_name": "Environmental Division",
+          "type_name": ""
+        },
+        {
+          "id": "6ab32f40a5c8f81c950a8413",
+          "title": "ICAC - Integrity Capacity Building Workshop – Project Integrity Navigator (PIN) (CPD1201/2026)",
+          "date": "18 December 2026",
+          "date_from": "2026-12-18",
+          "date_to": "2026-12-18",
+          "group_name": "Continuing Professional Development Committee",
+          "type_name": ""
+        },
+        {
+          "id": "6af41c5c1f1d426669c45827",
+          "title": "AI × 5D BIM: The Next Leap in Hong Kong Quantity Surveying's Digital Transformation",
+          "date": "18 December 2026",
+          "date_from": "2026-12-18",
+          "date_to": "2026-12-18",
+          "group_name": "Civil Division",
+          "type_name": ""
+        },
+        {
+          "id": "6af13fb31f1d426669c32c64",
+          "title": "Connect from Campus to Career",
+          "date": "18 December 2026",
+          "date_from": "2026-12-18",
+          "date_to": "2026-12-18",
+          "group_name": "Young Members Committee",
+          "type_name": ""
+        },
+        {
+          "id": "6af9d0a01f1d426669c660fd",
+          "title": "GBA Factory Tour & Exchange: Exploring MiC, Steel Structures, and Smart Woodworking Automation",
+          "date": "19 December 2026",
+          "date_from": "2026-12-19",
+          "date_to": "2026-12-19",
+          "group_name": "Young Members Committee",
+          "type_name": ""
+        }
+      ]
+    },
+    {
+      "daterange": "15/01/2027 - 14/02/2027",
+      "result": 0,
+      "msg": "Select Successful",
+      "data": []
+    },
+    {
+      "daterange": "14/02/2027 - 16/03/2027",
+      "result": 0,
+      "msg": "Select Successful",
+      "data": [
+        {
+          "id": "6a042d4646e390c3527c4c4c",
+          "title": "Engineering Exposition 2027",
+          "date": "6 March 2027",
+          "date_from": "2027-03-06",
+          "date_to": "2027-03-06",
+          "group_name": "Veneree Club",
+          "type_name": ""
+        }
+      ]
+    },
+    {
+      "daterange": "16/03/2027 - 15/04/2027",
+      "result": 0,
+      "msg": "Select Successful",
+      "data": [
+        {
+          "id": "6abc5a1f5f713be015073df0",
+          "title": "Overseas Delegation 2027 to Germany – Beyond Carbon: Connecting Green Technologies, Empowering Sustainable Tomorrow",
+          "date": "26 March 2027",
+          "date_from": "2027-03-26",
+          "date_to": "2027-04-03",
+          "group_name": "Young Members Committee",
+          "type_name": "Delegation"
+        },
+        {
+          "id": "6ab0dc26a5c8f81c95095f29",
+          "title": "The HKIE 80th Anniversary Dinner",
+          "date": "9 April 2027",
+          "date_from": "2027-04-09",
+          "date_to": "2027-04-09",
+          "group_name": "The Hong Kong Institution of Engineers",
+          "type_name": ""
+        }
+      ]
+    },
+    {
+      "daterange": "15/04/2027 - 15/05/2027",
+      "result": 0,
+      "msg": "Select Successful",
+      "data": []
+    }
+  ]
+}

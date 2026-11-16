@@ -1203,6 +1203,27 @@ def process_source(src):
     elif "hkie" in url and ("bd.hkie" in url or "hkie-st" in url or "hkie-fe" in url):
         raw = extract_hkie_div(soup, url)
         method = "hkie-div"
+    elif "hkie.org.hk" in url and "/events" in url.split("#")[0] and "cpd-calendar" not in url and "event-detail" not in url:
+        from parsers.hkie_eventlist import discover_hkie_events_from_api, is_hkie_events_listing_url
+        if not is_hkie_events_listing_url(url):
+            raw = generic_extract(soup, url)
+            method = "generic"
+        else:
+            try:
+                raw, dstats = discover_hkie_events_from_api()
+                method = "hkie-eventlist"
+                log(
+                    "  HKIE eventlist discover: "
+                    f"unique={dstats.get('unique_events')} windows={dstats.get('windows_fetched')}/"
+                    f"{dstats.get('windows_planned')} empty={dstats.get('empty_windows')} "
+                    f"failed={dstats.get('failed_windows')} stopped={dstats.get('stopped')} "
+                    f"ranges={dstats.get('dateranges')}"
+                )
+            except Exception as ex:
+                # Last resort: existing playwright+generic path may still run.
+                log(f"  HKIE eventlist discover failed: {type(ex).__name__}: {ex}")
+                raw = []
+                method = "generic"
     elif "ice.org.uk" in url:
         raw = extract_ice(soup, url)
         method = "ice-cards"
@@ -1247,7 +1268,7 @@ def process_source(src):
     else:
         raw = generic_extract(soup, url)
         method = "generic"
-    if not raw and PLAYWRIGHT_OK and not use_pw and ("hkie" in url or "ice" in url or "cic" in url or "hkgbc" in url or "tqm.com.hk" in url):
+    if not raw and method != "hkie-eventlist" and PLAYWRIGHT_OK and not use_pw and ("hkie" in url or "ice" in url or "cic" in url or "hkgbc" in url or "tqm.com.hk" in url):
         try:
             html2 = fetch_html(url, use_playwright=True)
             soup2 = BeautifulSoup(html2, "html.parser")
@@ -1289,6 +1310,7 @@ def process_source(src):
                 "generic",
                 "playwright+generic",
                 "hkie-div",
+                "hkie-eventlist",
             ):
                 method = method + "+detail"
         except Exception as ex:
