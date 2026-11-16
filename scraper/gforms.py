@@ -348,16 +348,22 @@ def extract_gform_urls(text: str) -> List[str]:
     """Return unique Google Forms / forms.gle URLs found in HTML or text."""
     if not text:
         return []
+    from urllib.parse import unquote
     found = []
     seen = set()
-    for m in GFORM_HREF_RE.finditer(text):
-        u = m.group(0).rstrip(").,;'\"")
-        u = u.replace("&amp;", "&")
-        if "formResponse" in u:
-            u = u.replace("/formResponse", "/viewform")
-        if u not in seen:
-            seen.add(u)
-            found.append(u)
+    candidates = [text]
+    unquoted = unquote(text.replace("&amp;", "&"))
+    if unquoted != text:
+        candidates.append(unquoted)
+    for blob in candidates:
+        for m in GFORM_HREF_RE.finditer(blob):
+            u = m.group(0).rstrip(").,;'\"")
+            u = u.replace("&amp;", "&")
+            if "formResponse" in u:
+                u = u.replace("/formResponse", "/viewform")
+            if u not in seen:
+                seen.add(u)
+                found.append(u)
     return found
 
 

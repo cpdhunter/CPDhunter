@@ -1102,6 +1102,11 @@ def clean(e, src, rejects):
         vs = e.get("venueSource")
         if isinstance(vs, str) and vs.strip():
             out["venueSource"] = vs.strip()[:40]
+        division = e.get("division")
+        if isinstance(division, str) and division.strip():
+            out["division"] = division.strip()[:120]
+        if e.get("civil_related") is True:
+            out["civil_related"] = True
         explicit_mode = e.get("mode")
         if isinstance(explicit_mode, str) and explicit_mode.strip():
             out["mode"] = explicit_mode.strip()
@@ -1271,6 +1276,23 @@ def process_source(src):
                 method = "playwright+" + method
         except Exception:
             pass
+    # HKIE event-detail enrichment runs AFTER the selected discovery
+    # result (legacy, playwright+generic, or Scrapling canary). It updates
+    # already-discovered records and never appends duplicates. The canary
+    # method name stays 'hkie-cpd'.
+    if "hkie.org.hk" in url or "hkie" in url.lower():
+        try:
+            from parsers.hkie_event_detail import enrich_hkie_events_from_api
+            raw, estats = enrich_hkie_events_from_api(raw)
+            log(f"  HKIE detail enrich: {estats}")
+            if estats.get("enriched") and method in (
+                "generic",
+                "playwright+generic",
+                "hkie-div",
+            ):
+                method = method + "+detail"
+        except Exception as ex:
+            log(f"  HKIE detail enrich skipped: {type(ex).__name__}: {ex}")
     return raw, method, title
 
 def _norm_org(org):
