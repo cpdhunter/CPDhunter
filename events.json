@@ -1,26 +1,26 @@
 {
- "updated": "2026-11-17T06:56+08:00",
+ "updated": "2026-11-18T07:02+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 3,
+   "n": 2,
    "method": "oshc-activity",
    "page_title": "OSHC",
-   "raw_candidates": 3,
+   "raw_candidates": 2,
    "rejects": {}
   },
   {
    "source": "OSHC Seminars & Conferences",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 10,
+   "n": 8,
    "method": "oshc-table",
    "page_title": "Seminars & Conferences",
    "raw_candidates": 584,
    "rejects": {
-    "date_range": 574
+    "date_range": 576
    }
   },
   {
@@ -37,25 +37,23 @@
    "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 7,
+   "n": 5,
    "method": "csb-table",
    "page_title": "Civil Service Bureau -  COMING EVENTS",
    "raw_candidates": 14,
    "rejects": {
-    "date_range": 7
+    "date_range": 9
    }
   },
   {
    "source": "CIC 建造業議會 Events",
-   "status": "OK_WITH_EVENTS",
-   "ok": true,
-   "n": 5,
-   "method": "playwright+cic-list",
+   "status": "EMPTY_UNVERIFIED",
+   "ok": false,
+   "n": 0,
+   "method": "cic-list",
    "page_title": "Events | Construction Industry Council",
-   "raw_candidates": 11,
-   "rejects": {
-    "date_range": 6
-   }
+   "raw_candidates": 0,
+   "rejects": {}
   },
   {
    "source": "CIC BIM Events",
@@ -245,15 +243,10 @@
   },
   {
    "source": "TQM Consultants Training",
-   "status": "OK_WITH_EVENTS",
-   "ok": true,
-   "n": 4,
-   "method": "tqm-list+detail",
-   "page_title": "Upcoming | TQM Consultants Co. Limited",
-   "raw_candidates": 6,
-   "rejects": {
-    "date_range": 2
-   }
+   "status": "FAIL",
+   "ok": false,
+   "n": 0,
+   "err": "Playwright 失敗：Error"
   }
  ],
  "events": [
@@ -1230,12 +1223,12 @@
    "group": "HKIS",
    "auto": true,
    "registration": {
-    "mechanism": "UNKNOWN",
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
     "destination": null,
     "status": "UNKNOWN",
     "sourceUrlClass": "UNKNOWN",
     "confidence": "LOW",
-    "discoveryMethod": "fetch_error:ConnectionError"
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -2679,58 +2672,8 @@
     "mechanism": "GOOGLE_FORMS",
     "destination": "https://docs.google.com/forms/d/e/1FAIpQLSdO6nHPipAk2FO2NU_rlM4cGts1xhaj6tNwfVyOL2rFqidlKw/viewform",
     "formId": "1FAIpQLSdO6nHPipAk2FO2NU_rlM4cGts1xhaj6tNwfVyOL2rFqidlKw",
-    "status": "OPEN",
-    "fields": [
-     {
-      "entryId": "entry.877086558",
-      "profileField": null,
-      "label": "Surname",
-      "type": "PARAGRAPH",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1633070132",
-      "profileField": null,
-      "label": "First Name",
-      "type": "PARAGRAPH",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1498135098",
-      "profileField": "email",
-      "label": "Email",
-      "type": "PARAGRAPH",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1424661284",
-      "profileField": "organisation",
-      "label": "Organization",
-      "type": "PARAGRAPH",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.2606285",
-      "profileField": null,
-      "label": "Membership",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.253460959",
-      "profileField": null,
-      "label": "Membership Grade",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.990121559",
-      "profileField": null,
-      "label": "Would you attend in person or online?",
-      "type": "RADIO",
-      "safePrefill": false
-     }
-    ],
+    "status": "CLOSED",
+    "fields": [],
     "requiresManualCompletion": true,
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
@@ -2869,6 +2812,34 @@
    }
   },
   {
+   "id": "af324962ab7dc",
+   "name": "Curtain Wall Inspection Methodology",
+   "org": "HKIS CPD",
+   "date": "2026-11-19",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6846",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "OTHER_PUBLIC_FORM",
+    "destination": "https://www.hkis.org.hk/uploads/editor/Standard_Reservation_Form%20(2026)_r3.pdf",
+    "status": "OPEN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "page_scan_pdf,pos_text"
+   }
+  },
+  {
    "id": "a7e807cda73df",
    "name": "辦公室僱員職業健康系列(II) 辦公室僱員 - 預防肌骨骼疾病",
    "org": "Labour Dept",
@@ -2921,12 +2892,12 @@
    "auto": true,
    "mode": "ONLINE",
    "registration": {
-    "mechanism": "OSHC_PORTAL",
+    "mechanism": "REGISTRATION_CLOSED",
     "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9919",
-    "status": "OPEN",
+    "status": "CLOSED",
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
-    "discoveryMethod": "event_url_oshc_activity"
+    "discoveryMethod": "oshc_activity_closed_text"
    }
   },
   {
@@ -2955,6 +2926,34 @@
     "sourceUrlClass": "PDF_FLYER",
     "confidence": "HIGH",
     "discoveryMethod": "event_url_pdf_flyer"
+   }
+  },
+  {
+   "id": "adb0080058465",
+   "name": "存量物業的綠色升級與價值提升——城市更新、運營改善與綠色金融",
+   "org": "HKIS CPD",
+   "date": "2026-11-20",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6888",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_CLOSED",
+    "destination": "https://www.hkis.org.hk/uploads/editor/CPD%E6%B4%BB%E5%8A%A8%E6%8A%A5%E5%90%8D%E6%B5%81%E7%A8%8B%E5%8F%8AZOOM%E8%AE%B2%E5%BA%A7%E6%93%8D%E4%BD%9C.pdf",
+    "status": "CLOSED",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "HIGH",
+    "discoveryMethod": "page_closed_text"
    }
   },
   {
@@ -3012,34 +3011,6 @@
     "sourceUrlClass": "CAPTCHA_BLOCKED",
     "confidence": "MEDIUM",
     "discoveryMethod": "page_captcha_blocked"
-   }
-  },
-  {
-   "id": "adb0080058465",
-   "name": "存量物業的綠色升級與價值提升——城市更新、運營改善與綠色金融",
-   "org": "HKIS CPD",
-   "date": "2026-11-20",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6888",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIS CPD",
-   "group": "HKIS",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_CLOSED",
-    "destination": "https://www.hkis.org.hk/uploads/editor/CPD%E6%B4%BB%E5%8A%A8%E6%8A%A5%E5%90%8D%E6%B5%81%E7%A8%8B%E5%8F%8AZOOM%E8%AE%B2%E5%BA%A7%E6%93%8D%E4%BD%9C.pdf",
-    "status": "CLOSED",
-    "sourceUrlClass": "UNKNOWN",
-    "confidence": "HIGH",
-    "discoveryMethod": "page_closed_text"
    }
   },
   {
@@ -3851,40 +3822,12 @@
    "group": "HKIS",
    "auto": true,
    "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "mechanism": "UNKNOWN",
     "destination": null,
     "status": "UNKNOWN",
     "sourceUrlClass": "UNKNOWN",
     "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
-   "id": "aa90ded4f6271",
-   "name": "Construction Innovation Expo 2026 (CIExpo 2026)",
-   "org": "CIC",
-   "date": "2026-11-23",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events/detail.page-20261123",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
+    "discoveryMethod": "fetch_error:ConnectionError"
    }
   },
   {
@@ -3916,6 +3859,34 @@
    }
   },
   {
+   "id": "aa90ded4f6271",
+   "name": "Construction Innovation Expo 2026 (CIExpo 2026)",
+   "org": "CIC",
+   "date": "2026-11-23",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events/detail.page-20261123",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
    "id": "ae8d9b546d4a1",
    "name": "Online Open Seminar on \"Code of Practice on Safety Management and the related Safety Regulations\"",
    "org": "Occupational Safety and Health Council",
@@ -3942,34 +3913,6 @@
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
     "discoveryMethod": "event_url_oshc_activity"
-   }
-  },
-  {
-   "id": "a5644b2c19021",
-   "name": "Debriefing Session on the BS APC – Practical Task November 2026",
-   "org": "HKIS CPD",
-   "date": "2026-11-24",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6900",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIS CPD",
-   "group": "HKIS",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -4049,12 +3992,40 @@
    "auto": true,
    "mode": "ONLINE",
    "registration": {
-    "mechanism": "MICROSOFT_FORMS",
-    "destination": "https://forms.cloud.microsoft/r/rBNZY3t9jk",
-    "status": "OPEN",
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
     "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "HIGH",
-    "discoveryMethod": "hkgbc_detail_microsoft_forms,pos_text,in_detail"
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_detail_fetch_fail"
+   }
+  },
+  {
+   "id": "a5644b2c19021",
+   "name": "Debriefing Session on the BS APC – Practical Task November 2026",
+   "org": "HKIS CPD",
+   "date": "2026-11-24",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6900",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -4115,6 +4086,34 @@
     "sourceUrlClass": "PDF_FLYER",
     "confidence": "HIGH",
     "discoveryMethod": "event_url_pdf_flyer"
+   }
+  },
+  {
+   "id": "a539884c1baa9",
+   "name": "參觀上海中海慧智廣場專案C65科研樓宇",
+   "org": "HKIS CPD",
+   "date": "2026-11-25",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6901",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -4741,6 +4740,41 @@
    }
   },
   {
+   "id": "aecb18b6b971f",
+   "name": "Technical Seminar - Working Smarter with AI: Practical Tools and Tips for Engineers",
+   "org": "Electrical Division",
+   "date": "2026-11-27",
+   "time": "18:30-20:00",
+   "hrs": 1.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Electrical"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6afc55801f1d426669c79f86/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Paul Y Room, 10/F, HKIE HQ",
+   "modeText": "HYBRID / online",
+   "attendanceMode": "HYBRID / online",
+   "description": "Dear members Technical Seminar Working Smarter with AI: Practical Tools and Tips for Engineers Organised by EL Division 27 November 2026 Please note that the Technical Seminar Working Smarter with AI: Practical Tools and Tips for Engineers will be held on 27 November 2026 from 6:30PM - 8:30PM at Paul Y Room, 10/F, the HKIE Headquarters . The event is free of charge. Registration is required. The number of participants is limited to 30. Applications will be accepted on a first-come first-served basis. Priority will be given to members of EL Division. For details, please click here . For registration, please register online at https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Tj-JM5czq0y7PJIkv36vutF8FfD2vOZOv5HIVv2-RbNUNVU4QlhOWDg3R08wUEI4MUQ2TDZMQUxZVS4u&origin=QRCode . The deadline for registration is 24 November 2026 . Successful applicants will be notified separately. For enquiries, please contact Ir. Dr. KF Wong via Email: hkkfwong@yahoo.com.hk . Electrical Division Committee",
+   "venueSource": "event_detail",
+   "division": "Electrical Division",
+   "mode": "HYBRID",
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6afc55801f1d426669c79f86&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
+   }
+  },
+  {
    "id": "aa0549543b32f",
    "name": "Seminar on HK GeoCode x Geospatial Intelligence",
    "org": "HKIS CPD",
@@ -4997,34 +5031,6 @@
    "mode": "FACE_TO_FACE"
   },
   {
-   "id": "a03559f0a46f9",
-   "name": "2026 Construction Workers Carnival",
-   "org": "CIC",
-   "date": "2026-11-29",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cwf.cic.hk/en/Home",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
    "id": "ae60e9459c208",
    "name": "建造業議會 - 2026建造工友嘉年華 (Chinese only)",
    "org": "HKGBC",
@@ -5050,6 +5056,34 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "LOW",
     "discoveryMethod": "hkgbc_detail_no_reg"
+   }
+  },
+  {
+   "id": "a03559f0a46f9",
+   "name": "2026 Construction Workers Carnival",
+   "org": "CIC",
+   "date": "2026-11-29",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cwf.cic.hk/en/Home",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -5669,34 +5703,6 @@
    }
   },
   {
-   "id": "a9c92b856a9ba",
-   "name": "ITCTS Recruitment Day",
-   "org": "CIC",
-   "date": "2026-12-03",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events/detail.page-20261203",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
    "id": "a2ff55574083e",
    "name": "RCx CPD Webinar - Unlocking Building Performance Through Data-Driven RCx and ASHRAE Best Practices",
    "org": "HKGBC",
@@ -5743,6 +5749,34 @@
    "free": null,
    "source": "IStructE Events",
    "group": "IStructE",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
+   "id": "a9c92b856a9ba",
+   "name": "ITCTS Recruitment Day",
+   "org": "CIC",
+   "date": "2026-12-03",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events/detail.page-20261203",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
    "auto": true,
    "registration": {
     "mechanism": "REGISTRATION_LINK_NOT_FOUND",
@@ -8245,12 +8279,12 @@
    "group": "HKIS",
    "auto": true,
    "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "mechanism": "UNKNOWN",
     "destination": null,
     "status": "UNKNOWN",
     "sourceUrlClass": "UNKNOWN",
     "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
+    "discoveryMethod": "fetch_error:ReadTimeout"
    }
   },
   {
