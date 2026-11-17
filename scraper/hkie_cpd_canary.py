@@ -42,7 +42,7 @@ for _p in (_REPO_ROOT, _SCRAPER_DIR):
 HKIE_SCRAPLING_CANARY = True
 # 1 = shadow + gate calculation only (production stays legacy)
 # 2 = allow Scrapling to be selected when gates pass and there is benefit
-HKIE_SCRAPLING_CANARY_STAGE = 1
+HKIE_SCRAPLING_CANARY_STAGE = 2
 
 SOURCE_LABEL = "HKIE CPD Calendar"
 SCRAPLING_PIN = "scrapling==0.5.1"
