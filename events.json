@@ -1,36 +1,36 @@
 {
- "updated": "2026-11-18T07:02+08:00",
+ "updated": "2026-11-19T07:02+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 2,
+   "n": 4,
    "method": "oshc-activity",
    "page_title": "OSHC",
-   "raw_candidates": 2,
+   "raw_candidates": 4,
    "rejects": {}
   },
   {
    "source": "OSHC Seminars & Conferences",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 8,
+   "n": 9,
    "method": "oshc-table",
    "page_title": "Seminars & Conferences",
-   "raw_candidates": 584,
+   "raw_candidates": 585,
    "rejects": {
     "date_range": 576
    }
   },
   {
    "source": "勞工處 職業健康公開講座",
-   "status": "OK_WITH_EVENTS",
-   "ok": true,
-   "n": 5,
+   "status": "EMPTY_UNVERIFIED",
+   "ok": false,
+   "n": 0,
    "method": "labour-list+detail",
-   "page_title": "勞工處 - 職業健康公開講座網上報名",
-   "raw_candidates": 5,
+   "page_title": "勞工處 - 職業健康公開講座",
+   "raw_candidates": 0,
    "rejects": {}
   },
   {
@@ -101,10 +101,10 @@
    "source": "HKIE Events",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 49,
+   "n": 52,
    "method": "hkie-eventlist+detail",
    "page_title": "Events - HKIE",
-   "raw_candidates": 51,
+   "raw_candidates": 54,
    "rejects": {
     "social": 2
    }
@@ -145,25 +145,25 @@
    "source": "HKIS CPD",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 15,
+   "n": 16,
    "method": "generic",
    "page_title": "THE HONG KONG INSTITUTE OF SURVEYORS :: CPD",
    "raw_candidates": 20,
    "rejects": {
     "social": 1,
-    "date_range": 4
+    "date_range": 3
    }
   },
   {
    "source": "HKGBC 綠建環評",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 23,
+   "n": 24,
    "method": "hkgbc",
    "page_title": "Events & Trainings | HKGBC",
    "raw_candidates": 40,
    "rejects": {
-    "date_range": 17
+    "date_range": 16
    }
   },
   {
@@ -243,10 +243,15 @@
   },
   {
    "source": "TQM Consultants Training",
-   "status": "FAIL",
-   "ok": false,
-   "n": 0,
-   "err": "Playwright 失敗：Error"
+   "status": "OK_WITH_EVENTS",
+   "ok": true,
+   "n": 4,
+   "method": "tqm-list+detail",
+   "page_title": "Upcoming | TQM Consultants Co. Limited",
+   "raw_candidates": 6,
+   "rejects": {
+    "date_range": 2
+   }
   }
  ],
  "events": [
@@ -2495,12 +2500,12 @@
    "group": "HKIS",
    "auto": true,
    "registration": {
-    "mechanism": "UNKNOWN",
-    "destination": null,
-    "status": "UNKNOWN",
+    "mechanism": "OTHER_PUBLIC_FORM",
+    "destination": "https://www.hkis.org.hk/uploads/editor/Standard_Reservation_Form%20(2026)_r3.pdf",
+    "status": "OPEN",
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "fetch_error:ConnectionError"
+    "confidence": "MEDIUM",
+    "discoveryMethod": "page_scan_pdf,pos_text"
    }
   },
   {
@@ -3099,7 +3104,10 @@
     "sourceUrlClass": "UNKNOWN",
     "confidence": "LOW",
     "discoveryMethod": "page_no_candidate"
-   }
+   },
+   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
+   "venueSource": "event_detail",
+   "mode": "FACE_TO_FACE"
   },
   {
    "id": "a4d23f5651b2a",
@@ -3235,6 +3243,34 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
     "discoveryMethod": "hkie_eventdetail_portal"
+   }
+  },
+  {
+   "id": "a94469c7a23d9",
+   "name": "Site Visit to St. Stephen's College Heritage Trail",
+   "org": "HKIS CPD",
+   "date": "2026-11-21",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6887",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -3822,12 +3858,12 @@
    "group": "HKIS",
    "auto": true,
    "registration": {
-    "mechanism": "UNKNOWN",
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
     "destination": null,
     "status": "UNKNOWN",
     "sourceUrlClass": "UNKNOWN",
     "confidence": "LOW",
-    "discoveryMethod": "fetch_error:ConnectionError"
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -3992,12 +4028,12 @@
    "auto": true,
    "mode": "ONLINE",
    "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
+    "mechanism": "MICROSOFT_FORMS",
+    "destination": "https://forms.cloud.microsoft/r/rBNZY3t9jk",
+    "status": "OPEN",
     "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "LOW",
-    "discoveryMethod": "hkgbc_detail_fetch_fail"
+    "confidence": "HIGH",
+    "discoveryMethod": "hkgbc_detail_microsoft_forms,pos_text,in_detail"
    }
   },
   {
@@ -4700,10 +4736,7 @@
     "sourceUrlClass": "UNKNOWN",
     "confidence": "LOW",
     "discoveryMethod": "page_no_candidate"
-   },
-   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
-   "venueSource": "event_detail",
-   "mode": "FACE_TO_FACE"
+   }
   },
   {
    "id": "aac2ad90a976f",
@@ -4761,7 +4794,7 @@
    "venue": "Paul Y Room, 10/F, HKIE HQ",
    "modeText": "HYBRID / online",
    "attendanceMode": "HYBRID / online",
-   "description": "Dear members Technical Seminar Working Smarter with AI: Practical Tools and Tips for Engineers Organised by EL Division 27 November 2026 Please note that the Technical Seminar Working Smarter with AI: Practical Tools and Tips for Engineers will be held on 27 November 2026 from 6:30PM - 8:30PM at Paul Y Room, 10/F, the HKIE Headquarters . The event is free of charge. Registration is required. The number of participants is limited to 30. Applications will be accepted on a first-come first-served basis. Priority will be given to members of EL Division. For details, please click here . For registration, please register online at https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Tj-JM5czq0y7PJIkv36vutF8FfD2vOZOv5HIVv2-RbNUNVU4QlhOWDg3R08wUEI4MUQ2TDZMQUxZVS4u&origin=QRCode . The deadline for registration is 24 November 2026 . Successful applicants will be notified separately. For enquiries, please contact Ir. Dr. KF Wong via Email: hkkfwong@yahoo.com.hk . Electrical Division Committee",
+   "description": "Dear members Technical Seminar Working Smarter with AI: Practical Tools and Tips for Engineers Organised by EL Division 27 November 2026 Please note that the Technical Seminar Working Smarter with AI: Practical Tools and Tips for Engineers will be held on 27 November 2026 from 6:30PM - 8:30PM at Paul Y Room, 10/F, the HKIE Headquarters . The event is free of charge. Registration is required. The number of participants is limited to 14 (online is limited to 500 ). Applications will be accepted on a first-come first-served basis. Priority will be given to members of EL Division. For details, please click here . For registration, please register online at https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Tj-JM5czq0y7PJIkv36vutF8FfD2vOZOv5HIVv2-RbNUNVU4QlhOWDg3R08wUEI4MUQ2TDZMQUxZVS4u&origin=QRCode . The deadline for registration is 24 November 2026 . Successful applicants will be notified separately. For enquiries, please contact Ir. Dr. KF Wong via Email: hkkfwong@yahoo.com.hk . Electrical Division Committee",
    "venueSource": "event_detail",
    "division": "Electrical Division",
    "mode": "HYBRID",
@@ -4800,6 +4833,34 @@
     "sourceUrlClass": "UNKNOWN",
     "confidence": "MEDIUM",
     "discoveryMethod": "page_scan_pdf,pos_text"
+   }
+  },
+  {
+   "id": "acacf884ce8d4",
+   "name": "「6號幹線『螢』造未來」光影時尚音樂夜",
+   "org": "HKIS CPD",
+   "date": "2026-11-28",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6902",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -5835,12 +5896,12 @@
    "group": "OSHC",
    "auto": true,
    "registration": {
-    "mechanism": "REGISTRATION_CLOSED",
+    "mechanism": "OSHC_PORTAL",
     "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9924",
-    "status": "CLOSED",
+    "status": "OPEN",
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
-    "discoveryMethod": "oshc_activity_closed_text"
+    "discoveryMethod": "event_url_oshc_activity"
    }
   },
   {
@@ -5988,6 +6049,13 @@
       "safePrefill": false
      },
      {
+      "entryId": "entry.661071019",
+      "profileField": null,
+      "label": "First Name / Given Name (Alan, Billy, Tai Man etc)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
       "entryId": "entry.1091755925",
       "profileField": null,
       "label": "Last Name / Family Name (Chan, Cheung etc)",
@@ -6037,6 +6105,13 @@
       "safePrefill": false
      },
      {
+      "entryId": "entry.2084971144",
+      "profileField": null,
+      "label": "Attendance is available in person or online.",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
       "entryId": "entry.1425038414",
       "profileField": null,
       "label": "An attendance certificate will be issued after completion of the seminar.",
@@ -6056,6 +6131,36 @@
    "venueSource": "event_detail",
    "division": "Control, Automation & Instrumentation Division",
    "mode": "HYBRID"
+  },
+  {
+   "id": "a6fca3814221b",
+   "name": "Physical Seminar on Construction Lifting Safety (4 December 2026)",
+   "org": "OSHC",
+   "date": "2026-12-04",
+   "time": "19:00-21:30",
+   "hrs": 2.5,
+   "hrs_est": true,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://sms.oshc.hk/online/activityE.aspx?activityid=9924",
+   "region": "HK",
+   "online": false,
+   "free": null,
+   "source": "OSHC 職安局 研討會",
+   "group": "OSHC",
+   "auto": true,
+   "registration": {
+    "mechanism": "OSHC_PORTAL",
+    "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9924",
+    "status": "OPEN",
+    "sourceUrlClass": "DIRECT_REGISTRATION",
+    "confidence": "HIGH",
+    "discoveryMethod": "event_url_oshc_activity",
+    "requiresManualCompletion": true
+   },
+   "venue": "5/F London Chinese Restaurant, Good Hope Building, 612-618 Nathan Rd, Mong Kok"
   },
   {
    "id": "a5789f9eee521",
@@ -6421,6 +6526,129 @@
    }
   },
   {
+   "id": "a511f8af3cbeb",
+   "name": "Aviation Safety Investigation Course",
+   "org": "Aircraft Division",
+   "date": "2026-12-07",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "Aircraft"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6afd46e11f1d426669c81033/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSfRJgVOS4M4e3EBOepjOsriNCbOGKwxItkoaYI5dCYaxp8Fnw/viewform",
+    "formId": "1FAIpQLSfRJgVOS4M4e3EBOepjOsriNCbOGKwxItkoaYI5dCYaxp8Fnw",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.1382448019",
+      "profileField": null,
+      "label": "1. Title",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1692413166",
+      "profileField": null,
+      "label": "2. Surname + Given Name (per HKID / Passport)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.674143804",
+      "profileField": null,
+      "label": "3. ID / Passport No (for CASL TRA Permit application)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1610768215",
+      "profileField": "email",
+      "label": "4. Contact e-mail",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.261265215",
+      "profileField": null,
+      "label": "5. WhatsApp No.",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1396355913",
+      "profileField": "organisation",
+      "label": "6. Organisation",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.364249019",
+      "profileField": null,
+      "label": "7. Department / Section",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1820411641",
+      "profileField": "position",
+      "label": "8. Job Title",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.600393236",
+      "profileField": "hkieNumber",
+      "label": "9. HKIE Membership No. (pls enter N/A if not applicable)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.459645669",
+      "profileField": null,
+      "label": "10. Are you a member of the Aircraft Divison / Aircraft Discipline?",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.583043139",
+      "profileField": null,
+      "label": "11. My objectives in attending this Course:",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.89505589",
+      "profileField": null,
+      "label": "12. My areas of particular interest:",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "CASL Training Department, China Aircraft Services Limited - 6/F, 81 South Perimeter Road Hong Kong International Airport Lantau, Hong Kong",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "Aviation Safety Investigation Course Organised by the Aircraft Division, HKIE Supported by Cranfield University Facilitators: · Professor Graham Braithwaite, Director of Aerospace and Aviation/ Professor of Safety and Accident Investigation, Cranfield University · Mr Craig Cattell, Senior Lecturer in Air Safety Investigation, Centre for Safety & Accident Investigation, Cranfield University Course Coordinator: Ir Warren CHIM Date, Time & Venue: · Course ASI26/01:7-11 December 2026; 9:15am to 5:30 pm · CASL Training Department, China Aircraft Services Limited -6/F, 81 South Perimeter Road, Hong Kong International Airport Lantau, Hong Kong Registration & Enquiries: · Registration fee: HK$22,000 · Prior registration is required · Limited to 25 participants for each course, with priority given to HKIE Aircraft Discipline ( ACE) / Aircraft Division (AC) members · Click HERE to register. Deadline: 27November 2026 or when registration is full · Payment options: 1. Transfer to HSBC account number741-685168-001(Aircraft Division) and e-mail the transaction slip with the applicant’s name(s) to HKIE.AC.2018@gmail.com 2. Write a cheque payable to “The Hong Kong Institution of Engineers - Aircraft Division” and mail to Ir Warren CHIM at P.O. Box 126 Tung Chung Post Office by 1 December 2026 · Successful applicants will be notified by e-mail on or before 4December 2026 For enquiries , please contact Ir Warren CHIM at 91056657 (WhatsApp) or e-mail: HKIE.AC.2018@gmail.com . Course Objectives & Learning Outcomes: On successful completion of this module a student should be able to: · describe the accident investigation process in the aviation industry; · identify roles and responsibilities within the accident investigation process; · critically assess analysis techniques used in accident investigation; · evaluate common causal factors; · undertake an investigative interview using the PEACE model; · collect and analyses human factors evidence; · make effective recommendations. Course O",
+   "venueSource": "event_detail",
+   "division": "Aircraft Division",
+   "mode": "FACE_TO_FACE"
+  },
+  {
    "id": "a00578bd8ead5",
    "name": "ChinaGBC & SGBA - 熱帶、亞熱帶 (夏熱冬暖) 地區綠建大會（2026年12月7至9日）(Chinese only)",
    "org": "HKGBC",
@@ -6560,6 +6788,44 @@
     "confidence": "HIGH",
     "discoveryMethod": "ice_cloudflare_or_403"
    }
+  },
+  {
+   "id": "a40a02e2a1cf2",
+   "name": "Young or Ready Series - A Route to Become a Professional Fire Engineer (Jointly organised by HKIE YMC and Fire Division)",
+   "org": "Young Members Committee",
+   "date": "2026-12-08",
+   "time": "18:30-19:30",
+   "hrs": 1.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Fire"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6afd22031f1d426669c7fb26/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLScZZoLIeTU5cUtM_og0awo2G2WR2CKfXcbQB3iFYGFJy0cL4g/viewform",
+    "formId": "1FAIpQLScZZoLIeTU5cUtM_og0awo2G2WR2CKfXcbQB3iFYGFJy0cL4g",
+    "status": "CLOSED",
+    "fields": [],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "HKIE Headquarters",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "Young or Ready Series - A Route to Become a Professional Fire Engineer (Jointly organised by HKIE YMC and Fire Division) Date, Time & Venue 8 December 2026 (Tue); 6:30pm-7:30pm; HKIE Headquarters Programme Highlights This hybrid mode seminar is designed to equip young members, graduates and students with essential insights into pursuing professional qualification in the Fire Discipline. Jointly organised by the HKIE YMC and Fire Division, the session will cover key pathways and requirements to becoming a professional fire engineer, along with a dedicated discussion on professional ethics and responsibilities for fire engineers in practice. The main topics include: Routes towards HKIE Corporate Membership in the Fire Discipline Overview and key requirements of competence-based professional assessment Discussion on professional ethics, conduct, and responsibilities for fire engineers Tips for preparation and success in professional assessment Speaker(s): Ir Prof. Eric Wai Ming LEE Chairman of HKIE Fire Division Committee (2026/27) Professor, Department of Architecture & Civil Engineering Language: The workshop will be conducted in English. Registration & Enquiries This seminar is free of charge and the number of participants is limited to 30 (physical mode) and 500 (online mode) respectively. The applications will be accepted on a first-come first-served basis with priority given to Young Members. For registration, please fill in the registration form at LINK by 4 December 2026. Successful applicants will be notified individually. For enquiries, please contact Ir CHUNG, Sze Ho by e-mail: hkiegpgymc@gmail.com .",
+   "venueSource": "event_detail",
+   "division": "Young Members Committee",
+   "mode": "FACE_TO_FACE"
   },
   {
    "id": "a793bce29a623",
@@ -7501,6 +7767,34 @@
    }
   },
   {
+   "id": "a072a1367608d",
+   "name": "Environment and Conservation Fund Green Building Education and Capacity Building Programmes - Micro-credential Topical Course - Building Whole Life Cycle Carbon Assessment (WLCA): From Data to Report (Hands-on Workshop)",
+   "org": "HKGBC",
+   "date": "2026-12-15",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1102",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true,
+   "registration": {
+    "mechanism": "MICROSOFT_FORMS",
+    "destination": "https://forms.cloud.microsoft/r/dHHfUqmRNq",
+    "status": "OPEN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkgbc_detail_microsoft_forms,pos_text,in_detail"
+   }
+  },
+  {
    "id": "a48b6c61ccd17",
    "name": "SCCT-HKCI - Joint SCCT-HKCI International Conference on Concrete Technologies 2026",
    "org": "HKGBC",
@@ -8063,6 +8357,119 @@
    }
   },
   {
+   "id": "af7334b61c27c",
+   "name": "Aerospace Quality Management Systems Lead Auditor Training",
+   "org": "Aircraft Division",
+   "date": "2027-01-11",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "GPM",
+   "disc": [
+    "Aircraft"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6afd48bf1f1d426669c8127f/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSeINuMNjMBLegaliMYRwb_ZfK6uIm5VqlEVSQU9ppL5qSZx_Q/viewform",
+    "formId": "1FAIpQLSeINuMNjMBLegaliMYRwb_ZfK6uIm5VqlEVSQU9ppL5qSZx_Q",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.1108561684",
+      "profileField": null,
+      "label": "Salutation",
+      "type": "DROPDOWN",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1962313929",
+      "profileField": null,
+      "label": "English name on HKID (Surname, Given name)",
+      "type": "PARAGRAPH",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.187427202",
+      "profileField": "email",
+      "label": "Email address",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1089773100",
+      "profileField": null,
+      "label": "Contact phone number",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1968402100",
+      "profileField": null,
+      "label": "WhatsApp phone number (for the purpose of group notification during the course)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.295269504",
+      "profileField": null,
+      "label": "HKID card number (alphabet and first 4 digits only, eg. A1234xxx)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.296109574",
+      "profileField": null,
+      "label": "Are you a member of HKIE?",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1064851310",
+      "profileField": "hkieNumber",
+      "label": "HKIE membership number (if applicable)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1797103169",
+      "profileField": "organisation",
+      "label": "Organization that you are working for",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1999844567",
+      "profileField": "position",
+      "label": "Your job title in the organization",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1120764379",
+      "profileField": null,
+      "label": "Your job function or responsibility in quality management systems (can select more than one box)",
+      "type": "CHECKBOX",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "BSI Hong Kong office, 23rd Floor, Cambridge House, Taikoo Place, 979 King’s Road, Hong Kong",
+   "description": "Organiser Aircraft Division, The Hong Kong Institution of Engineers (HKIE) Collaborating partner British Standards Institution (BSI) Date 11-15 January 2027 (09:00– 17:00) Venue BSI Hong Kong office, 23rd Floor, Cambridge House, Taikoo Place, 979 King’s Road, Hong Kong Class size Maximum class size: 20 participants Specification(s) AS9100:2016 (Revision D) Lead Auditor Training- The course is certified by Probitas Authentication, and meets the applicable training requirements of AS9104/3 Registration Complete the online registration form via the following link: Registration Form Registration deadline: 18 December 2026 Medium of instruction English Training mode (i) Classroom training delivered by qualified BSI trainer (ii) Practical auditing practices and skills shared by HKIE subject matter experts Course Fee HKD 13,800 Payment method Payment details will be provided to successful applicants MATF pre-approved course Professional Training and Examination Refund Scheme under the Maritime and Aviation Training Fund (http://www.matf.gov.hk) - Pre-approved Course Code AC203 Certificate Refer to the Certificate & Recognition section Enquiry Please contact Ir Thomas Tam at 91728372 or thomas.tam.kw@gmail.com Course objectives and learning outcomes: AS9100:2016 is an internationally recognised quality management system standard for the aviation, space and defence industries. It supports organisations in meeting customer and applicable statutory and regulatory requirements, enhancing customer satisfaction and continually improving their quality management systems. This intensive five-day AS9100:2016 Lead Auditor Training Course introduces internationally recognised auditing practices and equips participants with the knowledge and skills required to lead audit activities within their organisations. Participants will gain an understanding of the requirements of ISO 9001:2015 and AS9100:2016. They will also develop the skills needed to plan, conduct, report and follow up on au",
+   "venueSource": "event_detail",
+   "division": "Aircraft Division"
+  },
+  {
    "id": "ae78722a328c9",
    "name": "Making Construction Better through Installation safety & Quality Assurance",
    "org": "HKIS CPD",
@@ -8260,6 +8667,72 @@
    }
   },
   {
+   "id": "a81978cd22836",
+   "name": "Physical Seminar on Work and Cardiovascular and Cerebrovascular Diseases (14/1/2027)",
+   "org": "OSHC",
+   "date": "2027-01-14",
+   "time": "19:00-21:30",
+   "hrs": 2.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://sms.oshc.hk/online/activityE.aspx?activityid=9945",
+   "region": "HK",
+   "online": false,
+   "free": null,
+   "source": "OSHC 職安局 研討會",
+   "group": "OSHC",
+   "auto": true,
+   "registration": {
+    "mechanism": "OSHC_PORTAL",
+    "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9945",
+    "status": "OPEN",
+    "sourceUrlClass": "DIRECT_REGISTRATION",
+    "confidence": "HIGH",
+    "discoveryMethod": "event_url_oshc_activity",
+    "requiresManualCompletion": true
+   },
+   "venue": "5/F London Chinese Restaurant, Good Hope Building, 612-618 Nathan Rd, Mong Kok"
+  },
+  {
+   "id": "a3385ab99339a",
+   "name": "Quality Supervision of Soil Nail Construction 2026",
+   "org": "Geotechnical Division",
+   "date": "2027-01-23",
+   "time": "09:00-18:00",
+   "hrs": 9.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Geotechnical",
+    "Civil"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ae84a7d1f1d426669bf372a/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "United Conference Centre, 10/F, 95 Queensway, Admiralty, Hong Kong",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "venueSource": "event_detail",
+   "division": "Geotechnical Division",
+   "civil_related": true,
+   "mode": "FACE_TO_FACE",
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6ae84a7d1f1d426669bf372a&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
+   }
+  },
+  {
    "id": "a1663330eedf3",
    "name": "Visit to Christ The King Chapel (基督君王小堂)",
    "org": "HKIS CPD",
@@ -8279,12 +8752,12 @@
    "group": "HKIS",
    "auto": true,
    "registration": {
-    "mechanism": "UNKNOWN",
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
     "destination": null,
     "status": "UNKNOWN",
     "sourceUrlClass": "UNKNOWN",
     "confidence": "LOW",
-    "discoveryMethod": "fetch_error:ReadTimeout"
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -8312,7 +8785,7 @@
     "status": "UNKNOWN",
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "LOW",
-    "discoveryMethod": "hkgbc_detail_no_reg"
+    "discoveryMethod": "hkgbc_detail_fetch_fail"
    }
   },
   {
