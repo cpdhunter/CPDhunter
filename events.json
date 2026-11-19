@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-19T07:02+08:00",
+ "updated": "2026-11-20T06:57+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -37,12 +37,12 @@
    "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 5,
+   "n": 4,
    "method": "csb-table",
    "page_title": "Civil Service Bureau -  COMING EVENTS",
    "raw_candidates": 14,
    "rejects": {
-    "date_range": 9
+    "date_range": 10
    }
   },
   {
@@ -101,10 +101,10 @@
    "source": "HKIE Events",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 52,
+   "n": 54,
    "method": "hkie-eventlist+detail",
    "page_title": "Events - HKIE",
-   "raw_candidates": 54,
+   "raw_candidates": 56,
    "rejects": {
     "social": 2
    }
@@ -145,25 +145,25 @@
    "source": "HKIS CPD",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 16,
+   "n": 15,
    "method": "generic",
    "page_title": "THE HONG KONG INSTITUTE OF SURVEYORS :: CPD",
    "raw_candidates": 20,
    "rejects": {
     "social": 1,
-    "date_range": 3
+    "date_range": 4
    }
   },
   {
    "source": "HKGBC 綠建環評",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 24,
+   "n": 25,
    "method": "hkgbc",
    "page_title": "Events & Trainings | HKGBC",
    "raw_candidates": 40,
    "rejects": {
-    "date_range": 16
+    "date_range": 15
    }
   },
   {
@@ -3692,139 +3692,8 @@
     "mechanism": "GOOGLE_FORMS",
     "destination": "https://docs.google.com/forms/d/e/1FAIpQLSfEtO3sv1PYLFoABIsaC5pVpJdzkcB3Kll4rMSqhGzdMehGaw/viewform",
     "formId": "1FAIpQLSfEtO3sv1PYLFoABIsaC5pVpJdzkcB3Kll4rMSqhGzdMehGaw",
-    "status": "OPEN",
-    "fields": [
-     {
-      "entryId": "entry.596836427",
-      "profileField": "email",
-      "label": "Re-type Email",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1948907952",
-      "profileField": "phone",
-      "label": "Mobile Phone Number",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.173346409",
-      "profileField": null,
-      "label": "Age",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1604757983",
-      "profileField": null,
-      "label": "Gender",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.99036598",
-      "profileField": null,
-      "label": "Title",
-      "type": "CHECKBOX",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.88192021",
-      "profileField": null,
-      "label": "Last Name",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1490241748",
-      "profileField": null,
-      "label": "First Name",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.487026138",
-      "profileField": null,
-      "label": "Company / Organization Name",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1178137832",
-      "profileField": "position",
-      "label": "Position",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.504454828",
-      "profileField": null,
-      "label": "Professional Associations/Institutions",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.627615799",
-      "profileField": "hkieNumber",
-      "label": "HKIE Membership No.",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.396761149",
-      "profileField": "primaryDiscipline",
-      "label": "Discipline",
-      "type": "DROPDOWN",
-      "safePrefill": true,
-      "options": [
-       "Aircraft (ACE)",
-       "Biomedical (BME)",
-       "Building Services (BSS)",
-       "Building (BUD)",
-       "Control, Automation & Instrumentation (CAI)",
-       "Chemical (CML)",
-       "Civil (CVL)",
-       "Electrical (ELL)",
-       "Electronics (ENS)",
-       "Environmental (ENV)",
-       "Energy (ENY)",
-       "Fire (FRE)",
-       "Gas (GAS)",
-       "Geotechnical (GEL)",
-       "Information (INF)",
-       "Logistics & Transportation (LTE)",
-       "Materials (MAT)",
-       "Mechanical (MCL)",
-       "Manufacturing, Industrial & Systems (MIS)",
-       "Marine & Naval Architecture (MNA)",
-       "Nuclear (NUE)",
-       "Structural (STL)",
-       "Others"
-      ]
-     },
-     {
-      "entryId": "entry.1561352935",
-      "profileField": null,
-      "label": "Please let us know if you have any advanced questions about the topic that you would like to ask in the event.",
-      "type": "PARAGRAPH",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1262819182",
-      "profileField": null,
-      "label": "I confirm that I will be physically present to attend this event, and I will complete any payment before the deadline upon notice of successful registration.",
-      "type": "DROPDOWN",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1194592234",
-      "profileField": null,
-      "label": "I confirm my consent to follow any instructions given by the organizer(s) for participation in the above event. I understand that neither the Institution nor the parties concerned would accept any liability in connection with the above event.",
-      "type": "DROPDOWN",
-      "safePrefill": false
-     }
-    ],
+    "status": "CLOSED",
+    "fields": [],
     "requiresManualCompletion": true,
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
@@ -3891,7 +3760,7 @@
     "status": "UNKNOWN",
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "LOW",
-    "discoveryMethod": "hkgbc_detail_no_reg"
+    "discoveryMethod": "hkgbc_detail_fetch_fail"
    }
   },
   {
@@ -4087,6 +3956,42 @@
    "description": "Host: Our Hong Kong Foundation (OHKF), Global Sustainable Development Research Institute and Hong Kong Green Energy Week Secretariat Tel: 2603 3001 Email: events@ourhkfoundation.org.hk Event Website: https://www.ourhkfoundation.org.hk/en/events/%E4%BA%9E%E5%A4%AA%E8%83%BD%E6%BA%90%E8%BD%89%E5%9E%8B%E6%99%BA%E5%BA%AB%E8%AB%96%E5%A3%87-2026",
    "venueSource": "event_detail",
    "division": "Other Organiser(s)",
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_no_reg_link"
+   }
+  },
+  {
+   "id": "a0c6e2b920d03",
+   "name": "Talk on Streamlined Membership Pathway for ICE Members to become HKIE Corporate Member (Civil Discipline)",
+   "org": "Civil Division",
+   "date": "2026-11-24",
+   "time": "18:30-19:30",
+   "hrs": 1.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Civil"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6afeb4821f1d426669c8e4c5/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Chan Yat Mei Sophia Room, HKIE, 9/F, Island Beverley, No. 1 Great George Street, Causeway Bay, Hong Kong",
+   "modeText": "Hybrid with Webinar Link (Link to be provided after registration before one day of the event)",
+   "attendanceMode": "Hybrid with Webinar Link (Link to be provided after registration before one day ",
+   "description": "Update: 24 Nov 2026 seminar start time changed from 06:00 PM to 06:30PM Talk on Streamlined Membership Pathway for ICE Members to become HKIE Corporate Member (Civil Discipline) Date/Time: 24 Nov 2026,06:30 PM - 07:30 PM Venue: Chan Yat Mei Sophia Room, HKIE, 9/F, Island Beverley, No. 1 Great George Street, Causeway Bay, Hong Kong/ Hybrid with Webinar Link (Link to be provided after registration before one day of the event) Organised by: HKIE Civil Division and Civil Discipline Advisory Panel Language : English & Cantonese Free of Charge Programme Highlights: The Hong Kong Institution of Engineers (HKIE) is pleased to invite Members of the Institution of Civil Engineers (ICE) to utilise a tailor-made simplified pathway to Corporate Membership in the Civil Discipline of HKIE. Based on the renewed Reciprocal Recognition Agreement (RRA) between HKIE and ICE, the Members of ICE qualified as a Chartered Civil Engineer, satisfying the relevant requirements, can enjoy the streamlined application process, which may include a direct entry without professional interview. We welcome MICEs to join our vibrant engineering community and expand your professional recognition in Hong Kong and beyond. About the Seminar: The talk will cover the RRA process including eligibility criteria, the use of dedicated checklist, the key document preparation tips, the benefit and the application details of the streamlined pathway, and the timeline for processing the application. Registration & Enquiries: * The number of in-person participants is limited to 70. Interested MICEs are invited to register by clicking the link below: https://lnkd.in/g3RixAx7 * Application will be accepted on a first-come-first-served basis. Successful applicants will be informed by email. *For enquiry, please contact Ir Stephen Mak via email : hkieciviltechnicalmeeting@gmail.com",
+   "venueSource": "event_detail",
+   "division": "Civil Division",
+   "civil_related": true,
+   "mode": "HYBRID",
    "registration": {
     "mechanism": "REGISTRATION_LINK_NOT_FOUND",
     "destination": null,
@@ -4736,7 +4641,10 @@
     "sourceUrlClass": "UNKNOWN",
     "confidence": "LOW",
     "discoveryMethod": "page_no_candidate"
-   }
+   },
+   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
+   "venueSource": "event_detail",
+   "mode": "FACE_TO_FACE"
   },
   {
    "id": "aac2ad90a976f",
@@ -4942,107 +4850,8 @@
     "mechanism": "GOOGLE_FORMS",
     "destination": "https://docs.google.com/forms/d/e/1FAIpQLSdt0VAvURzteIaObfRqrLwh3MAstDmsyaBs02A1h8b2vUlepQ/viewform",
     "formId": "1FAIpQLSdt0VAvURzteIaObfRqrLwh3MAstDmsyaBs02A1h8b2vUlepQ",
-    "status": "OPEN",
-    "fields": [
-     {
-      "entryId": "entry.311611423",
-      "profileField": null,
-      "label": "Title",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.126013665",
-      "profileField": null,
-      "label": "Surname (e.g. Chan)",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1882341507",
-      "profileField": null,
-      "label": "First Name (e.g. Tai Man, Peter)",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1070577827",
-      "profileField": "hkieNumber",
-      "label": "Membership No.",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.340454270",
-      "profileField": "organisation",
-      "label": "Company",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.873550834",
-      "profileField": "position",
-      "label": "Position",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1343225921",
-      "profileField": "email",
-      "label": "Email Address:",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.821229015",
-      "profileField": "phone",
-      "label": "Mobile No.:",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1327828315",
-      "profileField": null,
-      "label": "Emergency Contact Number",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1952212531",
-      "profileField": null,
-      "label": "Emergency Contact Person",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.772327639",
-      "profileField": null,
-      "label": "Relationship to Participant",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.762538058",
-      "profileField": null,
-      "label": "Are you member of the Organizers?",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1087650441",
-      "profileField": null,
-      "label": "Note 1: All successful participants should be required their own valid passport, entry permit or visa, Home Return Permit during the time of the visit",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.658884543",
-      "profileField": null,
-      "label": "Important Note:  I confirm my consent to follow any and all safety instructions given by the organizer (s) and/or the owner of the premises/sites and to well equip myself with necessary safety gear for participation in the event.  I understand that neither the Institution nor the parties concerned would accept any liability in connection with the above event.  The information provided will only be used for the purpose of communicating with you on matters related to the activity. You have rights of access and correction with respect to your personal data held by us. If you wish to exercise these rights, please contact the Division/ Committee concerned or the HKIE Secretariat. The personal information collected is solely for the arrangement on this event and they will be destroyed after the event.",
-      "type": "RADIO",
-      "safePrefill": false
-     }
-    ],
+    "status": "CLOSED",
+    "fields": [],
     "requiresManualCompletion": true,
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
@@ -8297,6 +8106,34 @@
    }
   },
   {
+   "id": "a52d54ffc0a64",
+   "name": "ECC, EEB & 9 related organisations - 2026 Hong Kong Awards for Environmental Excellence (HKAEE) [Submission Deadline: 31 Dec 2026]",
+   "org": "HKGBC",
+   "date": "2026-12-31",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1103",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_detail_no_reg"
+   }
+  },
+  {
    "id": "a49120e4ad0ab",
    "name": "Visit to International Gateway Centre (IGC)",
    "org": "HKIS CPD",
@@ -8697,6 +8534,175 @@
    "venue": "5/F London Chinese Restaurant, Good Hope Building, 612-618 Nathan Rd, Mong Kok"
   },
   {
+   "id": "aa4e1c80d8432",
+   "name": "Five Senses Tour at Chungking Mansions 重慶大廈五感導賞團 [Jointly Organised with HKIE CPDC]",
+   "org": "Young Members Committee",
+   "date": "2027-01-16",
+   "time": "14:45-16:45",
+   "hrs": 2.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6afe8d691f1d426669c8cf9b/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSdgS4oFzzItM5DqWysWWmwP9i2fybKamKISUV1ihqDGpMHZsQ/viewform",
+    "formId": "1FAIpQLSdgS4oFzzItM5DqWysWWmwP9i2fybKamKISUV1ihqDGpMHZsQ",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.596836427",
+      "profileField": "email",
+      "label": "Re-type Email",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1948907952",
+      "profileField": "phone",
+      "label": "Mobile Phone Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.173346409",
+      "profileField": null,
+      "label": "Age",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1604757983",
+      "profileField": null,
+      "label": "Gender",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.99036598",
+      "profileField": null,
+      "label": "Title",
+      "type": "CHECKBOX",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.88192021",
+      "profileField": null,
+      "label": "Last Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1490241748",
+      "profileField": null,
+      "label": "First Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.487026138",
+      "profileField": null,
+      "label": "Company / Organization Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1178137832",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.504454828",
+      "profileField": null,
+      "label": "Professional Associations/Institutions",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.627615799",
+      "profileField": "hkieNumber",
+      "label": "HKIE Membership No.",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.396761149",
+      "profileField": "primaryDiscipline",
+      "label": "Discipline",
+      "type": "DROPDOWN",
+      "safePrefill": true,
+      "options": [
+       "Aircraft (ACE)",
+       "Biomedical (BME)",
+       "Building Services (BSS)",
+       "Building (BUD)",
+       "Control, Automation & Instrumentation (CAI)",
+       "Chemical (CML)",
+       "Civil (CVL)",
+       "Electrical (ELL)",
+       "Electronics (ENS)",
+       "Environmental (ENV)",
+       "Energy (ENY)",
+       "Fire (FRE)",
+       "Gas (GAS)",
+       "Geotechnical (GEL)",
+       "Information (INF)",
+       "Logistics & Transportation (LTE)",
+       "Materials (MAT)",
+       "Mechanical (MCL)",
+       "Manufacturing, Industrial & Systems (MIS)",
+       "Marine & Naval Architecture (MNA)",
+       "Nuclear (NUE)",
+       "Structural (STL)",
+       "Others"
+      ]
+     },
+     {
+      "entryId": "entry.1561352935",
+      "profileField": null,
+      "label": "Please let us know if you have any advanced questions about the topic that you would like to ask in the event.",
+      "type": "PARAGRAPH",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1262819182",
+      "profileField": null,
+      "label": "I confirm that I will be physically present to attend this event, and I will complete any payment before the deadline upon notice of successful registration.",
+      "type": "DROPDOWN",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1194592234",
+      "profileField": null,
+      "label": "I confirm my consent to follow any instructions given by the organizer(s) for participation in the above event. I understand that neither the Institution nor the parties concerned would accept any liability in connection with the above event.",
+      "type": "DROPDOWN",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "Tsim Sha Tsui",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "Five Senses Tour at Chungking Mansions 重慶大廈五感導賞團 [Jointly Organised with HKIE CPDC] Date, Time & Venue 16 January 2027 (Saturday); 2:45 pm – 4:45 pm; Tsim Sha Tsui Programme Highlights Join the HKIE YMC for an immersive exploration of one of Hong Kong's most iconic landmarks. Since the 1960s, Chungking Mansions has been a crossroads of cultures, connecting people from across Asia, Africa, the Middle East, and beyond. Through its rich history, diverse communities, and vibrant atmosphere, it has become a unique symbol of Hong Kong's international character. Experience Chungking Mansions through all five senses and uncover the stories, flavours, sounds, and cultures that have made this remarkable building a true global village in the heart of Tsim Sha Tsui. This event is jointly organised with HKIE Continuing Professional Development Committee. All participants must bring valid HKIE membership card on the day of the event. Language English and Cantonese Registration & Enquiries The number of participants is limited to 25 and prior registration is required. The registration fee is HK$50 (Half of the fee will be returned upon attendance of the event). Application will be accepted on a first-come-first-served basis with priority given to Young Members. For registration, please complete the online application form at https://forms.gle/EHBbaQrBEQUU8tXq5 by 11 December 2026 . Successful applicants will be notified by email. For enquiries, please contact Ir P Y Chan by email: scag.hkieymc@gmail.com .",
+   "venueSource": "event_detail",
+   "division": "Young Members Committee",
+   "mode": "FACE_TO_FACE"
+  },
+  {
    "id": "a3385ab99339a",
    "name": "Quality Supervision of Soil Nail Construction 2026",
    "org": "Geotechnical Division",
@@ -8785,7 +8791,7 @@
     "status": "UNKNOWN",
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "LOW",
-    "discoveryMethod": "hkgbc_detail_fetch_fail"
+    "discoveryMethod": "hkgbc_detail_no_reg"
    }
   },
   {
