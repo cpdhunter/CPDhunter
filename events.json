@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-20T06:57+08:00",
+ "updated": "2026-11-21T06:53+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -15,12 +15,12 @@
    "source": "OSHC Seminars & Conferences",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 9,
+   "n": 8,
    "method": "oshc-table",
    "page_title": "Seminars & Conferences",
    "raw_candidates": 585,
    "rejects": {
-    "date_range": 576
+    "date_range": 577
    }
   },
   {
@@ -37,23 +37,25 @@
    "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 4,
+   "n": 2,
    "method": "csb-table",
    "page_title": "Civil Service Bureau -  COMING EVENTS",
    "raw_candidates": 14,
    "rejects": {
-    "date_range": 10
+    "date_range": 12
    }
   },
   {
    "source": "CIC 建造業議會 Events",
-   "status": "EMPTY_UNVERIFIED",
-   "ok": false,
-   "n": 0,
-   "method": "cic-list",
+   "status": "OK_WITH_EVENTS",
+   "ok": true,
+   "n": 3,
+   "method": "playwright+cic-list",
    "page_title": "Events | Construction Industry Council",
-   "raw_candidates": 0,
-   "rejects": {}
+   "raw_candidates": 9,
+   "rejects": {
+    "date_range": 6
+   }
   },
   {
    "source": "CIC BIM Events",
@@ -101,10 +103,10 @@
    "source": "HKIE Events",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 54,
+   "n": 56,
    "method": "hkie-eventlist+detail",
    "page_title": "Events - HKIE",
-   "raw_candidates": 56,
+   "raw_candidates": 58,
    "rejects": {
     "social": 2
    }
@@ -145,13 +147,13 @@
    "source": "HKIS CPD",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 15,
+   "n": 14,
    "method": "generic",
    "page_title": "THE HONG KONG INSTITUTE OF SURVEYORS :: CPD",
    "raw_candidates": 20,
    "rejects": {
     "social": 1,
-    "date_range": 4
+    "date_range": 5
    }
   },
   {
@@ -227,7 +229,7 @@
    "ok": false,
    "n": 0,
    "method": "generic",
-   "page_title": "IET events and courses search",
+   "page_title": "",
    "raw_candidates": 0,
    "rejects": {}
   },
@@ -245,12 +247,12 @@
    "source": "TQM Consultants Training",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 4,
+   "n": 3,
    "method": "tqm-list+detail",
    "page_title": "Upcoming | TQM Consultants Co. Limited",
    "raw_candidates": 6,
    "rejects": {
-    "date_range": 2
+    "date_range": 3
    }
   }
  ],
@@ -1926,8 +1928,8 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
+    "confidence": "HIGH",
+    "discoveryMethod": "page_scan_google_forms,pos_text"
    },
    "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
    "venueSource": "event_detail",
@@ -3102,8 +3104,8 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
+    "confidence": "HIGH",
+    "discoveryMethod": "page_scan_google_forms,pos_text"
    },
    "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
    "venueSource": "event_detail",
@@ -3736,34 +3738,6 @@
    }
   },
   {
-   "id": "a00c208d03564",
-   "name": "DEVB & CSTID & CIC - CIExpo 2026 (23-25 Nov 2026)",
-   "org": "HKGBC",
-   "date": "2026-11-23",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1088",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "LOW",
-    "discoveryMethod": "hkgbc_detail_fetch_fail"
-   }
-  },
-  {
    "id": "aa90ded4f6271",
    "name": "Construction Innovation Expo 2026 (CIExpo 2026)",
    "org": "CIC",
@@ -3792,6 +3766,62 @@
    }
   },
   {
+   "id": "a324b3859ae00",
+   "name": "「6號幹線『螢』造未來」光影時尚音樂夜",
+   "org": "HKIS CPD",
+   "date": "2026-11-23",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6902",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
+   "id": "a00c208d03564",
+   "name": "DEVB & CSTID & CIC - CIExpo 2026 (23-25 Nov 2026)",
+   "org": "HKGBC",
+   "date": "2026-11-23",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1088",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_detail_no_reg"
+   }
+  },
+  {
    "id": "ae8d9b546d4a1",
    "name": "Online Open Seminar on \"Code of Practice on Safety Management and the related Safety Regulations\"",
    "org": "Occupational Safety and Health Council",
@@ -3812,12 +3842,12 @@
    "auto": true,
    "mode": "ONLINE",
    "registration": {
-    "mechanism": "OSHC_PORTAL",
+    "mechanism": "REGISTRATION_CLOSED",
     "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9915",
-    "status": "OPEN",
+    "status": "CLOSED",
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
-    "discoveryMethod": "event_url_oshc_activity"
+    "discoveryMethod": "oshc_activity_closed_text"
    }
   },
   {
@@ -4639,8 +4669,8 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
+    "confidence": "HIGH",
+    "discoveryMethod": "page_scan_google_forms,pos_text"
    },
    "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
    "venueSource": "event_detail",
@@ -4744,34 +4774,6 @@
    }
   },
   {
-   "id": "acacf884ce8d4",
-   "name": "「6號幹線『螢』造未來」光影時尚音樂夜",
-   "org": "HKIS CPD",
-   "date": "2026-11-28",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6902",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIS CPD",
-   "group": "HKIS",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
    "id": "acd5467354121",
    "name": "Visit to Loop at Hong Kong-Shenzhen Innovation and Technology Park (HSITP)",
    "org": "HKIS CPD",
@@ -4825,6 +4827,34 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
     "discoveryMethod": "hkgbc_detail_microsoft_forms,pos_text,in_detail"
+   }
+  },
+  {
+   "id": "acacf884ce8d4",
+   "name": "「6號幹線『螢』造未來」光影時尚音樂夜",
+   "org": "HKIS CPD",
+   "date": "2026-11-28",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6902",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -4901,34 +4931,6 @@
    "mode": "FACE_TO_FACE"
   },
   {
-   "id": "ae60e9459c208",
-   "name": "建造業議會 - 2026建造工友嘉年華 (Chinese only)",
-   "org": "HKGBC",
-   "date": "2026-11-29",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1086",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "LOW",
-    "discoveryMethod": "hkgbc_detail_no_reg"
-   }
-  },
-  {
    "id": "a03559f0a46f9",
    "name": "2026 Construction Workers Carnival",
    "org": "CIC",
@@ -4954,6 +4956,34 @@
     "sourceUrlClass": "UNKNOWN",
     "confidence": "LOW",
     "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
+   "id": "ae60e9459c208",
+   "name": "建造業議會 - 2026建造工友嘉年華 (Chinese only)",
+   "org": "HKGBC",
+   "date": "2026-11-29",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1086",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_detail_no_reg"
    }
   },
   {
@@ -5573,6 +5603,34 @@
    }
   },
   {
+   "id": "a9c92b856a9ba",
+   "name": "ITCTS Recruitment Day",
+   "org": "CIC",
+   "date": "2026-12-03",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events/detail.page-20261203",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
    "id": "a2ff55574083e",
    "name": "RCx CPD Webinar - Unlocking Building Performance Through Data-Driven RCx and ASHRAE Best Practices",
    "org": "HKGBC",
@@ -5619,34 +5677,6 @@
    "free": null,
    "source": "IStructE Events",
    "group": "IStructE",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
-   "id": "a9c92b856a9ba",
-   "name": "ITCTS Recruitment Day",
-   "org": "CIC",
-   "date": "2026-12-03",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events/detail.page-20261203",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
    "auto": true,
    "registration": {
     "mechanism": "REGISTRATION_LINK_NOT_FOUND",
@@ -5970,6 +6000,127 @@
     "requiresManualCompletion": true
    },
    "venue": "5/F London Chinese Restaurant, Good Hope Building, 612-618 Nathan Rd, Mong Kok"
+  },
+  {
+   "id": "ac0004c286bb2",
+   "name": "Technical Visit to West New Territories Landfill Extension (WENTX)",
+   "org": "Civil Division",
+   "date": "2026-12-05",
+   "time": "09:00-12:00",
+   "hrs": 3.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Civil"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6affef561f1d426669c975c2/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSe4c9J_leYY0BcszbrHuOO9PuC32mZCZJud7bCLtCa3JffbSQ/viewform",
+    "formId": "1FAIpQLSe4c9J_leYY0BcszbrHuOO9PuC32mZCZJud7bCLtCa3JffbSQ",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.475895186",
+      "profileField": null,
+      "label": "Any personal data provided in this registration form will be used for the purposes directly related to the processing of your registration and carrying out activities related to this event. You are required to supply the data in order to register for this event. The personal data provided may be transferred to other parties for purposes relating to this event where necessary. The HKIE intends to use the personal data you provided for the purpose of sending you information on other HKIE’s activities. You may request access to or correction of your personal data by addressing your request to the Event Secretariat.",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.286562577",
+      "profileField": null,
+      "label": "Surname (e.g. CHAN)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1477918872",
+      "profileField": null,
+      "label": "Given Name (e.g. Tai Man)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1692202978",
+      "profileField": "chineseName",
+      "label": "Chinese Name (e.g. 陳大文)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1328525008",
+      "profileField": "phone",
+      "label": "Contact Number (e.g. 98765432)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.890168226",
+      "profileField": null,
+      "label": "Email",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.595469506",
+      "profileField": null,
+      "label": "Are you HKIE Member?",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1934100774",
+      "profileField": "hkieNumber",
+      "label": "HKIE Membership No.  (e.g. MW0000000)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1352188363",
+      "profileField": null,
+      "label": "HKIE Division (e.g. Civil)",
+      "type": "CHECKBOX",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1428781905",
+      "profileField": "organisation",
+      "label": "Company Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1505210233",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.2045136886",
+      "profileField": null,
+      "label": "Participants must hold a valid Green Card and bring their own Personal Protective Equipment (including safety helmet, reflective vest and safety shoes) for site access.\nOnly successful applicants will be notified by phone or email on or before the visit. No separate notification will be issued to unsuccessful applicants.",
+      "type": "RADIO",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "WENTX Tuen Mun Site",
+   "description": "Technical Visit to West New Territories Landfill Extension (WENTX) Date, Time & Assembly Venue 5 December 2026, 09:00am – 12:00nn WENTX Tuen Mun Site Programme Highlight The West New Territories Landfill Extension (WENTX) is a major environmental infrastructure project undertaken by the Environmental Protection Department to meet the waste disposal needs of Hong Kong. Located at Nim Wan, Tuen Mun, adjacent to the existing West New Territories Landfill, the project involves extensive site formation, reclamation, seawall construction, leachate management systems, and the development of engineered landfill cells. Under the NEC4 Design, Build and Operate (DBO) contract, the project adopts innovative design approaches, including a deep bowl configuration to optimise utilisation of land while minimising environmental and visual impacts. A key highlight of this technical visit will be the leachate treatment facilities at WENTX, where participants will gain insights into the design, treatment processes, advanced treatment technologies and engineering challenges associated with managing landfill leachate. The visit will also provide opportunity to understand large-scale landfill development in a sensitive coastal environment, including site formation works, liner construction, sustainable waste management infrastructure and environmental protection measures, etc. The technical visit will commence with a project presentation covering the background, scope of works, key engineering challenges and current progress and followed by a guided site walk to the designated areas of the leachate treatment facilities. Participants will also be able to appreciate the scale of the landfill development in progress. Fee Free of charge Registration & Enquiries - Participants must hold a valid Green Card and bring their own Personal Protective Equipment (including safety helmet, reflective vest, and safety shoes) for site access. - The number of participants is limited to 20, on a first-come,",
+   "venueSource": "event_detail",
+   "division": "Civil Division",
+   "civil_related": true
   },
   {
    "id": "a5789f9eee521",
@@ -7014,11 +7165,149 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
+    "confidence": "HIGH",
+    "discoveryMethod": "page_scan_google_forms,pos_text"
    },
    "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
    "venueSource": "event_detail",
+   "mode": "FACE_TO_FACE"
+  },
+  {
+   "id": "aee6687310d27",
+   "name": "Joint Society Christmas Party 2026 – 80s Cantopop Night",
+   "org": "Young Members Committee",
+   "date": "2026-12-11",
+   "time": "18:30-22:00",
+   "hrs": 3.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6affc4441f1d426669c95ebf/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSf4S_aJTVlXZWrm5xrXumSgYny4O028QUbuPuxAawD_--7u6A/viewform",
+    "formId": "1FAIpQLSf4S_aJTVlXZWrm5xrXumSgYny4O028QUbuPuxAawD_--7u6A",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.1303776392",
+      "profileField": null,
+      "label": "Last Name (e.g. Chan)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1722848418",
+      "profileField": null,
+      "label": "First Name (e.g. Tai Man)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.447980378",
+      "profileField": null,
+      "label": "Gender",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1176149741",
+      "profileField": null,
+      "label": "Age",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.298634811",
+      "profileField": "phone",
+      "label": "Mobile Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.571894609",
+      "profileField": "email",
+      "label": "Email",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1341676829",
+      "profileField": "hkieNumber",
+      "label": "HKIE Membership No.",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1966230877",
+      "profileField": "primaryDiscipline",
+      "label": "Discipline",
+      "type": "RADIO",
+      "safePrefill": true,
+      "options": [
+       "Aircraft",
+       "Biomedical",
+       "Building",
+       "Building Services",
+       "Chemical",
+       "Civil",
+       "Control, Automation & Instrumentation",
+       "Electrical",
+       "Electronics",
+       "Energy",
+       "Environmental",
+       "Fire",
+       "Gas",
+       "Geotechnical",
+       "Information",
+       "Logistics & Transportation",
+       "Manufacturing, Industrial & Systems",
+       "Marine & Naval Architecture",
+       "Materials",
+       "Mechanical"
+      ]
+     },
+     {
+      "entryId": "entry.313455673",
+      "profileField": "organisation",
+      "label": "Company",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1361366346",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1127435718",
+      "profileField": null,
+      "label": "Disclaimer – Photo Usage Permission Release",
+      "type": "RADIO",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "Gulugulu, 4/F 10 Knutsford Terrace, Tsim Sha Tsui",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "Joint Societ y Christmas Party 2026 – 80s Cantopop Night (Jointly Organised with: AES YES, ASHRAE HKC YEA, CIBSE HKR YEN, CIPHE HKB YMC, ICE HKA G&S, IET HK YMS, IMechE HKB YMS , RICS ; Supported by HKILA YLAG, HKIS YSG, LEAPS and YEAHK .) Date, Time & Venue 1 1 December 202 6 (Friday), 6:30 pm – 10:00 pm, Gulugulu, 4/F 10 Knutsford Terrace, Tsim Sha Tsui Programme Highlights Step back in time and celebrate the festive season at our 80s Cantopop-themed Joint Societ y Christmas Party! Relive the golden era of Hong Kong music through nostalgic hits, exciting stage games, and interactive activities inspired by legendary Cantopop icons. Dress in your best retro fashion, sing along to timeless classics, and immerse yourself in the vibrant spirit of the 80s. Whether you're a devoted fan of the golden age or simply looking for a night of fun and festive cheer, join us for an unforgettable celebration filled with music, memories, and holiday magic. Let’s rock around the Christmas tree, Cantopop style! Fee HKD 3 5 0 per participant Registration & Enquiries The number of participants is limited to 10 participants from HKIE YMC and prior registration is required. The applications will be accepted on a first-come first-served basis with priority given to Young Member s of HKIE. For registration, please complete the enrollment form https://forms.gle/Ux46UvTeF1gFhjzXA on or before 30 November 2025 ( Mon ) 12:00 pm (Hong Kong Time) . Successful applicants will be notified individually by email/phone. For enquiries, please contact our representatives via e-mail: hkieymc.prg@gmail.com .",
+   "venueSource": "event_detail",
+   "division": "Young Members Committee",
    "mode": "FACE_TO_FACE"
   },
   {
@@ -7055,6 +7344,44 @@
     "confidence": "HIGH",
     "discoveryMethod": "hkie_eventdetail_portal"
    }
+  },
+  {
+   "id": "acb72f163011f",
+   "name": "Inspire the Next Series - Experience Sharing Workshop on Road to be Professional Electrical Engineer (Jointly organised by HKIE YMC and Electrical Division)",
+   "org": "Young Members Committee",
+   "date": "2026-12-12",
+   "time": "09:30-11:30",
+   "hrs": 2.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Electrical"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6affd4ce1f1d426669c966c9/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSdDQd3I_CGPFurxEDod0MftoONMUxYBMOfv6la8DDZkNI5Szg/viewform",
+    "formId": "1FAIpQLSdDQd3I_CGPFurxEDod0MftoONMUxYBMOfv6la8DDZkNI5Szg",
+    "status": "CLOSED",
+    "fields": [],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "Chun Wo & Hsin Chong Room, HKIE Headquarters",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "Inspire the Next Series - Experience Sharing Workshop on Road to be Professional Electrical Engineer (Jointly organised by HKIE YMC and Electrical Division) Date, Time & Venue 12 December 2026 (Sat); 9: 3 0am- 11:30am ; Chun Wo & Hsin Chong Room , HKIE Headquarters Programme Highlights This workshop is designed for young members and graduates who are preparing to apply for corporate membership and pursue professional qualification in the Electrical Discipline, featuring sharing by well-experienced and young professional electrical engineers. Jointly organised by the HKIE YMC and Electrical Division, the session will feature small group discussions on sharing the challenges encountered in professional assessments. Speaker(s): Ir Dr. Edward Lo Ir Gordon Woo Ir Simon Chung A young Engineer Target Participants: HKIE graduate members in Electrical Discipline Priority would be given to graduate member planning to apply for corporate membership in the coming year Language: The workshop will be conducted in Cantonese Registration & Enquiries This workshop is free of charge and the number of participants is limited to 30. Applications will be accepted on a first-come first-served basis, and with priority given to Young Members in electrical discipline who plan to apply for corporate membership in the coming year. For registration, please fill in the registration form at LINK by 5 December 2026. Successful applicants will be notified individually. For enquiries, please contact Mr Jason Kong by e-mail: hkiegpgymc@gmail.com .",
+   "venueSource": "event_detail",
+   "division": "Young Members Committee",
+   "mode": "FACE_TO_FACE"
   },
   {
    "id": "a3453744f8809",
@@ -7805,12 +8132,42 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
+    "confidence": "HIGH",
+    "discoveryMethod": "page_scan_google_forms,pos_text"
    },
    "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
    "venueSource": "event_detail",
    "mode": "FACE_TO_FACE"
+  },
+  {
+   "id": "a47c547b943f8",
+   "name": "[Joyful@Healthy Workplace, Property Management, Environmental Hygiene and Recycling Safety and Health Committee] Security Guards: Stretch and Kick Away Lower Limb Strain Online Seminar",
+   "org": "OSHC",
+   "date": "2026-12-18",
+   "time": "16:00-17:00",
+   "hrs": 1.0,
+   "hrs_est": true,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://sms.oshc.hk/online/activitiesE.aspx",
+   "region": "HK",
+   "online": true,
+   "free": null,
+   "source": "OSHC 職安局 研討會",
+   "group": "OSHC",
+   "auto": true,
+   "venue": "Online Seminar",
+   "mode": "ONLINE",
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "oshc_family_no_match"
+   }
   },
   {
    "id": "ab6eea0845e3f",
@@ -7871,7 +8228,7 @@
    "venue": "Online (via Zoom)",
    "modeText": "ONLINE",
    "attendanceMode": "ONLINE",
-   "description": "INTRODUCTION : Corruption in the construction industry resulting in substandard works could pose serious threats to public safety and undermine public confidence in the quality of public works projects. To address the associated integrity risks, the ICAC proposed in the 2023 Policy Address a new initiative to develop a Project Integrity Management Framework (now known as the Project Integrity Navigator (PIN)). PIN aims to assist stakeholders in effectively managing corruption and other integrity risks during project implementation, while supporting the time, cost, quality objectives to be concurrently achievable goals. With engineers playing key roles among various project stakeholders (e.g. clients, consultants and contractors), the ICAC speaker will introduce PIN and its key components, and explain how engineers are involved in its implementation. OBJECTIVE : To facilitate participants to understand the integrity risks in management of works projects and provide them with the latest information about the development of PIN. CONTENTS : · ICAC’s role in safeguarding integrity of public works projects · Common integrity risks in procurement and construction stages of public works projects · Introduction of PIN (including its structure and key components) REMARKS : Course participants would be recommended to gain 2.5 CPD hours for (a) completion of the “Build on Integrity – E-learning Course on Professional Ethics and Corruption Prevention for Engineers in the Construction Industry” (recommended for 1 CPD hour) on https://psic.icac.org.hk/construction-elearning/engine.html before attending the seminar; and (b) attendance in this seminar (recommended for 1.5 CPD hours) Successful applicants will receive email confirmation on or before 12 December 2026. Please also check your junk / spam mailboxes for the confirmation email. E-attendance certificates will be sent to eligible participants via the registered email within four weeks after the event. The E-attendance certif",
+   "description": "INTRODUCTION : Corruption in the construction industry resulting in substandard works could pose serious threats to public safety and undermine public confidence in the quality of public works projects. To address the associated integrity risks, the ICAC proposed in the 2023 Policy Address a new initiative to develop a Project Integrity Management Framework (now known as the Project Integrity Navigator (PIN)). PIN aims to assist stakeholders in effectively managing corruption and other integrity risks during project implementation, while supporting the time, cost, quality objectives to be concurrently achievable goals. With engineers playing key roles among various project stakeholders (e.g. clients, consultants and contractors), the ICAC speaker will introduce PIN and its key components, and explain how engineers are involved in its implementation. OBJECTIVE : To facilitate participants to understand the integrity risks in management of works projects and provide them with the latest information about the development of PIN. CONTENTS : · ICAC’s role in safeguarding integrity of public works projects · Common integrity risks in procurement and construction stages of public works projects · Introduction of PIN (including its structure and key components) Registration Deadline: 10 December 2026 REMARKS : Course participants would be recommended to gain 2.5 CPD hours for (a) completion of the “Build on Integrity – E-learning Course on Professional Ethics and Corruption Prevention for Engineers in the Construction Industry” (recommended for 1 CPD hour) on https://psic.icac.org.hk/construction-elearning/engine.html before attending the seminar; and (b) attendance in this seminar (recommended for 1.5 CPD hours) Successful applicants will receive email confirmation on or before 12 December 2026. Please also check your junk / spam mailboxes for the confirmation email. E-attendance certificates will be sent to eligible participants via the registered email within four weeks ",
    "venueSource": "event_detail",
    "division": "Continuing Professional Development Committee",
    "mode": "ONLINE",
@@ -7978,6 +8335,127 @@
    "venueSource": "event_detail",
    "division": "Young Members Committee",
    "mode": "FACE_TO_FACE"
+  },
+  {
+   "id": "a4457f0feec8a",
+   "name": "Technical Visit to Lift and Pedestrian Walkway System between Pik Wan Road and Lei Yue Mun Road, Yau Tong (Contract No. CV/2023/03)",
+   "org": "Civil Division",
+   "date": "2026-12-19",
+   "time": "09:00-11:00",
+   "hrs": 2.0,
+   "hrs_est": true,
+   "type": "GPM",
+   "disc": [
+    "Civil"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6affeffd1f1d426669c9763c/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSfY2YChy8pOWuJVklg4tD6Fx2-EGvEG1sOW4cXr6dMMYiNYWA/viewform",
+    "formId": "1FAIpQLSfY2YChy8pOWuJVklg4tD6Fx2-EGvEG1sOW4cXr6dMMYiNYWA",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.475895186",
+      "profileField": null,
+      "label": "Any personal data provided in this registration form will be used for the purposes directly related to the processing of your registration and carrying out activities related to this event. You are required to supply the data in order to register for this event. The personal data provided may be transferred to other parties for purposes relating to this event where necessary. The HKIE intends to use the personal data you provided for the purpose of sending you information on other HKIE’s activities. You may request access to or correction of your personal data by addressing your request to the Event Secretariat.",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.286562577",
+      "profileField": null,
+      "label": "Surname (e.g. CHAN)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1477918872",
+      "profileField": null,
+      "label": "Given Name (e.g. Tai Man)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1692202978",
+      "profileField": "chineseName",
+      "label": "Chinese Name (e.g. 陳大文)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1328525008",
+      "profileField": "phone",
+      "label": "Contact Number (e.g. 98765432)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.890168226",
+      "profileField": null,
+      "label": "Email",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.595469506",
+      "profileField": null,
+      "label": "Are you HKIE Member?",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1934100774",
+      "profileField": "hkieNumber",
+      "label": "HKIE Membership No.  (e.g. MW0000000)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1352188363",
+      "profileField": null,
+      "label": "HKIE Division (e.g. Civil)",
+      "type": "CHECKBOX",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1428781905",
+      "profileField": "organisation",
+      "label": "Company Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1505210233",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.2045136886",
+      "profileField": null,
+      "label": "Participants must hold a valid Green Card and bring their own Personal Protective Equipment (including safety helmet, reflective vest and safety shoes) for site access.\nOnly successful applicants will be notified by phone or email on or before the visit. No separate notification will be issued to unsuccessful applicants.",
+      "type": "RADIO",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "Yau Tong Construction Site",
+   "description": "Technical Visit to Lift and Pedestrian Walkway System between Pik Wan Road and Lei Yue Mun Road, Yau Tong (Contract No. CV/2023/03) Date, Time & Assembly Venue 19 December 2026, 09:00am – 11:00am Yau Tong Construction Site Programme Highlight The Site Formation and Infrastructure Works for Public Housing Developments at Pik Wan Road, Yau Tong is a major CEDD project designed to provide formed land and supporting infrastructure for the future public housing developments in the area. The project comprises two contracts. Contract No. CV/2019/03 covers site formation works, construction of associated retaining structures and slopes, road widening and improvement works, as well as ancillary drainage, sewerage, water supply and landscaping works, in which completed in 2024. Contract No. CV/2023/03 involves the construction of a Lift and Pedestrian Walkway System between Pik Wan Road and Lei Yue Mun Road, including three lift towers, three footbridges and connecting footpaths, to enhance pedestrian connectivity in the district. The project presents several engineering challenges arising from the constrained urban site, varying ground conditions, interface with other projects, and the need to minimise disruption to nearby residents and road users. Participants will gain insights into the design and construction approaches adopted for the retaining structures, slope works, road improvement works, and the pedestrian connectivity solutions. The technical visit will commence with a project presentation covering the background, scope of works, key engineering challenges and current progress, followed by a guided site walk to observe the major construction activities in progress, and conclude with an on-site Q&A session with the project team. Fee Free of charge Registration & Enquiries - Participants must hold a valid Green Card and bring their own Personal Protective Equipment (including safety helmet, reflective vest, and safety shoes) for site access. - Due to the limited work",
+   "venueSource": "event_detail",
+   "division": "Civil Division",
+   "civil_related": true
   },
   {
    "id": "ae9ee9e2ca741",
@@ -8192,6 +8670,96 @@
     "confidence": "LOW",
     "discoveryMethod": "labour_oshsreg_listing_no_per_event_link"
    }
+  },
+  {
+   "id": "a1230d8b9193d",
+   "name": "[MMNC SYEA] Certificate Course 2026/ 2027 – Project Management & Mechanical Infrastructure",
+   "org": "Mechanical, Marine, Naval Architecture & Chemical Division",
+   "date": "2027-01-06",
+   "time": "18:30-20:00",
+   "hrs": 1.5,
+   "hrs_est": true,
+   "type": "GPM",
+   "disc": [
+    "Mechanical",
+    "Marine & Naval Architecture",
+    "Chemical"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6aff7f471f1d426669c937a4/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSfyVlQ8_s_rVag6lJTD9WrPrHt82m9imgUFhb4lCUH6KupUOQ/viewform",
+    "formId": "1FAIpQLSfyVlQ8_s_rVag6lJTD9WrPrHt82m9imgUFhb4lCUH6KupUOQ",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.131592138",
+      "profileField": "englishName",
+      "label": "Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.96158622",
+      "profileField": "email",
+      "label": "Email Address",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1738162424",
+      "profileField": "phone",
+      "label": "Mobile Phone Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.2073682192",
+      "profileField": null,
+      "label": "Are you a HKIE Member?",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.2114421587",
+      "profileField": "hkieNumber",
+      "label": "HKIE Membership Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.927439564",
+      "profileField": null,
+      "label": "For HKIE Members",
+      "type": "CHECKBOX",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.320196535",
+      "profileField": null,
+      "label": "For Non-HKIE Members",
+      "type": "CHECKBOX",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "HKIE Headquarter",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "Please also refer to flyer below Date, Time & Venue: 6 January 2027 (Wednesday), 12 January 2027 (Tuesday), 19 January 2027 (Tuesday) and 26 January 2027 (Tuesday) | 7:00pm to 9:30pm | HKIE Headquarters Highlights: Project Management for Mechanical Infrastructure Projects As mechanical infrastructure projects become larger and more complex, are you equipped with the project management skills to lead successful delivery from concept to completion? Enroll in this certificate course to unlock your technical expertise with practical project management skills for today's infrastructure challenges. The HKIE Mechanical, Marine, Naval Architecture and Chemical Division (MMNC) proudly presents the SYEA Certificate Course 2026/27 — Project Management for Mechanical Infrastructure Projects, commencing in January 2027. What you will learn: Project Definition, Scope, and Closeout Design, Testing, and Commissioning Management Construction Delivery, Schedule, and Cost Control Construction Assurance: Risk, Quality, and Safety This course strengthens your professional knowledge in managing complex engineering activities and helps you develop the competencies required for the MHKIE MCL discipline, specifically C6 – Engineering Management Practice Manage part or all of one or more complex engineering activities in accordance with good engineering management practice. C7 – Engineering Risk Management Identify, assess and manage engineering risk. For more detail please refer to attached flyer. Speakers Session 1: Project Definition, Scope, and Closeout – Presented by Ir Louis LAU Session 2: Design, Testing, and Commissioning Management – Presented by Ir CK TAM Session 3: Construction Delivery, Schedule, and Cost Control – Presented by Ir Steven LAI Session 4 – Construction Assurance: Risk, Quality, and Safety – Presented by Ir Victor TSE Registration: Prior Registration is required The number of participants is limited to 20. Applications will be accepted on a first-come first-served ba",
+   "venueSource": "event_detail",
+   "division": "Mechanical, Marine, Naval Architecture & Chemical Division",
+   "mode": "FACE_TO_FACE"
   },
   {
    "id": "af7334b61c27c",
