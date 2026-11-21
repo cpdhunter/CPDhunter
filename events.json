@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-21T06:53+08:00",
+ "updated": "2026-11-22T06:48+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -47,15 +47,13 @@
   },
   {
    "source": "CIC 建造業議會 Events",
-   "status": "OK_WITH_EVENTS",
-   "ok": true,
-   "n": 3,
-   "method": "playwright+cic-list",
+   "status": "EMPTY_UNVERIFIED",
+   "ok": false,
+   "n": 0,
+   "method": "cic-list",
    "page_title": "Events | Construction Industry Council",
-   "raw_candidates": 9,
-   "rejects": {
-    "date_range": 6
-   }
+   "raw_candidates": 0,
+   "rejects": {}
   },
   {
    "source": "CIC BIM Events",
@@ -103,10 +101,10 @@
    "source": "HKIE Events",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 56,
+   "n": 50,
    "method": "hkie-eventlist+detail",
    "page_title": "Events - HKIE",
-   "raw_candidates": 58,
+   "raw_candidates": 52,
    "rejects": {
     "social": 2
    }
@@ -147,25 +145,25 @@
    "source": "HKIS CPD",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 14,
+   "n": 13,
    "method": "generic",
    "page_title": "THE HONG KONG INSTITUTE OF SURVEYORS :: CPD",
    "raw_candidates": 20,
    "rejects": {
     "social": 1,
-    "date_range": 5
+    "date_range": 6
    }
   },
   {
    "source": "HKGBC 綠建環評",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 25,
+   "n": 24,
    "method": "hkgbc",
    "page_title": "Events & Trainings | HKGBC",
    "raw_candidates": 40,
    "rejects": {
-    "date_range": 15
+    "date_range": 16
    }
   },
   {
@@ -229,7 +227,7 @@
    "ok": false,
    "n": 0,
    "method": "generic",
-   "page_title": "",
+   "page_title": "IET events and courses search",
    "raw_candidates": 0,
    "rejects": {}
   },
@@ -250,9 +248,9 @@
    "n": 3,
    "method": "tqm-list+detail",
    "page_title": "Upcoming | TQM Consultants Co. Limited",
-   "raw_candidates": 6,
+   "raw_candidates": 5,
    "rejects": {
-    "date_range": 3
+    "date_range": 2
    }
   }
  ],
@@ -1928,8 +1926,8 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "HIGH",
-    "discoveryMethod": "page_scan_google_forms,pos_text"
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    },
    "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
    "venueSource": "event_detail",
@@ -3104,8 +3102,8 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "HIGH",
-    "discoveryMethod": "page_scan_google_forms,pos_text"
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    },
    "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
    "venueSource": "event_detail",
@@ -3738,34 +3736,6 @@
    }
   },
   {
-   "id": "aa90ded4f6271",
-   "name": "Construction Innovation Expo 2026 (CIExpo 2026)",
-   "org": "CIC",
-   "date": "2026-11-23",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events/detail.page-20261123",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
    "id": "a324b3859ae00",
    "name": "「6號幹線『螢』造未來」光影時尚音樂夜",
    "org": "HKIS CPD",
@@ -3819,6 +3789,34 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "LOW",
     "discoveryMethod": "hkgbc_detail_no_reg"
+   }
+  },
+  {
+   "id": "aa90ded4f6271",
+   "name": "Construction Innovation Expo 2026 (CIExpo 2026)",
+   "org": "CIC",
+   "date": "2026-11-23",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events/detail.page-20261123",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -4669,8 +4667,8 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "HIGH",
-    "discoveryMethod": "page_scan_google_forms,pos_text"
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    },
    "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
    "venueSource": "event_detail",
@@ -4931,34 +4929,6 @@
    "mode": "FACE_TO_FACE"
   },
   {
-   "id": "a03559f0a46f9",
-   "name": "2026 Construction Workers Carnival",
-   "org": "CIC",
-   "date": "2026-11-29",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cwf.cic.hk/en/Home",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
    "id": "ae60e9459c208",
    "name": "建造業議會 - 2026建造工友嘉年華 (Chinese only)",
    "org": "HKGBC",
@@ -4984,6 +4954,34 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "LOW",
     "discoveryMethod": "hkgbc_detail_no_reg"
+   }
+  },
+  {
+   "id": "a03559f0a46f9",
+   "name": "2026 Construction Workers Carnival",
+   "org": "CIC",
+   "date": "2026-11-29",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cwf.cic.hk/en/Home",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -5603,34 +5601,6 @@
    }
   },
   {
-   "id": "a9c92b856a9ba",
-   "name": "ITCTS Recruitment Day",
-   "org": "CIC",
-   "date": "2026-12-03",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events/detail.page-20261203",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
    "id": "a2ff55574083e",
    "name": "RCx CPD Webinar - Unlocking Building Performance Through Data-Driven RCx and ASHRAE Best Practices",
    "org": "HKGBC",
@@ -5677,6 +5647,34 @@
    "free": null,
    "source": "IStructE Events",
    "group": "IStructE",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
+   "id": "a9c92b856a9ba",
+   "name": "ITCTS Recruitment Day",
+   "org": "CIC",
+   "date": "2026-12-03",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events/detail.page-20261203",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
    "auto": true,
    "registration": {
     "mechanism": "REGISTRATION_LINK_NOT_FOUND",
@@ -7165,8 +7163,8 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "HIGH",
-    "discoveryMethod": "page_scan_google_forms,pos_text"
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    },
    "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
    "venueSource": "event_detail",
@@ -7576,93 +7574,8 @@
     "mechanism": "GOOGLE_FORMS",
     "destination": "https://docs.google.com/forms/d/e/1FAIpQLScWDfo2C-R39tIsEtdIHVnOzjlond8N7VlVzshcpwxbFaJH0Q/viewform",
     "formId": "1FAIpQLScWDfo2C-R39tIsEtdIHVnOzjlond8N7VlVzshcpwxbFaJH0Q",
-    "status": "OPEN",
-    "fields": [
-     {
-      "entryId": "entry.2092238618",
-      "profileField": null,
-      "label": "Surname (English)",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1909904339",
-      "profileField": null,
-      "label": "Given Name (English)",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.234246542",
-      "profileField": null,
-      "label": "Email",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1812506146",
-      "profileField": null,
-      "label": "Gender",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.848224007",
-      "profileField": null,
-      "label": "Year of Birth",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.377809025",
-      "profileField": "phone",
-      "label": "Mobile No.",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.273518598",
-      "profileField": "organisation",
-      "label": "Company / Organization",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1709685474",
-      "profileField": "position",
-      "label": "Position",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1753222212",
-      "profileField": "hkieNumber",
-      "label": "HKIE Membership Number (e.g. GW1234567)",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.797341359",
-      "profileField": null,
-      "label": "Emergency Contact Person",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1026415620",
-      "profileField": null,
-      "label": "Emergency Contact Number",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.100063151",
-      "profileField": null,
-      "label": "Please note the registration fee is $100 for this event and the payment method will be included in the confirmation email.",
-      "type": "RADIO",
-      "safePrefill": false
-     }
-    ],
+    "status": "CLOSED",
+    "fields": [],
     "requiresManualCompletion": true,
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
@@ -7986,7 +7899,7 @@
     "status": "UNKNOWN",
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "LOW",
-    "discoveryMethod": "hkie_eventdetail_no_reg_link"
+    "discoveryMethod": "hkie_eventdetail_empty"
    }
   },
   {
@@ -8132,12 +8045,9 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "HIGH",
-    "discoveryMethod": "page_scan_google_forms,pos_text"
-   },
-   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
-   "venueSource": "event_detail",
-   "mode": "FACE_TO_FACE"
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
   },
   {
    "id": "a47c547b943f8",
@@ -8196,8 +8106,8 @@
     "fields": [],
     "requiresManualCompletion": true,
     "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "HIGH",
-    "discoveryMethod": "hkie_eventdetail_gform"
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_empty"
    },
    "venue": "Chan Yat Mei Sophie Room, 9th Floor, Island Beverley, No 1 Great George Street, Causeway Bay",
    "description": "Technical Seminar: AI × 5D BIM: The Next Leap in Hong Kong Quantity Surveying's Digital Transformation Date/Time: 18 December 2026 (Friday), 18:30-20:00 Venue: Chan Yat Mei Sophie Room, 9th Floor, Island Beverley, No 1 Great George Street, Causeway Bay Organised by: HKIE Civil Division Automated 5D BIM Quantity Take-off (QTO) has long been a key priority for digitalizing quantity surveying in Hong Kong. Yet conventional BIM-based modelling and quantity calculation face two core obstacles: highly complex local drawings—especially reinforcement detailing—that make manual interpretation and modelling extremely time-consuming, and a critical lack of integration between BIM models and QS measurement rules. With the explosive advancement of artificial intelligence technology, AI-empowered 5D BIM effectively addresses these industry pain points. It intelligently extracts key information from drawings, interprets design logic and automatically generates compliant BIM models, substantially reducing manual workload and labour costs. This presentation showcases the current capabilities of AI in the construction industry, demonstrates how to automate the integration of measurement rules such as SMM4/5 and BS8666 to deliver 5D BIM quantity surveying, and validates the application reliability of AI-driven intelligent quantity take-off with real-world performance results. It also discusses how AI-enabled 5D BIM digital workflows can optimise quantity surveying processes, reduce human errors, shorten project lead times, and comprehensively enhance the overall operational efficiency of all construction industry stakeholders. Language Cantonese Fee Free of Charge Speakers: King Wu is Director of Engineering Technology & Services at Glodon（HongKong）Software Limited . As a senior technical expert at Glodon — China's first A-share listed company in construction engineering informatization and a leading digital construction platform provider — Mr. Wu brings over a decade of experience in",
@@ -8233,12 +8143,12 @@
    "division": "Continuing Professional Development Committee",
    "mode": "ONLINE",
    "registration": {
-    "mechanism": "HKIE_PORTAL",
-    "destination": "https://event.hkie.org.hk/events/share?id=6ab32f40a5c8f81c950a8413&companyCode=hkie",
-    "status": "LOGIN_REQUIRED",
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
     "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "HIGH",
-    "discoveryMethod": "hkie_eventdetail_portal"
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_empty"
    }
   },
   {
@@ -8325,8 +8235,8 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "HIGH",
-    "discoveryMethod": "hkie_eventdetail_gform"
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_empty"
    },
    "venue": "Tsim Sha Tsui",
    "modeText": "ONSITE",
@@ -8448,8 +8358,8 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "HIGH",
-    "discoveryMethod": "hkie_eventdetail_gform"
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_empty"
    },
    "venue": "Yau Tong Construction Site",
    "description": "Technical Visit to Lift and Pedestrian Walkway System between Pik Wan Road and Lei Yue Mun Road, Yau Tong (Contract No. CV/2023/03) Date, Time & Assembly Venue 19 December 2026, 09:00am – 11:00am Yau Tong Construction Site Programme Highlight The Site Formation and Infrastructure Works for Public Housing Developments at Pik Wan Road, Yau Tong is a major CEDD project designed to provide formed land and supporting infrastructure for the future public housing developments in the area. The project comprises two contracts. Contract No. CV/2019/03 covers site formation works, construction of associated retaining structures and slopes, road widening and improvement works, as well as ancillary drainage, sewerage, water supply and landscaping works, in which completed in 2024. Contract No. CV/2023/03 involves the construction of a Lift and Pedestrian Walkway System between Pik Wan Road and Lei Yue Mun Road, including three lift towers, three footbridges and connecting footpaths, to enhance pedestrian connectivity in the district. The project presents several engineering challenges arising from the constrained urban site, varying ground conditions, interface with other projects, and the need to minimise disruption to nearby residents and road users. Participants will gain insights into the design and construction approaches adopted for the retaining structures, slope works, road improvement works, and the pedestrian connectivity solutions. The technical visit will commence with a project presentation covering the background, scope of works, key engineering challenges and current progress, followed by a guided site walk to observe the major construction activities in progress, and conclude with an on-site Q&A session with the project team. Fee Free of charge Registration & Enquiries - Participants must hold a valid Green Card and bring their own Personal Protective Equipment (including safety helmet, reflective vest, and safety shoes) for site access. - Due to the limited work",
@@ -8484,8 +8394,8 @@
     "fields": [],
     "requiresManualCompletion": true,
     "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "HIGH",
-    "discoveryMethod": "hkie_eventdetail_gform"
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_empty"
    },
    "venue": "Zhuhai Area",
    "modeText": "ONSITE",
@@ -8750,8 +8660,8 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "HIGH",
-    "discoveryMethod": "hkie_eventdetail_gform"
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_empty"
    },
    "venue": "HKIE Headquarter",
    "modeText": "ONSITE",
@@ -8866,8 +8776,8 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "HIGH",
-    "discoveryMethod": "hkie_eventdetail_gform"
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_empty"
    },
    "venue": "BSI Hong Kong office, 23rd Floor, Cambridge House, Taikoo Place, 979 King’s Road, Hong Kong",
    "description": "Organiser Aircraft Division, The Hong Kong Institution of Engineers (HKIE) Collaborating partner British Standards Institution (BSI) Date 11-15 January 2027 (09:00– 17:00) Venue BSI Hong Kong office, 23rd Floor, Cambridge House, Taikoo Place, 979 King’s Road, Hong Kong Class size Maximum class size: 20 participants Specification(s) AS9100:2016 (Revision D) Lead Auditor Training- The course is certified by Probitas Authentication, and meets the applicable training requirements of AS9104/3 Registration Complete the online registration form via the following link: Registration Form Registration deadline: 18 December 2026 Medium of instruction English Training mode (i) Classroom training delivered by qualified BSI trainer (ii) Practical auditing practices and skills shared by HKIE subject matter experts Course Fee HKD 13,800 Payment method Payment details will be provided to successful applicants MATF pre-approved course Professional Training and Examination Refund Scheme under the Maritime and Aviation Training Fund (http://www.matf.gov.hk) - Pre-approved Course Code AC203 Certificate Refer to the Certificate & Recognition section Enquiry Please contact Ir Thomas Tam at 91728372 or thomas.tam.kw@gmail.com Course objectives and learning outcomes: AS9100:2016 is an internationally recognised quality management system standard for the aviation, space and defence industries. It supports organisations in meeting customer and applicable statutory and regulatory requirements, enhancing customer satisfaction and continually improving their quality management systems. This intensive five-day AS9100:2016 Lead Auditor Training Course introduces internationally recognised auditing practices and equips participants with the knowledge and skills required to lead audit activities within their organisations. Participants will gain an understanding of the requirements of ISO 9001:2015 and AS9100:2016. They will also develop the skills needed to plan, conduct, report and follow up on au",
@@ -9259,8 +9169,8 @@
     ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "HIGH",
-    "discoveryMethod": "hkie_eventdetail_gform"
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_empty"
    },
    "venue": "Tsim Sha Tsui",
    "modeText": "ONSITE",
@@ -9298,12 +9208,12 @@
    "civil_related": true,
    "mode": "FACE_TO_FACE",
    "registration": {
-    "mechanism": "HKIE_PORTAL",
-    "destination": "https://event.hkie.org.hk/events/share?id=6ae84a7d1f1d426669bf372a&companyCode=hkie",
-    "status": "LOGIN_REQUIRED",
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
     "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "HIGH",
-    "discoveryMethod": "hkie_eventdetail_portal"
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_empty"
    }
   },
   {
@@ -9389,12 +9299,12 @@
    "division": "Veneree Club",
    "mode": "FACE_TO_FACE",
    "registration": {
-    "mechanism": "HKIE_PORTAL",
-    "destination": "https://event.hkie.org.hk/events/share?id=6a042d4646e390c3527c4c4c&companyCode=hkie",
-    "status": "LOGIN_REQUIRED",
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
     "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "HIGH",
-    "discoveryMethod": "hkie_eventdetail_portal"
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_empty"
    }
   },
   {
@@ -9457,7 +9367,7 @@
     "status": "UNKNOWN",
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "LOW",
-    "discoveryMethod": "hkie_eventdetail_no_reg_link"
+    "discoveryMethod": "hkie_eventdetail_empty"
    }
   }
  ]
