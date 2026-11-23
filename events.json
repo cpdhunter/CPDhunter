@@ -1,24 +1,24 @@
 {
- "updated": "2026-11-23T06:52+08:00",
+ "updated": "2026-11-24T07:00+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 3,
+   "n": 4,
    "method": "oshc-activity",
    "page_title": "OSHC",
-   "raw_candidates": 3,
+   "raw_candidates": 4,
    "rejects": {}
   },
   {
    "source": "OSHC Seminars & Conferences",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 8,
+   "n": 9,
    "method": "oshc-table",
    "page_title": "Seminars & Conferences",
-   "raw_candidates": 585,
+   "raw_candidates": 586,
    "rejects": {
     "date_range": 577
    }
@@ -49,12 +49,12 @@
    "source": "CIC 建造業議會 Events",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 3,
+   "n": 2,
    "method": "playwright+cic-list",
    "page_title": "Events | Construction Industry Council",
    "raw_candidates": 9,
    "rejects": {
-    "date_range": 6
+    "date_range": 7
    }
   },
   {
@@ -103,10 +103,10 @@
    "source": "HKIE Events",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 52,
+   "n": 54,
    "method": "hkie-eventlist+detail",
    "page_title": "Events - HKIE",
-   "raw_candidates": 54,
+   "raw_candidates": 56,
    "rejects": {
     "social": 2
    }
@@ -160,12 +160,12 @@
    "source": "HKGBC 綠建環評",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 24,
+   "n": 23,
    "method": "hkgbc",
    "page_title": "Events & Trainings | HKGBC",
    "raw_candidates": 40,
    "rejects": {
-    "date_range": 16
+    "date_range": 17
    }
   },
   {
@@ -245,15 +245,10 @@
   },
   {
    "source": "TQM Consultants Training",
-   "status": "OK_WITH_EVENTS",
-   "ok": true,
-   "n": 3,
-   "method": "tqm-list+detail",
-   "page_title": "Upcoming | TQM Consultants Co. Limited",
-   "raw_candidates": 5,
-   "rejects": {
-    "date_range": 2
-   }
+   "status": "FAIL",
+   "ok": false,
+   "n": 0,
+   "err": "Playwright 失敗：Error"
   }
  ],
  "events": [
@@ -4864,6 +4859,34 @@
    }
   },
   {
+   "id": "acacf884ce8d4",
+   "name": "「6號幹線『螢』造未來」光影時尚音樂夜",
+   "org": "HKIS CPD",
+   "date": "2026-11-28",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6902",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
    "id": "acd5467354121",
    "name": "Visit to Loop at Hong Kong-Shenzhen Innovation and Technology Park (HSITP)",
    "org": "HKIS CPD",
@@ -4917,34 +4940,6 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
     "discoveryMethod": "hkgbc_detail_microsoft_forms,pos_text,in_detail"
-   }
-  },
-  {
-   "id": "acacf884ce8d4",
-   "name": "「6號幹線『螢』造未來」光影時尚音樂夜",
-   "org": "HKIS CPD",
-   "date": "2026-11-28",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6902",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIS CPD",
-   "group": "HKIS",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -6305,107 +6300,8 @@
     "mechanism": "GOOGLE_FORMS",
     "destination": "https://docs.google.com/forms/d/e/1FAIpQLSd2mtRXS_9lG78oyjH-412TN57dtOjzOUwZaYDQI08St61q4A/viewform",
     "formId": "1FAIpQLSd2mtRXS_9lG78oyjH-412TN57dtOjzOUwZaYDQI08St61q4A",
-    "status": "OPEN",
-    "fields": [
-     {
-      "entryId": "entry.496644700",
-      "profileField": null,
-      "label": "Title",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1132336415",
-      "profileField": null,
-      "label": "Surname (e.g. Chan)",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.851936542",
-      "profileField": null,
-      "label": "First Name (e.g. Tai Man, Peter)",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.250835396",
-      "profileField": "hkieNumber",
-      "label": "Membership No. (e.g. MW1234567)",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.68367732",
-      "profileField": "organisation",
-      "label": "Company",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1282594964",
-      "profileField": "position",
-      "label": "Position",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.362039857",
-      "profileField": "email",
-      "label": "Email Address:",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.796587776",
-      "profileField": "phone",
-      "label": "Mobile No.:",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1418760204",
-      "profileField": null,
-      "label": "Emergency Contact Number",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1468420194",
-      "profileField": null,
-      "label": "Emergency Contact Person",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1486594342",
-      "profileField": null,
-      "label": "Relationship to Participant",
-      "type": "SHORT_TEXT",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.364241569",
-      "profileField": null,
-      "label": "Are you member of HKIE-BS Division?",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1222523107",
-      "profileField": null,
-      "label": "Note 1: All successful participants should be required their own valid passport, entry permit or visa, Home Return Permit during the time of the visit",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1947650448",
-      "profileField": null,
-      "label": "Important Note:  I confirm my consent to follow any and all safety instructions given by the organizer (s) and/or the owner of the premises/sites and to well equip myself with necessary safety gear for participation in the event.  I understand that neither the Institution nor the parties concerned would accept any liability in connection with the above event.  The information provided will only be used for the purpose of communicating with you on matters related to the activity. You have rights of access and correction with respect to your personal data held by us. If you wish to exercise these rights, please contact the Division/ Committee concerned or the HKIE Secretariat. The personal information collected is solely for the arrangement on this event and they will be destroyed after the event.",
-      "type": "RADIO",
-      "safePrefill": false
-     }
-    ],
+    "status": "CLOSED",
+    "fields": [],
     "requiresManualCompletion": true,
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
@@ -6567,12 +6463,12 @@
    "auto": true,
    "mode": "FACE_TO_FACE",
    "registration": {
-    "mechanism": "REGISTRATION_CLOSED",
+    "mechanism": "OSHC_PORTAL",
     "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9930",
-    "status": "CLOSED",
+    "status": "OPEN",
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
-    "discoveryMethod": "oshc_activity_closed_text"
+    "discoveryMethod": "event_url_oshc_activity"
    }
   },
   {
@@ -6876,6 +6772,120 @@
    "venueSource": "event_detail",
    "division": "Young Members Committee",
    "mode": "FACE_TO_FACE"
+  },
+  {
+   "id": "a4a3f793ea222",
+   "name": "Technical Seminar on IoT application in Fire Services Installation",
+   "org": "Building Services Division",
+   "date": "2026-12-08",
+   "time": "19:00-20:00",
+   "hrs": 1.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Building Services"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6b03c4e31f1d426669cb16b7/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLScAaTQdxVco0yTwdJwpPeR5vbQF8jQ4OEXcxHN-_vIU86OCTQ/viewform",
+    "formId": "1FAIpQLScAaTQdxVco0yTwdJwpPeR5vbQF8jQ4OEXcxHN-_vIU86OCTQ",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.1782331527",
+      "profileField": null,
+      "label": "Title",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.635092851",
+      "profileField": null,
+      "label": "Surname (e.g. Chan) (*Please indicate the registered name in Zoom when joining the seminar in online mode)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1050642657",
+      "profileField": null,
+      "label": "First Name (e.g. Tai Man, Peter) (*Please indicate the registered name in Zoom when joining the seminar in online mode)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1391221203",
+      "profileField": null,
+      "label": "Membership Class & No. (e.g. MW1234567)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1511923871",
+      "profileField": "organisation",
+      "label": "Company",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.476314090",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.556945068",
+      "profileField": null,
+      "label": "Email Address:",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1290947228",
+      "profileField": "phone",
+      "label": "Mobile No.",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1810386540",
+      "profileField": null,
+      "label": "Mode of Attendance for the seminar",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.2127872921",
+      "profileField": null,
+      "label": "Are you member of HKIE-BSD?",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1234555412",
+      "profileField": null,
+      "label": "Important Note:  \n1. The personal information collected is solely for the arrangement on this event and they will be destroyed after the event.\n\n2. For online participants, they will be informed by a confirmation email with a Zoom pre-registration link few days before the event. Transfer or sharing of the registration is prohibited.",
+      "type": "RADIO",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "Chan Yet Mei Sophie Room, 9/F HKIE HQ, Causeway Bay (Physical) Zoom (Online)",
+   "description": "Technical Seminar on IoT application in Fire Services Installation Details: Date: 8 December 2026 (Tue) Time: 7:00pm – 8:00pm (Registration at 6:50pm) Veune: Chan Yet Mei Sophie Room, 9/F HKIE HQ, Causeway Bay (Physical); Zoom (Online) Program Highlights: Traditional fire safety suffers from frequent false alarms, labour-intensive inspections and undetected equipment issues such as blocked or tampered devices. SMARTAI FIRE LTD will share an AIoT platform, integrating different fire systems. With IoT sensors and AI-powered 7×24 data analysis enables early device fault alert like falling extinguisher pressure and degraded emergency light batteries, and detects obstruction or tampering. Shifting from passive checks to predictive maintenance as a result of reducing downtime and labour costs, keeps fire equipment ready and delivers proactive building fire protection. Members will gain clear insights into the long-standing pain points of c urrent fire safety management, including heavy manual inspection workloads and hidden equipment failures. Members will learn how the AIoT fire safety management platform leverages AI and devices analysis to enable early device fault alert and enable predictive maintenance. Members will also understand how this solution transforms passive fire checking into proactive risk prevention, cutting operational costs and improving the overall fire safety resilience of buildings. Speake r(s): Representatives from SmartAI Fire Limited Language: Cantonese with English Terminology CPD Certificate: An electronic copy of CPD attendance certificate (1-hour) will be issued to the participants with over 80% attendance within one month after the seminar by email. The organizer reserves the right to disqualify and terminate those non-properly registered participants. Registration & Enquiry: The seminar is free of charge and prior registration is required. The number of participants is limited to 30 in-person attendees and 500 online participants . Members ",
+   "venueSource": "event_detail",
+   "division": "Building Services Division",
+   "mode": "HYBRID"
   },
   {
    "id": "a793bce29a623",
@@ -8063,6 +8073,35 @@
    }
   },
   {
+   "id": "a47c547b943f8",
+   "name": "[Joyful@Healthy Workplace, Property Management, Environmental Hygiene and Recycling Safety and Health Committee] Security Guards: Stretch and Kick Away Lower Limb Strain Online Seminar",
+   "org": "OSHC",
+   "date": "2026-12-18",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "H&S",
+   "disc": [
+    "General"
+   ],
+   "url": "https://sms.oshc.hk/online/activityE.aspx?activityid=9954",
+   "region": "HK",
+   "online": true,
+   "free": null,
+   "source": "OSHC Seminars & Conferences",
+   "group": "OSHC",
+   "auto": true,
+   "mode": "ONLINE",
+   "registration": {
+    "mechanism": "OSHC_PORTAL",
+    "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9954",
+    "status": "OPEN",
+    "sourceUrlClass": "DIRECT_REGISTRATION",
+    "confidence": "HIGH",
+    "discoveryMethod": "event_url_oshc_activity"
+   }
+  },
+  {
    "id": "aa1db7eb3df72",
    "name": "Project Management and Impactful Communication",
    "org": "HKIE",
@@ -8176,36 +8215,6 @@
     "sourceUrlClass": "UNKNOWN",
     "confidence": "LOW",
     "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
-   "id": "a47c547b943f8",
-   "name": "[Joyful@Healthy Workplace, Property Management, Environmental Hygiene and Recycling Safety and Health Committee] Security Guards: Stretch and Kick Away Lower Limb Strain Online Seminar",
-   "org": "OSHC",
-   "date": "2026-12-18",
-   "time": "16:00-17:00",
-   "hrs": 1.0,
-   "hrs_est": true,
-   "type": "H&S",
-   "disc": [
-    "General"
-   ],
-   "url": "https://sms.oshc.hk/online/activitiesE.aspx",
-   "region": "HK",
-   "online": true,
-   "free": null,
-   "source": "OSHC 職安局 研討會",
-   "group": "OSHC",
-   "auto": true,
-   "venue": "Online Seminar",
-   "mode": "ONLINE",
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "oshc_family_no_match"
    }
   },
   {
@@ -9489,6 +9498,41 @@
    "description": "Overseas Delegation 202 7 to Germany – Beyond Carbon: Connecting Green Technologies, Empowering Sustainable Tomorrow Date, Time & Venue 26 Mar 2027 ( Friday ) – 3 Apr 2027 ( Saturday ) ; Germany Programme Highlights The HKIE-YMC Overseas Delegation is a leadership development programme designed to arouse young engineers’ potential and motivate their vision to learn from overseas experiences and international practices. For the 2026–2027 session, YMC is set to organise an overseas delegation to Germany under the theme ‘ Beyond Carbon: Connecting Green Technologies, Empowering Sustainable Tomorrow ’ focusing on the vital role of engineers in driving decarbonisation through innovative technologies and sustainable frameworks. Germany serves as a compelling international benchmark, highlighted by its national Energiewende policy targeting a climate-neutral economy by 2045 and a minimum 80% share of renewables in gross electricity consumption by 2030. The country actively advances sustainable engineering through its statutory Energy Efficiency Law, heat pump integration, green hydrogen initiatives, passive house engineering, circular economy frameworks, and resilient district planning. Through a blend of technical visits, urban infrastructure studies, and institutional exchanges, the delegation will examine Germany’s holistic approach to low-carbon construction, energy transition, and smart urban infrastructure. Overall, this delegation will provide actionable insights and valuable perspectives that can be adapted to support Hong Kong’s evolving urban transition goals, while fostering bilateral professional links between Hong Kong and German engineering bodies. Delegation Fee HK$ 1 1 ,800 (Air tickets, insurance, accommodation (shared room), meals and local transportation inclusive) Registration & Enquiries Application is open to all HKIE Young Members and the number of delegates is limited to 16. All candidates joining the delegation will go through a screening interview",
    "venueSource": "event_detail",
    "division": "Young Members Committee",
+   "mode": "FACE_TO_FACE",
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_no_reg_link"
+   }
+  },
+  {
+   "id": "a4a2f83834d4e",
+   "name": "Overseas Technical Visit to British Isles",
+   "org": "Electrical Division",
+   "date": "2027-05-23",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "Electrical"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6a8f1714a5c8f81c95f88b08/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "British Isles, and France by a cruise calling at ports in Southhampton, Portland, Cornwall, Cork, Dublin, Belfast, Holyhead, Glasgow, Edinburgh and Le Havre (No",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "Overseas Technical Visit to British Isles Period 23 May to 7 June 2027 inclusive (16 days) Location British Isles, and France by a cruise calling at ports in Southhampton, Portland, Cornwall, Cork, Dublin, Belfast, Holyhead, Glasgow, Edinburgh and Le Havre (Normandy, France). Programme Highlights The visit will focus on the electrical engineering development and technological advancement in the British Industries. Sightseeing as shore excursions will be arranged in nearby ports/areas as a cruise trip. Registration The cost of the technical visit is HK$46,000.00 per person based on shared room & interior cabin basis (HK$63,000.00 per person for single room & interior cabin occupancy) including meals, accommodation, airport & port taxes, fuel cost, tips to escort, transportation, and shore excursions, but excluding lunches during shore excursions and tips for cruise service. This price is subject to final confirmation from the Cruise Company at the time of cabin booking. The number of participants will be limited to 40 based on a first-come-first served principle. Participants must have their own valid travel document, and visa (if required) can be arranged by our appointed travel agent but at participants’ own cost. If you wish to join this overseas technical visit, please complete the Standard Reply Form and send it to Ir Y K Chu ( hkie.eeldiv@gmail.com ) on or before 16 November 2026 . Successful applicants will be notified separately, together with the payment instruction. Neither the Institution nor any other parties facilitating this visit accepts any liability whatsoever in connection with the visit. [Event] Dear members Overseas Technical Visit to British Isles Organised by EL Division 23 May to 7 June 2027 inclusive (16 days) Please note that the Overseas Technical Visit to British Isles will be held on 23 May to 7 June 2027 inclusive (16 days) at British Isles, and France by a cruise calling at ports in Southhampton, Portland, Cornwall, Cork, Dublin, Belfast",
+   "venueSource": "event_detail",
+   "division": "Electrical Division",
    "mode": "FACE_TO_FACE",
    "registration": {
     "mechanism": "REGISTRATION_LINK_NOT_FOUND",
