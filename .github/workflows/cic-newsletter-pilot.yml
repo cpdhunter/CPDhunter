@@ -1,0 +1,87 @@
+# Isolated CIC i-Club newsletter discovery pilot.
+# Diagnostic / fixture runner only.
+# Does NOT write events.json or source_health.json.
+# Does NOT deploy GitHub Pages.
+# Does NOT share Daily CPD's concurrency group.
+# Does NOT commit or push.
+# A failure of this workflow cannot cancel or fail Daily CPD Update.
+name: CIC Newsletter Pilot
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cic-newsletter-pilot
+  cancel-in-progress: false
+
+jobs:
+  pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r scraper/requirements.txt
+
+      - name: Snapshot production checksums (sha256)
+        run: |
+          python -c '
+          import hashlib, json
+          out = {}
+          for path in ("events.json", "source_health.json"):
+              h = hashlib.sha256()
+              with open(path, "rb") as f:
+                  for chunk in iter(lambda: f.read(1024 * 1024), b""):
+                      h.update(chunk)
+              out[path] = h.hexdigest()
+              print(path, out[path])
+          with open("/tmp/prod-sha256.json", "w", encoding="utf-8") as f:
+              json.dump(out, f)
+              f.write("\n")
+          '
+
+      - name: Run newsletter parser tests
+        run: python scraper/test_newsletter_cic_iclub.py
+
+      - name: Run CIC Newsletter Pilot (offline fixtures)
+        run: python scraper/newsletter/run_pilot.py --offline --fixtures scraper/newsletter/fixtures --report scraper/newsletter/artifacts/pilot-report.json
+
+      - name: Assert production files unchanged
+        if: always()
+        run: |
+          python -c '
+          import hashlib, json, sys
+          before = json.load(open("/tmp/prod-sha256.json", encoding="utf-8"))
+          mismatches = []
+          for path, expected in before.items():
+              h = hashlib.sha256()
+              with open(path, "rb") as f:
+                  for chunk in iter(lambda: f.read(1024 * 1024), b""):
+                      h.update(chunk)
+              got = h.hexdigest()
+              print(path, got)
+              if got != expected:
+                  mismatches.append("%s: %s -> %s" % (path, expected, got))
+          if mismatches:
+              raise SystemExit("production catalogue changed during pilot (forbidden):\n" + "\n".join(mismatches))
+          '
+          git diff --exit-code -- events.json source_health.json
+
+      - name: Upload pilot report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cic-newsletter-pilot-${{ github.run_id }}
+          path: scraper/newsletter/artifacts/pilot-report.json
+          if-no-files-found: warn
+          retention-days: 90
