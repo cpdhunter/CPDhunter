@@ -3,3 +3,6 @@ __pycache__/
 *.py[cod]
 
 .venv/
+
+# Newsletter pilot reports (never production catalogues)
+scraper/newsletter/artifacts/*.json
