@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24T07:00+08:00",
+ "updated": "2026-11-25T07:08+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -15,12 +15,12 @@
    "source": "OSHC Seminars & Conferences",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 9,
+   "n": 8,
    "method": "oshc-table",
    "page_title": "Seminars & Conferences",
    "raw_candidates": 586,
    "rejects": {
-    "date_range": 577
+    "date_range": 578
    }
   },
   {
@@ -37,25 +37,23 @@
    "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 2,
+   "n": 1,
    "method": "csb-table",
    "page_title": "Civil Service Bureau -  COMING EVENTS",
    "raw_candidates": 14,
    "rejects": {
-    "date_range": 12
+    "date_range": 13
    }
   },
   {
    "source": "CIC 建造業議會 Events",
-   "status": "OK_WITH_EVENTS",
-   "ok": true,
-   "n": 2,
-   "method": "playwright+cic-list",
+   "status": "EMPTY_UNVERIFIED",
+   "ok": false,
+   "n": 0,
+   "method": "cic-list",
    "page_title": "Events | Construction Industry Council",
-   "raw_candidates": 9,
-   "rejects": {
-    "date_range": 7
-   }
+   "raw_candidates": 0,
+   "rejects": {}
   },
   {
    "source": "CIC BIM Events",
@@ -103,10 +101,10 @@
    "source": "HKIE Events",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 54,
+   "n": 57,
    "method": "hkie-eventlist+detail",
    "page_title": "Events - HKIE",
-   "raw_candidates": 56,
+   "raw_candidates": 59,
    "rejects": {
     "social": 2
    }
@@ -147,12 +145,11 @@
    "source": "HKIS CPD",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 13,
+   "n": 14,
    "method": "generic",
    "page_title": "THE HONG KONG INSTITUTE OF SURVEYORS :: CPD",
    "raw_candidates": 20,
    "rejects": {
-    "social": 1,
     "date_range": 6
    }
   },
@@ -160,12 +157,12 @@
    "source": "HKGBC 綠建環評",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 23,
+   "n": 20,
    "method": "hkgbc",
    "page_title": "Events & Trainings | HKGBC",
    "raw_candidates": 40,
    "rejects": {
-    "date_range": 17
+    "date_range": 20
    }
   },
   {
@@ -191,10 +188,10 @@
    "source": "HKICM Learning / CPD",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 2,
+   "n": 3,
    "method": "hkicm",
    "page_title": "Learning / CPD - HKICM",
-   "raw_candidates": 2,
+   "raw_candidates": 3,
    "rejects": {}
   },
   {
@@ -245,10 +242,15 @@
   },
   {
    "source": "TQM Consultants Training",
-   "status": "FAIL",
-   "ok": false,
-   "n": 0,
-   "err": "Playwright 失敗：Error"
+   "status": "OK_WITH_EVENTS",
+   "ok": true,
+   "n": 3,
+   "method": "tqm-list+detail",
+   "page_title": "Upcoming | TQM Consultants Co. Limited",
+   "raw_candidates": 5,
+   "rejects": {
+    "date_range": 2
+   }
   }
  ],
  "events": [
@@ -4756,10 +4758,7 @@
     "sourceUrlClass": "UNKNOWN",
     "confidence": "LOW",
     "discoveryMethod": "page_no_candidate"
-   },
-   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
-   "venueSource": "event_detail",
-   "mode": "FACE_TO_FACE"
+   }
   },
   {
    "id": "aac2ad90a976f",
@@ -4856,34 +4855,6 @@
     "sourceUrlClass": "UNKNOWN",
     "confidence": "MEDIUM",
     "discoveryMethod": "page_scan_pdf,pos_text"
-   }
-  },
-  {
-   "id": "acacf884ce8d4",
-   "name": "「6號幹線『螢』造未來」光影時尚音樂夜",
-   "org": "HKIS CPD",
-   "date": "2026-11-28",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6902",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKIS CPD",
-   "group": "HKIS",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -5016,31 +4987,154 @@
    "mode": "FACE_TO_FACE"
   },
   {
-   "id": "a03559f0a46f9",
-   "name": "2026 Construction Workers Carnival",
-   "org": "CIC",
-   "date": "2026-11-29",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
+   "id": "acacf884ce8d4",
+   "name": "「6號幹線『螢』造未來」光影時尚音樂夜",
+   "org": "HKICM",
+   "date": "2026-11-28",
+   "time": "17:00-18:00",
+   "hrs": 1.0,
+   "hrs_est": true,
    "type": "Technical",
    "disc": [
-    "General"
+    "Civil"
    ],
-   "url": "https://www.cwf.cic.hk/en/Home",
+   "url": "https://hkicm.org.hk/event/cpd20261128v/",
    "region": "HK",
    "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
+   "free": true,
+   "source": "HKICM Learning / CPD",
+   "group": "HKICM",
    "auto": true,
    "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSdjg71DHHc87BwwtUu3erJXJmSzf2YhUqxN8ePnM3Rvee6stg/viewform",
+    "formId": "1FAIpQLSdjg71DHHc87BwwtUu3erJXJmSzf2YhUqxN8ePnM3Rvee6stg",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.1183364918",
+      "profileField": null,
+      "label": "Membership",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.15244053",
+      "profileField": "hkieNumber",
+      "label": "Membership No.",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1540395286",
+      "profileField": null,
+      "label": "Membership Class",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.864266516",
+      "profileField": null,
+      "label": "Title",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1596056943",
+      "profileField": "englishName",
+      "label": "English Full Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1405328043",
+      "profileField": "chineseName",
+      "label": "Chinese Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1776484622",
+      "profileField": null,
+      "label": "Age",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.2049775845",
+      "profileField": "phone",
+      "label": "Telephone / Mobile Contact",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1424028824",
+      "profileField": "email",
+      "label": "Email Address",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.91740810",
+      "profileField": "organisation",
+      "label": "Company / Institute",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.602237502",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.973402102",
+      "profileField": null,
+      "label": "Registration Fee",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.648365312",
+      "profileField": null,
+      "label": "Venue",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1412685188",
+      "profileField": null,
+      "label": "Assembly Point & Time",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.290774828",
+      "profileField": null,
+      "label": "Important notes",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.221694759",
+      "profileField": null,
+      "label": "Undertaking",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1234603961",
+      "profileField": null,
+      "label": "Remarks",
+      "type": "PARAGRAPH",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
+    "confidence": "HIGH",
+    "discoveryMethod": "page_scan_google_forms,pos_text"
    }
   },
   {
@@ -5069,6 +5163,34 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "LOW",
     "discoveryMethod": "hkgbc_detail_no_reg"
+   }
+  },
+  {
+   "id": "a03559f0a46f9",
+   "name": "2026 Construction Workers Carnival",
+   "org": "CIC",
+   "date": "2026-11-29",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cwf.cic.hk/en/Home",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -5688,34 +5810,6 @@
    }
   },
   {
-   "id": "a9c92b856a9ba",
-   "name": "ITCTS Recruitment Day",
-   "org": "CIC",
-   "date": "2026-12-03",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events/detail.page-20261203",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
    "id": "a2ff55574083e",
    "name": "RCx CPD Webinar - Unlocking Building Performance Through Data-Driven RCx and ASHRAE Best Practices",
    "org": "HKGBC",
@@ -5762,6 +5856,34 @@
    "free": null,
    "source": "IStructE Events",
    "group": "IStructE",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
+   "id": "a9c92b856a9ba",
+   "name": "ITCTS Recruitment Day",
+   "org": "CIC",
+   "date": "2026-12-03",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events/detail.page-20261203",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
    "auto": true,
    "registration": {
     "mechanism": "REGISTRATION_LINK_NOT_FOUND",
@@ -5938,6 +6060,40 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "MEDIUM",
     "discoveryMethod": "page_scan_pos_text,in_detail"
+   }
+  },
+  {
+   "id": "a8abef273c827",
+   "name": "HKIE Environmental Division Annual Reception (session 2026/2027)",
+   "org": "Environmental Division",
+   "date": "2026-12-04",
+   "time": "18:15-20:30",
+   "hrs": 2.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Environmental"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6b0523751f1d426669cc29e6/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "The Cityview (2/F Crystal Ballroom) 23 Waterloo Road, Kowloon, Hong Kong",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "venueSource": "event_detail",
+   "division": "Environmental Division",
+   "mode": "FACE_TO_FACE",
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_no_reg_link"
    }
   },
   {
@@ -7066,6 +7222,43 @@
    }
   },
   {
+   "id": "ae6299e083ec5",
+   "name": "Design and Construction of Chinese Medicine Hospital and Government Chinese Medicines Testing Institute in Tseung Kwan O",
+   "org": "Structural Division",
+   "date": "2026-12-10",
+   "time": "19:00-20:00",
+   "hrs": 1.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Structural",
+    "Civil"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6b0538e21f1d426669cc3503/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Chan Yat Mei Sophie Room, HKIE Headquarters 9/F Island Beverley, No. 1 Great George Street, Causeway Bay, Hong Kong",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "Design and Construction of Chinese Medicine Hospital and Government Chinese Medicines Testing Institute in Tseung Kwan O Speakers: Ir Jacky Zhong , Senior Structural Manager, China State Construction Engineering (Hong Kong) Limited; Deputy Technical Director (Structural), China State Construction International Medical Industry Development Co. Ltd. Ir Dennis Yuen , Director, SYW & Associates Ltd. Date: 10 December 2026 (Thursday) Time: 7:00 p.m. – 8:00 p.m. Venue: Chan Yat Mei Sophie Room, HKIE Headquarters 9/F Island Beverley, No. 1 Great George Street, Causeway Bay, Hong Kong Synopsis: An award-winning development, the Chinese Medicine Hospital and Government Chinese Medicines Testing Institute is the first large-scale, comprehensive Traditional Chinese Medicine facility outside Mainland China integrating medical services, scientific research, and testing. It represents a significant milestone in benefiting people's livelihoods and will help establish Hong Kong as a \"bridgehead\" for the inheritance, innovation, and global outreach of Traditional Chinese Medicine. As China's first multi-storey permanent hospital constructed with MiC and integrated low-carbon technologies, this project distinguishes itself through three core innovations: pioneering engineering and construction methods, a design philosophy that harmonizes architecture with its cultural and natural surroundings, and a proven model for low-carbon sustainability. About the Speakers: Ir Jacky Zhong is a structural engineer professionally registered in Hong Kong, Mainland China, and the UK, with 17 years of practical experience. Specializing in smart construction, digitalization, and large-scale complex buildings, he drives R&D and delivers award-winning projects across Hong Kong, Macau, and Mainland China. Alongside his roles at China State Construction, he serves as Part-time Lecturer at HKU, Committee Member of the HKIE Structural Division, Expert Member of the Shenzhen Engineering Construction Standard",
+   "venueSource": "event_detail",
+   "division": "Structural Division",
+   "civil_related": true,
+   "mode": "FACE_TO_FACE",
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6b0538e21f1d426669cc3503&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
+   }
+  },
+  {
    "id": "a634fdd0ebba2",
    "name": "Essentials of NEC4 Engineering Construction Contract (ECC)",
    "org": "HKIE",
@@ -8042,6 +8235,41 @@
    }
   },
   {
+   "id": "a598873b00025",
+   "name": "Veneree Club Monthly Talk (16 December 2026)",
+   "org": "Veneree Club",
+   "date": "2026-12-16",
+   "time": "10:00-12:00",
+   "hrs": 2.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6afd4d011f1d426669c815fc/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Chan Yat Mei Sophie Room, 9/F, The HKIE Headquarters",
+   "modeText": "HYBRID / online(Zoom)",
+   "attendanceMode": "HYBRID / online(Zoom)",
+   "description": "Date: Wednesday, 16 December 2026 Time: 10:0 0 am – 12:00nn Platforms: (a) Face-to-Face ( Chan Yat Mei Sophie Room , 9/F, The HKIE Headquarter s) (Limited number of seats on first-come first-served basis ) (b) Online (The ZOOM webinar link and information will be sent through email upon successful registration.) Talk: “Thirty Years of Overseas Wanderings: An Electrical Engineer's Heartfelt Journey 電機工程師之三十載旅遊心得、情懷及樂趣 ” Speaker: Ir T H LO 盧天海工程師 Ir LO obtained his BSc (Eng.) Degree from the University of Hong Kong, and his MSc (Eng. Management) Degree from the City University of HK. He had held various technical and management positions in CLP Power (HK), Hongkong Electric, and the Mass Transit Railway Corporation. He was responsible for the planning, specification, procurement and monitoring of high voltage equipment and systems for power utilities, and for the development of Integrated Quality, Safety & Environmental Management Systems for large organisations. Ir LO is also an amateur photographer. He used to travel to PRC and overseas countries to take scenery and street photos for sharing. He was the photographer for most of the past Electrical Division Overseas Technical Visits. Ir LO has held six personal photo exhibitions in the past years and has established a personal website for easy sharing of his photos and albums. He was also the advisor of local photo clubs. H ighlights: Over the past 30+ years, the HKIE Electrical Division had organised annual Overseas Technical Visits to different countries with excellent participation and feedback. Besides normal sightseeing activities, the Tours included visits to carefully selected Technical Sites of engineering interest, e.g. power stations, power equipment manufacturing firms, railway systems, building services systems, etc. The Visits enabled the participants to keep abreast of latest technological developments and industrial practices beyond Hong Kong, and to enhance networking. This talk will summarise the unf",
+   "venueSource": "event_detail",
+   "division": "Veneree Club",
+   "mode": "HYBRID",
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6afd4d011f1d426669c815fc&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
+   }
+  },
+  {
    "id": "a7af32bc72e67",
    "name": "Technical Seminar on KTN 24 Dedicated Rehousing Estate Project: Successful Implementation of Advanced MiC Solutions in the Northern Metropolis",
    "org": "HKICM",
@@ -8215,7 +8443,10 @@
     "sourceUrlClass": "UNKNOWN",
     "confidence": "LOW",
     "discoveryMethod": "page_no_candidate"
-   }
+   },
+   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
+   "venueSource": "event_detail",
+   "mode": "FACE_TO_FACE"
   },
   {
    "id": "ab6eea0845e3f",
@@ -8544,6 +8775,126 @@
    "mode": "FACE_TO_FACE"
   },
   {
+   "id": "af9b323d9a6a1",
+   "name": "Visiting Seniors in Winter: 寒冬送暖顯溫情 2026",
+   "org": "Young Members Committee",
+   "date": "2026-12-19",
+   "time": "11:00-13:00",
+   "hrs": 2.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6b04efd11f1d426669cc0ed9/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSfnUXZCk4L-x898lwAQN2FFBbv43OjIt_a4TngkmgLbu1XF5A/viewform",
+    "formId": "1FAIpQLSfnUXZCk4L-x898lwAQN2FFBbv43OjIt_a4TngkmgLbu1XF5A",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.87524538",
+      "profileField": "email",
+      "label": "Email",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1308442737",
+      "profileField": "phone",
+      "label": "Mobile Phone Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.520564535",
+      "profileField": null,
+      "label": "Title",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1644397419",
+      "profileField": null,
+      "label": "Last Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1160914862",
+      "profileField": null,
+      "label": "First Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.271899701",
+      "profileField": null,
+      "label": "Preferred Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1221737252",
+      "profileField": null,
+      "label": "Gender",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1160419951",
+      "profileField": null,
+      "label": "Age",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.984312129",
+      "profileField": "organisation",
+      "label": "Professional Associations/Institutions",
+      "type": "RADIO",
+      "safePrefill": true,
+      "options": [
+       "Hong Kong Institution of Engineers (HKIE)",
+       ""
+      ]
+     },
+     {
+      "entryId": "entry.1742668315",
+      "profileField": "hkieNumber",
+      "label": "HKIE Membership no.",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.216367907",
+      "profileField": null,
+      "label": "Emergency Contact",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "Elderly Centre in Wong Tai Sin",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "Visiting Seniors in Winter: 寒冬送暖顯溫情 2026 Date, Time & Venue 19 December 2026 (Saturday); 1100-13:00; Elderly Centre in Wong Tai Sin We warmly invite you to take part in a year‑end community service to support Yang Memorial Methodist Social Service – Kingsford Terrace Centre’s “ 寒冬送暖顯溫情 2026.” This outreach aims to deliver winter care packs and heartfelt greetings to around 500 elderly residents in Wong Tai Sin, helping them stay warm and feel connected during the colder months. Volunteers will be organised into small teams to conduct home visits across the Choi Hung, Choi Wan, Fu Shan, and San Po Kong areas. Each team will distribute winter essentials and engage in friendly conversations to check on well‑being—fostering community care, connection, and dignity. We look forward to your participation and support. Fee Free Medium Cantonese Registration & Enquiries Registration is required. The number of participants is limited to 10. Applications will be accepted on a first-come first-served basis and priority will be given to Young Members. For registration, please register online at https://forms.gle/aGkqfGajySbM1owr9 . Successful applicants will be notified by email before the event. Attendance Certificates will be distributed upon completion of the event. For enquiries, please contact via email: hkie.csg@gmail.com Deadline for application: 5 December 2026",
+   "venueSource": "event_detail",
+   "division": "Young Members Committee",
+   "mode": "FACE_TO_FACE"
+  },
+  {
    "id": "a76a97ad66abb",
    "name": "工作間的感染控制",
    "org": "Labour Dept",
@@ -8808,6 +9159,96 @@
    "venueSource": "event_detail",
    "division": "Mechanical, Marine, Naval Architecture & Chemical Division",
    "mode": "FACE_TO_FACE"
+  },
+  {
+   "id": "aa26df4239a76",
+   "name": "2027005A",
+   "org": "HKIS CPD",
+   "date": "2027-01-07",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6904",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "OTHER_PUBLIC_FORM",
+    "destination": "https://www.hkis.org.hk/en/pdf/Standard_Reservation_Form_2026.pdf",
+    "status": "OPEN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "page_scan_pdf,pos_text"
+   }
+  },
+  {
+   "id": "a75b826b74a27",
+   "name": "Site Visit - HKBH East Kowloon Medical Centre",
+   "org": "HKIS CPD",
+   "date": "2027-01-09",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6903",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
+   "id": "ad61edbda7f39",
+   "name": "ESG Seminar - Industry Insights into Modern ESG Trends",
+   "org": "Environmental Division",
+   "date": "2027-01-09",
+   "time": "10:00-12:30",
+   "hrs": 2.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Environmental"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6b05269f1f1d426669cc2b6f/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "GH201, PolyU",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "venueSource": "event_detail",
+   "division": "Environmental Division",
+   "mode": "FACE_TO_FACE",
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_no_reg_link"
+   }
   },
   {
    "id": "af7334b61c27c",
