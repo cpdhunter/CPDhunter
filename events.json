@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-25T07:08+08:00",
+ "updated": "2026-11-26T07:06+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
@@ -25,35 +25,34 @@
   },
   {
    "source": "勞工處 職業健康公開講座",
-   "status": "EMPTY_UNVERIFIED",
+   "status": "FAIL",
    "ok": false,
    "n": 0,
-   "method": "labour-list+detail",
-   "page_title": "勞工處 - 職業健康公開講座",
-   "raw_candidates": 0,
-   "rejects": {}
+   "err": "讀取網頁失敗：HTTP 404"
   },
   {
    "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
-   "status": "OK_WITH_EVENTS",
-   "ok": true,
-   "n": 1,
+   "status": "VERIFIED_EMPTY",
+   "ok": false,
+   "n": 0,
    "method": "csb-table",
    "page_title": "Civil Service Bureau -  COMING EVENTS",
    "raw_candidates": 14,
    "rejects": {
-    "date_range": 13
+    "date_range": 14
    }
   },
   {
    "source": "CIC 建造業議會 Events",
-   "status": "EMPTY_UNVERIFIED",
-   "ok": false,
-   "n": 0,
-   "method": "cic-list",
+   "status": "OK_WITH_EVENTS",
+   "ok": true,
+   "n": 2,
+   "method": "playwright+cic-list",
    "page_title": "Events | Construction Industry Council",
-   "raw_candidates": 0,
-   "rejects": {}
+   "raw_candidates": 8,
+   "rejects": {
+    "date_range": 6
+   }
   },
   {
    "source": "CIC BIM Events",
@@ -101,10 +100,10 @@
    "source": "HKIE Events",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 57,
+   "n": 54,
    "method": "hkie-eventlist+detail",
    "page_title": "Events - HKIE",
-   "raw_candidates": 59,
+   "raw_candidates": 56,
    "rejects": {
     "social": 2
    }
@@ -145,12 +144,12 @@
    "source": "HKIS CPD",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 14,
+   "n": 15,
    "method": "generic",
    "page_title": "THE HONG KONG INSTITUTE OF SURVEYORS :: CPD",
    "raw_candidates": 20,
    "rejects": {
-    "date_range": 6
+    "date_range": 5
    }
   },
   {
@@ -975,12 +974,12 @@
    "group": "Labour Dept",
    "auto": true,
    "registration": {
-    "mechanism": "REGISTRATION_CLOSED",
+    "mechanism": "OSHC_PORTAL",
     "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9916",
-    "status": "CLOSED",
+    "status": "OPEN",
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
-    "discoveryMethod": "oshc_activity_closed_text"
+    "discoveryMethod": "event_url_oshc_activity"
    }
   },
   {
@@ -4452,58 +4451,8 @@
     "mechanism": "GOOGLE_FORMS",
     "destination": "https://docs.google.com/forms/d/e/1FAIpQLScErtdzIwNadmPRQ8z11eece5xkizYKOstkxfoISuqQEWSCLw/viewform",
     "formId": "1FAIpQLScErtdzIwNadmPRQ8z11eece5xkizYKOstkxfoISuqQEWSCLw",
-    "status": "OPEN",
-    "fields": [
-     {
-      "entryId": "entry.877086558",
-      "profileField": null,
-      "label": "Surname",
-      "type": "PARAGRAPH",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1633070132",
-      "profileField": null,
-      "label": "First Name",
-      "type": "PARAGRAPH",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1498135098",
-      "profileField": "email",
-      "label": "Email",
-      "type": "PARAGRAPH",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1424661284",
-      "profileField": "organisation",
-      "label": "Organization",
-      "type": "PARAGRAPH",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.2606285",
-      "profileField": null,
-      "label": "Membership",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.253460959",
-      "profileField": null,
-      "label": "Membership Grade",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.990121559",
-      "profileField": null,
-      "label": "Would you attend in person or online?",
-      "type": "RADIO",
-      "safePrefill": false
-     }
-    ],
+    "status": "CLOSED",
+    "fields": [],
     "requiresManualCompletion": true,
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
@@ -4758,7 +4707,10 @@
     "sourceUrlClass": "UNKNOWN",
     "confidence": "LOW",
     "discoveryMethod": "page_no_candidate"
-   }
+   },
+   "venue": "TQM Training Centre, 11/F Lockhart Centre, 301-307 Lockhart Road, Hong Kong",
+   "venueSource": "event_detail",
+   "mode": "FACE_TO_FACE"
   },
   {
    "id": "aac2ad90a976f",
@@ -5138,34 +5090,6 @@
    }
   },
   {
-   "id": "ae60e9459c208",
-   "name": "建造業議會 - 2026建造工友嘉年華 (Chinese only)",
-   "org": "HKGBC",
-   "date": "2026-11-29",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1086",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "HKGBC 綠建環評",
-   "group": "HKGBC",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "LOW",
-    "discoveryMethod": "hkgbc_detail_no_reg"
-   }
-  },
-  {
    "id": "a03559f0a46f9",
    "name": "2026 Construction Workers Carnival",
    "org": "CIC",
@@ -5191,6 +5115,34 @@
     "sourceUrlClass": "UNKNOWN",
     "confidence": "LOW",
     "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
+   "id": "ae60e9459c208",
+   "name": "建造業議會 - 2026建造工友嘉年華 (Chinese only)",
+   "org": "HKGBC",
+   "date": "2026-11-29",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1086",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkgbc_detail_no_reg"
    }
   },
   {
@@ -5810,6 +5762,34 @@
    }
   },
   {
+   "id": "a9c92b856a9ba",
+   "name": "ITCTS Recruitment Day",
+   "org": "CIC",
+   "date": "2026-12-03",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/en/events/detail.page-20261203",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "LISTING_PAGE",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
    "id": "a2ff55574083e",
    "name": "RCx CPD Webinar - Unlocking Building Performance Through Data-Driven RCx and ASHRAE Best Practices",
    "org": "HKGBC",
@@ -5856,34 +5836,6 @@
    "free": null,
    "source": "IStructE Events",
    "group": "IStructE",
-   "auto": true,
-   "registration": {
-    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
-    "destination": null,
-    "status": "UNKNOWN",
-    "sourceUrlClass": "LISTING_PAGE",
-    "confidence": "LOW",
-    "discoveryMethod": "page_no_candidate"
-   }
-  },
-  {
-   "id": "a9c92b856a9ba",
-   "name": "ITCTS Recruitment Day",
-   "org": "CIC",
-   "date": "2026-12-03",
-   "time": "",
-   "hrs": null,
-   "hrs_est": false,
-   "type": "Technical",
-   "disc": [
-    "General"
-   ],
-   "url": "https://www.cic.hk/en/events/detail.page-20261203",
-   "region": "HK",
-   "online": null,
-   "free": null,
-   "source": "CIC 建造業議會 Events",
-   "group": "CIC",
    "auto": true,
    "registration": {
     "mechanism": "REGISTRATION_LINK_NOT_FOUND",
@@ -9011,6 +8963,34 @@
    }
   },
   {
+   "id": "a4f8e7781d6f0",
+   "name": "Agentic AI Applications in Quantity Surveying",
+   "org": "HKIS CPD",
+   "date": "2027-01-03",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6905",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "OTHER_PUBLIC_FORM",
+    "destination": "https://www.hkis.org.hk/en/pdf/Standard_Reservation_Form_2026.pdf",
+    "status": "OPEN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "page_scan_pdf,pos_text"
+   }
+  },
+  {
    "id": "a49120e4ad0ab",
    "name": "Visit to International Gateway Centre (IGC)",
    "org": "HKIS CPD",
@@ -9068,6 +9048,34 @@
     "sourceUrlClass": "LISTING_PAGE",
     "confidence": "LOW",
     "discoveryMethod": "labour_oshsreg_listing_no_per_event_link"
+   }
+  },
+  {
+   "id": "a1bbe0cd9079b",
+   "name": "參觀上海中海慧智廣場項目C65科研樓宇",
+   "org": "HKIS CPD",
+   "date": "2027-01-06",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6901",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
    }
   },
   {
@@ -9758,6 +9766,38 @@
    "venueSource": "event_detail",
    "division": "Young Members Committee",
    "mode": "FACE_TO_FACE"
+  },
+  {
+   "id": "a337dd90b7acb",
+   "name": "2027 Semiconductor Asia AI Summit (SAAIS)",
+   "org": "Other Organiser(s)",
+   "date": "2027-01-21",
+   "time": "09:30-17:30",
+   "hrs": 8.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6b063eeb1f1d426669cca411/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Grand Hall, 1/F, Building 12W, Hong Kong Science Park, New Territories",
+   "description": "Host: Hong Kong University of Science and Technology (HKUST), SEMI and Hong Kong Science and Technology Parks Corporation (HKSTP) Email: saais@ust.hk Event Website: https://okt.hkust.edu.hk/saais-event",
+   "venueSource": "event_detail",
+   "division": "Other Organiser(s)",
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_no_reg_link"
+   }
   },
   {
    "id": "a3385ab99339a",
