@@ -51,12 +51,15 @@ from newsletter.normalize import (
     infer_attendance_mode,
     infer_fee,
     is_legitimate_destination,
+    is_tracking_host,
     looks_cancelled,
     parse_any_date,
+    parse_any_date_span,
     parse_any_time_range,
     public_candidate_view,
     set_hours,
     split_bilingual_title,
+    strip_reminder_prefix,
     title_is_clean,
 )
 from title_quality import clamp_title, strip_page_chrome
@@ -85,7 +88,8 @@ DROPPED_HEADERS = frozenset({
 # Image / pixel URLs must never be fetched and must not appear in output.
 PIXEL_HINT_RE = re.compile(
     r"(?:/pixel(?:/|\?|$)|/(?:track|tracking)(?:/|\?|$)|open\.gif|pixel\.gif|"
-    r"transparent\.gif|\bbeacon\b|/collect(?:/|\?|$)|/open/(?:click|mail))",
+    r"transparent\.gif|\bbeacon\b|/collect(?:/|\?|$)|/open/(?:click|mail)|"
+    r"/wf/open(?:/|\?|$)|ct\.sendgrid\.net/wf/)",
     re.I,
 )
 IMG_EXT_RE = re.compile(r"\.(?:gif|png|jpe?g|webp|svg|bmp)(?:\?|$)", re.I)
@@ -192,14 +196,43 @@ def scrub_pii_text(text: str, forbidden: Iterable[str]) -> str:
     return re.sub(r"\s+", " ", out).strip()
 
 
-def _part_payload(part: email.message.Message) -> str:
-    """Return a Unicode body. Prefer the already-decoded string payload.
+def _decode_charset(body: Any, part: email.message.Message) -> str:
+    if body is None:
+        return ""
+    if isinstance(body, str):
+        return body
+    charset = part.get_content_charset() or "utf-8"
+    return body.decode(charset, errors="replace")
 
-    get_payload(decode=True) after message_from_string can re-encode
-    non-ASCII as unicode-escape sequences; the string payload is reliable.
+
+def _part_payload(part: email.message.Message) -> str:
+    """Return a Unicode body, decoding quoted-printable / base64 when needed.
+
+    Real CIC/i-Club HTML mail is typically quoted-printable and uses Unicode
+    dashes/spaces (e.g. 23 – 25 November). Returning the raw CTE payload
+    would hide date ranges and livestream wording behind `=E2=80=93` tokens.
     """
+    import quopri
+    cte = (part.get("Content-Transfer-Encoding") or "").strip().lower()
+    if cte in ("quoted-printable", "base64"):
+        try:
+            body = part.get_payload(decode=True)
+            text = _decode_charset(body, part)
+            if text:
+                return text
+        except Exception:
+            pass
     payload = part.get_payload(decode=False)
     if isinstance(payload, str) and payload:
+        # Fallback: CTE header missing but the body still has QP tokens.
+        if re.search(r"=[0-9A-Fa-f]{2}", payload) and cte != "base64":
+            try:
+                charset = part.get_content_charset() or "utf-8"
+                return quopri.decodestring(payload.encode("ascii", "replace")).decode(
+                    charset, errors="replace"
+                )
+            except Exception:
+                return payload
         return payload
     try:
         body = part.get_payload(decode=True)
@@ -207,10 +240,7 @@ def _part_payload(part: email.message.Message) -> str:
         body = None
     if body is None:
         return payload if isinstance(payload, str) else ""
-    if isinstance(body, str):
-        return body
-    charset = part.get_content_charset() or "utf-8"
-    return body.decode(charset, errors="replace")
+    return _decode_charset(body, part)
 
 
 def extract_bodies(msg: email.message.Message) -> Tuple[str, str]:
@@ -311,6 +341,13 @@ def apply_trusted_override(parsed: Dict[str, Any], from_header: Optional[str] = 
 def _drop_footer(text: str) -> str:
     if not text:
         return ""
+    text = re.sub(
+        r"This sender is trusted or whitelisted\.?\s*sophospsmartbannerend",
+        " ",
+        text,
+        flags=re.I,
+    )
+    text = re.sub(r"\*\|MC:SUBJECT\|\*", " ", text)
     lines = text.splitlines()
     kept = []
     for line in lines:
@@ -421,6 +458,7 @@ def extract_titles(subject: str, body: str) -> Tuple[str, Optional[str], Optiona
     candidates = []
     if subject:
         sub = re.sub(r"^(?:fwd|fw|re)\s*:\s*", "", subject, flags=re.I).strip()
+        sub = strip_reminder_prefix(sub)
         candidates.append(sub)
     for line in (body or "").splitlines():
         line = re.sub(r"\s+", " ", line).strip()
@@ -430,7 +468,7 @@ def extract_titles(subject: str, body: str) -> Tuple[str, Optional[str], Optiona
             continue
         if UNSUBSCRIBE_RE.search(line):
             continue
-        candidates.append(line)
+        candidates.append(strip_reminder_prefix(line) or line)
         if len(candidates) >= 6:
             break
     # Prefer bilingual / longer event-like titles
@@ -459,10 +497,14 @@ def extract_titles(subject: str, body: str) -> Tuple[str, Optional[str], Optiona
 
 def _labelled_value(body: str, *labels: str) -> Optional[str]:
     lab = "|".join(re.escape(l) for l in labels)
-    m = re.search(rf"(?:{lab})\s*[:：]\s*(.+)", body, re.I)
-    if m:
-        return m.group(1).strip().splitlines()[0].strip()
-    return None
+    best = None
+    for m in re.finditer(rf"(?:{lab})\s*[:：]\s*(.+)", body, re.I):
+        val = m.group(1).strip().splitlines()[0].strip()
+        if not val:
+            continue
+        if best is None or len(val) > len(best):
+            best = val
+    return best
 
 
 def extract_event_fields(subject: str, body: str, links: List[Dict[str, str]]) -> Dict[str, Any]:
@@ -471,14 +513,29 @@ def extract_event_fields(subject: str, body: str, links: List[Dict[str, str]]) -
         body, "Date", "Event Date", "日期", "舉辦日期", "活動日期", "Date & Time", "Date and Time"
     )
     time_text = _labelled_value(body, "Time", "時間", "舉辦時間", "活動時間")
-    date = parse_any_date(date_text or "") or parse_any_date(subject) or parse_any_date(body)
+    venue = _labelled_value(
+        body,
+        "Exhibition Venue",
+        "Venue",
+        "Location",
+        "場地",
+        "展覽場地",
+        "地點",
+        "舉辦地點",
+    )
+    start_date, end_date = parse_any_date_span(date_text or "")
+    if not start_date:
+        start_date, end_date = parse_any_date_span(subject)
+    if not start_date:
+        start_date, end_date = parse_any_date_span(body)
+    date = start_date
     times = parse_any_time_range(time_text or "") or parse_any_time_range(date_text or "") or parse_any_time_range(body)
     start = end = None
     if times:
         start, end = times
     mech, dest = pick_registration(links, body)
     typ, civil, discs = classify_type_and_civil(title, title_zh or "", title_en or "", body)
-    mode = infer_attendance_mode(title, body)
+    mode = infer_attendance_mode(title, body, venue=venue)
     fee = infer_fee(body, subject)
     cancelled = looks_cancelled(subject, title, body)
     deadline_text = _labelled_value(
@@ -502,6 +559,8 @@ def extract_event_fields(subject: str, body: str, links: List[Dict[str, str]]) -
         "title_zh": title_zh,
         "title_en": title_en,
         "date": date,
+        "end_date": end_date,
+        "venue": venue,
         "start_time": start,
         "end_time": end,
         "time": f"{start}-{end}" if start and end else (start or ""),
@@ -563,7 +622,12 @@ class PassiveHttp:
 
     @staticmethod
     def _forbidden_url(url: str) -> bool:
-        return bool(PIXEL_HINT_RE.search(url or "") or IMG_EXT_RE.search(url or ""))
+        host = urlparse(url or "").netloc
+        return bool(
+            PIXEL_HINT_RE.search(url or "")
+            or IMG_EXT_RE.search(url or "")
+            or is_tracking_host(host)
+        )
 
 
 class SimpleResponse:
@@ -891,7 +955,9 @@ def process_newsletter(
     cand["civil_related"] = civil
     cand["disc"] = discs
     if not cand.get("mode") or cand.get("mode") == "UNKNOWN":
-        cand["mode"] = infer_attendance_mode(cand.get("title") or "", body_text)
+        cand["mode"] = infer_attendance_mode(
+            cand.get("title") or "", body_text, venue=cand.get("venue")
+        )
 
     trusted = bool(parsed.get("trusted"))
     cand["confidence"] = confidence_for(cand, trusted)

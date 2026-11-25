@@ -25,6 +25,7 @@ from fetch import (
     TODAY,
     classify_rule,
     hours_from_range,
+    MONTHS,
     parse_date,
     parse_time_range,
     stated_cpd_hours,
@@ -67,7 +68,29 @@ GFORM_RE = re.compile(r"https?://(?:forms\.gle/|docs\.google\.com/forms/|google\
 MSFORM_RE = re.compile(r"https?://forms\.(?:office|cloud\.microsoft)\.com/", re.I)
 EVENTBRITE_RE = re.compile(r"https?://(?:www\.)?eventbrite\.(?:com|hk|co\.uk)/", re.I)
 CIC_EVENT_RE = re.compile(
-    r"https?://(?:www\.)?(?:cic\.hk|bim\.cic\.hk|citac\.cic\.hk|rstc\.cic\.hk)/",
+    r"https?://(?:[A-Za-z0-9-]+\.)*(?:cic\.hk|cic\.org\.hk)(?::\d+)?/",
+    re.I,
+)
+# Short-link / ESP wrappers must not be persisted or treated as CIC destinations.
+TRACKING_HOST_RE = re.compile(
+    r"(?:^|\.)(?:ct\.sendgrid\.net|sendgrid\.net|list-manage\.com|"
+    r"mailchimp\.com|mcusercontent\.com|go\.cic\.hk)$",
+    re.I,
+)
+REMINDER_PREFIX_RE = re.compile(
+    r"^(?:(?:final\s+call|last\s+call|last\s+reminder|reminder|"
+    r"最後召集|最後呼籲|溫馨提示)"
+    r"(?:\s+for)?\s*[:：\-|–—]*)+\s*",
+    re.I,
+)
+PHYSICAL_VENUE_RE = re.compile(
+    r"Hong Kong Convention and Exhibition Centre|\bHKCEC\b|"
+    r"香港會議展覽中心|展覽場地|Exhibition Venue|"
+    r"\bHall\s*1[A-E]\b",
+    re.I,
+)
+LIVESTREAM_RE = re.compile(
+    r"\blive[\s-]?stream(?:ing)?\b|\blivestream\b|網上直播|現場直播|線上直播",
     re.I,
 )
 
@@ -78,7 +101,7 @@ TRACKING_PARAM_RE = re.compile(
 )
 PERSONALIZATION_PARAM_RE = re.compile(
     r"^(?:email|e-?mail|recipient|subscriber|contact|uid|user_?id|token|"
-    r"auth|hash|sig|signature|unsubscribe|eid|mid|contactid)$",
+    r"auth|hash|sig|signature|unsubscribe|eid|mid|contactid|upn)$",
     re.I,
 )
 
@@ -149,6 +172,96 @@ UNSUBSCRIBE_RE = re.compile(
 )
 
 
+
+def is_tracking_host(netloc: str) -> bool:
+    host = (netloc or "").lower().split("@")[-1].split(":")[0].strip().strip(".")
+    if not host:
+        return False
+    return bool(TRACKING_HOST_RE.search(host))
+
+
+def strip_reminder_prefix(title: str) -> str:
+    """Remove Final Call / 最後召集 style reminder prefixes from a title."""
+    t = re.sub(r"\s+", " ", (title or "")).strip()
+    prev = None
+    while prev != t:
+        prev = t
+        t = REMINDER_PREFIX_RE.sub("", t).strip(" \t-–—|:：")
+    return t
+
+
+def newsletter_title_core(title: str) -> str:
+    """Stable comparison key: reminder prefixes and marketing suffixes removed."""
+    t = strip_reminder_prefix(title or "")
+    if "|" in t:
+        left = t.split("|", 1)[0].strip()
+        if len(left) >= 20:
+            t = left
+    t = re.sub(r"\([^)]*\)", " ", t)
+    t = re.sub(r"\s+", " ", t).strip(" -–—")
+    return t
+
+
+def parse_date_span(text: str):
+    """Parse a single date or a start–end span. Does not change fetch.parse_date."""
+    if not text:
+        return None
+    s = re.sub(r"\s+", " ", str(text)).strip()
+    m = re.search(
+        r"(\d{1,2})\s*[-–—~to]+\s*(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})",
+        s,
+        re.I,
+    )
+    if m:
+        d1, d2, mon, year = int(m.group(1)), int(m.group(2)), m.group(3).lower(), int(m.group(4))
+        mo = MONTHS.get(mon) or MONTHS.get(mon[:3])
+        if mo:
+            try:
+                import datetime as dt
+                start = dt.date(year, mo, d1).isoformat()
+                end = dt.date(year, mo, d2).isoformat()
+                return start, end
+            except Exception:
+                pass
+    m = re.search(
+        r"(\d{1,2})\s+([A-Za-z]+)\s*[-–—~to]+\s*(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})",
+        s,
+        re.I,
+    )
+    if m:
+        d1, m1, d2, m2, year = int(m.group(1)), m.group(2).lower(), int(m.group(3)), m.group(4).lower(), int(m.group(5))
+        mo1 = MONTHS.get(m1) or MONTHS.get(m1[:3])
+        mo2 = MONTHS.get(m2) or MONTHS.get(m2[:3])
+        if mo1 and mo2:
+            try:
+                import datetime as dt
+                start = dt.date(year, mo1, d1).isoformat()
+                end = dt.date(year, mo2, d2).isoformat()
+                return start, end
+            except Exception:
+                pass
+    m = re.search(
+        r"(20\d{2})\s*年\s*(\d{1,2})\s*月\s*(\d{1,2})\s*日\s*"
+        r"(?:至|到|[-–—])\s*"
+        r"(?:(20\d{2})\s*年\s*)?(?:(\d{1,2})\s*月\s*)?(\d{1,2})\s*日",
+        s,
+    )
+    if m:
+        y1, mo1, d1, y2, mo2, d2 = m.groups()
+        try:
+            import datetime as dt
+            year1 = int(y1)
+            start = dt.date(year1, int(mo1), int(d1)).isoformat()
+            end = dt.date(int(y2 or y1), int(mo2 or mo1), int(d2)).isoformat()
+            return start, end
+        except Exception:
+            pass
+    single = parse_zh_date(s) or parse_date(s)
+    if single:
+        return single, None
+    return None
+
+
 def clean_url(url: str) -> Optional[str]:
     """Strip tracking and personalization query params. Keep the destination itself."""
     if not url or not isinstance(url, str):
@@ -168,6 +281,8 @@ def clean_url(url: str) -> Optional[str]:
     except Exception:
         return None
     if parts.scheme and parts.scheme not in ("http", "https"):
+        return None
+    if is_tracking_host(parts.netloc):
         return None
     query = []
     for key, value in parse_qsl(parts.query, keep_blank_values=False):
@@ -262,7 +377,21 @@ def parse_zh_date(text: str) -> Optional[str]:
 def parse_any_date(text: str) -> Optional[str]:
     if not text:
         return None
+    span = parse_date_span(text)
+    if span:
+        return span[0]
     return parse_zh_date(text) or parse_date(text)
+
+
+def parse_any_date_span(text: str) -> Tuple[Optional[str], Optional[str]]:
+    """Return (start_date, end_date). end_date is None for a single day."""
+    if not text:
+        return None, None
+    span = parse_date_span(text)
+    if span:
+        start, end = span
+        return start, end
+    return None, None
 
 
 def _zh_hour(h: int, minute: int, ap: str, peer_ap: str) -> Optional[str]:
@@ -380,24 +509,61 @@ def split_bilingual_title(title: str) -> Tuple[str, Optional[str], Optional[str]
 
 
 def classify_type_and_civil(*texts: str) -> Tuple[str, bool, List[str]]:
-    blob = " ".join(t for t in texts if t)
-    typ = classify_rule(blob) if blob else "Technical"
-    if HS_TOPIC_RE.search(blob):
+    """Type from the title first. A passing body mention of 'safety' is not H&S.
+
+    Callers pass (title, title_zh, title_en, body). Empty title_zh must not
+    shift the body into the title slots.
+    """
+    seq = list(texts)
+    if len(seq) >= 4:
+        title_blob = " ".join(seq[:3])
+        body_blob = " ".join(seq[3:])
+    else:
+        title_blob = " ".join(seq)
+        body_blob = ""
+    blob = " ".join(seq)
+    typ = classify_rule(title_blob or blob) if (title_blob or blob) else "Technical"
+    if HS_TOPIC_RE.search(title_blob) or CIVIL_SAFETY_RE.search(title_blob):
+        typ = "H&S"
+    elif CIVIL_SAFETY_RE.search(body_blob):
         typ = "H&S"
     civil = bool(CIVIL_SAFETY_RE.search(blob))
     discs = ["Civil"] if civil else ["General"]
     return typ, civil, discs
 
 
-def infer_attendance_mode(*texts: str, explicit: Optional[str] = None) -> str:
+def infer_attendance_mode(
+    *texts: str,
+    explicit: Optional[str] = None,
+    venue: Optional[str] = None,
+) -> str:
     if isinstance(explicit, str) and explicit.strip().upper() in event_mode.VALID:
         return explicit.strip().upper()
     ev = {
         "name": texts[0] if texts else "",
         "title": texts[0] if texts else "",
         "description": " ".join(t for t in texts if t),
+        "venue": venue or "",
     }
-    return infer_mode(ev)["mode"]
+    mode = infer_mode(ev)["mode"]
+    # Newsletter-specific venue / livestream evidence. Do not treat
+    # "online registration" as attendance, and do not mark a physical
+    # exhibition Online merely because a livestream is mentioned — only
+    # the same activity with both channels is HYBRID.
+    blob = " ".join(t for t in (*(texts or ()), venue or "") if t)
+    physical = bool(
+        PHYSICAL_VENUE_RE.search(blob)
+        or (venue or "").strip()
+        or mode == "FACE_TO_FACE"
+    )
+    stream = bool(LIVESTREAM_RE.search(blob))
+    if physical and stream:
+        return "HYBRID"
+    if mode != "UNKNOWN":
+        return mode
+    if physical:
+        return "FACE_TO_FACE"
+    return mode
 
 
 def looks_social(title: str, description: str = "") -> bool:
@@ -433,6 +599,25 @@ def is_future_date(date_iso: Optional[str], today=None) -> bool:
     except Exception:
         return False
     return today <= d <= today + dt.timedelta(days=KEEP_DAYS_AHEAD)
+
+
+def event_is_current_or_future(candidate: Dict[str, Any], today=None) -> bool:
+    """Multi-day events remain current through their end date (inclusive)."""
+    import datetime as dt
+    today = today or TODAY
+    start = candidate.get("date")
+    end = candidate.get("end_date") or start
+    if not start and not end:
+        return False
+    try:
+        start_d = dt.date.fromisoformat(str(start or end)[:10])
+        end_d = dt.date.fromisoformat(str(end or start)[:10])
+    except Exception:
+        return False
+    if end_d < start_d:
+        end_d = start_d
+    latest_start = today + dt.timedelta(days=KEEP_DAYS_AHEAD)
+    return end_d >= today and start_d <= latest_start
 
 
 def title_is_clean(title: str) -> bool:
@@ -472,7 +657,8 @@ def apply_quality_gates(candidate: Dict[str, Any], *, trusted: bool) -> Dict[str
         or bool(candidate.get("civil_related"))
     )
     gates["B"] = _gate(professional, "plausible_professional_event" if professional else "not_professional_event")
-    gates["C"] = _gate(is_future_date(date), "valid_future_date" if is_future_date(date) else "missing_or_not_future_date")
+    current = event_is_current_or_future(candidate)
+    gates["C"] = _gate(current, "valid_future_date" if current else "missing_or_not_future_date")
     gates["D"] = _gate(title_is_clean(title), "clean_title" if title_is_clean(title) else (title_quality_reason(title) or "generic_or_bad_title"))
     legit = is_legitimate_destination(mech, dest)
     gates["E"] = _gate(legit, "legitimate_destination" if legit else "no_legitimate_registration_or_cic_url")
@@ -600,6 +786,7 @@ def compare_to_production(
 
     name = candidate.get("title") or ""
     date = candidate.get("date")
+    end_date = candidate.get("end_date") or date
     dest = canonical_registration_url((candidate.get("registration") or {}).get("destination"))
     best = None
     best_sim = 0.0
@@ -607,7 +794,9 @@ def compare_to_production(
         if not isinstance(ev, dict):
             continue
         ev_date = ev.get("date")
-        if date and ev_date and date != ev_date:
+        if date and ev_date and ev_date != date and not (
+            end_date and date <= ev_date <= end_date
+        ):
             continue
         # If the newsletter has no date, only match on destination or identical URL.
         ev_url = canonical_registration_url(ev.get("url") or "")
@@ -618,8 +807,18 @@ def compare_to_production(
         )
         same_dest = bool(dest and ev_dest and dest == ev_dest)
         same_url = bool(dest and ev_url and dest == ev_url)
-        sim = _title_sim(name, ev.get("name") or ev.get("title") or "")
-        if date and ev_date and date == ev_date and sim >= 0.90:
+        ev_name = ev.get("name") or ev.get("title") or ""
+        sim = max(
+            _title_sim(name, ev_name),
+            _title_sim(newsletter_title_core(name), newsletter_title_core(ev_name)),
+        )
+        dates_align = bool(
+            ev_date and (
+                ev_date == date
+                or (date and end_date and date <= ev_date <= end_date)
+            )
+        )
+        if dates_align and sim >= 0.90:
             probe_a = {
                 "name": name,
                 "url": dest or candidate.get("url") or "",
@@ -769,9 +968,11 @@ def public_candidate_view(candidate: Dict[str, Any]) -> Dict[str, Any]:
         "title_zh": candidate.get("title_zh"),
         "title_en": candidate.get("title_en"),
         "date": candidate.get("date"),
+        "end_date": candidate.get("end_date"),
         "time": candidate.get("time") or "",
         "start_time": candidate.get("start_time"),
         "end_time": candidate.get("end_time"),
+        "venue": candidate.get("venue"),
         "mode": candidate.get("mode"),
         "type": candidate.get("type"),
         "civil_related": bool(candidate.get("civil_related")),

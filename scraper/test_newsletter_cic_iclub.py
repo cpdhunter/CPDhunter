@@ -26,12 +26,17 @@ from newsletter.normalize import (
     STATUS_REJECTED,
     STATUS_REVIEW,
     classify_registration_url,
+    classify_type_and_civil,
     clean_url,
     compare_to_production,
+    event_is_current_or_future,
     infer_attendance_mode,
+    newsletter_title_core,
     parse_any_date,
+    parse_any_date_span,
     parse_any_time_range,
     public_candidate_view,
+    strip_reminder_prefix,
 )
 from newsletter.run_pilot import (
     EVENTS_JSON,
@@ -459,6 +464,136 @@ def test_life_first_expected_fields():
     print("Life First expected fields OK")
 
 
+
+def test_real_ciexpo_main_stage_date_span_and_fields():
+    _, c = _cand("ciexpo_2026_main_stage.eml")
+    assert c["date"] == "2026-11-23"
+    assert c.get("end_date") == "2026-11-25"
+    assert c["type"] == "Technical"
+    assert c["civil_related"] is False
+    assert c["mode"] == "HYBRID"
+    assert c.get("venue") and "Hong Kong Convention and Exhibition Centre" in c["venue"]
+    assert c["hrs"] is None
+    reg = c["registration"]
+    assert reg["mechanism"] == "CIC_EVENT_URL"
+    dest = reg["destination"] or ""
+    assert dest.startswith("https://ciexpo.cic.hk/event/2026/home")
+    assert "sendgrid" not in dest.lower()
+    assert "upn=" not in dest
+    print("real CIExpo Main Stage date/type/mode/destination OK")
+
+
+def test_spaced_date_range_prefers_start_day():
+    start, end = parse_any_date_span("23 – 25 November 2026 (Monday – Wednesday)")
+    assert start == "2026-11-23"
+    assert end == "2026-11-25"
+    assert parse_any_date("23 – 25 November 2026 (Monday – Wednesday)") == "2026-11-23"
+    start, end = parse_any_date_span("2026年11月23日至25日")
+    assert start == "2026-11-23" and end == "2026-11-25"
+    print("spaced date range uses start day OK")
+
+
+def test_incidental_safety_in_expo_body_is_not_hs():
+    typ, civil, _ = classify_type_and_civil(
+        "Construction Innovation Expo 2026 | Explore Frontline of the Industry at Main Stage",
+        "",
+        "Construction Innovation Expo 2026 | Explore Frontline of the Industry at Main Stage",
+        "enhancing the productivity, safety and sustainability in the local industry",
+    )
+    assert typ == "Technical"
+    assert civil is False
+    print("incidental body safety does not force H&S OK")
+
+
+def test_sendgrid_tracking_urls_are_dropped():
+    assert clean_url("https://u37373948.ct.sendgrid.net/ls/click?upn=abc") is None
+    assert clean_url("https://u37373948.ct.sendgrid.net/wf/open?upn=abc") is None
+    mech, url = classify_registration_url(
+        "https://u37373948.ct.sendgrid.net/ls/click?upn=u001.example"
+    )
+    assert mech is None
+    assert url is None
+    print("SendGrid tracking URLs dropped OK")
+
+
+def test_ciexpo_subdomain_is_legitimate_cic_url():
+    mech, url = classify_registration_url("https://ciexpo.cic.hk/event/2026/home")
+    assert mech == "CIC_EVENT_URL"
+    assert "ciexpo.cic.hk" in (url or "")
+    print("ciexpo.cic.hk recognized as CIC destination OK")
+
+
+def test_reminder_prefix_stripped_from_title():
+    assert strip_reminder_prefix(
+        "最後召集 - 網上研討會 | 主席午餐會:大國工匠講座《匠心》"
+    ) == "網上研討會 | 主席午餐會:大國工匠講座《匠心》"
+    assert strip_reminder_prefix("Final Call for CIExpo 2026 Technical Visits") == "CIExpo 2026 Technical Visits"
+    assert newsletter_title_core(
+        "Construction Innovation Expo 2026 | Explore Frontline of the Industry at Main Stage"
+    ) == "Construction Innovation Expo 2026"
+    print("reminder prefix / title core OK")
+
+
+def test_ciexpo_matches_existing_web_production_event():
+    production = [
+        {
+            "id": "aa90ded4f6271",
+            "name": "Construction Innovation Expo 2026 (CIExpo 2026)",
+            "org": "CIC",
+            "date": "2026-11-23",
+            "source": "CIC 建造業議會 Events",
+            "group": "CIC",
+            "url": "https://www.cic.hk/en/events/detail.page-20261123",
+            "time": "",
+            "hrs": None,
+            "hrs_est": False,
+            "registration": {
+                "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+                "destination": None,
+                "status": "UNKNOWN",
+            },
+        }
+    ]
+    _, c = _cand("ciexpo_2026_main_stage.eml", production_events=production)
+    assert c["duplicate"]["is_duplicate"] is True
+    assert c["duplicate"]["matched_id"] == "aa90ded4f6271"
+    print("CIExpo newsletter matches existing web event OK")
+
+
+def test_multiday_event_current_on_last_day():
+    cand = {"date": "2026-11-23", "end_date": "2026-11-25"}
+    import datetime as dt
+    assert event_is_current_or_future(cand, today=dt.date(2026, 11, 25)) is True
+    assert event_is_current_or_future(cand, today=dt.date(2026, 11, 26)) is False
+    assert event_is_current_or_future({"date": "2026-11-23"}, today=dt.date(2026, 11, 25)) is False
+    print("multi-day current-through-end-date OK")
+
+
+
+def test_quoted_printable_date_range_and_livestream():
+    """Real i-Club HTML mail is quoted-printable with Unicode en-dashes."""
+    raw = (
+        "From: i-club@cic.hk\n"
+        "Subject: Construction Innovation Expo 2026 | Explore Frontline of the Industry at Main Stage\n"
+        "MIME-Version: 1.0\n"
+        "Content-Type: text/plain; charset=utf-8\n"
+        "Content-Transfer-Encoding: quoted-printable\n"
+        "\n"
+        "Date:=E2=80=AF 23 =E2=80=93 25 November 2026 (Monday =E2=80=93 Wednesday)\n"
+        "Exhibition Venue:=E2=80=AF Hall 1C - E, Hong Kong Convention and Exhibition Centre\n"
+        "More Details: https://ciexpo.cic.hk/event/2026/home\n"
+        "The Main Stage livestream will also be available to all registered attendees.\n"
+    ).encode("ascii")
+    rec = process_newsletter(raw)
+    c = rec["candidates"][0]
+    assert c["date"] == "2026-11-23", c["date"]
+    assert c.get("end_date") == "2026-11-25"
+    assert c["mode"] == "HYBRID", c["mode"]
+    dest = (c["registration"] or {}).get("destination") or ""
+    assert "ciexpo.cic.hk" in dest
+    print("quoted-printable date range and livestream OK")
+
+
 def main():
     tests = [
         test_01_trusted_iclub_newsletter_accepted,
@@ -492,6 +627,15 @@ def main():
         test_paid_excluded_by_free_first,
         test_trusted_domains_configured,
         test_life_first_expected_fields,
+        test_real_ciexpo_main_stage_date_span_and_fields,
+        test_spaced_date_range_prefers_start_day,
+        test_incidental_safety_in_expo_body_is_not_hs,
+        test_sendgrid_tracking_urls_are_dropped,
+        test_ciexpo_subdomain_is_legitimate_cic_url,
+        test_reminder_prefix_stripped_from_title,
+        test_ciexpo_matches_existing_web_production_event,
+        test_multiday_event_current_on_last_day,
+        test_quoted_printable_date_range_and_livestream,
     ]
     failed = []
     for fn in tests:
