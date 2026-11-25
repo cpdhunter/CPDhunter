@@ -85,6 +85,9 @@ jobs:
   pages-deploy:
     name: Deploy Pages
     needs: pages-build
+    # Explicit if is required so a skipped scrape job (push / deploy-only)
+    # does not propagate skip and drop the deployment.
+    if: always() && needs.pages-build.result == 'success'
     runs-on: ubuntu-latest
     # Serialize Pages deployments independently of the scrape job so a deploy
     # queue cannot cancel a data-producing update after it has committed.

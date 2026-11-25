@@ -81,6 +81,9 @@ def test_workflow_architecture():
 
     # 6. deploy happens after artifact upload (explicit job dependency)
     assert "needs: pages-build" in deploy
+    # Skipped scrape (push / deploy-only) must not propagate skip onto deploy
+    assert "needs.pages-build.result == 'success'" in deploy
+    assert "always()" in deploy
     assert "actions/deploy-pages@v4" in deploy
     assert "deploy-pages" not in build
     assert "deploy-pages" not in update
