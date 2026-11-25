@@ -4,25 +4,36 @@ on:
   schedule:
     - cron: "0 22 * * *"   # 每日香港時間朝早 6:00
   workflow_dispatch:
+    inputs:
+      deploy_only:
+        description: "Redeploy current main to GitHub Pages without scraping"
+        type: boolean
+        default: false
   push:
     branches: [main]
 
+# contents:write is required for the scrape job to commit events.json.
+# pages:write and id-token:write are required for GitHub Pages deploy.
+# The deploy job further narrows its own permissions.
 permissions:
   contents: write
   pages: write
   id-token: write
   issues: write
 
+# Serialize data-producing runs. Never cancel a scrape after it may have
+# committed valid new data merely because another Pages deploy is running.
 concurrency:
   group: cpd-update
   cancel-in-progress: false
 
 jobs:
   update:
+    name: Scrape and commit
+    if: github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && github.event.inputs.deploy_only != 'true')
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
+    outputs:
+      commit_sha: ${{ steps.sha.outputs.commit_sha }}
     steps:
       - uses: actions/checkout@v4
 
@@ -31,7 +42,6 @@ jobs:
           python-version: "3.12"
 
       - name: Scrape CPD events
-        if: github.event_name != 'push'
         run: |
           pip install -r scraper/requirements.txt
           python -m playwright install chromium --with-deps
@@ -43,16 +53,53 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
 
       - name: Commit events.json
-        if: github.event_name != 'push'
         run: |
           git config user.name "cpd-hunter-bot"
           git config user.email "cpd-hunter-bot@users.noreply.github.com"
           git add events.json source_health.json || true
           git diff --staged --quiet || (git commit -m "Daily CPD update" && git push)
 
+      - name: Record commit SHA
+        id: sha
+        run: echo "commit_sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+  pages-build:
+    name: Build Pages artifact
+    needs: update
+    # Run when scrape succeeded, or when scrape was skipped (push / deploy-only).
+    # Do not run a deploy-only path of a cancelled or failed scrape job.
+    if: always() && (needs.update.result == 'success' || needs.update.result == 'skipped')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.update.outputs.commit_sha || github.sha }}
+
       - uses: actions/configure-pages@v5
+
       - uses: actions/upload-pages-artifact@v3
         with:
+          name: github-pages
           path: .
+
+  pages-deploy:
+    name: Deploy Pages
+    needs: pages-build
+    runs-on: ubuntu-latest
+    # Serialize Pages deployments independently of the scrape job so a deploy
+    # queue cannot cancel a data-producing update after it has committed.
+    concurrency:
+      group: cpd-pages-deploy
+      cancel-in-progress: false
+    permissions:
+      pages: write
+      id-token: write
+      contents: read
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
       - id: deploy
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages
