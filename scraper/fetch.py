@@ -1124,6 +1124,104 @@ def load(path, default):
     except Exception:
         return default
 
+
+def is_cic_main_url(url):
+    """True only for CIC Main (www.cic.hk / cic.hk), not BIM/CITAC/RSTCS/CIC UK."""
+    host = (urlparse(url or "").netloc or "").lower()
+    if host.startswith("www."):
+        host = host[4:]
+    return host == "cic.hk"
+
+
+# Public event-list containers on CIC Main. Filter <select> chrome is not a container.
+CIC_MAIN_CONTAINER_SELECTOR = ",".join([
+    "article.event-card",
+    ".event-card",
+    "div.calendar",
+    ".calendar article",
+    "[class*='event-card']",
+    "[class*='eventList']",
+    "[class*='event-list']",
+    "[data-event-id]",
+])
+
+
+def cic_event_container_present(soup):
+    """Whether the expected CIC Main event listing container is in the DOM."""
+    if soup is None:
+        return False
+    try:
+        matches = soup.select(CIC_MAIN_CONTAINER_SELECTOR)
+    except Exception:
+        matches = []
+    for el in matches:
+        if el.find_parent(["option", "select"]):
+            continue
+        return True
+    return False
+
+
+def _render_cic_main_with_playwright(url):
+    """Render CIC Main with the existing public Playwright path, waiting for the event container."""
+    if not allowed(url):
+        raise StepError("robots.txt 唔准讀取")
+    if not PLAYWRIGHT_OK:
+        raise StepError("Playwright 不可用")
+    try:
+        with sync_playwright() as p:
+            browser = p.chromium.launch(headless=True)
+            try:
+                page = browser.new_page()
+                page.set_extra_http_headers(HEADERS)
+                page.goto(url, timeout=50000, wait_until="domcontentloaded")
+                try:
+                    page.wait_for_selector(CIC_MAIN_CONTAINER_SELECTOR, timeout=8000)
+                except Exception:
+                    page.wait_for_timeout(3000)
+                return page.content()
+            finally:
+                browser.close()
+    except StepError:
+        raise
+    except Exception as ex:
+        raise StepError(f"Playwright 失敗：{type(ex).__name__}")
+
+
+def apply_cic_main_playwright_fallback(url, soup, raw, method="cic-list"):
+    """CIC Main only: if static extract is empty or the event container is absent, try Playwright.
+
+    Uses the same extract_cic rules after render. This production fallback does not use Scrapling.
+    Playwright exceptions are isolated — the static result is kept and the scrape continues.
+    """
+    raw = raw or []
+    container = cic_event_container_present(soup)
+    if raw and container:
+        log(f"  CIC Main static cic-list raw={len(raw)} container=yes; Playwright not needed")
+        return raw, method
+    log(
+        f"  CIC Main static cic-list raw={len(raw)} container={'yes' if container else 'no'}; "
+        "attempting Playwright fallback"
+    )
+    if not PLAYWRIGHT_OK:
+        log("  CIC Main Playwright unavailable; keeping static cic-list result")
+        return raw, method
+    try:
+        html2 = _render_cic_main_with_playwright(url)
+        soup2 = BeautifulSoup(html2, "html.parser")
+        raw2 = extract_cic(soup2, url)
+        if raw2:
+            log(f"  CIC Main Playwright recovered {len(raw2)} candidates")
+            return raw2, "playwright+cic-list"
+        log("  CIC Main Playwright fallback returned 0 candidates")
+        # Render completed: record the method even when empty so health is not mistaken
+        # for a skipped fallback. If static had legacy candidates, keep them.
+        if raw:
+            return raw, method
+        return raw2, "playwright+cic-list"
+    except Exception as ex:
+        log(f"  CIC Main Playwright fallback isolated: {type(ex).__name__}: {ex}")
+        return raw, method
+
 def process_source(src):
     url = src["url"]
     use_pw = False
@@ -1236,6 +1334,8 @@ def process_source(src):
     elif "cic.hk" in url or "bim.cic" in url or "citac" in url:
         raw = extract_cic(soup, url)
         method = "cic-list"
+        if is_cic_main_url(url):
+            raw, method = apply_cic_main_playwright_fallback(url, soup, raw, method)
     elif "hkgbc" in url:
         def _hkgbc_fetch(detail_url):
             return fetch_html(detail_url, use_playwright=False)
@@ -1268,7 +1368,9 @@ def process_source(src):
     else:
         raw = generic_extract(soup, url)
         method = "generic"
-    if not raw and method != "hkie-eventlist" and PLAYWRIGHT_OK and not use_pw and ("hkie" in url or "ice" in url or "cic" in url or "hkgbc" in url or "tqm.com.hk" in url):
+    # CIC Main already ran a deterministic Playwright fallback above. Do not
+    # launch a second browser or swallow a second exception here.
+    if not raw and method != "hkie-eventlist" and PLAYWRIGHT_OK and not use_pw and not is_cic_main_url(url) and ("hkie" in url or "ice" in url or "cic" in url or "hkgbc" in url or "tqm.com.hk" in url):
         try:
             html2 = fetch_html(url, use_playwright=True)
             soup2 = BeautifulSoup(html2, "html.parser")
