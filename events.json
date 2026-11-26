@@ -1,14 +1,14 @@
 {
- "updated": "2026-11-26T07:06+08:00",
+ "updated": "2026-11-27T07:06+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 4,
+   "n": 6,
    "method": "oshc-activity",
    "page_title": "OSHC",
-   "raw_candidates": 4,
+   "raw_candidates": 6,
    "rejects": {}
   },
   {
@@ -25,10 +25,13 @@
   },
   {
    "source": "勞工處 職業健康公開講座",
-   "status": "FAIL",
+   "status": "EMPTY_UNVERIFIED",
    "ok": false,
    "n": 0,
-   "err": "讀取網頁失敗：HTTP 404"
+   "method": "labour-list+detail",
+   "page_title": "勞工處 - 職業健康公開講座",
+   "raw_candidates": 0,
+   "rejects": {}
   },
   {
    "source": "公務員事務局 職安健活動 (勞工處/OSHC)",
@@ -100,10 +103,10 @@
    "source": "HKIE Events",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 54,
+   "n": 53,
    "method": "hkie-eventlist+detail",
    "page_title": "Events - HKIE",
-   "raw_candidates": 56,
+   "raw_candidates": 55,
    "rejects": {
     "social": 2
    }
@@ -187,10 +190,10 @@
    "source": "HKICM Learning / CPD",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 3,
+   "n": 4,
    "method": "hkicm",
    "page_title": "Learning / CPD - HKICM",
-   "raw_candidates": 3,
+   "raw_candidates": 4,
    "rejects": {}
   },
   {
@@ -241,15 +244,10 @@
   },
   {
    "source": "TQM Consultants Training",
-   "status": "OK_WITH_EVENTS",
-   "ok": true,
-   "n": 3,
-   "method": "tqm-list+detail",
-   "page_title": "Upcoming | TQM Consultants Co. Limited",
-   "raw_candidates": 5,
-   "rejects": {
-    "date_range": 2
-   }
+   "status": "FAIL",
+   "ok": false,
+   "n": 0,
+   "err": "Playwright 失敗：Error"
   }
  ],
  "events": [
@@ -4810,6 +4808,34 @@
    }
   },
   {
+   "id": "acacf884ce8d4",
+   "name": "「6號幹線『螢』造未來」光影時尚音樂夜",
+   "org": "HKIS CPD",
+   "date": "2026-11-28",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkis.org.hk/en/professional_cpd2.html?id=6902",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIS CPD",
+   "group": "HKIS",
+   "auto": true,
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "LOW",
+    "discoveryMethod": "page_no_candidate"
+   }
+  },
+  {
    "id": "acd5467354121",
    "name": "Visit to Loop at Hong Kong-Shenzhen Innovation and Technology Park (HSITP)",
    "org": "HKIS CPD",
@@ -4939,8 +4965,8 @@
    "mode": "FACE_TO_FACE"
   },
   {
-   "id": "acacf884ce8d4",
-   "name": "「6號幹線『螢』造未來」光影時尚音樂夜",
+   "id": "acbaa95742703",
+   "name": "(FULL) 「6號幹線『螢』造未來」光影時尚音樂夜",
    "org": "HKICM",
    "date": "2026-11-28",
    "time": "17:00-18:00",
@@ -4961,128 +4987,8 @@
     "mechanism": "GOOGLE_FORMS",
     "destination": "https://docs.google.com/forms/d/e/1FAIpQLSdjg71DHHc87BwwtUu3erJXJmSzf2YhUqxN8ePnM3Rvee6stg/viewform",
     "formId": "1FAIpQLSdjg71DHHc87BwwtUu3erJXJmSzf2YhUqxN8ePnM3Rvee6stg",
-    "status": "OPEN",
-    "fields": [
-     {
-      "entryId": "entry.1183364918",
-      "profileField": null,
-      "label": "Membership",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.15244053",
-      "profileField": "hkieNumber",
-      "label": "Membership No.",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1540395286",
-      "profileField": null,
-      "label": "Membership Class",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.864266516",
-      "profileField": null,
-      "label": "Title",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1596056943",
-      "profileField": "englishName",
-      "label": "English Full Name",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1405328043",
-      "profileField": "chineseName",
-      "label": "Chinese Name",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1776484622",
-      "profileField": null,
-      "label": "Age",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.2049775845",
-      "profileField": "phone",
-      "label": "Telephone / Mobile Contact",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.1424028824",
-      "profileField": "email",
-      "label": "Email Address",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.91740810",
-      "profileField": "organisation",
-      "label": "Company / Institute",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.602237502",
-      "profileField": "position",
-      "label": "Position",
-      "type": "SHORT_TEXT",
-      "safePrefill": true
-     },
-     {
-      "entryId": "entry.973402102",
-      "profileField": null,
-      "label": "Registration Fee",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.648365312",
-      "profileField": null,
-      "label": "Venue",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1412685188",
-      "profileField": null,
-      "label": "Assembly Point & Time",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.290774828",
-      "profileField": null,
-      "label": "Important notes",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.221694759",
-      "profileField": null,
-      "label": "Undertaking",
-      "type": "RADIO",
-      "safePrefill": false
-     },
-     {
-      "entryId": "entry.1234603961",
-      "profileField": null,
-      "label": "Remarks",
-      "type": "PARAGRAPH",
-      "safePrefill": false
-     }
-    ],
+    "status": "CLOSED",
+    "fields": [],
     "requiresManualCompletion": true,
     "sourceUrlClass": "UNKNOWN",
     "confidence": "HIGH",
@@ -5383,7 +5289,95 @@
     "status": "UNKNOWN",
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "LOW",
-    "discoveryMethod": "hkgbc_detail_no_reg"
+    "discoveryMethod": "hkgbc_ambiguous_date_match"
+   }
+  },
+  {
+   "id": "ad2175409efeb",
+   "name": "WISDP & HiESD - COP31 Post-Conference Sharing Session",
+   "org": "HKGBC",
+   "date": "2026-12-01",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.hkgbc.org.hk/eng/news-events/events-trainings/events-detail?eventId=1104",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKGBC 綠建環評",
+   "group": "HKGBC",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSeA7rVgUyK1cl59-2pSC7yo4qYtkDpyDmP3EjddkGm9baiWnA/viewform",
+    "formId": "1FAIpQLSeA7rVgUyK1cl59-2pSC7yo4qYtkDpyDmP3EjddkGm9baiWnA",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.182998484",
+      "profileField": "englishName",
+      "label": "Full name / 姓名",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1382605412",
+      "profileField": "email",
+      "label": "Email / 電郵",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1724115630",
+      "profileField": "organisation",
+      "label": "Organisation / Company / 機構或公司",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1249473792",
+      "profileField": "position",
+      "label": "Job title / 職位",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.2107735452",
+      "profileField": "phone",
+      "label": "Mobile / WhatsApp / 電話",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.924770172",
+      "profileField": null,
+      "label": "Audience group / 對象組別",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.2027124329",
+      "profileField": null,
+      "label": "CSDP No. (if applicable)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.860607037",
+      "profileField": null,
+      "label": "How did you hear about this event? / 如何得知本活動",
+      "type": "RADIO",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkgbc_detail_google_forms,in_detail,title_close"
    }
   },
   {
@@ -5688,43 +5682,6 @@
    }
   },
   {
-   "id": "ada67c91dfb5a",
-   "name": "Innovative Movable Bridge Design in Hong Kong: Engineering beyond Waterfront Crossings",
-   "org": "Civil Division",
-   "date": "2026-12-02",
-   "time": "18:30-20:00",
-   "hrs": 1.5,
-   "hrs_est": true,
-   "type": "Technical",
-   "disc": [
-    "Civil"
-   ],
-   "url": "https://hkie.org.hk/events/event-detail/6ad88a0e5f713be01511b1b6/",
-   "region": "HK",
-   "online": null,
-   "free": true,
-   "source": "HKIE Events",
-   "group": "HKIE",
-   "auto": true,
-   "registration": {
-    "mechanism": "GOOGLE_FORMS",
-    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSeA-CLVZq8Q-cFOwpATnYbeIGuK8tJpAOvCXdZSkJZEakqknQ/viewform",
-    "formId": "1FAIpQLSeA-CLVZq8Q-cFOwpATnYbeIGuK8tJpAOvCXdZSkJZEakqknQ",
-    "status": "CLOSED",
-    "fields": [],
-    "requiresManualCompletion": true,
-    "sourceUrlClass": "EVENT_DETAIL",
-    "confidence": "HIGH",
-    "discoveryMethod": "hkie_eventdetail_gform"
-   },
-   "venue": "Chan Yat Mei Sophie Room, 9th Floor, Island Beverley, No 1 Great George Street, Causeway Bay",
-   "description": "Technical Seminar: Innovative Movable Bridge Design in Hong Kong: Engineering beyond Waterfront Crossings Organised by: HKIE Civil Division, and Chartered Institution of Highways & Transportation Date/Time: 2 December 2026 (Wednesday), 18:30-20:00 Venue: Sophie Chan Room, HKIE Headquarters, 9/F Island Beverley, No. 1 Great George Street, Causeway Bay Speaker: Ir Stephen Mak and Ir Daniel Leung Language: Cantonese with English presentation materials Fee: Free of Charge Programme Highlights: In this seminar, experience in the design and construction of innovative movable bridges in two local projects, namely the Improvement Works at Tai O - Phase 2 Stage 2 and the East Coast Boardwalk, will be shared. The speakers will share the comprehensive civil, structural, materials, and mechanical engineering solutions implemented across the projects’ lifecycle. Topics cover structural optimization, complex hydraulic mechanical drive integration, precision off-site fabrication, construction methods, and automated control and monitoring systems. The Improvement Works at Tai O – Phase 2, Stage 2 aims at enhancing local connectivity, emergency response capabilities, and public transport infrastructure without altering Tai O’s distinctive hydrogeological and sociocultural fabric. The project represents a comprehensive civil engineering designed to balance rural infrastructure modernization with environmental conservation and cultural heritage preservation. To overcome severe site constraints including lack of land-based logistics routes and the need to accommodate the Dragon Boat Water Parade, the project team developed innovative engineering solutions including Hong Kong’s first telescopic sliding footbridge, and an innovative horizontal swing footbridge. The East Coast Boardwalk is an iconic 2.2 km continuous pedestrian and cycle promenade constructed beneath the Island Eastern Corridor (IEC) viaducts, closing the long-standing waterfront connectivity gap between Fortress Hill and",
-   "venueSource": "event_detail",
-   "division": "Civil Division",
-   "civil_related": true,
-   "mode": "FACE_TO_FACE"
-  },
-  {
    "id": "a60904ae1c97b",
    "name": "Technical Seminar Series for “Power Generation” - Hybrid Cooling Tower at Black Point Power Station",
    "org": "Mechanical, Marine, Naval Architecture & Chemical Division",
@@ -5760,6 +5717,43 @@
     "confidence": "HIGH",
     "discoveryMethod": "hkie_eventdetail_portal"
    }
+  },
+  {
+   "id": "ada67c91dfb5a",
+   "name": "Innovative Movable Bridge Design in Hong Kong: Engineering beyond Waterfront Crossings",
+   "org": "Civil Division",
+   "date": "2026-12-02",
+   "time": "18:30-20:00",
+   "hrs": 1.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Civil"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ad88a0e5f713be01511b1b6/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSeA-CLVZq8Q-cFOwpATnYbeIGuK8tJpAOvCXdZSkJZEakqknQ/viewform",
+    "formId": "1FAIpQLSeA-CLVZq8Q-cFOwpATnYbeIGuK8tJpAOvCXdZSkJZEakqknQ",
+    "status": "CLOSED",
+    "fields": [],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "Chan Yat Mei Sophie Room, 9th Floor, Island Beverley, No 1 Great George Street, Causeway Bay",
+   "description": "Technical Seminar: Innovative Movable Bridge Design in Hong Kong: Engineering beyond Waterfront Crossings Organised by: HKIE Civil Division, and Chartered Institution of Highways & Transportation Date/Time: 2 December 2026 (Wednesday), 18:30-20:00 Venue: Sophie Chan Room, HKIE Headquarters, 9/F Island Beverley, No. 1 Great George Street, Causeway Bay Speaker: Ir Stephen Mak and Ir Daniel Leung Language: Cantonese with English presentation materials Fee: Free of Charge Programme Highlights: In this seminar, experience in the design and construction of innovative movable bridges in two local projects, namely the Improvement Works at Tai O - Phase 2 Stage 2 and the East Coast Boardwalk, will be shared. The speakers will share the comprehensive civil, structural, materials, and mechanical engineering solutions implemented across the projects’ lifecycle. Topics cover structural optimization, complex hydraulic mechanical drive integration, precision off-site fabrication, construction methods, and automated control and monitoring systems. The Improvement Works at Tai O – Phase 2, Stage 2 aims at enhancing local connectivity, emergency response capabilities, and public transport infrastructure without altering Tai O’s distinctive hydrogeological and sociocultural fabric. The project represents a comprehensive civil engineering designed to balance rural infrastructure modernization with environmental conservation and cultural heritage preservation. To overcome severe site constraints including lack of land-based logistics routes and the need to accommodate the Dragon Boat Water Parade, the project team developed innovative engineering solutions including Hong Kong’s first telescopic sliding footbridge, and an innovative horizontal swing footbridge. The East Coast Boardwalk is an iconic 2.2 km continuous pedestrian and cycle promenade constructed beneath the Island Eastern Corridor (IEC) viaducts, closing the long-standing waterfront connectivity gap between Fortress Hill and",
+   "venueSource": "event_detail",
+   "division": "Civil Division",
+   "civil_related": true,
+   "mode": "FACE_TO_FACE"
   },
   {
    "id": "a9c92b856a9ba",
@@ -6571,12 +6565,12 @@
    "auto": true,
    "mode": "FACE_TO_FACE",
    "registration": {
-    "mechanism": "OSHC_PORTAL",
+    "mechanism": "REGISTRATION_CLOSED",
     "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9930",
-    "status": "OPEN",
+    "status": "CLOSED",
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
-    "discoveryMethod": "event_url_oshc_activity"
+    "discoveryMethod": "oshc_activity_closed_text"
    }
   },
   {
@@ -6756,6 +6750,39 @@
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "MEDIUM",
     "discoveryMethod": "page_scan_pos_text,in_detail"
+   }
+  },
+  {
+   "id": "a77ad68f7f6ce",
+   "name": "Technical Seminar - Form Project Decisions to Legal Disputes: How Project Management Choice create or avoid legal risk",
+   "org": "Electrical Division",
+   "date": "2026-12-07",
+   "time": "18:30-20:00",
+   "hrs": 1.5,
+   "hrs_est": true,
+   "type": "GPM",
+   "disc": [
+    "Electrical"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6b0852411f1d426669cd9a87/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Chan Yat Mei Sophie Room, 9/F, the HKIE Headquarters and via ZOOM (online)",
+   "description": "[Event] Dear members Technical Seminar - Form Project Decisions to Legal Disputes: How Project Management Choice create or avoid legal risk Organised by EL Division 7 December 2026 Please note that the Technical Seminar - Form Project Decisions to Legal Disputes: How Project Management Choice create or avoid legal risk will be held on 7 December 2026 from 6:30pm to 8:00pm at Chan Yat Mei Sophie Room, 9/F, the HKIE Headquarters and via ZOOM (online) . The event is free of charge. Registration is required. The number of participants is limited to 30 (physical) and 500 (online). Applications will be accepted on a first-come first-served basis. Priority will be given to members of EL Division. For details, please click here . For registration, please register online at https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=Tj-JM5czq0y7PJIkv36vutF8FfD2vOZOv5HIVv2-RbNUQVhHMDlIVkFVMzkzMzZZNkUxRFJMV1hSOC4u . The deadline for registration is 4 December 2026 . Successful applicants will be notified separately. For enquiries, please contact EL Division via Email: techprogramme.hkie.ele.div@gmail.com . Electrical Division Committee 2023 © HKIE",
+   "venueSource": "event_detail",
+   "division": "Electrical Division",
+   "mode": "HYBRID",
+   "registration": {
+    "mechanism": "REGISTRATION_LINK_NOT_FOUND",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "LOW",
+    "discoveryMethod": "hkie_eventdetail_no_reg_link"
    }
   },
   {
@@ -8253,6 +8280,143 @@
    }
   },
   {
+   "id": "adf6ef9477e9b",
+   "name": "From Site to Cost: Digital Site Intelligence and AI 5D BIM for Defensible Delivery",
+   "org": "HKICM",
+   "date": "2026-12-17",
+   "time": "19:00-20:30",
+   "hrs": 1.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Civil"
+   ],
+   "url": "https://hkicm.org.hk/event/cpd20261217s/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKICM Learning / CPD",
+   "group": "HKICM",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLScw6udrL5XfLcg4HlefEIfyQK6pkBBOhLS98maQy1-CTan9uQ/viewform",
+    "formId": "1FAIpQLScw6udrL5XfLcg4HlefEIfyQK6pkBBOhLS98maQy1-CTan9uQ",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.1183364918",
+      "profileField": null,
+      "label": "Membership",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.15244053",
+      "profileField": "hkieNumber",
+      "label": "Membership No.",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1540395286",
+      "profileField": null,
+      "label": "Membership Class",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.357954316",
+      "profileField": null,
+      "label": "Title",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1596056943",
+      "profileField": "englishName",
+      "label": "English Full Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1405328043",
+      "profileField": "chineseName",
+      "label": "Chinese Name",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.2049775845",
+      "profileField": "phone",
+      "label": "Telephone / Mobile Contact",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1424028824",
+      "profileField": "email",
+      "label": "Email Address",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.91740810",
+      "profileField": "organisation",
+      "label": "Company / Institute",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.602237502",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.973402102",
+      "profileField": null,
+      "label": "Registration Fee",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.648365312",
+      "profileField": null,
+      "label": "Venue",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.60776683",
+      "profileField": null,
+      "label": "Important Notes",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1757752833",
+      "profileField": null,
+      "label": "Undertaking",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1234603961",
+      "profileField": null,
+      "label": "Remarks",
+      "type": "PARAGRAPH",
+      "safePrefill": false
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "UNKNOWN",
+    "confidence": "HIGH",
+    "discoveryMethod": "page_scan_google_forms,pos_text"
+   }
+  },
+  {
    "id": "a47c547b943f8",
    "name": "[Joyful@Healthy Workplace, Property Management, Environmental Hygiene and Recycling Safety and Health Committee] Security Guards: Stretch and Kick Away Lower Limb Strain Online Seminar",
    "org": "OSHC",
@@ -9049,6 +9213,43 @@
     "confidence": "LOW",
     "discoveryMethod": "labour_oshsreg_listing_no_per_event_link"
    }
+  },
+  {
+   "id": "aeb2cb82d5195",
+   "name": "Innovative Movable Bridge Design in Hong Kong: Engineering beyond Waterfront Crossings",
+   "org": "Civil Division",
+   "date": "2027-01-05",
+   "time": "18:30-20:00",
+   "hrs": 1.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Civil"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6ad88a0e5f713be01511b1b6/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSeA-CLVZq8Q-cFOwpATnYbeIGuK8tJpAOvCXdZSkJZEakqknQ/viewform",
+    "formId": "1FAIpQLSeA-CLVZq8Q-cFOwpATnYbeIGuK8tJpAOvCXdZSkJZEakqknQ",
+    "status": "CLOSED",
+    "fields": [],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "Chan Yat Mei Sophie Room, 9th Floor, Island Beverley, No 1 Great George Street, Causeway Bay",
+   "description": "Technical Seminar: Innovative Movable Bridge Design in Hong Kong: Engineering beyond Waterfront Crossings Organised by: HKIE Civil Division, and Chartered Institution of Highways & Transportation Date/Time: 2 December 2026 (Wednesday), 18:30-20:00 Venue: Sophie Chan Room, HKIE Headquarters, 9/F Island Beverley, No. 1 Great George Street, Causeway Bay Speaker: Ir Stephen Mak and Ir Daniel Leung Language: Cantonese with English presentation materials Fee: Free of Charge Programme Highlights: In this seminar, experience in the design and construction of innovative movable bridges in two local projects, namely the Improvement Works at Tai O - Phase 2 Stage 2 and the East Coast Boardwalk, will be shared. The speakers will share the comprehensive civil, structural, materials, and mechanical engineering solutions implemented across the projects’ lifecycle. Topics cover structural optimization, complex hydraulic mechanical drive integration, precision off-site fabrication, construction methods, and automated control and monitoring systems. The Improvement Works at Tai O – Phase 2, Stage 2 aims at enhancing local connectivity, emergency response capabilities, and public transport infrastructure without altering Tai O’s distinctive hydrogeological and sociocultural fabric. The project represents a comprehensive civil engineering designed to balance rural infrastructure modernization with environmental conservation and cultural heritage preservation. To overcome severe site constraints including lack of land-based logistics routes and the need to accommodate the Dragon Boat Water Parade, the project team developed innovative engineering solutions including Hong Kong’s first telescopic sliding footbridge, and an innovative horizontal swing footbridge. The East Coast Boardwalk is an iconic 2.2 km continuous pedestrian and cycle promenade constructed beneath the Island Eastern Corridor (IEC) viaducts, closing the long-standing waterfront connectivity gap between Fortress Hill and",
+   "venueSource": "event_detail",
+   "division": "Civil Division",
+   "civil_related": true,
+   "mode": "FACE_TO_FACE"
   },
   {
    "id": "a1bbe0cd9079b",
