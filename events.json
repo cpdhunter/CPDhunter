@@ -1,14 +1,14 @@
 {
- "updated": "2026-11-27T07:06+08:00",
+ "updated": "2026-11-28T07:06+08:00",
  "status": [
   {
    "source": "OSHC 職安局 研討會",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 6,
+   "n": 4,
    "method": "oshc-activity",
    "page_title": "OSHC",
-   "raw_candidates": 6,
+   "raw_candidates": 4,
    "rejects": {}
   },
   {
@@ -49,10 +49,10 @@
    "source": "CIC 建造業議會 Events",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 2,
+   "n": 3,
    "method": "playwright+cic-list",
    "page_title": "Events | Construction Industry Council",
-   "raw_candidates": 8,
+   "raw_candidates": 9,
    "rejects": {
     "date_range": 6
    }
@@ -103,10 +103,10 @@
    "source": "HKIE Events",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 53,
+   "n": 51,
    "method": "hkie-eventlist+detail",
    "page_title": "Events - HKIE",
-   "raw_candidates": 55,
+   "raw_candidates": 53,
    "rejects": {
     "social": 2
    }
@@ -159,12 +159,12 @@
    "source": "HKGBC 綠建環評",
    "status": "OK_WITH_EVENTS",
    "ok": true,
-   "n": 20,
+   "n": 17,
    "method": "hkgbc",
    "page_title": "Events & Trainings | HKGBC",
    "raw_candidates": 40,
    "rejects": {
-    "date_range": 20
+    "date_range": 23
    }
   },
   {
@@ -224,13 +224,15 @@
   },
   {
    "source": "IET Online Events",
-   "status": "EMPTY_UNVERIFIED",
+   "status": "VERIFIED_EMPTY",
    "ok": false,
    "n": 0,
    "method": "generic",
    "page_title": "IET events and courses search",
-   "raw_candidates": 0,
-   "rejects": {}
+   "raw_candidates": 1,
+   "rejects": {
+    "date_range": 1
+   }
   },
   {
    "source": "CIC (UK) Events",
@@ -244,10 +246,13 @@
   },
   {
    "source": "TQM Consultants Training",
-   "status": "FAIL",
+   "status": "EMPTY_UNVERIFIED",
    "ok": false,
    "n": 0,
-   "err": "Playwright 失敗：Error"
+   "method": "tqm-list+detail",
+   "page_title": "Upcoming | TQM Consultants Co. Limited",
+   "raw_candidates": 0,
+   "rejects": {}
   }
  ],
  "events": [
@@ -5756,6 +5761,147 @@
    "mode": "FACE_TO_FACE"
   },
   {
+   "id": "a46294d826970",
+   "name": "內蒙古工程文化考察團分享會 – 探索內蒙工程文化與交流成果",
+   "org": "Young Members Committee",
+   "date": "2026-12-02",
+   "time": "19:00-20:00",
+   "hrs": 1.0,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6b08efa41f1d426669cdd734/",
+   "region": "HK",
+   "online": null,
+   "free": true,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "registration": {
+    "mechanism": "GOOGLE_FORMS",
+    "destination": "https://docs.google.com/forms/d/e/1FAIpQLSdTbuo3RfMJT1-16bgP7mpSiHzaBgEXSEVJInIPz-huuDQNkw/viewform",
+    "formId": "1FAIpQLSdTbuo3RfMJT1-16bgP7mpSiHzaBgEXSEVJInIPz-huuDQNkw",
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.1895498111",
+      "profileField": null,
+      "label": "英文姓名(如香港身份證所示)\nExample: CHAN Tai Man, Peter",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.510858969",
+      "profileField": "chineseName",
+      "label": "中文姓名 (如香港身份證所示)\n範例：陳大文",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1240278244",
+      "profileField": "email",
+      "label": "電郵地址",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1912280603",
+      "profileField": "phone",
+      "label": "聯絡電話",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.2097374378",
+      "profileField": null,
+      "label": "性別",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.2016220075",
+      "profileField": null,
+      "label": "年齡",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1358050579",
+      "profileField": null,
+      "label": "香港工程師學會會員號碼\n範例：GW1234567",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.108021565",
+      "profileField": null,
+      "label": "請問你是否香港工程師學會青年會員",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.831256418",
+      "profileField": "organisation",
+      "label": "所屬公司(中文)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.507985530",
+      "profileField": "position",
+      "label": "職位 (中文)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.103894424",
+      "profileField": "primaryDiscipline",
+      "label": "所屬專業界別",
+      "type": "RADIO",
+      "safePrefill": true,
+      "options": [
+       "航空界別（Aircraft Discipline）",
+       "生物醫學界別（Biomedical Discipline）",
+       "建造界別（Building Discipline）",
+       "屋宇裝備界別（Building Services Discipline）",
+       "化工界別（Chemical Discipline）",
+       "土木界別（Civil Discipline）",
+       "控制、自動化及儀器儀表界別（Control, Automation & Instrumentation Discipline）",
+       "電機界別（Electrical Discipline）",
+       "電子界別（Electronics Discipline）",
+       "環境界別（Environmental Discipline）",
+       "能源界別（Energy Discipline）",
+       "消防界別（Fire Discipline）",
+       "燃氣界別（Gas Discipline）",
+       "岩土界別（Geotechnical Discipline）",
+       "資訊界別（Information Discipline）",
+       "物流及運輸界別（Logistics & Transportation Discipline）",
+       "製造、工業及系統界別（Manufacturing, Industrial & Systems Discipline）",
+       "輪機及造船界別（Marine & Naval Architecture）",
+       "材料界別（Materials Discipline）",
+       "機械界別（Mechanical Discipline）",
+       "核子界別（Nuclear Discipline）",
+       "結構界別（Structural Discipline）",
+       ""
+      ]
+     }
+    ],
+    "requiresManualCompletion": true,
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_gform"
+   },
+   "venue": "9/F Chan Yat Mei Sophie Room HKIE",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "「內蒙古工程文化考察團分享會 – 探索內蒙工程文化與交流成果」 Date, Time & Venue 2026 年 12 月 2 日（星期三）; 下午七時到八時 9/F Chan Yat Mei Sophie Room HKIE Introduction 香港工程師學會青年會員事務委員會早前圓滿舉行「內地工程文化考察團 2026 – 內蒙古」。在內蒙古獨特的地理與極端氣候背景下，一眾青年工程師突破日常工作界限，不僅實地考察了多間當地工程企業、與內地工程機構深入交流，亦走訪多個文化景點，親身體驗當地的歷史與風土人情。是次分享會將由團員親自總結考察成果，暢談所見所聞與跨界交流得著，進一步拓寬工程與文化視野。 Fee 免費 Registration & Enquiries 截止報名日期為2026年 12月1日(星期二)。 如欲參加之會員，請瀏覽 此鏈接 登記。青年會員優先，成功參加者將收到電郵確認。如有垂詢，請聯絡郭曉晴小姐(電郵： ymc@hkie.org.hk )。",
+   "venueSource": "event_detail",
+   "division": "Young Members Committee",
+   "mode": "FACE_TO_FACE"
+  },
+  {
    "id": "a9c92b856a9ba",
    "name": "ITCTS Recruitment Day",
    "org": "CIC",
@@ -5888,12 +6034,12 @@
    "group": "OSHC",
    "auto": true,
    "registration": {
-    "mechanism": "OSHC_PORTAL",
+    "mechanism": "REGISTRATION_CLOSED",
     "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9924",
-    "status": "OPEN",
+    "status": "CLOSED",
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
-    "discoveryMethod": "event_url_oshc_activity"
+    "discoveryMethod": "oshc_activity_closed_text"
    }
   },
   {
@@ -6178,12 +6324,12 @@
    "group": "OSHC",
    "auto": true,
    "registration": {
-    "mechanism": "OSHC_PORTAL",
+    "mechanism": "REGISTRATION_CLOSED",
     "destination": "https://sms.oshc.hk/online/activityE.aspx?activityid=9924",
-    "status": "OPEN",
+    "status": "CLOSED",
     "sourceUrlClass": "DIRECT_REGISTRATION",
     "confidence": "HIGH",
-    "discoveryMethod": "event_url_oshc_activity",
+    "discoveryMethod": "oshc_activity_closed_text",
     "requiresManualCompletion": true
    },
    "venue": "5/F London Chinese Restaurant, Good Hope Building, 612-618 Nathan Rd, Mong Kok"
@@ -7885,8 +8031,93 @@
     "mechanism": "GOOGLE_FORMS",
     "destination": "https://docs.google.com/forms/d/e/1FAIpQLScWDfo2C-R39tIsEtdIHVnOzjlond8N7VlVzshcpwxbFaJH0Q/viewform",
     "formId": "1FAIpQLScWDfo2C-R39tIsEtdIHVnOzjlond8N7VlVzshcpwxbFaJH0Q",
-    "status": "CLOSED",
-    "fields": [],
+    "status": "OPEN",
+    "fields": [
+     {
+      "entryId": "entry.2092238618",
+      "profileField": null,
+      "label": "Surname (English)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1909904339",
+      "profileField": null,
+      "label": "Given Name (English)",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.234246542",
+      "profileField": null,
+      "label": "Email",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1812506146",
+      "profileField": null,
+      "label": "Gender",
+      "type": "RADIO",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.848224007",
+      "profileField": null,
+      "label": "Year of Birth",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.377809025",
+      "profileField": "phone",
+      "label": "Mobile No.",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.273518598",
+      "profileField": "organisation",
+      "label": "Company / Organization",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1709685474",
+      "profileField": "position",
+      "label": "Position",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.1753222212",
+      "profileField": "hkieNumber",
+      "label": "HKIE Membership Number (e.g. GW1234567)",
+      "type": "SHORT_TEXT",
+      "safePrefill": true
+     },
+     {
+      "entryId": "entry.797341359",
+      "profileField": null,
+      "label": "Emergency Contact Person",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.1026415620",
+      "profileField": null,
+      "label": "Emergency Contact Number",
+      "type": "SHORT_TEXT",
+      "safePrefill": false
+     },
+     {
+      "entryId": "entry.100063151",
+      "profileField": null,
+      "label": "Please note the registration fee is $100 for this event and the payment method will be included in the confirmation email.",
+      "type": "RADIO",
+      "safePrefill": false
+     }
+    ],
     "requiresManualCompletion": true,
     "sourceUrlClass": "EVENT_DETAIL",
     "confidence": "HIGH",
@@ -9011,6 +9242,35 @@
    "mode": "FACE_TO_FACE"
   },
   {
+   "id": "a30a0eec7f93c",
+   "name": "Webinar on “Construction Workers Registration Ordinance” (CWRO)",
+   "org": "CIC",
+   "date": "2026-12-21",
+   "time": "",
+   "hrs": null,
+   "hrs_est": false,
+   "type": "Technical",
+   "disc": [
+    "General"
+   ],
+   "url": "https://www.cic.hk/eform/cwrbriefingsession/regform.aspx?lang=zh-HK",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "CIC 建造業議會 Events",
+   "group": "CIC",
+   "auto": true,
+   "mode": "ONLINE",
+   "registration": {
+    "mechanism": "CAPTCHA_BLOCKED",
+    "destination": null,
+    "status": "UNKNOWN",
+    "sourceUrlClass": "CAPTCHA_BLOCKED",
+    "confidence": "MEDIUM",
+    "discoveryMethod": "page_captcha_blocked"
+   }
+  },
+  {
    "id": "a76a97ad66abb",
    "name": "工作間的感染控制",
    "org": "Labour Dept",
@@ -9250,6 +9510,43 @@
    "division": "Civil Division",
    "civil_related": true,
    "mode": "FACE_TO_FACE"
+  },
+  {
+   "id": "a92be6b35ce86",
+   "name": "Three-dimensional Stability of Slopes: Pilot Applications under the LPMitP",
+   "org": "Geotechnical Division",
+   "date": "2027-01-05",
+   "time": "18:30-20:00",
+   "hrs": 1.5,
+   "hrs_est": true,
+   "type": "Technical",
+   "disc": [
+    "Geotechnical",
+    "Civil"
+   ],
+   "url": "https://hkie.org.hk/events/event-detail/6b093fe01f1d426669cdfd5b/",
+   "region": "HK",
+   "online": null,
+   "free": null,
+   "source": "HKIE Events",
+   "group": "HKIE",
+   "auto": true,
+   "venue": "Room Y301, The Hong Kong Polytechnic University",
+   "modeText": "ONSITE",
+   "attendanceMode": "ONSITE",
+   "description": "ABSTRACT Geotechnical practitioners have traditionally relied on the two-dimensional (2D) limit equilibrium method (LEM) to evaluate slope stability. For slopes with pronounced three-dimensional geometries, routine practice typically involves analysing multiple representative cross-sections under plane strain assumptions. However, this approach can be labour-intensive and fails to capture critical 3D spatial effects. To overcome these limitations, a pilot trial was recently conducted to evaluate the performance of the commercial program SLOPE3D (developed by Seequent), a 3D LEM software capable of accounting for complex terrain geometry, heterogeneous ground conditions, and soil nail reinforcement in arbitrary spatial orientations. By coupling SLOPE3D with a Building Information Modelling (BIM) workflow, geometric data exchange was streamlined to improve model development and design coordination. The trial demonstrated that a BIM-enabled 3D analysis optimises slope reinforcement layouts and uncovers stability-critical failure mechanisms that remain undetected in conventional 2D cross-sectional assessments. This seminar introduces the core capabilities of SLOPE3D and demonstrates its practical application through case studies of man-made slope designs conducted under the Landslip Prevention and Mitigation Programme (LPMitP). It also outlines the scope and conditions associated with its recent grant of prior acceptance for public works projects, including stability evaluations of unsupported cut and soil-nailed slopes.",
+   "venueSource": "event_detail",
+   "division": "Geotechnical Division",
+   "civil_related": true,
+   "mode": "FACE_TO_FACE",
+   "registration": {
+    "mechanism": "HKIE_PORTAL",
+    "destination": "https://event.hkie.org.hk/events/share?id=6b093fe01f1d426669cdfd5b&companyCode=hkie",
+    "status": "LOGIN_REQUIRED",
+    "sourceUrlClass": "EVENT_DETAIL",
+    "confidence": "HIGH",
+    "discoveryMethod": "hkie_eventdetail_portal"
+   }
   },
   {
    "id": "a1bbe0cd9079b",
